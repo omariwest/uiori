@@ -1,0 +1,91 @@
+.main-content { min-height: 65vh; }
+
+section { padding: clamp(2.8rem, 6vw, 5rem) 0; }
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3.25rem, 6.2vw, 5.4rem) 0 clamp(2.35rem, 4.8vw, 4rem);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 1.5rem auto auto 50%;
+  width: min(720px, 90vw);
+  height: min(720px, 90vw);
+  translate: -10% 0;
+  background:
+    radial-gradient(circle at 42% 32%, rgba(37, 87, 255, .18), transparent 23%),
+    radial-gradient(circle at 72% 62%, rgba(0, 167, 125, .14), transparent 24%);
+  filter: blur(22px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, .82fr);
+  gap: clamp(1.25rem, 3.2vw, 2.4rem);
+  align-items: center;
+}
+
+.hero-grid > * {
+  min-width: 0;
+}
+
+.hero-copy > .eyebrow { margin-bottom: .82rem; }
+
+.hero-subtitle {
+  font-size: clamp(1rem, 1.6vw, 1.16rem);
+  max-width: 660px;
+  margin-top: 1rem;
+  color: var(--muted-strong);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: 1.5rem;
+}
+
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.6rem;
+}
+
+.section-head p {
+  max-width: 700px;
+  margin-top: .7rem;
+}
+
+.content-wrap {
+  width: min(890px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.page-hero {
+  padding: clamp(2.6rem, 5vw, 4.2rem) 0 clamp(1.65rem, 3vw, 2.15rem);
+}
+
+.page-hero h1 { max-width: 16.5ch; }
+.page-hero .hero-subtitle { max-width: 720px; }
+
+@media (max-width: 980px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-grid > :last-child { width: min(100%, 720px); }
+  .hero::before { inset: 10rem auto auto 25%; translate: 0 0; }
+  .section-head { align-items: start; flex-direction: column; }
+}
+
+@media (max-width: 640px) {
+  section { padding: 2.7rem 0; }
+  .hero { padding-top: 2.85rem; }
+  .page-hero { padding-top: 2.45rem; }
+  .hero-actions .btn { width: 100%; }
+  .content-wrap { width: min(100% - 28px, 890px); }
+}

@@ -1,0 +1,13 @@
+.alert {
+  border-radius: var(--radius-md);
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  background: var(--surface-glass);
+  color: var(--muted);
+  box-shadow: var(--shadow-tiny);
+}
+
+.alert strong { color: var(--text); }
+.warning-alert { background: var(--warning-soft); border-color: rgba(161, 98, 7, .18); }
+.disclosure-alert { background: var(--surface); border-left: 4px solid var(--accent); }
+.danger-alert { background: var(--danger-soft); border-color: rgba(180, 35, 24, .18); }

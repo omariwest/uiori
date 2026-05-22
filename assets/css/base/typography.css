@@ -1,0 +1,65 @@
+body {
+  background:
+    radial-gradient(circle at top left, rgba(37, 87, 255, .08), transparent 34rem),
+    radial-gradient(circle at top right, rgba(0, 167, 125, .08), transparent 30rem),
+    linear-gradient(180deg, #ffffff 0%, var(--bg) 34rem);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.62;
+  font-size: 16px;
+  text-rendering: geometricPrecision;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text);
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.35rem, 5.2vw, 4.85rem);
+  max-width: 14.2ch;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: clamp(1.85rem, 3.6vw, 3rem);
+  font-weight: 850;
+}
+
+h3 {
+  font-size: clamp(1.08rem, 1.4vw, 1.24rem);
+  font-weight: 820;
+  letter-spacing: -0.03em;
+}
+
+p {
+  color: var(--muted);
+}
+
+strong {
+  color: var(--text);
+  font-weight: 850;
+}
+
+.small,
+small {
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  body { font-size: 15.5px; }
+  h1 {
+    font-size: clamp(2.12rem, 10vw, 2.8rem);
+    max-width: 12ch;
+  }
+}

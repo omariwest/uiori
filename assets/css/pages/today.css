@@ -1,0 +1,201 @@
+.today-page .page-hero h1 {
+  max-width: 17.5ch;
+}
+
+.today-hero {
+  overflow: visible;
+}
+
+.today-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+  gap: clamp(1.2rem, 3vw, 2rem);
+  align-items: center;
+}
+
+.today-hero-grid > * {
+  min-width: 0;
+}
+
+.today-jump-panel h2,
+.today-snapshot-card h2 {
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  max-width: 13ch;
+}
+
+.today-tight-section {
+  padding-block: clamp(1.35rem, 3.2vw, 2.35rem);
+}
+
+.today-rule-strip,
+.today-related-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+  gap: 1.2rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  padding: clamp(1rem, 2.8vw, 1.55rem);
+  box-shadow: var(--shadow-soft);
+}
+
+.today-rule-strip h2,
+.today-related-strip h2 {
+  font-size: clamp(1.4rem, 2.7vw, 2.2rem);
+}
+
+.today-route-grid,
+.today-check-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.today-route-card,
+.today-check-card,
+.today-task-card,
+.today-snapshot-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.today-route-card::after,
+.today-check-card::after,
+.today-snapshot-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -40% auto;
+  width: 170px;
+  height: 170px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(37, 87, 255, 0.1), transparent 68%);
+  pointer-events: none;
+}
+
+.today-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  margin-bottom: 0.75rem;
+  padding-inline: 0;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.04em;
+}
+
+.today-task-list,
+.task-list {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.today-task-card,
+.task-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.today-card-topline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 0.75rem;
+}
+
+.today-task-main {
+  min-width: 0;
+}
+
+.today-task-detail {
+  margin-top: 0.9rem;
+  padding: 0.82rem 0.9rem;
+  border: 1px solid rgba(37, 87, 255, 0.14);
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(237, 242, 255, 0.7),
+    rgba(255, 255, 255, 0.72)
+  );
+  color: var(--text-soft);
+  font-size: 0.93rem;
+  line-height: 1.6;
+}
+
+.today-task-detail strong {
+  font-size: 0.9rem;
+}
+
+.today-task-card .route-platforms {
+  margin-top: 0.8rem;
+}
+
+.today-country-card {
+  min-height: 176px;
+}
+
+.today-snapshot-card .badge-row + .badge-row {
+  margin-top: 0.55rem;
+}
+
+.today-clean-list {
+  margin: 0.9rem 0 0;
+  padding-left: 1.15rem;
+  color: var(--muted-strong);
+}
+
+.today-clean-list li + li {
+  margin-top: 0.58rem;
+}
+
+.today-routine-card h2,
+.today-warning-list h2 {
+  font-size: clamp(1.45rem, 2.8vw, 2.25rem);
+}
+
+.today-board-section {
+  position: relative;
+  z-index: 2;
+}
+
+.today-board-section .filter-bar,
+#route-list .filter-bar {
+  margin-bottom: 1.15rem;
+}
+
+@media (max-width: 980px) {
+  .today-hero-grid,
+  .today-rule-strip,
+  .today-related-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .today-route-grid,
+  .today-check-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .today-task-card,
+  .task-item {
+    grid-template-columns: 1fr;
+  }
+
+  .today-task-card .btn {
+    width: 100%;
+  }
+
+  .today-rule-strip,
+  .today-related-strip {
+    border-radius: var(--radius-lg);
+  }
+}

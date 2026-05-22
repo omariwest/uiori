@@ -1,0 +1,51 @@
+.filter-bar {
+  position: relative;
+  z-index: 40;
+  overflow: visible;
+  display: flex;
+  gap: 0.62rem;
+  align-items: center;
+  flex-wrap: wrap;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.84),
+      rgba(255, 255, 255, 0.72)
+    ),
+    radial-gradient(circle at 100% 0%, rgba(37, 87, 255, 0.1), transparent 40%);
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  padding: 0.62rem;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 1.1rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.filter-bar:has(.ui-select.is-open) {
+  z-index: 80;
+}
+
+.filter-bar input,
+.filter-bar select {
+  flex: 1 1 240px;
+  max-width: none;
+  min-height: 50px;
+  border-radius: 18px;
+  box-shadow: 0 1px 0 rgba(13, 20, 36, 0.04);
+}
+
+.filter-bar select {
+  flex: 0 1 220px;
+}
+
+[data-filter-item].is-hidden {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .filter-bar input,
+  .filter-bar select {
+    max-width: none;
+  }
+}

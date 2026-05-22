@@ -1,0 +1,26 @@
+@import url('./base/reset.css');
+@import url('./base/tokens.css');
+@import url('./base/typography.css');
+@import url('./base/utilities.css');
+
+@import url('./layout/grid.css');
+@import url('./layout/header.css');
+@import url('./layout/footer.css');
+@import url('./layout/sections.css');
+
+@import url('./components/buttons.css');
+@import url('./components/cards.css');
+@import url('./components/faq.css');
+@import url('./components/forms.css');
+@import url('./components/badges.css');
+@import url('./components/tables.css');
+@import url('./components/filters.css');
+@import url('./components/alerts.css');
+@import url('./components/breadcrumbs.css');
+
+@import url('./pages/home.css');
+@import url('./pages/country.css');
+@import url('./pages/platform.css');
+@import url('./pages/today.css');
+@import url('./pages/payout.css');
+@import url('./pages/guide.css');

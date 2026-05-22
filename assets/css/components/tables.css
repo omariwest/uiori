@@ -1,0 +1,42 @@
+.table-card { overflow: hidden; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  padding: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+th {
+  color: var(--text);
+  font-size: .79rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  background: var(--surface-soft);
+}
+
+td { color: var(--muted); }
+
+
+td:first-child,
+td:last-child a {
+  white-space: nowrap;
+}
+
+td a {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+tr:last-child td { border-bottom: 0; }
+
+@media (max-width: 760px) {
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { min-width: 680px; }
+}
