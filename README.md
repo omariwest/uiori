@@ -1,10 +1,10 @@
-# UIROI
+# UIORI
 
 Find online earning opportunities that work in your country.
 
-UIROI is a country based MMO opportunity finder that helps users discover realistic online earning platforms, payout methods, minimum withdrawal thresholds, task categories, and country specific limitations.
+UIORI is a country based MMO opportunity finder that helps users discover realistic online earning platforms, payout methods, minimum withdrawal thresholds, task categories, and country specific limitations.
 
-## What UIROI Does
+## What UIORI Does
 
 - Country based earning discovery
 - Platform comparisons
@@ -39,4 +39,4 @@ Some links may be referral or affiliate links. Availability, eligibility, tasks,
 
 ## Website
 
-https://uiroi.com
+https://uiori.com
