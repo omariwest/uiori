@@ -35,7 +35,7 @@ UIROI is a country based MMO opportunity finder that helps users discover realis
 
 ## Disclosure
 
-Some links may be referral or affiliate links. Availability, eligibility, tasks, and payments are controlled by third-party platforms and may change over time.
+Some links may be referral or affiliate links. Availability, eligibility, tasks, and payments are controlled by third party platforms and may change over time.
 
 ## Website
 
