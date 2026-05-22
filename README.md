@@ -2,7 +2,7 @@
 
 Find online earning opportunities that work in your country.
 
-UIROI is a country based MMO opportunity finder that helps users discover realistic online earning platforms, payout methods, minimum withdrawal thresholds, task categories, and country-specific limitations.
+UIROI is a country based MMO opportunity finder that helps users discover realistic online earning platforms, payout methods, minimum withdrawal thresholds, task categories, and country specific limitations.
 
 ## What UIROI Does
 
