@@ -7,7 +7,18 @@
   box-shadow: var(--shadow-tiny);
 }
 
-.alert strong { color: var(--text); }
-.warning-alert { background: var(--warning-soft); border-color: rgba(161, 98, 7, .18); }
-.disclosure-alert { background: var(--surface); border-left: 4px solid var(--accent); }
-.danger-alert { background: var(--danger-soft); border-color: rgba(180, 35, 24, .18); }
+.alert strong {
+  color: var(--text);
+}
+.warning-alert {
+  background: var(--warning-soft);
+  border-color: rgba(161, 98, 7, 0.18);
+}
+.disclosure-alert {
+  background: var(--surface);
+  border-inline-start: 4px solid var(--accent);
+}
+.danger-alert {
+  background: var(--danger-soft);
+  border-color: rgba(180, 35, 24, 0.18);
+}

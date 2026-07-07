@@ -1,4 +1,6 @@
-.table-card { overflow: hidden; }
+.table-card {
+  overflow: hidden;
+}
 
 table {
   width: 100%;
@@ -8,7 +10,7 @@ table {
 
 th,
 td {
-  text-align: left;
+  text-align: start;
   vertical-align: top;
   padding: 1rem;
   border-bottom: 1px solid var(--line);
@@ -16,14 +18,15 @@ td {
 
 th {
   color: var(--text);
-  font-size: .79rem;
+  font-size: 0.79rem;
   text-transform: uppercase;
-  letter-spacing: .08em;
+  letter-spacing: 0.08em;
   background: var(--surface-soft);
 }
 
-td { color: var(--muted); }
-
+td {
+  color: var(--muted);
+}
 
 td:first-child,
 td:last-child a {
@@ -34,9 +37,16 @@ td a {
   overflow-wrap: normal;
   word-break: normal;
 }
-tr:last-child td { border-bottom: 0; }
+tr:last-child td {
+  border-bottom: 0;
+}
 
 @media (max-width: 760px) {
-  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  table { min-width: 680px; }
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  table {
+    min-width: 680px;
+  }
 }

@@ -114,11 +114,11 @@
 }
 
 .route-card {
-  border-left: 4px solid var(--accent);
+  border-inline-start: 4px solid var(--accent);
 }
 
 .warning-card {
-  border-left: 4px solid var(--warning);
+  border-inline-start: 4px solid var(--warning);
 }
 
 .card[data-filter-item] {

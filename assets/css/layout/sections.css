@@ -11,7 +11,8 @@ section { padding: clamp(2.8rem, 6vw, 5rem) 0; }
 .hero::before {
   content: "";
   position: absolute;
-  inset: 1.5rem auto auto 50%;
+  inset-block-start: 1.5rem;
+  inset-inline-start: 50%;
   width: min(720px, 90vw);
   height: min(720px, 90vw);
   translate: -10% 0;
@@ -21,6 +22,10 @@ section { padding: clamp(2.8rem, 6vw, 5rem) 0; }
   filter: blur(22px);
   pointer-events: none;
   z-index: -1;
+}
+
+html[dir="rtl"] .hero::before {
+  translate: 10% 0;
 }
 
 .hero-grid {
@@ -78,7 +83,11 @@ section { padding: clamp(2.8rem, 6vw, 5rem) 0; }
 @media (max-width: 980px) {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-grid > :last-child { width: min(100%, 720px); }
-  .hero::before { inset: 10rem auto auto 25%; translate: 0 0; }
+  .hero::before {
+    inset-block-start: 10rem;
+    inset-inline-start: 25%;
+    translate: 0 0;
+  }
   .section-head { align-items: start; flex-direction: column; }
 }
 
