@@ -4,6 +4,7 @@ const GAME_PATHS = Object.freeze({
   'word-challenge': 'word_challenge',
   'penalty-kick': 'penalty_kick',
   'reaction-speed': 'reaction_speed',
+  'quick-quiz': 'quick_quiz',
 });
 
 function normalizePath(pathname) {
@@ -23,6 +24,14 @@ function getPageType(pathname = window.location.pathname) {
 
   if (normalizedPath === '/gamelab/') {
     return 'hub';
+  }
+
+  if (normalizedPath === '/gamelab/quick-quiz/result/') {
+    return 'quiz_result';
+  }
+
+  if (/^\/gamelab\/quick-quiz\/(?:[2-7]\/)?$/.test(normalizedPath)) {
+    return 'quiz_question';
   }
 
   if (normalizedPath.endsWith('/play/')) {
@@ -137,6 +146,10 @@ function initLinkTracking() {
     const link = event.target.closest('a[href]');
 
     if (!link) {
+      return;
+    }
+
+    if (link.hasAttribute('data-gamelab-track-ignore')) {
       return;
     }
 

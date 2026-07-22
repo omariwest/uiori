@@ -69,3 +69,178 @@
   .home-proof { grid-template-columns: 1fr; }
   .proof-pill { border-radius: 18px; }
 }
+
+.home-gamelab-promo__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.35rem;
+  align-items: center;
+  padding: clamp(1.15rem, 3vw, 1.85rem);
+  background: rgba(255, 255, 255, .9);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.home-gamelab-promo__copy > p:not(.eyebrow) {
+  margin-top: .75rem;
+  max-width: 58ch;
+  color: var(--muted-strong);
+}
+
+.home-gamelab-promo__indicators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1rem 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.home-gamelab-promo__indicators li {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .5rem .72rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .78);
+  color: var(--muted-strong);
+  font-size: .88rem;
+  font-weight: 780;
+  box-shadow: var(--shadow-tiny);
+}
+
+.home-gamelab-promo__indicators li::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--mint);
+  box-shadow: 0 0 0 4px var(--mint-soft);
+}
+
+.home-gamelab-promo__preview {
+  position: relative;
+  min-height: 11.5rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at 18% 24%, rgba(37, 87, 255, .14), transparent 42%),
+    radial-gradient(circle at 82% 72%, rgba(0, 167, 125, .12), transparent 38%),
+    linear-gradient(155deg, var(--surface-soft), #eef4ff);
+}
+
+.home-gamelab-promo__score {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-start: 1rem;
+  padding: .55rem .78rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, .9);
+  box-shadow: var(--shadow-tiny);
+}
+
+.home-gamelab-promo__score-value {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: -.03em;
+  unicode-bidi: isolate;
+}
+
+.home-gamelab-promo__tile {
+  position: absolute;
+  inset-block-start: 1.35rem;
+  inset-inline-end: 1.15rem;
+  display: grid;
+  place-items: center;
+  width: 2.85rem;
+  height: 2.85rem;
+  border: 1px solid rgba(109, 74, 255, .18);
+  border-radius: var(--radius-xs);
+  background: rgba(255, 255, 255, .92);
+  color: var(--accent-dark);
+  font-size: 1.35rem;
+  font-weight: 900;
+  box-shadow: var(--shadow-tiny);
+  transform: rotate(-4deg);
+}
+
+.home-gamelab-promo__target {
+  position: absolute;
+  inset-block-end: 1.1rem;
+  inset-inline-start: 1.35rem;
+  width: 3.4rem;
+  height: 3.4rem;
+  border: 2px solid rgba(0, 167, 125, .45);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgba(0, 167, 125, .18) 0 28%, transparent 30%),
+    rgba(255, 255, 255, .72);
+  box-shadow: var(--shadow-tiny);
+}
+
+.home-gamelab-promo__target::before,
+.home-gamelab-promo__target::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 50%;
+  width: 118%;
+  height: 2px;
+  background: rgba(0, 167, 125, .35);
+  translate: -9% -50%;
+}
+
+.home-gamelab-promo__target::after {
+  rotate: 90deg;
+}
+
+.home-gamelab-promo__reaction {
+  position: absolute;
+  inset-block-end: 1.25rem;
+  inset-inline-end: 1.2rem;
+  width: 2.6rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ff7a1a;
+  box-shadow: 0 0 0 .45rem rgba(255, 122, 26, .18);
+}
+
+.home-gamelab-promo__reaction::after {
+  content: "";
+  position: absolute;
+  inset: -.55rem;
+  border: 2px solid rgba(255, 122, 26, .28);
+  border-radius: 50%;
+}
+
+@media (min-width: 768px) {
+  .home-gamelab-promo__inner {
+    grid-template-columns: minmax(0, 1.08fr) minmax(220px, .78fr);
+    gap: clamp(1.35rem, 3vw, 2.2rem);
+  }
+
+  .home-gamelab-promo__preview {
+    min-height: 13.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-gamelab-promo__inner {
+    padding: 1.05rem;
+    border-radius: var(--radius-md);
+  }
+
+  .home-gamelab-promo__copy .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-gamelab-promo__tile {
+    transform: none;
+  }
+}
