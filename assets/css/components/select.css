@@ -1,0 +1,174 @@
+.ui-select {
+  position: relative;
+  width: 100%;
+}
+
+.ui-select-native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.ui-select-button {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 46px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 42px 0 13px;
+  border: 1px solid rgba(17, 24, 39, 0.14);
+  border-radius: 11px;
+  color: var(--color-ink);
+  background: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: left;
+  outline: none;
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease,
+    background 0.16s ease;
+}
+
+.ui-select-button:hover {
+  border-color: rgba(17, 24, 39, 0.2);
+}
+
+.ui-select-button:focus-visible,
+.ui-select.is-open .ui-select-button {
+  border-color: rgba(109, 76, 245, 0.42);
+  box-shadow: 0 0 0 3px rgba(109, 76, 245, 0.08);
+}
+
+.ui-select-button-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ui-select-chevron {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  width: 17px;
+  height: 17px;
+  transform: translateY(-50%);
+  fill: none;
+  stroke: #71717a;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition:
+    transform 0.16s ease,
+    stroke 0.16s ease;
+  pointer-events: none;
+}
+
+.ui-select.is-open .ui-select-chevron {
+  transform: translateY(-50%) rotate(180deg);
+  stroke: #52525b;
+}
+
+.ui-select-menu {
+  position: absolute;
+  top: calc(100% + 7px);
+  right: 0;
+  left: 0;
+  z-index: 150;
+  display: grid;
+  max-height: 230px;
+  gap: 3px;
+  padding: 6px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid rgba(17, 24, 39, 0.1);
+  border-radius: 13px;
+  background: #ffffff;
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.11);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transform-origin: top center;
+  pointer-events: none;
+  transition:
+    opacity 0.14s ease,
+    transform 0.14s ease,
+    visibility 0s linear 0.14s;
+}
+
+.ui-select.is-dropup .ui-select-menu {
+  top: auto;
+  bottom: calc(100% + 7px);
+  transform: translateY(4px);
+  transform-origin: bottom center;
+}
+
+.ui-select.is-open .ui-select-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+.ui-select-option {
+  display: flex;
+  width: 100%;
+  min-height: 37px;
+  min-width: 0;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 9px;
+  color: var(--color-ink);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: background 0.13s ease;
+}
+
+.ui-select-option:hover,
+.ui-select-option:focus-visible {
+  background: #f5f6f8;
+  outline: none;
+}
+
+.ui-select-option.is-selected {
+  background: #f0f1f3;
+  font-weight: 650;
+}
+
+.ui-select-option:disabled {
+  color: #a1a1aa;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-select-button,
+  .ui-select-chevron,
+  .ui-select-menu,
+  .ui-select-option {
+    transition: none;
+  }
+}

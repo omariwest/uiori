@@ -1,0 +1,724 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <title>Wallet — UIORI</title>
+    <meta content="noindex,nofollow" name="robots" />
+    <meta
+      content="View your UIORI credited earnings, withdrawal eligibility, payout setup, and wallet activity."
+      name="description"
+    />
+    <link href="https://uiori.com/wallet/" rel="canonical" />
+    <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link
+      href="/assets/img/favicon-32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/assets/img/favicon-180.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script
+      src="/assets/js/components/app-navigation.js"
+      type="module"
+    ></script>
+    <script
+      src="/assets/js/components/account-access.js"
+      type="module"
+    ></script>
+    <script src="/assets/js/components/progress-data.js" type="module"></script>
+    <script src="/assets/js/pages/wallet.js" type="module"></script>
+  </head>
+  <body class="app-body app-auth-loading">
+    <div class="app-layout">
+      <aside aria-label="Account sidebar" class="app-sidebar">
+        <a aria-label="UIORI home" class="wordmark app-wordmark" href="/">
+          UIORI<span class="wordmark-period">.</span>
+        </a>
+        <div
+          class="app-member-card"
+          data-uiori-member-state="pending"
+          aria-label="Account membership status"
+        >
+          <div class="app-member-avatar">
+            <img
+              src="/assets/img/default-avatar.svg"
+              alt="Your profile photo"
+              data-uiori-avatar
+            />
+          </div>
+          <div class="app-member-copy">
+            <strong class="app-member-name" data-uiori-member-name></strong>
+            <span class="app-member-badge" data-uiori-member-badge>
+              <svg
+                aria-hidden="true"
+                viewbox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                ></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <span data-uiori-member-status></span>
+            </span>
+          </div>
+        </div>
+        <nav aria-label="Account navigation" class="app-navigation">
+          <a class="app-nav-link" href="/dashboard/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="1"></circle>
+              <circle cx="12" cy="12" r="10"></circle>
+            </svg>
+            <span>Overview</span>
+          </a>
+          <a class="app-nav-link" href="/earn/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <path
+                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+              ></path>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 18V6"></path>
+            </svg>
+            <span>Earn</span>
+          </a>
+          <a aria-current="page" class="app-nav-link" href="/wallet/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <path
+                d="M3 11h3.75a2 2 0 0 1 1.6.8l.45.6a4 4 0 0 0 6.4 0l.45-.6a2 2 0 0 1 1.6-.8H21"
+              ></path>
+              <path d="M3 7h18"></path>
+              <rect height="18" rx="2" width="18" x="3" y="3"></rect>
+            </svg>
+            <span>Wallet</span>
+          </a>
+          <a class="app-nav-link" href="/settings/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <path
+                d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+              ></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span>Settings</span>
+          </a>
+        </nav>
+        <div class="app-sidebar-bottom">
+          <a class="app-nav-link" href="/faq/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <path
+                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+              ></path>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" x2="12.01" y1="17" y2="17"></line>
+            </svg>
+            <span>Help</span>
+          </a>
+          <a
+            class="app-nav-link app-logout-link"
+            data-uiori-logout=""
+            href="/login/"
+          >
+            <svg aria-hidden="true" class="app-nav-icon" viewbox="0 0 24 24">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <path d="M16 17l5-5-5-5"></path>
+              <path d="M21 12H9"></path>
+            </svg>
+            <span>Log out</span>
+          </a>
+          <a class="app-back-link" href="/">
+            <span>Back to website</span>
+            <svg
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+              viewbox="0 0 24 24"
+            >
+              <path d="M7 17 17 7"></path>
+              <path d="M7 7h10v10"></path>
+            </svg>
+          </a>
+        </div>
+      </aside>
+      <div class="app-main">
+        <header class="app-mobile-topbar">
+          <a aria-label="UIORI home" class="wordmark app-wordmark" href="/">
+            UIORI<span class="wordmark-period">.</span>
+          </a>
+          <button
+            aria-controls="app-navigation-drawer"
+            aria-expanded="false"
+            aria-label="Open account navigation"
+            class="app-menu-toggle"
+            type="button"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </header>
+        <dialog
+          aria-label="Account navigation"
+          class="app-drawer"
+          id="app-navigation-drawer"
+        >
+          <div class="app-drawer-panel">
+            <div
+              class="app-member-card app-member-card--drawer"
+              data-uiori-member-state="pending"
+              aria-label="Account membership status"
+            >
+              <div class="app-member-avatar">
+                <img
+                  src="/assets/img/default-avatar.svg"
+                  alt="Your profile photo"
+                  data-uiori-avatar
+                />
+              </div>
+              <div class="app-member-copy">
+                <strong class="app-member-name" data-uiori-member-name></strong>
+                <span class="app-member-badge" data-uiori-member-badge>
+                  <svg
+                    aria-hidden="true"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                    ></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
+                  <span data-uiori-member-status></span>
+                </span>
+              </div>
+            </div>
+            <nav aria-label="Account navigation" class="app-navigation">
+              <a class="app-nav-link" href="/dashboard/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <circle cx="12" cy="12" r="1"></circle>
+                  <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+                <span>Overview</span>
+              </a>
+              <a class="app-nav-link" href="/earn/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                  ></path>
+                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                  <path d="M12 18V6"></path>
+                </svg>
+                <span>Earn</span>
+              </a>
+              <a aria-current="page" class="app-nav-link" href="/wallet/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    d="M3 11h3.75a2 2 0 0 1 1.6.8l.45.6a4 4 0 0 0 6.4 0l.45-.6a2 2 0 0 1 1.6-.8H21"
+                  ></path>
+                  <path d="M3 7h18"></path>
+                  <rect height="18" rx="2" width="18" x="3" y="3"></rect>
+                </svg>
+                <span>Wallet</span>
+              </a>
+              <a class="app-nav-link" href="/settings/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+                  ></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span>Settings</span>
+              </a>
+            </nav>
+            <div class="app-sidebar-bottom">
+              <a class="app-nav-link" href="/faq/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                  ></path>
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                  <line x1="12" x2="12.01" y1="17" y2="17"></line>
+                </svg>
+                <span>Help</span>
+              </a>
+              <a
+                class="app-nav-link app-logout-link"
+                data-uiori-logout=""
+                href="/login/"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <path d="M16 17l5-5-5-5"></path>
+                  <path d="M21 12H9"></path>
+                </svg>
+                <span>Log out</span>
+              </a>
+              <a class="app-back-link" href="/">
+                <span>Back to website</span>
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M7 17 17 7"></path>
+                  <path d="M7 7h10v10"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </dialog>
+        <main class="app-content" id="main-content">
+          <header class="app-topbar">
+            <div class="app-page-heading">
+              <p class="app-page-eyebrow">Account</p>
+              <h1>Wallet</h1>
+              <p>Your credited earnings and withdrawal status.</p>
+            </div>
+            <div aria-label="Account" class="app-account-control">
+              <span aria-hidden="true" class="app-account-dot"></span>
+              <span>Account</span>
+            </div>
+          </header>
+          <p class="wallet-preview-note" data-uiori-wallet-note>
+            Your credited balance updates when UIORI records an eligible reward.
+          </p>
+          <section
+            aria-labelledby="wallet-balance-title"
+            class="wallet-summary"
+          >
+            <div class="wallet-balance" data-uiori-active-only>
+              <p class="wallet-label">Available earnings</p>
+              <h2 id="wallet-balance-title" data-uiori-balance>$0.00</h2>
+              <p>
+                Only earnings actually credited to your UIORI balance are
+                withdrawable.
+              </p>
+            </div>
+            <div aria-hidden="true" class="wallet-summary-divider"></div>
+            <div class="wallet-eligibility" data-uiori-active-only>
+              <div class="wallet-status-heading">
+                <span aria-hidden="true" class="wallet-status-dot"></span>
+                <div>
+                  <p class="wallet-label">Withdrawal status</p>
+                  <strong data-uiori-withdrawal-status
+                    >Checking eligibility…</strong
+                  >
+                </div>
+              </div>
+              <p>
+                Your account becomes eligible once it satisfies UIORI's
+                published withdrawal requirements.
+              </p>
+              <button
+                class="button button-dark wallet-withdraw-button"
+                disabled=""
+                id="wallet-withdraw-button"
+                type="button"
+                data-uiori-active-action
+              >
+                Request withdrawal
+              </button>
+            </div>
+          </section>
+          <section
+            aria-labelledby="wallet-requirements-title"
+            class="wallet-details"
+          >
+            <div class="wallet-requirements">
+              <div class="wallet-section-heading">
+                <p class="wallet-label">Eligibility</p>
+                <h2 id="wallet-requirements-title">Withdrawal requirements</h2>
+              </div>
+              <ul class="wallet-requirement-list">
+                <li data-wallet-requirement="balance">
+                  <span aria-hidden="true" class="wallet-requirement-icon"
+                    ><svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.8"
+                      viewbox="0 0 24 24"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="m13 6 6 6-6 6"></path></svg
+                  ></span>
+                  <div>
+                    <strong>At least $5.00 credited</strong
+                    ><span
+                      >Only your available credited balance can be
+                      withdrawn.</span
+                    >
+                  </div>
+                </li>
+                <li data-wallet-requirement="account">
+                  <span aria-hidden="true" class="wallet-requirement-icon"
+                    ><svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.8"
+                      viewbox="0 0 24 24"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="m13 6 6 6-6 6"></path></svg
+                  ></span>
+                  <div>
+                    <strong>Active, verified account in good standing</strong
+                    ><span
+                      >Your email must be verified and the account must have no
+                      open restriction or review.</span
+                    >
+                  </div>
+                </li>
+                <li data-wallet-requirement="age">
+                  <span aria-hidden="true" class="wallet-requirement-icon"
+                    ><svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.8"
+                      viewbox="0 0 24 24"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="m13 6 6 6-6 6"></path></svg
+                  ></span>
+                  <div>
+                    <strong>7-day account age + payout safety period</strong
+                    ><span
+                      >Your account must be at least 7 days old. A new or
+                      changed payout address has a 24-hour safety period.</span
+                    >
+                  </div>
+                </li>
+                <li data-wallet-requirement="request">
+                  <span aria-hidden="true" class="wallet-requirement-icon"
+                    ><svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.8"
+                      viewbox="0 0 24 24"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="m13 6 6 6-6 6"></path></svg
+                  ></span>
+                  <div>
+                    <strong>One open request at a time</strong
+                    ><span
+                      >Requests may be reviewed before payment and are processed
+                      in UIORI's monthly payout batch.</span
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <aside
+              aria-labelledby="wallet-payout-title"
+              class="wallet-payout"
+              data-uiori-active-only
+            >
+              <div class="wallet-payout-heading">
+                <span aria-hidden="true" class="wallet-payout-icon">
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewbox="0 0 24 24"
+                  >
+                    <rect height="14" rx="2" width="18" x="3" y="5"></rect>
+                    <path d="M3 10h18"></path>
+                    <path d="M7 15h3"></path>
+                  </svg>
+                </span>
+                <div>
+                  <p class="wallet-label">Payout details</p>
+                  <h2 id="wallet-payout-title" data-uiori-payout-title>
+                    Not configured
+                  </h2>
+                </div>
+              </div>
+              <p data-uiori-payout-copy>
+                A payout destination will be required before your first eligible
+                withdrawal can be completed.
+              </p>
+              <a class="wallet-inline-link" href="/settings/#payout">
+                <span>Manage payout details</span>
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
+            </aside>
+          </section>
+          <section
+            aria-labelledby="wallet-activity-title"
+            class="wallet-activity"
+          >
+            <div class="wallet-section-heading">
+              <p class="wallet-label">History</p>
+              <h2 id="wallet-activity-title">Wallet activity</h2>
+            </div>
+            <div class="wallet-empty">
+              <span aria-hidden="true" class="wallet-empty-icon">
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M3 12h4l2-6 4 12 2-6h6"></path>
+                </svg>
+              </span>
+              <div>
+                <strong>No wallet activity yet</strong>
+                <p>
+                  Reward credits and withdrawal activity will appear here when
+                  available.
+                </p>
+              </div>
+            </div>
+          </section>
+          <nav aria-label="Wallet help" class="wallet-help">
+            <a href="/rewards-policy/">
+              <span>Rewards Policy</span>
+              <svg
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewbox="0 0 24 24"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+            <a href="/rewards/">
+              <span>How rewards work</span>
+              <svg
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewbox="0 0 24 24"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </nav>
+        </main>
+
+        <dialog
+          aria-labelledby="wallet-request-title"
+          class="wallet-request-dialog"
+          id="wallet-request-dialog"
+        >
+          <div class="wallet-request-card">
+            <div class="wallet-request-heading">
+              <span aria-hidden="true" class="wallet-request-icon"
+                ><svg viewbox="0 0 24 24">
+                  <path d="M3 7h18"></path>
+                  <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                  <path d="M16 13h2"></path></svg
+              ></span>
+              <div>
+                <p class="wallet-request-eyebrow">Withdrawal</p>
+                <h2 id="wallet-request-title">Request withdrawal</h2>
+              </div>
+            </div>
+            <p class="wallet-request-intro" id="wallet-request-intro">
+              Choose how much of your available credited balance you want to
+              request.
+            </p>
+            <div class="wallet-request-balance">
+              <span>Available balance</span
+              ><strong id="wallet-request-balance">$0.00</strong>
+            </div>
+            <label class="wallet-request-field" for="wallet-request-amount"
+              ><span>Amount (USD)</span
+              ><input
+                id="wallet-request-amount"
+                inputmode="decimal"
+                min="5"
+                step="0.01"
+                type="number"
+            /></label>
+            <button
+              class="wallet-request-all"
+              id="wallet-request-all"
+              type="button"
+            >
+              Use full available balance
+            </button>
+            <p class="wallet-request-note">
+              Minimum $5.00. Approved requests are included in UIORI's monthly
+              payout batch.
+            </p>
+            <p
+              aria-live="polite"
+              class="wallet-request-status"
+              id="wallet-request-status"
+            ></p>
+            <div class="wallet-request-actions">
+              <button
+                class="wallet-request-cancel"
+                id="wallet-request-close"
+                type="button"
+              >
+                Close</button
+              ><button
+                class="wallet-request-submit"
+                id="wallet-request-submit"
+                type="button"
+              >
+                Request withdrawal
+              </button>
+            </div>
+          </div>
+        </dialog>
+      </div>
+    </div>
+  </body>
+</html>

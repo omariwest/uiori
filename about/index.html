@@ -1,212 +1,272 @@
 <!doctype html>
-<!-- Document -->
+
 <html lang="en">
-  <!-- Head -->
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Title -->
-    <title>About uiori | uiori</title>
-
-    <!-- Meta description -->
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <title>About UIORI — Small Rewards, Clear Progress</title>
     <meta
+      content="Learn why UIORI is built around simple earning, visible progress, clear balances, and user control."
       name="description"
-      content="uiori is a country based MMO earning opportunity finder built to help beginners avoid wasting time on platforms that may not work in their country."
     />
-
-    <!-- Icons -->
+    <link href="https://uiori.com/about/" rel="canonical" />
+    <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
     <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/img/favicon-16.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
       href="/assets/img/favicon-32.png"
-    />
-    <link
       rel="icon"
+      sizes="32x32"
       type="image/png"
-      sizes="64x64"
-      href="/assets/img/favicon-64.png"
     />
     <link
+      href="/assets/img/favicon-180.png"
       rel="apple-touch-icon"
       sizes="180x180"
-      href="/assets/img/favicon-180.png"
     />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="/assets/img/favicon-512.png"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
     />
-
-    <!-- Canonical -->
-    <link rel="canonical" href="https://uiori.com/about/" />
-
-    <!-- Theme color -->
-    <meta name="theme-color" content="#0d1424" />
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/style.css" />
-
-    <!-- Google tag -->
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script src="/assets/js/pages/how-it-works.js" type="module"></script>
     <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-GLGJXPV0LS"
+      src="/assets/js/components/public-account.js"
+      type="module"
     ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-GLGJXPV0LS");
-    </script>
   </head>
-
-  <!-- Body -->
-  <body class="">
-    <!-- Skip link -->
-    <a class="skip-link" href="#main">Skip to content</a>
-    <!-- Navigation -->
-    <header class="site-header" data-site-header>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="/" aria-label="uiori home">
-          <span class="brand-mark" aria-hidden="true"
-            ><img src="/assets/img/uiori-mark.svg" alt=""
-          /></span>
-          <span class="brand-text">uiori</span>
-        </a>
-        <!-- Menu button -->
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="site-nav"
-          data-nav-toggle
+        <a aria-label="UIORI home" class="wordmark" href="/"
+          >UIORI<span class="wordmark-period">.</span></a
         >
-          <span class="nav-toggle-line"></span
-          ><span class="nav-toggle-line"></span
-          ><span class="nav-toggle-line"></span>
-          <span class="sr-only">Open menu</span>
-        </button>
-        <!-- Navigation -->
-        <nav class="site-nav" id="site-nav" data-site-nav>
-          <a href="/countries/" class="">Countries</a>
-          <a href="/today/" class="">Today</a>
-          <a href="/platforms/" class="">Platforms</a>
-          <a href="/payouts/" class="">Payouts</a>
-          <a href="/tasks/" class="">Tasks</a>
-          <a href="/guides/" class="">Guides</a>
+        <nav aria-label="Main navigation" class="desktop-navigation">
+          <a href="/how-it-works/">How it works</a>
+          <a href="/rewards/">Rewards</a> <a href="/safety/">Safety</a>
+          <a href="/faq/">FAQ</a>
         </nav>
-      </div>
-    </header>
-
-    <!-- Main -->
-    <main id="main" class="main-content">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <ol>
-          <li><a href="/">Home</a></li>
-          <li aria-current="page">About uiori</li>
-        </ol>
-      </nav>
-      <!-- Hero -->
-      <section class="page-hero">
-        <div class="container">
-          <p class="eyebrow">About</p>
-          <h1>Useful earning guidance first. Monetization second.</h1>
-          <p class="hero-subtitle">
-            uiori helps users compare country availability, task types, payout
-            methods, minimum withdrawal notes, warnings, and first payout
-            routes.
-          </p>
+        <div class="header-actions">
+          <a class="login-link" href="/login/">Log in</a>
+          <a class="button button-dark button-small" href="/signup/"
+            >Start earning</a
+          >
         </div>
-      </section>
-      <!-- Section -->
-      <section>
-        <div class="container two-col">
-          <div class="article-body">
-            <h2>What we do</h2>
-            <p>
-              We organize third party earning platforms by country, payout
-              method, and task type. Our goal is to help users avoid unsupported
-              platforms, fake income claims, and high threshold traps.
-            </p>
-            <h2>What we do not do</h2>
-            <p>
-              We do not employ users, process payouts, run a wallet, guarantee
-              earnings, or ask users to complete tasks for us in exchange for
-              fake points.
+        <button
+          aria-controls="mobile-navigation"
+          aria-expanded="false"
+          aria-label="Open menu"
+          class="menu-toggle"
+          type="button"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div
+        aria-hidden="true"
+        class="mobile-menu-backdrop"
+        data-nav-backdrop=""
+      ></div>
+      <nav
+        aria-label="Mobile navigation"
+        class="mobile-menu"
+        id="mobile-navigation"
+      >
+        <div class="mobile-navigation-links">
+          <a href="/how-it-works/"
+            ><svg aria-hidden="true" class="preview-icon" viewbox="0 0 24 24">
+              <path d="M15.5 10 13 7.5 15.5 5"></path>
+              <path
+                d="M15.861 14A14.5 14.5 0 0 1 12 22a14.48 14.48 0 0 1 0-20 10 10 0 1 0 9.888 11.5"
+              ></path>
+              <path d="M19.5 5 22 7.5 19.5 10"></path>
+              <path d="M2 12h8.5"></path></svg
+            ><span>How it works</span></a
+          ><a href="/rewards/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 18V6"></path></svg
+            ><span>Rewards</span></a
+          ><a href="/safety/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <path
+                d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
+              ></path>
+              <path d="m9 12 2 2 4-4"></path></svg
+            ><span>Safety</span></a
+          ><a href="/faq/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.1 9a3 3 0 1 1 5.8 1c0 2-3 2-3 4"></path>
+              <path d="M12 18h.01"></path></svg
+            ><span>FAQ</span></a
+          >
+        </div>
+        <div aria-hidden="true" class="mobile-menu-divider"></div>
+        <div class="mobile-menu-actions">
+          <a class="mobile-login-link" href="/login/">Log in</a>
+          <a class="mobile-primary-link" href="/signup/">Start earning</a>
+        </div>
+      </nav>
+    </header>
+    <main id="main-content">
+      <section class="public-page-hero">
+        <div class="container">
+          <div class="public-page-header">
+            <p class="section-kicker">About UIORI</p>
+            <h1 class="public-page-title">
+              Small rewards. Clear progress. No hype.
+            </h1>
+            <p class="public-page-subtitle">
+              UIORI is built to make earning easy to follow: what you have
+              earned, how your progress is moving, and what comes next.
             </p>
           </div>
-          <div class="card warning-card">
-            <h2>Core rule</h2>
+        </div>
+      </section>
+      <section class="about-main section-space">
+        <div class="container about-grid">
+          <div class="about-copy">
+            <h2>Why we are building UIORI</h2>
             <p>
-              Users earn from third party platforms if they qualify. uiori only
-              helps them research routes more safely.
+              Online earning can become confusing when points, activity,
+              balances, and promises are mixed together.
             </p>
+            <p>
+              UIORI keeps it simple: progress stays visible, credited earnings
+              stay clear, and you choose when earning is active.
+            </p>
+            <h2>What the product is trying to do well</h2>
+            <ul>
+              <li>Make earning easy to start and understand.</li>
+              <li>
+                Show progress without pretending every indicator is money.
+              </li>
+              <li>Keep credited earnings easy to identify.</li>
+              <li>Make withdrawal eligibility easy to follow.</li>
+            </ul>
+          </div>
+          <aside class="about-note">
+            <div class="about-note-heading">
+              <span aria-hidden="true" class="about-note-icon">
+                <svg viewbox="0 0 24 24">
+                  <rect height="18" rx="4" width="18" x="3" y="3"></rect>
+                  <path d="M8 9h8"></path>
+                  <path d="M8 13h5"></path>
+                  <path d="M8 17h3"></path>
+                </svg>
+              </span>
+              <h2>What you see in UIORI</h2>
+            </div>
+            <ul>
+              <li>Your account and earning status</li>
+              <li>Contribution Points, streaks, levels, and milestones</li>
+              <li>Credited earnings and next goals</li>
+              <li>Withdrawal status and eligibility</li>
+            </ul>
+            <div class="about-note-divider"></div>
+            <h3>One place for the full journey</h3>
+            <p>
+              UIORI brings setup, progress, your credited balance, and
+              withdrawals into one consistent experience.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section
+        aria-labelledby="values-title"
+        class="about-values section-space"
+      >
+        <div class="container">
+          <div class="about-values-heading">
+            <p class="section-kicker">What matters to us</p>
+            <h2 id="values-title">A small set of product principles.</h2>
+          </div>
+          <div class="about-values-grid">
+            <article class="about-value">
+              <span aria-hidden="true" class="about-value-icon">
+                <svg viewbox="0 0 24 24">
+                  <path
+                    d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"
+                  ></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </span>
+              <h3>Clarity</h3>
+              <p>
+                You should be able to tell the difference between activity,
+                progress, and actual credited earnings.
+              </p>
+            </article>
+            <article class="about-value">
+              <span aria-hidden="true" class="about-value-icon">
+                <svg viewbox="0 0 24 24">
+                  <path
+                    d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
+                  ></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+              </span>
+              <h3>Control</h3>
+              <p>
+                Earning should be a deliberate choice, with clear status and
+                simple controls.
+              </p>
+            </article>
+            <article class="about-value">
+              <span aria-hidden="true" class="about-value-icon">
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 19V9"></path>
+                  <path d="M10 19V5"></path>
+                  <path d="M16 19v-7"></path>
+                  <path d="M22 19H2"></path>
+                </svg>
+              </span>
+              <h3>Sustainability</h3>
+              <p>
+                Rewards should stay realistic and sustainable, without inflated
+                promises or artificial balances.
+              </p>
+            </article>
           </div>
         </div>
       </section>
     </main>
-
-    <!-- Footer -->
     <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <a class="brand footer-brand" href="/"
-            ><span class="brand-mark"
-              ><img src="/assets/img/uiori-mark.svg" alt="" /></span
-            ><span class="brand-text">uiori</span></a
-          >
-          <p>
-            Country focused MMO earning guidance. We help users compare third
-            party platforms, payout methods, warnings, and realistic
-            first-payout routes.
-          </p>
+      <div class="container">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <a aria-label="UIORI home" class="wordmark" href="/">
+              UIORI<span class="wordmark-period">.</span>
+            </a>
+            <p>Turn spare bandwidth into visible progress and small rewards.</p>
+          </div>
+          <div class="footer-column">
+            <h2>Product</h2>
+            <a href="/how-it-works/">How it works</a>
+            <a href="/rewards/">Rewards</a><a href="/safety/">Safety</a>
+            <a href="/faq/">FAQ</a>
+          </div>
+          <div class="footer-column">
+            <h2>Company</h2>
+            <a aria-current="page" href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+          </div>
+          <div class="footer-column">
+            <h2>Legal</h2>
+            <a href="/terms/">Terms</a>
+            <a href="/privacy/">Privacy</a>
+            <a href="/rewards-policy/">Rewards Policy</a>
+          </div>
         </div>
-        <div>
-          <h2>Explore</h2>
-          <a href="/countries/">Countries</a>
-          <a href="/today/">Today routes</a>
-          <a href="/platforms/">Platforms</a>
-          <a href="/payouts/">Payouts</a>
-          <a href="/low-payout-sites/">Low payout sites</a>
+        <div class="footer-bottom">
+          <span>© 2026 UIORI</span>
         </div>
-        <div>
-          <h2>Learn</h2>
-          <a href="/tasks/">Task types</a>
-          <a href="/guides/">Guides</a>
-          <a href="/faq/">FAQ</a>
-          <a href="/guides/how-to-avoid-fake-earning-sites/">Scam warnings</a>
-        </div>
-        <div class="footer-note">
-          <h2>Rules &amp; safety</h2>
-          <a href="/disclosure/">Affiliate disclosure</a>
-          <a href="/terms/">Terms</a>
-          <a href="/privacy/">Privacy</a>
-          <a href="/contact/">Contact</a>
-          <p>
-            uiori does not employ users or guarantee earnings. Third party
-            platforms control eligibility, tasks, approvals, payment, and
-            account rules.
-          </p>
-        </div>
-      </div>
-      <div class="container footer-bottom">
-        <span>© <span data-current-year>2026</span> uiori.</span
-        ><span>Updated regularly. Availability can change.</span>
       </div>
     </footer>
-
-    <!-- JavaScript -->
-    <script type="module" src="/assets/js/main.js"></script>
   </body>
 </html>

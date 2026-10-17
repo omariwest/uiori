@@ -1,0 +1,414 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <title>Admin Overview — UIORI</title>
+    <meta content="noindex,nofollow" name="robots" />
+    <meta
+      content="UIORI administration overview for users, earning activity, rewards, withdrawals, reviews, and platform operations."
+      name="description"
+    />
+    <link href="https://uiori.com/admin/" rel="canonical" />
+    <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link
+      href="/assets/img/favicon-32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/assets/img/favicon-180.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script src="/assets/js/pages/admin-data.js" type="module"></script>
+  </head>
+  <body class="app-body admin-body admin-auth-loading">
+    <div class="admin-layout">
+      <aside aria-label="Admin sidebar" class="admin-sidebar">
+        <a aria-label="UIORI home" class="admin-brand" href="/">
+          UIORI<span>.</span>
+        </a>
+        <p class="admin-sidebar-label">Administration</p>
+        <nav aria-label="Admin navigation" class="admin-navigation">
+          <a aria-current="page" class="admin-nav-link" href="/admin/">
+            <svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24">
+              <rect height="7" rx="1.5" width="7" x="3" y="3"></rect>
+              <rect height="7" rx="1.5" width="7" x="14" y="3"></rect>
+              <rect height="7" rx="1.5" width="7" x="3" y="14"></rect>
+              <rect height="7" rx="1.5" width="7" x="14" y="14"></rect>
+            </svg>
+            <span>Overview</span>
+          </a>
+          <a class="admin-nav-link" href="/admin/users/">
+            <svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>Users</span>
+          </a>
+          <a class="admin-nav-link" href="/admin/withdrawals/">
+            <svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24">
+              <path d="M12 3v12"></path>
+              <path d="m7 10 5 5 5-5"></path>
+              <path d="M5 21h14"></path>
+            </svg>
+            <span>Withdrawals</span>
+          </a>
+          <a class="admin-nav-link" href="/admin/reviews/">
+            <svg
+              aria-hidden="true"
+              class="admin-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+              ></path>
+              <path d="M12 8v4"></path>
+              <path d="M12 16h.01"></path>
+            </svg>
+            <span>Reviews</span>
+          </a>
+          <a class="admin-nav-link" href="/admin/settings/">
+            <svg
+              aria-hidden="true"
+              class="admin-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+              ></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span>Settings</span>
+          </a>
+        </nav>
+        <div class="admin-sidebar-bottom">
+          <a
+            class="admin-nav-link admin-logout-link"
+            data-uiori-admin-logout=""
+            href="/admin/login/"
+          >
+            <svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <path d="M16 17l5-5-5-5"></path>
+              <path d="M21 12H9"></path>
+            </svg>
+            <span>Log out</span>
+          </a>
+        </div>
+      </aside>
+      <div class="admin-main">
+        <header class="admin-mobile-topbar">
+          <a aria-label="UIORI home" class="admin-brand" href="/">
+            UIORI<span>.</span>
+          </a>
+          <button
+            aria-controls="app-navigation-drawer"
+            aria-expanded="false"
+            aria-label="Open admin navigation"
+            class="admin-menu-toggle app-menu-toggle"
+            type="button"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </header>
+        <dialog
+          aria-label="Admin navigation"
+          class="app-drawer"
+          id="app-navigation-drawer"
+        >
+          <div class="admin-drawer-panel app-drawer-panel">
+            <nav aria-label="Admin navigation" class="admin-navigation">
+              <a aria-current="page" class="admin-nav-link" href="/admin/">
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <rect height="7" rx="1.5" width="7" x="3" y="3"></rect>
+                  <rect height="7" rx="1.5" width="7" x="14" y="3"></rect>
+                  <rect height="7" rx="1.5" width="7" x="3" y="14"></rect>
+                  <rect height="7" rx="1.5" width="7" x="14" y="14"></rect>
+                </svg>
+                <span>Overview</span>
+              </a>
+              <a class="admin-nav-link" href="/admin/users/">
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Users</span>
+              </a>
+              <a class="admin-nav-link" href="/admin/withdrawals/">
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M12 3v12"></path>
+                  <path d="m7 10 5 5 5-5"></path>
+                  <path d="M5 21h14"></path>
+                </svg>
+                <span>Withdrawals</span>
+              </a>
+              <a class="admin-nav-link" href="/admin/reviews/">
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                  ></path>
+                  <path d="M12 8v4"></path>
+                  <path d="M12 16h.01"></path>
+                </svg>
+                <span>Reviews</span>
+              </a>
+              <a class="admin-nav-link" href="/admin/settings/">
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+                  ></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span>Settings</span>
+              </a>
+            </nav>
+            <div class="admin-sidebar-bottom">
+              <a
+                class="admin-nav-link admin-logout-link"
+                data-uiori-admin-logout=""
+                href="/admin/login/"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <path d="M16 17l5-5-5-5"></path>
+                  <path d="M21 12H9"></path>
+                </svg>
+                <span>Log out</span>
+              </a>
+            </div>
+          </div>
+        </dialog>
+        <main class="admin-content" id="main-content">
+          <header class="admin-topbar">
+            <div class="admin-page-heading">
+              <p class="admin-heading-eyebrow">Platform operations</p>
+              <h1>Overview</h1>
+              <p>Users, rewards, withdrawals, reviews, and system state.</p>
+            </div>
+            <div aria-label="Admin account" class="admin-account-indicator">
+              <svg aria-hidden="true" viewbox="0 0 24 24">
+                <path
+                  d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
+                ></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <span>Admin</span>
+            </div>
+          </header>
+          <section aria-label="Platform summary" class="admin-metrics">
+            <div class="admin-metric">
+              <span>Total users</span>
+              <strong>0</strong>
+            </div>
+            <div class="admin-metric">
+              <span>Earning active</span>
+              <strong>0</strong>
+            </div>
+            <div class="admin-metric">
+              <span>Credited earnings</span>
+              <strong>$0.00</strong>
+            </div>
+            <div class="admin-metric">
+              <span>Pending withdrawals</span>
+              <strong>0</strong>
+            </div>
+            <div class="admin-metric">
+              <span>Accounts under review</span>
+              <strong>0</strong>
+            </div>
+          </section>
+          <section aria-labelledby="admin-queues-title" class="admin-queues">
+            <div class="admin-section-heading">
+              <p class="admin-section-eyebrow">Queues</p>
+              <h2 id="admin-queues-title">Needs attention</h2>
+            </div>
+            <div class="admin-queue-grid">
+              <article class="admin-queue">
+                <div class="admin-queue-heading">
+                  <div class="admin-queue-title">
+                    <span aria-hidden="true" class="admin-queue-icon">
+                      <svg viewbox="0 0 24 24">
+                        <path d="M12 3v12"></path>
+                        <path d="m7 10 5 5 5-5"></path>
+                        <path d="M5 21h14"></path>
+                      </svg>
+                    </span>
+                    <div>
+                      <h3>Withdrawal queue</h3>
+                      <p>Requests waiting for review.</p>
+                    </div>
+                  </div>
+                  <strong>0</strong>
+                </div>
+                <div class="admin-queue-empty">
+                  <span>No pending withdrawals</span>
+                </div>
+                <a class="admin-inline-link" href="/admin/withdrawals/">
+                  <span>Open withdrawals</span>
+                  <svg aria-hidden="true" viewbox="0 0 24 24">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </a>
+              </article>
+              <article class="admin-queue">
+                <div class="admin-queue-heading">
+                  <div class="admin-queue-title">
+                    <span aria-hidden="true" class="admin-queue-icon">
+                      <svg viewbox="0 0 24 24">
+                        <path
+                          d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
+                        ></path>
+                        <path d="M12 8v4"></path>
+                        <path d="M12 16h.01"></path>
+                      </svg>
+                    </span>
+                    <div>
+                      <h3>Account reviews</h3>
+                      <p>Accounts requiring manual attention.</p>
+                    </div>
+                  </div>
+                  <strong>0</strong>
+                </div>
+                <div class="admin-queue-empty">
+                  <span>No accounts require review</span>
+                </div>
+                <a class="admin-inline-link" href="/admin/reviews/">
+                  <span>Open reviews</span>
+                  <svg aria-hidden="true" viewbox="0 0 24 24">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </a>
+              </article>
+            </div>
+          </section>
+          <section class="admin-lower-grid">
+            <div aria-labelledby="admin-platform-title" class="admin-platform">
+              <div class="admin-section-heading">
+                <p class="admin-section-eyebrow">System</p>
+                <h2 id="admin-platform-title">Platform state</h2>
+              </div>
+              <dl class="admin-platform-list">
+                <div>
+                  <dt>Reward system</dt>
+                  <dd>
+                    <span
+                      aria-hidden="true"
+                      class="admin-status-dot is-active"
+                    ></span>
+                    Active
+                  </dd>
+                </div>
+                <div>
+                  <dt>Earning connection</dt>
+                  <dd>
+                    <span aria-hidden="true" class="admin-status-dot"></span>
+                    Ready
+                  </dd>
+                </div>
+                <div>
+                  <dt>Withdrawals</dt>
+                  <dd>
+                    <span aria-hidden="true" class="admin-status-dot"></span>
+                    Ready
+                  </dd>
+                </div>
+                <div>
+                  <dt>Backend</dt>
+                  <dd>
+                    <span aria-hidden="true" class="admin-status-dot"></span>
+                    Connecting
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div aria-labelledby="admin-recent-title" class="admin-recent">
+              <div class="admin-section-heading">
+                <p class="admin-section-eyebrow">Audit trail</p>
+                <h2 id="admin-recent-title">Recent admin activity</h2>
+              </div>
+              <div class="admin-recent-empty">
+                <span aria-hidden="true" class="admin-recent-icon">
+                  <svg viewbox="0 0 24 24">
+                    <path d="M3 12h4l2-6 4 12 2-6h6"></path>
+                  </svg>
+                </span>
+                <div>
+                  <strong>No administrative activity yet</strong>
+                  <p>
+                    Account changes, reward adjustments, and withdrawal actions
+                    will appear here.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

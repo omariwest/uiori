@@ -1,916 +1,757 @@
 <!doctype html>
-<!-- Document -->
+
 <html lang="en">
-  <!-- Head -->
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Title -->
-    <title>Find Earning Sites That Work in Your Country | uiori</title>
-
-    <!-- Meta description -->
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <title>UIORI — Turn Spare Bandwidth Into Rewards</title>
     <meta
+      content="Create your UIORI account, activate earning when you are ready, and track your balance, points, streaks, and next milestone from one simple dashboard."
       name="description"
-      content="Find realistic small online earning routes by country, payout method, task type, minimum withdrawal, and warning signs before you waste time."
     />
-
-    <!-- Icons -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/img/favicon-16.png"
+    <link href="https://uiori.com/" rel="canonical" />
+    <meta content="website" property="og:type" />
+    <meta content="UIORI" property="og:site_name" />
+    <meta
+      content="UIORI — Turn Spare Bandwidth Into Rewards"
+      property="og:title"
     />
+    <meta
+      content="Activate earning when you are ready and track clear progress toward small rewards from one UIORI dashboard."
+      property="og:description"
+    />
+    <meta content="https://uiori.com/" property="og:url" />
+    <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
     <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
       href="/assets/img/favicon-32.png"
-    />
-    <link
       rel="icon"
+      sizes="32x32"
       type="image/png"
-      sizes="64x64"
-      href="/assets/img/favicon-64.png"
     />
     <link
+      href="/assets/img/favicon-180.png"
       rel="apple-touch-icon"
       sizes="180x180"
-      href="/assets/img/favicon-180.png"
     />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="/assets/img/favicon-512.png"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
     />
-
-    <!-- Canonical -->
-    <link rel="canonical" href="https://uiori.com/" />
-
-    <!-- Theme color -->
-    <meta name="theme-color" content="#0d1424" />
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/style.css" />
-
-    <!-- Google tag -->
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script src="/assets/js/pages/home.js" type="module"></script>
     <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-GLGJXPV0LS"
+      src="/assets/js/components/public-account.js"
+      type="module"
     ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-GLGJXPV0LS");
-    </script>
   </head>
-
-  <!-- Body -->
-  <body class="home-page">
-    <!-- Skip link -->
-    <a class="skip-link" href="#main">Skip to content</a>
-    <!-- Navigation -->
-    <header class="site-header" data-site-header>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="/" aria-label="uiori home">
-          <span class="brand-mark" aria-hidden="true"
-            ><img src="/assets/img/uiori-mark.svg" alt=""
-          /></span>
-          <span class="brand-text">uiori</span>
-        </a>
-        <!-- Menu button -->
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="site-nav"
-          data-nav-toggle
+        <a aria-label="UIORI home" class="wordmark" href="/"
+          >UIORI<span class="wordmark-period">.</span></a
         >
-          <span class="nav-toggle-line"></span
-          ><span class="nav-toggle-line"></span
-          ><span class="nav-toggle-line"></span>
-          <span class="sr-only">Open menu</span>
-        </button>
-        <!-- Navigation -->
-        <nav class="site-nav" id="site-nav" data-site-nav>
-          <a href="/countries/" class="">Countries</a>
-          <a href="/today/" class="">Today</a>
-          <a href="/platforms/" class="">Platforms</a>
-          <a href="/payouts/" class="">Payouts</a>
-          <a href="/tasks/" class="">Tasks</a>
-          <a href="/guides/" class="">Guides</a>
+        <nav aria-label="Main navigation" class="desktop-navigation">
+          <a href="/how-it-works/">How it works</a>
+          <a href="/rewards/">Rewards</a> <a href="/safety/">Safety</a>
+          <a href="/faq/">FAQ</a>
         </nav>
+        <div class="header-actions">
+          <a class="login-link" href="/login/">Log in</a>
+          <a class="button button-dark button-small" href="/signup/"
+            >Start earning</a
+          >
+        </div>
+        <button
+          aria-controls="mobile-navigation"
+          aria-expanded="false"
+          aria-label="Open menu"
+          class="menu-toggle"
+          type="button"
+        >
+          <span></span><span></span><span></span>
+        </button>
       </div>
+      <div
+        aria-hidden="true"
+        class="mobile-menu-backdrop"
+        data-nav-backdrop=""
+      ></div>
+      <nav
+        aria-label="Mobile navigation"
+        class="mobile-menu"
+        id="mobile-navigation"
+      >
+        <div class="mobile-navigation-links">
+          <a href="/how-it-works/"
+            ><svg aria-hidden="true" class="preview-icon" viewbox="0 0 24 24">
+              <path d="M15.5 10 13 7.5 15.5 5"></path>
+              <path
+                d="M15.861 14A14.5 14.5 0 0 1 12 22a14.48 14.48 0 0 1 0-20 10 10 0 1 0 9.888 11.5"
+              ></path>
+              <path d="M19.5 5 22 7.5 19.5 10"></path>
+              <path d="M2 12h8.5"></path></svg
+            ><span>How it works</span></a
+          ><a href="/rewards/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 18V6"></path></svg
+            ><span>Rewards</span></a
+          ><a href="/safety/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <path
+                d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
+              ></path>
+              <path d="m9 12 2 2 4-4"></path></svg
+            ><span>Safety</span></a
+          ><a href="/faq/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.1 9a3 3 0 1 1 5.8 1c0 2-3 2-3 4"></path>
+              <path d="M12 18h.01"></path></svg
+            ><span>FAQ</span></a
+          >
+        </div>
+        <div aria-hidden="true" class="mobile-menu-divider"></div>
+        <div class="mobile-menu-actions">
+          <a class="mobile-login-link" href="/login/">Log in</a>
+          <a class="mobile-primary-link" href="/signup/">Start earning</a>
+        </div>
+      </nav>
     </header>
-
-    <!-- Main -->
-    <main id="main" class="main-content">
-      <!-- Hero -->
-      <section class="hero">
+    <main id="main-content">
+      <section class="hero-section">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">Country focused earning routes</p>
-            <h1>Stop guessing which earning sites work in your country.</h1>
-            <p class="hero-subtitle">
-              uiori helps beginners find realistic small online earning routes
-              by country, payout method, task type, minimum withdrawal, and
-              warning signs before they waste time.
-            </p>
-            <div class="hero-pills" aria-label="uiori trust signals">
-              <span class="hero-pill">Country eligibility first</span>
-              <span class="hero-pill">Payout warnings included</span>
-              <span class="hero-pill">No fake wallet promises</span>
+            <div class="hero-badge-row">
+              <span
+                ><span aria-hidden="true" class="hero-badge-dot"></span
+                ><span>Simple setup • Visible progress</span></span
+              >
             </div>
+            <h1>
+              Put unused bandwidth to work.
+              <span>Watch the rewards add up.</span>
+            </h1>
+            <p class="hero-description">
+              Create your account, activate earning when you are ready, and
+              follow your balance, points, streaks, and next milestone from one
+              dashboard.
+            </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="/countries/"
-                >Choose your country</a
-              ><a class="btn btn-secondary" href="/today/">See today routes</a>
-            </div>
-          </div>
-          <div>
-            <div class="route-panel" data-route-finder>
-              <div class="panel-header">
-                <span class="mini-label">Route finder</span
-                ><strong>Build a safer first route</strong>
-              </div>
-              <label
-                >Country<select data-route-country>
-                  <option value="egypt">Egypt</option>
-                  <option value="india">India</option>
-                  <option value="philippines">Philippines</option>
-                  <option value="nigeria">Nigeria</option>
-                  <option value="pakistan">Pakistan</option>
-                  <option value="bangladesh">Bangladesh</option>
-                  <option value="mexico">Mexico</option>
-                  <option value="vietnam">Vietnam</option>
-                  <option value="indonesia">Indonesia</option>
-                  <option value="morocco">Morocco</option>
-                  <option value="algeria">Algeria</option>
-                  <option value="tunisia">Tunisia</option>
-                  <option value="jordan">Jordan</option>
-                  <option value="iraq">Iraq</option>
-                  <option value="brazil">Brazil</option>
-                </select></label
-              >
-              <label
-                >Payout method<select data-route-payout>
-                  <option value="paypal">PayPal</option>
-                  <option value="crypto">Crypto</option>
-                  <option value="payoneer">Payoneer</option>
-                  <option value="gift-cards">Gift Cards</option>
-                  <option value="bank-transfer">Bank Transfer</option>
-                </select></label
-              >
-              <label
-                >Task type<select data-route-task>
-                  <option value="surveys">Surveys</option>
-                  <option value="microtasks">Microtasks</option>
-                  <option value="ai-training">AI Training</option>
-                  <option value="app-testing">App Testing</option>
-                  <option value="website-testing">Website Testing</option>
-                  <option value="crypto-faucets">Crypto Faucets</option>
-                </select></label
-              >
-              <div class="route-result" data-route-result>
-                Choose your route to see a practical first step.
-              </div>
-            </div>
-            <div class="hero-signal-grid" aria-label="Site principles">
-              <div class="signal-card">
-                <strong>3 step</strong><span>Country → payout → task</span>
-              </div>
-              <div class="signal-card">
-                <strong>Low risk</strong><span>Test before scaling</span>
-              </div>
-              <div class="signal-card">
-                <strong>Clear</strong><span>Warnings before clicks</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Section -->
-      <section>
-        <div class="container">
-          <div class="home-proof">
-            <div class="proof-pill">No fake wallet. No guaranteed income.</div>
-            <div class="proof-pill">
-              Country, payout, and task filters first.
-            </div>
-            <div class="proof-pill">Warnings shown before referral clicks.</div>
-          </div>
-        </div>
-      </section>
-      <!-- Section -->
-      <section>
-        <div class="container two-col">
-          <div>
-            <p class="eyebrow">Start here</p>
-            <h2>Choose country first, not platform first.</h2>
-            <p class="section-kicker">
-              Many MMO guides waste your time because they list global platforms
-              without explaining payout limits, country eligibility, or first
-              withdrawal difficulty. uiori starts with your country, then payout
-              method, then task type, with 20 platform routes to research
-              carefully.
-            </p>
-          </div>
-          <div class="card">
-            <label
-              >Jump to country
-              <select data-country-jump>
-                <option value="">Choose a country</option>
-                <option value="egypt">Egypt</option>
-                <option value="india">India</option>
-                <option value="philippines">Philippines</option>
-                <option value="nigeria">Nigeria</option>
-                <option value="pakistan">Pakistan</option>
-                <option value="bangladesh">Bangladesh</option>
-                <option value="mexico">Mexico</option>
-                <option value="vietnam">Vietnam</option>
-                <option value="indonesia">Indonesia</option>
-                <option value="morocco">Morocco</option>
-                <option value="algeria">Algeria</option>
-                <option value="tunisia">Tunisia</option>
-                <option value="jordan">Jordan</option>
-                <option value="iraq">Iraq</option>
-                <option value="brazil">Brazil</option>
-              </select>
-            </label>
-            <p class="small" style="margin-top: 0.8rem">
-              Each country page includes realistic options, warnings, first
-              payout route, and related payout pages.
-            </p>
-          </div>
-        </div>
-      </section>
-      <!-- Section -->
-      <section>
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Popular countries</p>
-              <h2>Browse earning routes by country.</h2>
-              <p>
-                Start with a practical page that explains likely payout methods,
-                task types, warnings, and alternatives.
-              </p>
-            </div>
-            <a class="btn btn-secondary" href="/countries/">All countries</a>
-          </div>
-          <div class="card-grid">
-            <a
-              class="link-card with-media country-card"
-              href="/countries/egypt/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-egypt.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Egypt</strong
-                ><span class="card-meta">Medium</span></span
-              ><small>AI training, Microtasks, Beginner freelance</small></a
-            >
-            <a
-              class="link-card with-media country-card"
-              href="/countries/india/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-india.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>India</strong
-                ><span class="card-meta">Competitive</span></span
-              ><small>Surveys, Microtasks, App testing</small></a
-            >
-            <a
-              class="link-card with-media country-card"
-              href="/countries/philippines/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-philippines.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Philippines</strong
-                ><span class="card-meta">Medium</span></span
-              ><small>Surveys, Website testing, App testing</small></a
-            >
-            <a
-              class="link-card with-media country-card"
-              href="/countries/nigeria/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-nigeria.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Nigeria</strong
-                ><span class="card-meta">Harder</span></span
-              ><small>AI training, Microtasks, Beginner freelance</small></a
-            >
-            <a
-              class="link-card with-media country-card"
-              href="/countries/pakistan/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-pakistan.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Pakistan</strong
-                ><span class="card-meta">Medium Hard</span></span
-              ><small>AI training, Microtasks, Beginner freelance</small></a
-            >
-            <a
-              class="link-card with-media country-card"
-              href="/countries/bangladesh/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-bangladesh.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Bangladesh</strong
-                ><span class="card-meta">Medium Hard</span></span
-              ><small>Microtasks, AI training, Beginner freelance</small></a
-            >
-            <a
-              class="link-card with-media country-card"
-              href="/countries/mexico/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-mexico.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Mexico</strong
-                ><span class="card-meta">Medium</span></span
-              ><small>Surveys, App testing, Website testing</small></a
-            >
-            <a
-              class="link-card with-media country-card"
-              href="/countries/vietnam/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-vietnam.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Vietnam</strong
-                ><span class="card-meta">Medium Hard</span></span
-              ><small>AI training, Microtasks, App testing</small></a
-            >
-            <a
-              class="link-card with-media country-card"
-              href="/countries/indonesia/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-indonesia.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Indonesia</strong
-                ><span class="card-meta">Medium</span></span
-              ><small>Surveys, App testing, Microtasks</small></a
-            >
-            <a
-              class="link-card with-media country-card"
-              href="/countries/morocco/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-morocco.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Morocco</strong
-                ><span class="card-meta">Medium Hard</span></span
-              ><small>AI training, Microtasks, Beginner freelance</small></a
-            >
-            <a
-              class="link-card with-media country-card"
-              href="/countries/algeria/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-algeria.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Algeria</strong
-                ><span class="card-meta">Harder</span></span
-              ><small>AI training, Microtasks, Beginner freelance</small></a
-            >
-            <a
-              class="link-card with-media country-card"
-              href="/countries/tunisia/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-tunisia.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Tunisia</strong
-                ><span class="card-meta">Medium Hard</span></span
-              ><small>AI training, Microtasks, Website testing</small></a
-            >
-            <a
-              class="link-card with-media country-card"
-              href="/countries/jordan/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-jordan.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Jordan</strong
-                ><span class="card-meta">Medium</span></span
-              ><small>AI training, Website testing, Microtasks</small></a
-            >
-            <a class="link-card with-media country-card" href="/countries/iraq/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-iraq.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Iraq</strong
-                ><span class="card-meta">Harder</span></span
-              ><small>Microtasks, AI training, Beginner freelance</small></a
-            >
-            <a
-              class="link-card with-media country-card"
-              href="/countries/brazil/"
-              ><span class="card-media country-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/flags/flag-brazil.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Brazil</strong
-                ><span class="card-meta">Medium</span></span
-              ><small>Surveys, App testing, Website testing</small></a
-            >
-          </div>
-        </div>
-      </section>
-      <!-- Section -->
-      <section>
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Task categories</p>
-              <h2>Pick the route that fits your time.</h2>
-              <p>
-                Surveys are easy but inconsistent. AI training and testing are
-                harder but can be better when you qualify.
-              </p>
-            </div>
-            <a class="btn btn-secondary" href="/tasks/">All tasks</a>
-          </div>
-          <div class="card-grid">
-            <a class="link-card with-media task-card" href="/tasks/surveys/"
-              ><span class="card-media task-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/tasks/surveys.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Surveys</strong
-                ><span class="card-meta">Easy but inconsistent</span></span
-              ><small
-                >Surveys can work for quick tests, but disqualification is
-                normal and country demand changes constantly.</small
-              ></a
-            >
-            <a class="link-card with-media task-card" href="/tasks/microtasks/"
-              ><span class="card-media task-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/tasks/microtasks.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Microtasks</strong
-                ><span class="card-meta">Beginner to medium</span></span
-              ><small
-                >Microtasks include categorization, simple data work, image
-                labeling, search tasks, and tiny freelance jobs.</small
-              ></a
-            >
-            <a class="link-card with-media task-card" href="/tasks/ai-training/"
-              ><span class="card-media task-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/tasks/ai-training.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>AI Training</strong
-                ><span class="card-meta">Medium</span></span
-              ><small
-                >AI training work can include data labeling, answer evaluation,
-                search relevance, audio checks, or language tasks.</small
-              ></a
-            >
-            <a class="link-card with-media task-card" href="/tasks/app-testing/"
-              ><span class="card-media task-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/tasks/app-testing.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>App Testing</strong
-                ><span class="card-meta">Medium</span></span
-              ><small
-                >App testing pays for installing, testing, or reviewing app
-                experiences under strict rules.</small
-              ></a
-            >
-            <a
-              class="link-card with-media task-card"
-              href="/tasks/website-testing/"
-              ><span class="card-media task-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/tasks/website-testing.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Website Testing</strong
-                ><span class="card-meta">Medium</span></span
-              ><small
-                >Website testing rewards clear feedback on websites, onboarding
-                flows, checkout paths, and product experiences.</small
-              ></a
-            >
-            <a
-              class="link-card with-media task-card"
-              href="/tasks/crypto-faucets/"
-              ><span class="card-media task-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/tasks/crypto-faucets.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Crypto Faucets</strong
-                ><span class="card-meta">Easy but very low earning</span></span
-              ><small
-                >Faucets are low payout crypto reward routes. They are useful
-                only for testing, not serious income.</small
-              ></a
-            >
-          </div>
-        </div>
-      </section>
-      <!-- Section -->
-      <section>
-        <div class="container two-col">
-          <div class="card route-card">
-            <h2>Fastest first payout mindset</h2>
-            <p>
-              Do not chase a big promise. First, prove one platform actually
-              allows your country and one payout method actually works for you.
-              Then scale only the route that passes that test.
-            </p>
-            <div class="card-footer">
+              <a class="button button-accent hero-cta-btn" href="/signup/">
+                <svg aria-hidden="true" viewbox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                  <path d="M12 18V6"></path>
+                </svg>
+                <span>Start earning</span>
+              </a>
               <a
-                class="btn btn-primary"
-                href="/guides/first-5-dollars-online-route/"
-                >Read first $5 route</a
+                class="button button-outline hero-cta-btn"
+                href="/how-it-works/"
               >
+                <svg aria-hidden="true" viewbox="0 0 24 24">
+                  <path d="m3 17 2 2 4-4"></path>
+                  <path d="m3 7 2 2 4-4"></path>
+                  <path d="M13 6h8"></path>
+                  <path d="M13 12h8"></path>
+                  <path d="M13 18h8"></path>
+                </svg>
+                <span>See how it works</span>
+              </a>
             </div>
           </div>
-          <div class="card warning-card">
-            <h2>Avoid fake earning traps</h2>
+          <div aria-label="UIORI dashboard preview" class="hero-product-stage">
+            <svg
+              aria-hidden="true"
+              class="hero-flow-lines"
+              viewbox="0 0 700 520"
+            >
+              <path
+                class="hero-flow-line hero-flow-line-one"
+                d="M28 402C146 72 392 42 674 168"
+              ></path>
+              <path
+                class="hero-flow-line hero-flow-line-two"
+                d="M44 454C216 162 431 128 670 274"
+              ></path>
+              <path
+                class="hero-flow-line hero-flow-line-three"
+                d="M86 494C266 282 456 252 646 374"
+              ></path>
+            </svg>
+            <section
+              aria-label="UIORI account dashboard"
+              class="hero-product-window"
+            >
+              <div class="hero-product-bar">
+                <div aria-hidden="true" class="hero-product-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <strong>UIORI Dashboard</strong>
+                <span aria-hidden="true"></span>
+              </div>
+              <div class="hero-product-shot-wrap">
+                <img
+                  alt="UIORI dashboard showing balance, next milestone, earning status, and progress"
+                  decoding="async"
+                  height="820"
+                  loading="eager"
+                  src="/assets/img/landing/dashboard.png"
+                  width="1440"
+                />
+              </div>
+            </section>
+            <div class="earning-chip earning-chip-one">
+              <span aria-hidden="true" class="earning-chip-pulse"></span>
+              <div><strong>+$5.00</strong><small>credited</small></div>
+            </div>
+            <div class="earning-chip earning-chip-two">
+              <span aria-hidden="true" class="earning-chip-pulse"></span>
+              <div><strong>$10.00</strong><small>balance</small></div>
+            </div>
+            <div class="earning-chip earning-chip-three">
+              <span aria-hidden="true" class="earning-chip-pulse"></span>
+              <div><strong>$15.00</strong><small>next goal</small></div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-label="UIORI earning highlights"
+          class="container hero-benefit-grid"
+        >
+          <article class="hero-benefit-card">
+            <h2>Free to join</h2>
             <p>
-              Skip deposit required tasks, paid fake likes, fake reviews,
-              account brokers, forced ad loops, and “guaranteed daily profit”
-              claims. A real route can explain who pays and why.
+              No membership fee. Create your account and start when you are
+              ready.
             </p>
-            <div class="card-footer">
-              <a
-                class="btn btn-secondary"
-                href="/guides/how-to-avoid-fake-earning-sites/"
-                >Read scam warning guide</a
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Section -->
-      <section>
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Payout methods</p>
-              <h2>Choose how you can actually receive money.</h2>
-              <p>
-                A platform is useless if the payout method does not work for
-                your country or account.
-              </p>
-            </div>
-            <a class="btn btn-secondary" href="/payouts/">All payouts</a>
-          </div>
-          <div class="card-grid">
-            <a class="link-card with-media payout-card" href="/payouts/paypal/"
-              ><span class="card-media payout-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/payouts/paypal.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>PayPal</strong
-                ><span class="card-meta"
-                  >Strong when receiving is supported</span
-                ></span
-              ><small
-                >Useful for survey, testing, and offer platforms, but receiving
-                ability and withdrawal options vary sharply by country.</small
-              ></a
-            >
-            <a class="link-card with-media payout-card" href="/payouts/crypto/"
-              ><span class="card-media payout-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/payouts/crypto.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Crypto</strong
-                ><span class="card-meta">Flexible but higher risk</span></span
-              ><small
-                >Crypto can be useful for low payout sites and offerwalls, but
-                fees, volatility, account rules, and local regulations
-                matter.</small
-              ></a
-            >
-            <a
-              class="link-card with-media payout-card"
-              href="/payouts/payoneer/"
-              ><span class="card-media payout-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/payouts/payoneer.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Payoneer</strong
-                ><span class="card-meta">Useful for work platforms</span></span
-              ><small
-                >Payoneer is often more relevant for freelance, contractor, and
-                project based platforms than tiny survey apps.</small
-              ></a
-            >
-            <a
-              class="link-card with-media payout-card"
-              href="/payouts/gift-cards/"
-              ><span class="card-media payout-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/payouts/gift-card.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Gift Cards</strong
-                ><span class="card-meta">Good for small rewards</span></span
-              ><small
-                >Gift cards can be easier than cash in some countries, but
-                resale value and regional restrictions matter.</small
-              ></a
-            >
-            <a
-              class="link-card with-media payout-card"
-              href="/payouts/bank-transfer/"
-              ><span class="card-media payout-media" aria-hidden="true"
-                ><img
-                  src="/assets/img/payouts/bank-transfer.svg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async" /></span
-              ><span
-                ><strong>Bank Transfer</strong
-                ><span class="card-meta"
-                  >Best when supported directly</span
-                ></span
-              ><small
-                >Bank transfer is clean when available, but many small earning
-                platforms do not support it in every country.</small
-              ></a
-            >
-          </div>
-        </div>
-      </section>
-      <!-- Section -->
-      <section>
-        <div class="container split-grid">
-          <div class="card">
-            <h2>How this works</h2>
-            <ol class="flow">
-              <li>
-                <strong>Choose your country.</strong> See likely task routes and
-                payout restrictions.
-              </li>
-              <li>
-                <strong>Choose payout method.</strong> Avoid platforms you
-                cannot withdraw from.
-              </li>
-              <li>
-                <strong>Test a small route.</strong> Try one realistic first
-                payout before spending serious time.
-              </li>
-            </ol>
-          </div>
-          <div class="card">
-            <h2>What uiori is not</h2>
+          </article>
+          <article class="hero-benefit-card">
+            <h2>You choose when it starts</h2>
+            <p>Earning stays off until you choose to activate it.</p>
+          </article>
+          <article class="hero-benefit-card">
+            <h2>Your balance stays clear</h2>
             <p>
-              uiori is not a direct employer, wallet, faucet, paid to click
-              system, gambling site, or fake task platform. Users earn from
-              third party platforms if they qualify, not from uiori directly.
+              Credited earnings stay separate from points, streaks, and
+              milestones.
             </p>
-          </div>
+          </article>
         </div>
       </section>
-      <!-- GameLab promo -->
       <section
-        class="home-gamelab-promo"
-        aria-labelledby="home-gamelab-promo-title"
+        aria-labelledby="process-title"
+        class="home-process section-space"
       >
-        <div class="container home-gamelab-promo__inner">
-          <div class="home-gamelab-promo__copy">
-            <p class="eyebrow">Quick browser break</p>
-            <h2 id="home-gamelab-promo-title">
-              Reset your focus with four short Arabic challenges.
+        <div class="container">
+          <div class="home-section-heading">
+            <p class="section-kicker">How it works</p>
+            <h2 id="process-title">From signup to visible progress.</h2>
+            <a class="section-inline-link" href="/how-it-works/"
+              >Full walkthrough</a
+            >
+          </div>
+          <div class="home-workflow" data-home-workflow="">
+            <div
+              aria-label="UIORI workflow steps"
+              class="home-workflow-nav"
+              role="tablist"
+            >
+              <button
+                aria-controls="home-workflow-panel-1"
+                aria-selected="true"
+                class="home-workflow-tab is-active"
+                data-home-workflow-step="1"
+                id="home-workflow-tab-1"
+                role="tab"
+                type="button"
+              >
+                <span class="home-workflow-index">1</span>
+                <span
+                  ><strong>Create your account</strong
+                  ><small>Set up your UIORI account</small></span
+                >
+              </button>
+              <button
+                aria-controls="home-workflow-panel-2"
+                aria-selected="false"
+                class="home-workflow-tab"
+                data-home-workflow-step="2"
+                id="home-workflow-tab-2"
+                role="tab"
+                type="button"
+              >
+                <span class="home-workflow-index">2</span>
+                <span
+                  ><strong>Activate earning</strong
+                  ><small>Complete setup and choose when to start</small></span
+                >
+              </button>
+              <button
+                aria-controls="home-workflow-panel-3"
+                aria-selected="false"
+                class="home-workflow-tab"
+                data-home-workflow-step="3"
+                id="home-workflow-tab-3"
+                role="tab"
+                type="button"
+              >
+                <span class="home-workflow-index">3</span>
+                <span
+                  ><strong>Follow your progress</strong
+                  ><small
+                    >See balance, milestones, points, and streaks</small
+                  ></span
+                >
+              </button>
+            </div>
+            <div class="home-workflow-stage">
+              <article
+                aria-labelledby="home-workflow-tab-1"
+                class="home-workflow-panel is-active"
+                data-home-workflow-panel="1"
+                id="home-workflow-panel-1"
+                role="tabpanel"
+              >
+                <div class="home-workflow-copy">
+                  <p class="home-workflow-eyebrow">Step 1</p>
+                  <h3>Start with one simple account.</h3>
+                  <p>
+                    Your dashboard keeps your balance, milestones, points,
+                    streaks, and withdrawal status in one place.
+                  </p>
+                </div>
+                <div class="home-workflow-image">
+                  <img
+                    alt="UIORI signup screen"
+                    decoding="async"
+                    height="640"
+                    loading="lazy"
+                    src="/assets/img/landing/signup.png"
+                    width="960"
+                  />
+                </div>
+              </article>
+              <article
+                aria-labelledby="home-workflow-tab-2"
+                class="home-workflow-panel"
+                data-home-workflow-panel="2"
+                hidden=""
+                id="home-workflow-panel-2"
+                role="tabpanel"
+              >
+                <div class="home-workflow-copy">
+                  <p class="home-workflow-eyebrow">Step 2</p>
+                  <h3>Turn earning on when you are ready.</h3>
+                  <p>
+                    Complete the guided setup once, then control the earning
+                    state from your account. Nothing starts automatically.
+                  </p>
+                </div>
+                <div class="home-workflow-image">
+                  <img
+                    alt="UIORI earning setup screen"
+                    decoding="async"
+                    height="410"
+                    loading="lazy"
+                    src="/assets/img/landing/earn.png"
+                    width="720"
+                  />
+                </div>
+              </article>
+              <article
+                aria-labelledby="home-workflow-tab-3"
+                class="home-workflow-panel"
+                data-home-workflow-panel="3"
+                hidden=""
+                id="home-workflow-panel-3"
+                role="tabpanel"
+              >
+                <div class="home-workflow-copy">
+                  <p class="home-workflow-eyebrow">Step 3</p>
+                  <h3>See the next goal without guessing.</h3>
+                  <p>
+                    Track credited earnings separately from progress, and always
+                    know the next visible milestone from your dashboard.
+                  </p>
+                </div>
+                <div class="home-workflow-image">
+                  <img
+                    alt="UIORI dashboard with reward progress"
+                    decoding="async"
+                    height="820"
+                    loading="lazy"
+                    src="/assets/img/landing/dashboard.png"
+                    width="1440"
+                  />
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        aria-labelledby="rewards-title"
+        class="home-rewards section-space"
+      >
+        <div class="container home-rewards-grid">
+          <div class="home-rewards-copy">
+            <p class="section-kicker">Rewards</p>
+            <h2 id="rewards-title">
+              Always know what is progress and what is cash.
             </h2>
             <p>
-              Before choosing your next online-income route, take a short break
-              with a seven-question quiz, a word challenge, penalty kicks, or a
-              reaction-speed test.
+              Points, streaks, levels, and milestones show momentum. Your
+              credited balance shows money.
             </p>
-            <ul
-              class="home-gamelab-promo__indicators"
-              aria-label="GameLab features"
-            >
-              <li>No download</li>
-              <li>No account</li>
-              <li>Mobile friendly</li>
-            </ul>
-            <a class="btn btn-primary" href="/gamelab/">Open Arabic GameLab</a>
+            <a class="section-inline-link" href="/rewards/">
+              Explore rewards
+            </a>
           </div>
-          <div class="home-gamelab-promo__preview" aria-hidden="true">
-            <div class="home-gamelab-promo__score">
-              <span class="home-gamelab-promo__score-value" dir="ltr"
-                >7 / 7</span
-              >
+          <div
+            aria-label="Illustrative UIORI reward balance and progress"
+            class="reward-showcase"
+          >
+            <div class="reward-card-stage">
+              <div aria-hidden="true" class="reward-card-glow"></div>
+              <div class="reward-wallet-card">
+                <div class="reward-card-topline">
+                  <strong>UIORI<span>.</span></strong>
+                  <span>REWARD BALANCE</span>
+                </div>
+                <div aria-hidden="true" class="reward-card-chip-row">
+                  <div class="reward-card-chip">
+                    <svg viewbox="0 0 48 36">
+                      <rect height="34" rx="8" width="46" x="1" y="1"></rect>
+                      <path d="M16 1v34M32 1v34M1 12h46M1 24h46"></path>
+                    </svg>
+                  </div>
+                  <svg class="reward-card-contactless" viewbox="0 0 24 24">
+                    <path d="M8.5 8.5a5 5 0 0 1 0 7"></path>
+                    <path d="M12 5a10 10 0 0 1 0 14"></path>
+                    <path d="M5 12h.01"></path>
+                  </svg>
+                </div>
+                <div class="reward-card-balance">
+                  <span>Available earnings</span>
+                  <strong>$10.00</strong>
+                </div>
+                <div class="reward-card-footer">
+                  <div>
+                    <span>Next goal</span>
+                    <strong>$15.00</strong>
+                  </div>
+                  <div aria-hidden="true" class="reward-card-progress">
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="reward-float reward-float-credit">
+                <span aria-hidden="true" class="reward-float-dot"></span>
+                <div><strong>+$5.00</strong><small>credited</small></div>
+              </div>
+              <div class="reward-float reward-float-goal">
+                <span>67%</span>
+                <small>to next goal</small>
+              </div>
             </div>
-            <span class="home-gamelab-promo__tile">ك</span>
-            <span class="home-gamelab-promo__target"></span>
-            <span class="home-gamelab-promo__reaction"></span>
+            <div class="reward-facts">
+              <div class="reward-fact">
+                <svg aria-hidden="true" viewbox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                  <path d="M12 18V6"></path>
+                </svg>
+                <div>
+                  <strong>Credited earnings</strong
+                  ><span>The money shown in your UIORI balance.</span>
+                </div>
+              </div>
+              <div class="reward-fact">
+                <svg aria-hidden="true" viewbox="0 0 24 24">
+                  <path d="M3 12h4l3-9 4 18 3-9h4"></path>
+                </svg>
+                <div>
+                  <strong>Progress that stays visible</strong
+                  ><span
+                    >Points, streaks, and levels show momentum toward the next
+                    target.</span
+                  >
+                </div>
+              </div>
+              <div class="reward-fact">
+                <svg aria-hidden="true" viewbox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="m8.5 12 2.2 2.2 4.8-4.8"></path>
+                </svg>
+                <div>
+                  <strong>Milestones that feel reachable</strong
+                  ><span>Small targets keep the next win easy to see.</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-      <!-- FAQ -->
-      <section class="faq-preview" aria-labelledby="home-faq-title">
+      <section aria-labelledby="safety-title" class="home-safety section-space">
         <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Important FAQ</p>
-              <h2 id="home-faq-title">Read this before choosing any route.</h2>
-              <p>
-                These answers protect the site from looking like a fake payout
-                promise and help beginners understand how uiori really works.
-              </p>
-            </div>
-            <a class="btn btn-secondary" href="/faq/">See all FAQ</a>
+          <div class="home-section-heading">
+            <p class="section-kicker">Safety &amp; control</p>
+            <h2 id="safety-title">You're always in control.</h2>
+            <a class="section-inline-link" href="/safety/">
+              Read about safety
+            </a>
           </div>
-          <div class="faq-grid faq-grid-preview">
-            <article class="faq-card">
-              <h3>Does uiori pay users directly?</h3>
-              <p>
-                No. uiori helps you research third party platforms. Any task,
-                approval, balance, or payout happens inside the platform you
-                join, not inside uiori.
-              </p>
+          <div class="safety-points">
+            <div class="safety-point">
+              <svg aria-hidden="true" viewbox="0 0 24 24">
+                <path
+                  d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
+                ></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <div>
+                <strong>Nothing starts automatically</strong
+                ><span
+                  >Creating an account never turns earning on by itself.</span
+                >
+              </div>
+            </div>
+            <div class="safety-point">
+              <svg aria-hidden="true" viewbox="0 0 24 24">
+                <path d="M9 12h6"></path>
+                <path d="M12 9v6"></path>
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+              <div>
+                <strong>Progress stays separate from cash</strong
+                ><span
+                  >Points and milestones motivate progress; your credited
+                  balance shows money.</span
+                >
+              </div>
+            </div>
+            <div class="safety-point">
+              <svg aria-hidden="true" viewbox="0 0 24 24">
+                <circle cx="9" cy="12" r="3"></circle>
+                <rect height="14" rx="7" width="20" x="2" y="5"></rect>
+              </svg>
+              <div>
+                <strong>Turn it off anytime</strong
+                ><span
+                  >You decide when earning is active and when it stops.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="home-faq-title" class="home-faq section-space">
+        <div class="container">
+          <div class="home-faq-heading">
+            <p class="section-kicker">FAQ</p>
+            <h2 id="home-faq-title">Frequently asked questions</h2>
+            <p>
+              Clear answers about earning, rewards, progress, and withdrawals.
+            </p>
+          </div>
+          <div class="faq-list">
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="home-faq-answer-account"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="home-faq-question-account"
+                  type="button"
+                >
+                  <span>Does creating an account start earning?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="home-faq-question-account"
+                class="faq-answer"
+                id="home-faq-answer-account"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    No. Your account is separate from earning. Nothing starts
+                    until you complete the setup and choose to turn earning on.
+                  </p>
+                </div>
+              </div>
             </article>
-            <article class="faq-card">
-              <h3>Are earnings guaranteed?</h3>
-              <p>
-                No. Country access, profile fit, task supply, approval, and
-                payment rules can change. Test one small route before spending
-                serious time.
-              </p>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="home-faq-answer-extension"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="home-faq-question-extension"
+                  type="button"
+                >
+                  <span>Do I need a browser extension?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="home-faq-question-extension"
+                class="faq-answer"
+                id="home-faq-answer-extension"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    Yes. The earning setup uses a companion browser extension.
+                    UIORI guides you through the setup when you choose to
+                    activate earning.
+                  </p>
+                </div>
+              </div>
             </article>
-            <article class="faq-card">
-              <h3>Why does country matter so much?</h3>
-              <p>
-                The same platform can show different tasks, payout methods, and
-                limits by country. That is why uiori starts with country first.
-              </p>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="home-faq-answer-points"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="home-faq-question-points"
+                  type="button"
+                >
+                  <span>Are Contribution Points the same as money?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="home-faq-question-points"
+                class="faq-answer"
+                id="home-faq-answer-points"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    No. Points, streaks, levels, and milestones show progress.
+                    Your credited earnings are the money added to your UIORI
+                    balance.
+                  </p>
+                </div>
+              </div>
             </article>
-            <article class="faq-card">
-              <h3>What should a beginner do first?</h3>
-              <p>
-                Pick one country page, choose one payout method you can receive,
-                and try one low risk platform until you confirm a real
-                withdrawal route.
-              </p>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="home-faq-answer-guaranteed"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="home-faq-question-guaranteed"
+                  type="button"
+                >
+                  <span>Are earnings guaranteed?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="home-faq-question-guaranteed"
+                class="faq-answer"
+                id="home-faq-answer-guaranteed"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    No. Earning amounts and timing can vary, and UIORI does not
+                    promise a fixed rate or a guaranteed time to reach a
+                    milestone.
+                  </p>
+                </div>
+              </div>
             </article>
-            <article class="faq-card">
-              <h3>Do referral links affect the guidance?</h3>
-              <p>
-                Some links may earn uiori a commission, but warnings should stay
-                visible. A useful page explains limits before asking for a
-                click.
-              </p>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="home-faq-answer-withdraw"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="home-faq-question-withdraw"
+                  type="button"
+                >
+                  <span>When can I withdraw?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="home-faq-question-withdraw"
+                class="faq-answer"
+                id="home-faq-answer-withdraw"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    You can request a withdrawal when your account meets the
+                    published requirements and has enough credited earnings.
+                  </p>
+                </div>
+              </div>
             </article>
-            <article class="faq-card faq-cta-card">
-              <h3>Need the full safety version?</h3>
-              <p>
-                The full FAQ explains payout routes, low payout sites, crypto
-                caution, survey disqualifications, and what to avoid.
-              </p>
-              <a class="btn btn-primary" href="/faq/">See all FAQ</a>
-            </article>
+          </div>
+          <div class="faq-actions">
+            <a class="button button-quiet home-faq-link" href="/faq/">
+              View all FAQs
+            </a>
           </div>
         </div>
       </section>
     </main>
-
-    <!-- Footer -->
     <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <a class="brand footer-brand" href="/"
-            ><span class="brand-mark"
-              ><img src="/assets/img/uiori-mark.svg" alt="" /></span
-            ><span class="brand-text">uiori</span></a
-          >
-          <p>
-            Country focused MMO earning guidance. We help users compare third
-            party platforms, payout methods, warnings, and realistic
-            first-payout routes.
-          </p>
+      <div class="container">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <a aria-label="UIORI home" class="wordmark" href="/"
+              >UIORI<span class="wordmark-period">.</span></a
+            >
+            <p>Turn spare bandwidth into visible progress and small rewards.</p>
+          </div>
+          <div class="footer-column">
+            <h2>Product</h2>
+            <a href="/how-it-works/">How it works</a>
+            <a href="/rewards/">Rewards</a>
+            <a href="/safety/">Safety</a>
+            <a href="/faq/">FAQ</a>
+          </div>
+          <div class="footer-column">
+            <h2>Company</h2>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+          </div>
+          <div class="footer-column">
+            <h2>Legal</h2>
+            <a href="/terms/">Terms</a>
+            <a href="/privacy/">Privacy</a>
+            <a href="/rewards-policy/">Rewards Policy</a>
+          </div>
         </div>
-        <div>
-          <h2>Explore</h2>
-          <a href="/countries/">Countries</a>
-          <a href="/today/">Today routes</a>
-          <a href="/platforms/">Platforms</a>
-          <a href="/payouts/">Payouts</a>
-          <a href="/low-payout-sites/">Low payout sites</a>
+        <div class="footer-bottom">
+          <span>© 2026 UIORI</span>
         </div>
-        <div>
-          <h2>Learn</h2>
-          <a href="/tasks/">Task types</a>
-          <a href="/guides/">Guides</a>
-          <a href="/faq/">FAQ</a>
-          <a href="/guides/how-to-avoid-fake-earning-sites/">Scam warnings</a>
-        </div>
-        <div class="footer-note">
-          <h2>Rules &amp; safety</h2>
-          <a href="/disclosure/">Affiliate disclosure</a>
-          <a href="/terms/">Terms</a>
-          <a href="/privacy/">Privacy</a>
-          <a href="/contact/">Contact</a>
-          <p>
-            uiori does not employ users or guarantee earnings. Third party
-            platforms control eligibility, tasks, approvals, payment, and
-            account rules.
-          </p>
-        </div>
-      </div>
-      <div class="container footer-bottom">
-        <span>© <span data-current-year>2026</span> uiori.</span
-        ><span>Updated regularly. Availability can change.</span>
       </div>
     </footer>
-
-    <!-- JavaScript -->
-    <script type="module" src="/assets/js/main.js"></script>
   </body>
 </html>

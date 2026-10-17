@@ -1,0 +1,688 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <title>Overview — UIORI</title>
+    <meta content="noindex,nofollow" name="robots" />
+    <meta
+      content="View your UIORI credited earnings, earning progress, milestones, and withdrawal status."
+      name="description"
+    />
+    <link href="https://uiori.com/dashboard/" rel="canonical" />
+    <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link
+      href="/assets/img/favicon-32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/assets/img/favicon-180.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script
+      src="/assets/js/components/app-navigation.js"
+      type="module"
+    ></script>
+    <script
+      src="/assets/js/components/account-access.js"
+      type="module"
+    ></script>
+    <script src="/assets/js/components/progress-data.js" type="module"></script>
+  </head>
+  <body class="app-body app-auth-loading">
+    <div class="app-layout">
+      <aside aria-label="Account sidebar" class="app-sidebar">
+        <a aria-label="UIORI home" class="wordmark app-wordmark" href="/">
+          UIORI<span class="wordmark-period">.</span>
+        </a>
+        <div
+          class="app-member-card"
+          data-uiori-member-state="pending"
+          aria-label="Account membership status"
+        >
+          <div class="app-member-avatar">
+            <img
+              src="/assets/img/default-avatar.svg"
+              alt="Your profile photo"
+              data-uiori-avatar
+            />
+          </div>
+          <div class="app-member-copy">
+            <strong class="app-member-name" data-uiori-member-name></strong>
+            <span class="app-member-badge" data-uiori-member-badge>
+              <svg
+                aria-hidden="true"
+                viewbox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                ></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <span data-uiori-member-status></span>
+            </span>
+          </div>
+        </div>
+        <nav aria-label="Account navigation" class="app-navigation">
+          <a aria-current="page" class="app-nav-link" href="/dashboard/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="1"></circle>
+              <circle cx="12" cy="12" r="10"></circle>
+            </svg>
+            <span>Overview</span>
+          </a>
+          <a class="app-nav-link" href="/earn/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <path
+                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+              ></path>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 18V6"></path>
+            </svg>
+            <span>Earn</span>
+          </a>
+          <a class="app-nav-link" href="/wallet/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <path
+                d="M3 11h3.75a2 2 0 0 1 1.6.8l.45.6a4 4 0 0 0 6.4 0l.45-.6a2 2 0 0 1 1.6-.8H21"
+              ></path>
+              <path d="M3 7h18"></path>
+              <rect height="18" rx="2" width="18" x="3" y="3"></rect>
+            </svg>
+            <span>Wallet</span>
+          </a>
+          <a class="app-nav-link" href="/settings/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <path
+                d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+              ></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span>Settings</span>
+          </a>
+        </nav>
+        <div class="app-sidebar-bottom">
+          <a class="app-nav-link" href="/faq/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <path
+                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+              ></path>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" x2="12.01" y1="17" y2="17"></line>
+            </svg>
+            <span>Help</span>
+          </a>
+          <a
+            class="app-nav-link app-logout-link"
+            data-uiori-logout=""
+            href="/login/"
+          >
+            <svg aria-hidden="true" class="app-nav-icon" viewbox="0 0 24 24">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <path d="M16 17l5-5-5-5"></path>
+              <path d="M21 12H9"></path>
+            </svg>
+            <span>Log out</span>
+          </a>
+          <a class="app-back-link" href="/">
+            <span>Back to website</span>
+            <svg
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+              viewbox="0 0 24 24"
+            >
+              <path d="M7 17 17 7"></path>
+              <path d="M7 7h10v10"></path>
+            </svg>
+          </a>
+        </div>
+      </aside>
+      <div class="app-main">
+        <header class="app-mobile-topbar">
+          <a aria-label="UIORI home" class="wordmark app-wordmark" href="/">
+            UIORI<span class="wordmark-period">.</span>
+          </a>
+          <button
+            aria-controls="app-navigation-drawer"
+            aria-expanded="false"
+            aria-label="Open account navigation"
+            class="app-menu-toggle"
+            type="button"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </header>
+        <dialog
+          aria-label="Account navigation"
+          class="app-drawer"
+          id="app-navigation-drawer"
+        >
+          <div class="app-drawer-panel">
+            <div
+              class="app-member-card app-member-card--drawer"
+              data-uiori-member-state="pending"
+              aria-label="Account membership status"
+            >
+              <div class="app-member-avatar">
+                <img
+                  src="/assets/img/default-avatar.svg"
+                  alt="Your profile photo"
+                  data-uiori-avatar
+                />
+              </div>
+              <div class="app-member-copy">
+                <strong class="app-member-name" data-uiori-member-name></strong>
+                <span class="app-member-badge" data-uiori-member-badge>
+                  <svg
+                    aria-hidden="true"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                    ></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
+                  <span data-uiori-member-status></span>
+                </span>
+              </div>
+            </div>
+            <nav aria-label="Account navigation" class="app-navigation">
+              <a aria-current="page" class="app-nav-link" href="/dashboard/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <circle cx="12" cy="12" r="1"></circle>
+                  <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+                <span>Overview</span>
+              </a>
+              <a class="app-nav-link" href="/earn/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                  ></path>
+                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                  <path d="M12 18V6"></path>
+                </svg>
+                <span>Earn</span>
+              </a>
+              <a class="app-nav-link" href="/wallet/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    d="M3 11h3.75a2 2 0 0 1 1.6.8l.45.6a4 4 0 0 0 6.4 0l.45-.6a2 2 0 0 1 1.6-.8H21"
+                  ></path>
+                  <path d="M3 7h18"></path>
+                  <rect height="18" rx="2" width="18" x="3" y="3"></rect>
+                </svg>
+                <span>Wallet</span>
+              </a>
+              <a class="app-nav-link" href="/settings/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+                  ></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span>Settings</span>
+              </a>
+            </nav>
+            <div class="app-sidebar-bottom">
+              <a class="app-nav-link" href="/faq/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                  ></path>
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                  <line x1="12" x2="12.01" y1="17" y2="17"></line>
+                </svg>
+                <span>Help</span>
+              </a>
+              <a
+                class="app-nav-link app-logout-link"
+                data-uiori-logout=""
+                href="/login/"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <path d="M16 17l5-5-5-5"></path>
+                  <path d="M21 12H9"></path>
+                </svg>
+                <span>Log out</span>
+              </a>
+              <a class="app-back-link" href="/">
+                <span>Back to website</span>
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M7 17 17 7"></path>
+                  <path d="M7 7h10v10"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </dialog>
+        <main class="app-content" id="main-content">
+          <header class="app-topbar">
+            <div class="app-page-heading">
+              <p class="app-page-eyebrow">Account</p>
+              <h1>Overview</h1>
+              <p>Your progress and credited rewards in one place.</p>
+            </div>
+            <div aria-label="Account" class="app-account-control">
+              <span aria-hidden="true" class="app-account-dot"></span>
+              <span>Account</span>
+            </div>
+          </header>
+          <p class="dashboard-preview-note" data-uiori-dashboard-note>
+            Your balance and progress update as eligible activity is recorded.
+          </p>
+          <section aria-label="Account summary" class="dashboard-summary-panel">
+            <div class="dashboard-metric-strip" data-uiori-active-only>
+              <div class="dashboard-metric is-active">
+                <span>Available balance</span>
+                <strong data-uiori-balance>$0.00</strong>
+                <small>Credited earnings available to your account</small>
+              </div>
+              <div class="dashboard-metric">
+                <span>Next milestone</span>
+                <strong data-uiori-next-milestone>$5.00</strong>
+                <small>Your next visible target</small>
+              </div>
+              <div class="dashboard-metric">
+                <span>Earning status</span>
+                <strong class="dashboard-status-value"
+                  ><i aria-hidden="true"></i
+                  ><span data-uiori-earning-status>Not active</span></strong
+                >
+                <small>Start whenever you are ready</small>
+              </div>
+            </div>
+            <div class="dashboard-summary-body">
+              <div class="dashboard-milestone-panel" data-uiori-active-only>
+                <div class="dashboard-section-heading">
+                  <div>
+                    <p class="dashboard-label">Milestone path</p>
+                    <h2>See the next goal at a glance</h2>
+                  </div>
+                  <span
+                    class="dashboard-progress-value"
+                    data-uiori-current-progress
+                    >$0.00 current</span
+                  >
+                </div>
+                <div aria-label="Milestone path" class="dashboard-path">
+                  <div aria-hidden="true" class="dashboard-path-line">
+                    <span></span>
+                  </div>
+                  <div class="dashboard-path-points">
+                    <span class="is-next">$5</span>
+                    <span>$10</span>
+                    <span>$15</span>
+                    <span>$25</span>
+                    <span>$50</span>
+                    <span>$100</span>
+                  </div>
+                </div>
+              </div>
+              <aside class="dashboard-ready-card" data-uiori-inactive-message>
+                <span aria-hidden="true" class="dashboard-ready-icon">
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewbox="0 0 24 24"
+                  >
+                    <path
+                      d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                    ></path>
+                    <path d="M9 12h6"></path>
+                    <path d="M12 9v6"></path>
+                  </svg>
+                </span>
+                <div>
+                  <strong data-uiori-ready-title>Ready when you are</strong>
+                  <p data-uiori-ready-copy>
+                    Complete the one-time setup to start building eligible
+                    progress.
+                  </p>
+                  <a href="/earn/" data-uiori-ready-link>Set up earning</a>
+                </div>
+              </aside>
+            </div>
+          </section>
+          <section
+            aria-labelledby="dashboard-progress-title"
+            class="dashboard-stats"
+            data-uiori-active-only
+          >
+            <div class="dashboard-section-heading">
+              <div>
+                <p class="dashboard-label">Progress</p>
+                <h2 id="dashboard-progress-title">Your account at a glance</h2>
+              </div>
+            </div>
+            <div class="dashboard-stat-row">
+              <div class="dashboard-stat">
+                <span aria-hidden="true" class="dashboard-stat-icon">
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewbox="0 0 24 24"
+                  >
+                    <path d="M3 12h4l3-9 4 18 3-9h4"></path>
+                  </svg>
+                </span>
+                <div>
+                  <span>Contribution Points</span
+                  ><strong data-uiori-points>0</strong>
+                </div>
+              </div>
+              <div class="dashboard-stat">
+                <span aria-hidden="true" class="dashboard-stat-icon">
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewbox="0 0 24 24"
+                  >
+                    <path
+                      d="M13 2s1 3-1 5c-2 2-5 3-5 7a5 5 0 0 0 10 0c0-2-1-4-4-6 0 2-1 3-2 4"
+                    ></path>
+                  </svg>
+                </span>
+                <div>
+                  <span>Current streak</span
+                  ><strong data-uiori-streak>0 days</strong>
+                </div>
+              </div>
+              <div class="dashboard-stat">
+                <span aria-hidden="true" class="dashboard-stat-icon">
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewbox="0 0 24 24"
+                  >
+                    <path
+                      d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3z"
+                    ></path>
+                  </svg>
+                </span>
+                <div>
+                  <span>Level</span><strong data-uiori-level>1</strong
+                  ><small data-uiori-level-label>Starting level</small>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            aria-labelledby="dashboard-quick-title"
+            class="dashboard-quick"
+          >
+            <div class="dashboard-section-heading">
+              <div>
+                <p class="dashboard-label">Quick access</p>
+                <h2 id="dashboard-quick-title">Go where you need to go</h2>
+              </div>
+            </div>
+            <div class="dashboard-quick-grid">
+              <a class="dashboard-quick-link" href="/earn/">
+                <span aria-hidden="true" class="dashboard-quick-icon">
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewbox="0 0 24 24"
+                  >
+                    <path
+                      d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                    ></path>
+                    <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                    <path d="M12 18V6"></path>
+                  </svg>
+                </span>
+                <div>
+                  <strong>Earn</strong><span>Activate or pause earning.</span>
+                </div>
+              </a>
+              <a class="dashboard-quick-link" href="/wallet/">
+                <span aria-hidden="true" class="dashboard-quick-icon is-blue">
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewbox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 11h3.75a2 2 0 0 1 1.6.8l.45.6a4 4 0 0 0 6.4 0l.45-.6a2 2 0 0 1 1.6-.8H21"
+                    ></path>
+                    <path d="M3 7h18"></path>
+                    <rect height="18" rx="2" width="18" x="3" y="3"></rect>
+                  </svg>
+                </span>
+                <div>
+                  <strong>Wallet</strong
+                  ><span>Balance and withdrawal status.</span>
+                </div>
+              </a>
+              <a class="dashboard-quick-link" href="/settings/">
+                <span aria-hidden="true" class="dashboard-quick-icon is-pink">
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewbox="0 0 24 24"
+                  >
+                    <path
+                      d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </span>
+                <div>
+                  <strong>Settings</strong
+                  ><span>Account and payout details.</span>
+                </div>
+              </a>
+            </div>
+          </section>
+          <section class="dashboard-lower-grid">
+            <div class="dashboard-wallet-snapshot" data-uiori-active-only>
+              <div class="dashboard-section-heading">
+                <div>
+                  <p class="dashboard-label">Wallet</p>
+                  <h2>Withdrawal status</h2>
+                </div>
+              </div>
+              <dl>
+                <div>
+                  <dt>Available balance</dt>
+                  <dd data-uiori-balance>$0.00</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>Not yet eligible</dd>
+                </div>
+              </dl>
+              <p>
+                Eligibility depends on the withdrawal requirements that apply to
+                your account.
+              </p>
+              <a class="dashboard-text-link" href="/wallet/">View wallet</a>
+            </div>
+            <div class="dashboard-activity">
+              <div class="dashboard-section-heading">
+                <div>
+                  <p class="dashboard-label">Activity</p>
+                  <h2>Recent activity</h2>
+                </div>
+              </div>
+              <div class="dashboard-empty">
+                <span aria-hidden="true" class="dashboard-empty-icon"
+                  ><svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewbox="0 0 24 24"
+                  >
+                    <path d="M3 12h4l2-6 4 12 2-6h6"></path></svg
+                ></span>
+                <div>
+                  <strong>No account activity yet</strong>
+                  <p>
+                    Eligible activity, reward credits, and withdrawals will
+                    appear here.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

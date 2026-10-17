@@ -1,0 +1,173 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <title>Choose a new UIORI password</title>
+    <meta content="noindex,nofollow" name="robots" />
+    <meta
+      content="Choose a new password for your UIORI account."
+      name="description"
+    />
+    <link href="https://uiori.com/reset-password/" rel="canonical" />
+    <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link
+      href="/assets/img/favicon-32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/assets/img/favicon-180.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script src="/assets/js/pages/auth.js" type="module"></script>
+  </head>
+  <body class="auth-page">
+    <header class="auth-header">
+      <div class="container auth-header-inner">
+        <a aria-label="UIORI home" class="wordmark" href="/">
+          UIORI<span class="wordmark-period">.</span>
+        </a>
+        <p class="auth-header-prompt recovery-auth-back">
+          <span>Remembered it?</span>
+          <a href="/login/">Log in</a>
+        </p>
+      </div>
+    </header>
+    <main class="auth-main">
+      <section aria-labelledby="reset-title" class="auth-panel">
+        <div class="auth-heading">
+          <span aria-hidden="true" class="auth-heading-icon">
+            <svg viewbox="0 0 24 24">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M12 7v5"></path>
+              <path d="M12 16h.01"></path>
+            </svg>
+          </span>
+          <h1 id="reset-title">Choose a new password</h1>
+          <p>Enter a new password for your UIORI account.</p>
+        </div>
+        <form class="auth-form" id="reset-password-form">
+          <div class="auth-field">
+            <label for="password">New password</label>
+            <div class="password-control">
+              <input
+                autocomplete="new-password"
+                class="auth-input"
+                id="password"
+                minlength="8"
+                required
+                type="password"
+              />
+              <button
+                aria-controls="password"
+                aria-label="Show password"
+                class="password-toggle"
+                data-password-label="password"
+                data-password-toggle
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="password-icon password-icon-hidden"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"
+                  ></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="password-icon password-icon-visible"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="m3 3 18 18"></path>
+                  <path d="M10.6 10.7a2 2 0 0 0 2.7 2.7"></path>
+                  <path
+                    d="M9.9 4.3A10.6 10.6 0 0 1 12 4c6.5 0 10 8 10 8a17 17 0 0 1-2.1 3.2"
+                  ></path>
+                  <path
+                    d="M6.6 6.6C3.6 8.6 2 12 2 12s3.5 8 10 8a10 10 0 0 0 4.1-.9"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="auth-field">
+            <label for="confirm-password">Confirm new password</label>
+            <div class="password-control">
+              <input
+                autocomplete="new-password"
+                class="auth-input"
+                id="confirm-password"
+                minlength="8"
+                required
+                type="password"
+              />
+              <button
+                aria-controls="confirm-password"
+                aria-label="Show confirm password"
+                class="password-toggle"
+                data-password-label="confirm password"
+                data-password-toggle
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="password-icon password-icon-hidden"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"
+                  ></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="password-icon password-icon-visible"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="m3 3 18 18"></path>
+                  <path d="M10.6 10.7a2 2 0 0 0 2.7 2.7"></path>
+                  <path
+                    d="M9.9 4.3A10.6 10.6 0 0 1 12 4c6.5 0 10 8 10 8a17 17 0 0 1-2.1 3.2"
+                  ></path>
+                  <path
+                    d="M6.6 6.6C3.6 8.6 2 12 2 12s3.5 8 10 8a10 10 0 0 0 4.1-.9"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <button class="button button-dark auth-submit" type="submit">
+            Save new password
+          </button>
+          <p aria-live="polite" class="auth-message" data-auth-message></p>
+        </form>
+        <a class="auth-back-link" href="/login/">
+          <svg aria-hidden="true" viewbox="0 0 24 24">
+            <path d="M19 12H5"></path>
+            <path d="m12 19-7-7 7-7"></path>
+          </svg>
+          <span>Back to log in</span>
+        </a>
+      </section>
+    </main>
+    <footer class="auth-footer">
+      <span>© 2026 UIORI</span>
+    </footer>
+  </body>
+</html>

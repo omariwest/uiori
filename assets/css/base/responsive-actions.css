@@ -1,0 +1,65 @@
+/* Compact action controls on narrow screens. Navigation/menu controls are intentionally excluded. */
+@media (max-width: 700px) {
+  .contact-actions .button,
+  .settings-form-actions .button,
+  .settings-photo-button,
+  .earning-activation-actions .button,
+  .earn-status-action .button,
+  .wallet-withdraw-button,
+  .admin-settings-action-row .button {
+    width: fit-content !important;
+    max-width: 100%;
+    min-width: 0;
+    flex: 0 0 auto;
+    align-self: flex-start;
+  }
+
+  .auth-submit {
+    width: fit-content;
+    max-width: 100%;
+    min-width: 0;
+    justify-self: center;
+    padding-inline: 22px;
+  }
+
+  .earning-activation-actions .button {
+    justify-self: start;
+  }
+
+  .settings-form-actions,
+  .admin-settings-action-row {
+    align-items: flex-start !important;
+  }
+
+  .settings-delete-actions,
+  .settings-payout-actions,
+  .wallet-request-actions,
+  .admin-review-dialog-actions,
+  .admin-withdrawal-review-actions {
+    align-items: flex-end;
+  }
+
+  .settings-delete-actions button,
+  .settings-payout-actions button,
+  .wallet-request-actions button,
+  .admin-review-dialog-actions button,
+  .admin-withdrawal-review-actions button {
+    width: fit-content !important;
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .button,
+  .auth-submit,
+  .settings-danger-cta,
+  .settings-delete-actions button,
+  .settings-payout-actions button,
+  .wallet-request-actions button,
+  .admin-review-dialog-actions button,
+  .admin-withdrawal-review-actions button {
+    white-space: normal;
+    text-align: center;
+  }
+}

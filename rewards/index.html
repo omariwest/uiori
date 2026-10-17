@@ -1,0 +1,362 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <title>UIORI Rewards — Progress, Milestones and Earnings</title>
+    <meta
+      content="Understand your UIORI balance, Contribution Points, streaks, levels, milestones, and withdrawal progress without confusing progress with cash."
+      name="description"
+    />
+    <link href="https://uiori.com/rewards/" rel="canonical" />
+    <meta content="website" property="og:type" />
+    <meta content="UIORI" property="og:site_name" />
+    <meta
+      content="UIORI Rewards — Progress and Credited Earnings"
+      property="og:title"
+    />
+    <meta
+      content="See how UIORI keeps progress indicators separate from actual credited earnings."
+      property="og:description"
+    />
+    <meta content="https://uiori.com/rewards/" property="og:url" />
+    <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link
+      href="/assets/img/favicon-32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/assets/img/favicon-180.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script src="/assets/js/pages/how-it-works.js" type="module"></script>
+    <script
+      src="/assets/js/components/public-account.js"
+      type="module"
+    ></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a aria-label="UIORI home" class="wordmark" href="/"
+          >UIORI<span class="wordmark-period">.</span></a
+        >
+        <nav aria-label="Main navigation" class="desktop-navigation">
+          <a href="/how-it-works/">How it works</a>
+          <a aria-current="page" href="/rewards/">Rewards</a>
+          <a href="/safety/">Safety</a> <a href="/faq/">FAQ</a>
+        </nav>
+        <div class="header-actions">
+          <a class="login-link" href="/login/">Log in</a>
+          <a class="button button-dark button-small" href="/signup/"
+            >Start earning</a
+          >
+        </div>
+        <button
+          aria-controls="mobile-navigation"
+          aria-expanded="false"
+          aria-label="Open menu"
+          class="menu-toggle"
+          type="button"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div
+        aria-hidden="true"
+        class="mobile-menu-backdrop"
+        data-nav-backdrop=""
+      ></div>
+      <nav
+        aria-label="Mobile navigation"
+        class="mobile-menu"
+        id="mobile-navigation"
+      >
+        <div class="mobile-navigation-links">
+          <a href="/how-it-works/"
+            ><svg aria-hidden="true" class="preview-icon" viewbox="0 0 24 24">
+              <path d="M15.5 10 13 7.5 15.5 5"></path>
+              <path
+                d="M15.861 14A14.5 14.5 0 0 1 12 22a14.48 14.48 0 0 1 0-20 10 10 0 1 0 9.888 11.5"
+              ></path>
+              <path d="M19.5 5 22 7.5 19.5 10"></path>
+              <path d="M2 12h8.5"></path></svg
+            ><span>How it works</span></a
+          ><a aria-current="page" href="/rewards/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 18V6"></path></svg
+            ><span>Rewards</span></a
+          ><a href="/safety/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <path
+                d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
+              ></path>
+              <path d="m9 12 2 2 4-4"></path></svg
+            ><span>Safety</span></a
+          ><a href="/faq/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.1 9a3 3 0 1 1 5.8 1c0 2-3 2-3 4"></path>
+              <path d="M12 18h.01"></path></svg
+            ><span>FAQ</span></a
+          >
+        </div>
+        <div aria-hidden="true" class="mobile-menu-divider"></div>
+        <div class="mobile-menu-actions">
+          <a class="mobile-login-link" href="/login/">Log in</a>
+          <a class="mobile-primary-link" href="/signup/">Start earning</a>
+        </div>
+      </nav>
+    </header>
+    <main id="main-content">
+      <section class="public-page-hero">
+        <div class="container">
+          <div class="public-page-header">
+            <p class="section-kicker">UIORI Rewards</p>
+            <h1 class="public-page-title">
+              See progress without confusing it with cash.
+            </h1>
+            <p class="public-page-subtitle">
+              Points, streaks, levels, and milestones show momentum. Your
+              credited balance shows money.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section
+        aria-labelledby="reward-types-title"
+        class="rewards-types section-space"
+      >
+        <div class="container rewards-split">
+          <div class="rewards-section-intro">
+            <p class="section-kicker">What you will see</p>
+            <h2 id="reward-types-title">Four signals. One balance.</h2>
+            <p>
+              The dashboard keeps motivation and money separate, so you always
+              know where you stand.
+            </p>
+          </div>
+          <div class="rewards-type-list">
+            <article class="rewards-type-row">
+              <span aria-hidden="true" class="rewards-type-icon">
+                <svg viewbox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                  <path d="M12 18V6"></path>
+                </svg>
+              </span>
+              <div>
+                <h3>Credited earnings</h3>
+                <p>
+                  Money UIORI has added to your available balance under the
+                  current Rewards Policy.
+                </p>
+              </div>
+            </article>
+            <article class="rewards-type-row">
+              <span aria-hidden="true" class="rewards-type-icon">
+                <svg viewbox="0 0 24 24">
+                  <path d="M3 12h4l3-9 4 18 3-9h4"></path>
+                </svg>
+              </span>
+              <div>
+                <h3>Contribution Points</h3>
+                <p>
+                  A progress score for eligible activity. Contribution Points
+                  are not cash.
+                </p>
+              </div>
+            </article>
+            <article class="rewards-type-row">
+              <span aria-hidden="true" class="rewards-type-icon">
+                <svg viewbox="0 0 24 24">
+                  <path d="M8 2v4"></path>
+                  <path d="M16 2v4"></path>
+                  <rect height="18" rx="2" width="18" x="3" y="4"></rect>
+                  <path d="M3 10h18"></path>
+                  <path d="m9 16 2 2 4-4"></path>
+                </svg>
+              </span>
+              <div>
+                <h3>Streaks &amp; levels</h3>
+                <p>
+                  A simple way to make consistency and longer-term progress
+                  visible.
+                </p>
+              </div>
+            </article>
+            <article class="rewards-type-row">
+              <span aria-hidden="true" class="rewards-type-icon">
+                <svg viewbox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 3v2"></path>
+                  <path d="M21 12h-2"></path>
+                </svg>
+              </span>
+              <div>
+                <h3>Milestones</h3>
+                <p>Small targets that keep the next step easy to understand.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section
+        aria-labelledby="milestone-title"
+        class="rewards-milestone section-space"
+      >
+        <div class="container rewards-milestone-grid">
+          <div class="rewards-section-intro">
+            <p class="section-kicker">Your next target</p>
+            <h2 id="milestone-title">Always know the next goal.</h2>
+            <p>
+              Small milestones make progress easier to follow without promising
+              how quickly you will reach them.
+            </p>
+          </div>
+          <div
+            aria-label="Illustrative milestone progress"
+            class="rewards-progress-example"
+          >
+            <div class="rewards-progress-head">
+              <div>
+                <span>Current credited earnings</span>
+                <strong>$10.00</strong>
+              </div>
+              <div class="rewards-progress-next">
+                <span>Next milestone</span>
+                <strong>$15.00</strong>
+              </div>
+            </div>
+            <div
+              aria-label="Example milestone sequence"
+              class="rewards-milestone-path"
+            >
+              <div aria-hidden="true" class="rewards-milestone-line">
+                <span></span>
+              </div>
+              <ol class="rewards-milestone-scale">
+                <li class="is-past">$5</li>
+                <li class="is-current">$10</li>
+                <li class="is-next">$15</li>
+                <li>$25</li>
+                <li>$50</li>
+                <li>$100</li>
+              </ol>
+            </div>
+            <p class="rewards-example-note">
+              Example interface values only. Milestones are not promised
+              earnings.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section
+        aria-labelledby="rules-title"
+        class="rewards-rules section-space"
+      >
+        <div class="container rewards-rules-grid">
+          <div class="rewards-section-intro">
+            <p class="section-kicker">The distinction that matters</p>
+            <h2 id="rules-title">What actually becomes money.</h2>
+          </div>
+          <div class="rewards-rules-copy">
+            <p>
+              Eligible activity may build progress. Points, streaks, levels, and
+              milestones do not have a fixed cash value.
+            </p>
+            <p>
+              A reward becomes money only when UIORI credits it to your
+              available balance.
+            </p>
+            <a class="rewards-policy-link" href="/rewards-policy/">
+              Read the Rewards Policy
+              <svg aria-hidden="true" viewbox="0 0 24 24">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section
+        aria-labelledby="withdrawal-title"
+        class="rewards-withdrawal section-space"
+      >
+        <div class="container rewards-withdrawal-inner">
+          <div aria-hidden="true" class="rewards-withdrawal-icon">
+            <svg viewbox="0 0 24 24">
+              <rect height="14" rx="2" width="18" x="3" y="5"></rect>
+              <path d="M3 10h18"></path>
+              <path d="M16 15h2"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="section-kicker">Withdrawals</p>
+            <h2 id="withdrawal-title">Withdraw from your credited balance.</h2>
+            <p>
+              When your account meets the published requirements, you can
+              request a withdrawal from your credited balance. Some requests may
+              require review.
+            </p>
+          </div>
+          <a
+            class="rewards-text-link rewards-withdrawal-link"
+            href="/rewards-policy/"
+            >View policy</a
+          >
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <a aria-label="UIORI home" class="wordmark" href="/"
+              >UIORI<span class="wordmark-period">.</span></a
+            >
+            <p>Turn spare bandwidth into visible progress and small rewards.</p>
+          </div>
+          <div class="footer-column">
+            <h2>Product</h2>
+            <a href="/how-it-works/">How it works</a>
+            <a aria-current="page" href="/rewards/">Rewards</a>
+            <a href="/safety/">Safety</a>
+            <a href="/faq/">FAQ</a>
+          </div>
+          <div class="footer-column">
+            <h2>Company</h2>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+          </div>
+          <div class="footer-column">
+            <h2>Legal</h2>
+            <a href="/terms/">Terms</a>
+            <a href="/privacy/">Privacy</a>
+            <a href="/rewards-policy/">Rewards Policy</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 UIORI</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,132 +1,174 @@
-.card,
-.link-card,
-.route-panel,
-.table-card {
-  background: var(--surface-glass);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+.step-card,
+.reward-card {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
 }
 
-.card {
-  padding: clamp(1.15rem, 2.4vw, 1.55rem);
-}
-
-.card h2,
-.card h3 { margin-bottom: .65rem; }
-.card p { margin-top: .45rem; }
-.card-footer { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.15rem; }
-
-.link-card {
+.step-card {
   position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  padding: 1.22rem;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  gap: .76rem;
-  min-height: 152px;
-  background: rgba(255, 255, 255, .9);
-  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+  min-height: 232px;
+  padding: 25px 23px;
+  transition: border-color var(--transition-standard);
 }
 
-.link-card::before {
-  content: "";
-  width: 30px;
-  height: 3px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent), var(--mint));
-  box-shadow: none;
+.step-card:hover {
+  border-color: rgba(17, 24, 39, 0.14);
 }
 
-.link-card::after {
-  content: none;
-}
-
-.link-card.with-media::before { content: none; }
-
-.card-media {
-  position: relative;
-  width: 54px;
-  height: 48px;
-  display: grid;
-  place-items: center start;
-  overflow: visible;
-  background: transparent;
-  border-radius: 0;
-  box-shadow: none;
-  transition: transform .18s ease;
-}
-
-.card-media::after {
-  content: none;
-}
-
-.card-media img {
-  position: relative;
-  z-index: 1;
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-  filter: none;
-}
-
-.country-media img {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  filter: none;
-  box-shadow: none;
-}
-
-.task-media img,
-.payout-media img {
+.step-number {
+  display: inline-flex;
   width: 40px;
   height: 40px;
-  opacity: .94;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 31px;
+  border-radius: 12px;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
-.link-card.with-media strong { margin-top: .12rem; }
+.step-card h3 {
+  margin-bottom: 9px;
+  font-size: 1.02rem;
+}
 
-.link-card strong { display: block; font-size: 1.08rem; letter-spacing: -.025em; }
-.link-card small { color: var(--muted); line-height: 1.5; }
+.step-card p {
+  max-width: 265px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
 
-.link-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(37, 87, 255, .28);
-  box-shadow: var(--shadow);
+.reward-card {
+  display: flex;
+  min-height: 192px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
   background: #fff;
 }
 
-.link-card.with-media:hover .card-media {
-  transform: translateY(-1px);
+.reward-card-icon {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
-.card-meta {
+.earnings-icon {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.points-icon {
+  color: #5b55a4;
+  background: rgba(91, 85, 164, 0.09);
+}
+
+.streak-icon {
+  color: #62724a;
+  background: rgba(98, 114, 74, 0.1);
+}
+
+.milestone-icon {
+  color: #8a6840;
+  background: rgba(138, 104, 64, 0.1);
+}
+
+.reward-label,
+.reward-detail {
+  color: var(--color-subtle);
+  font-size: 0.76rem;
+}
+
+.reward-card > strong {
+  margin-top: 4px;
+  font-size: 1.33rem;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+
+.reward-card > strong small {
+  color: var(--color-subtle);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.reward-detail {
+  margin-top: auto;
+  padding-top: 14px;
+  font-size: 0.7rem;
+}
+
+.level-progress {
   display: block;
-  color: var(--accent-dark);
-  font-size: .82rem;
-  font-weight: 880;
-  margin-top: .22rem;
+  width: 100%;
+  height: 4px;
+  margin-top: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--gray-100);
 }
 
-.route-card {
-  border-inline-start: 4px solid var(--accent);
+.level-progress span {
+  display: block;
+  width: 62%;
+  height: 100%;
+  border-radius: inherit;
+  background: #71839a;
 }
 
-.warning-card {
-  border-inline-start: 4px solid var(--warning);
+.milestone-card > strong {
+  margin-bottom: 12px;
+  font-size: 1rem;
 }
 
-.card[data-filter-item] {
-  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+.milestone-list {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
 }
 
-.card[data-filter-item]:hover {
-  transform: translateY(-2px);
-  border-color: var(--line-strong);
-  box-shadow: var(--shadow);
+.milestone-list span {
+  padding: 4px 7px;
+  border: 1px solid var(--gray-200);
+  border-radius: 7px;
+  color: var(--color-subtle);
+  font-size: 0.62rem;
+  line-height: 1.3;
+}
+
+.milestone-list .milestone-done {
+  border-color: var(--color-accent-border);
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.milestone-list .milestone-current {
+  border-color: rgba(17, 24, 39, 0.18);
+  color: var(--color-ink);
+  background: var(--gray-50);
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .step-card {
+    min-height: 0;
+    padding: 20px;
+  }
+
+  .step-number {
+    margin-bottom: 22px;
+  }
 }

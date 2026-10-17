@@ -1,0 +1,492 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <title>Withdrawals — UIORI Admin</title>
+    <meta content="noindex,nofollow" name="robots" />
+    <meta
+      content="Review UIORI withdrawal requests, eligibility, and request status."
+      name="description"
+    />
+    <link href="https://uiori.com/admin/withdrawals/" rel="canonical" />
+    <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link
+      href="/assets/img/favicon-32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/assets/img/favicon-180.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script src="/assets/js/pages/admin-data.js" type="module"></script>
+  </head>
+  <body class="app-body admin-body admin-auth-loading">
+    <div class="admin-layout">
+      <aside aria-label="Admin sidebar" class="admin-sidebar">
+        <a aria-label="UIORI home" class="admin-brand" href="/">
+          UIORI<span>.</span>
+        </a>
+        <p class="admin-sidebar-label">Administration</p>
+        <nav aria-label="Admin navigation" class="admin-navigation">
+          <a class="admin-nav-link" href="/admin/">
+            <svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24">
+              <rect height="7" rx="1.5" width="7" x="3" y="3"></rect>
+              <rect height="7" rx="1.5" width="7" x="14" y="3"></rect>
+              <rect height="7" rx="1.5" width="7" x="3" y="14"></rect>
+              <rect height="7" rx="1.5" width="7" x="14" y="14"></rect>
+            </svg>
+            <span>Overview</span>
+          </a>
+          <a class="admin-nav-link" href="/admin/users/">
+            <svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>Users</span>
+          </a>
+          <a
+            aria-current="page"
+            class="admin-nav-link"
+            href="/admin/withdrawals/"
+          >
+            <svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24">
+              <path d="M12 3v12"></path>
+              <path d="m7 10 5 5 5-5"></path>
+              <path d="M5 21h14"></path>
+            </svg>
+            <span>Withdrawals</span>
+          </a>
+          <a class="admin-nav-link" href="/admin/reviews/">
+            <svg
+              aria-hidden="true"
+              class="admin-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+              ></path>
+              <path d="M12 8v4"></path>
+              <path d="M12 16h.01"></path>
+            </svg>
+            <span>Reviews</span>
+          </a>
+          <a class="admin-nav-link" href="/admin/settings/">
+            <svg
+              aria-hidden="true"
+              class="admin-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+              ></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span>Settings</span>
+          </a>
+        </nav>
+        <div class="admin-sidebar-bottom">
+          <a
+            class="admin-nav-link admin-logout-link"
+            data-uiori-admin-logout=""
+            href="/admin/login/"
+          >
+            <svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <path d="M16 17l5-5-5-5"></path>
+              <path d="M21 12H9"></path>
+            </svg>
+            <span>Log out</span>
+          </a>
+        </div>
+      </aside>
+      <div class="admin-main">
+        <header class="admin-mobile-topbar">
+          <a aria-label="UIORI home" class="admin-brand" href="/">
+            UIORI<span>.</span>
+          </a>
+          <button
+            aria-controls="app-navigation-drawer"
+            aria-expanded="false"
+            aria-label="Open admin navigation"
+            class="admin-menu-toggle app-menu-toggle"
+            type="button"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </header>
+        <dialog
+          aria-label="Admin navigation"
+          class="app-drawer"
+          id="app-navigation-drawer"
+        >
+          <div class="admin-drawer-panel app-drawer-panel">
+            <nav aria-label="Admin navigation" class="admin-navigation">
+              <a class="admin-nav-link" href="/admin/">
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <rect height="7" rx="1.5" width="7" x="3" y="3"></rect>
+                  <rect height="7" rx="1.5" width="7" x="14" y="3"></rect>
+                  <rect height="7" rx="1.5" width="7" x="3" y="14"></rect>
+                  <rect height="7" rx="1.5" width="7" x="14" y="14"></rect>
+                </svg>
+                <span>Overview</span>
+              </a>
+              <a class="admin-nav-link" href="/admin/users/">
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Users</span>
+              </a>
+              <a
+                aria-current="page"
+                class="admin-nav-link"
+                href="/admin/withdrawals/"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M12 3v12"></path>
+                  <path d="m7 10 5 5 5-5"></path>
+                  <path d="M5 21h14"></path>
+                </svg>
+                <span>Withdrawals</span>
+              </a>
+              <a class="admin-nav-link" href="/admin/reviews/">
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                  ></path>
+                  <path d="M12 8v4"></path>
+                  <path d="M12 16h.01"></path>
+                </svg>
+                <span>Reviews</span>
+              </a>
+              <a class="admin-nav-link" href="/admin/settings/">
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+                  ></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span>Settings</span>
+              </a>
+            </nav>
+            <div class="admin-sidebar-bottom">
+              <a
+                class="admin-nav-link admin-logout-link"
+                data-uiori-admin-logout=""
+                href="/admin/login/"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <path d="M16 17l5-5-5-5"></path>
+                  <path d="M21 12H9"></path>
+                </svg>
+                <span>Log out</span>
+              </a>
+            </div>
+          </div>
+        </dialog>
+        <main class="admin-content admin-withdrawals-content" id="main-content">
+          <header class="admin-topbar">
+            <div class="admin-page-heading">
+              <p class="admin-heading-eyebrow">Platform operations</p>
+              <h1>Withdrawals</h1>
+              <p>Requests, eligibility, and payout review.</p>
+            </div>
+            <div aria-label="Admin account" class="admin-account-indicator">
+              <svg aria-hidden="true" viewbox="0 0 24 24">
+                <path
+                  d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
+                ></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <span>Admin</span>
+            </div>
+          </header>
+          <section
+            aria-label="Withdrawal summary"
+            class="admin-withdrawals-summary"
+          >
+            <div>
+              <span>Pending requests</span>
+              <strong>0</strong>
+            </div>
+            <div>
+              <span>Under review</span>
+              <strong>0</strong>
+            </div>
+            <div>
+              <span>Approved</span>
+              <strong>0</strong>
+            </div>
+            <div>
+              <span>Total requested</span>
+              <strong>$0.00</strong>
+            </div>
+          </section>
+          <section
+            aria-label="Search and filter withdrawal requests"
+            class="admin-withdrawals-toolbar"
+          >
+            <div class="admin-withdrawals-search">
+              <label for="withdrawal-search">Search requests</label>
+              <div class="admin-withdrawal-search-control">
+                <svg aria-hidden="true" viewbox="0 0 24 24">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <path d="m20 20-4-4"></path>
+                </svg>
+                <input
+                  autocomplete="off"
+                  id="withdrawal-search"
+                  placeholder="User or email"
+                  type="search"
+                />
+              </div>
+            </div>
+            <div class="admin-withdrawals-filter">
+              <label for="withdrawal-status">Status</label>
+              <select
+                aria-label="Filter by withdrawal status"
+                data-ui-select=""
+                id="withdrawal-status"
+              >
+                <option value="all">All statuses</option>
+                <option value="pending">Pending</option>
+                <option value="review">Under review</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+              </select>
+            </div>
+            <div class="admin-withdrawals-filter">
+              <label for="withdrawal-eligibility">Eligibility</label>
+              <select
+                aria-label="Filter by eligibility"
+                data-ui-select=""
+                id="withdrawal-eligibility"
+              >
+                <option value="all">All eligibility</option>
+                <option value="eligible">Eligible</option>
+                <option value="review">Needs review</option>
+              </select>
+            </div>
+          </section>
+          <section
+            aria-labelledby="withdrawal-table-heading"
+            class="admin-withdrawals-directory"
+          >
+            <div class="admin-withdrawals-table-heading">
+              <div>
+                <p class="admin-section-eyebrow">Request queue</p>
+                <h2 id="withdrawal-table-heading">Withdrawal requests</h2>
+              </div>
+              <span>Loading…</span>
+            </div>
+            <div
+              aria-label="Withdrawal requests"
+              class="admin-withdrawals-table-scroll"
+              role="region"
+              tabindex="0"
+            >
+              <table class="admin-withdrawals-table">
+                <thead>
+                  <tr>
+                    <th scope="col">User</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Requested</th>
+                    <th scope="col">Eligibility</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="7" class="admin-table-empty">
+                      Loading live withdrawal requests…
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section
+            aria-labelledby="withdrawal-guidance-title"
+            class="admin-withdrawal-guidance"
+          >
+            <div>
+              <p class="admin-section-eyebrow">Review guidance</p>
+              <h2 id="withdrawal-guidance-title">Before approving a request</h2>
+              <p>
+                Review the account against the withdrawal requirements in effect
+                at the time of the request.
+              </p>
+            </div>
+            <ul>
+              <li>Available credited balance</li>
+              <li>Account standing</li>
+              <li>Account age requirements</li>
+              <li>Required verification</li>
+              <li>Suspicious or invalid activity</li>
+            </ul>
+          </section>
+        </main>
+
+        <div
+          aria-hidden="true"
+          aria-labelledby="admin-withdrawal-review-title"
+          class="admin-operation-drawer"
+          id="admin-withdrawal-dialog"
+        >
+          <section
+            aria-modal="true"
+            class="admin-operation-panel"
+            role="dialog"
+          >
+            <div class="admin-operation-head admin-withdrawal-review-heading">
+              <div>
+                <p class="admin-section-eyebrow">Withdrawal review</p>
+                <h2 id="admin-withdrawal-review-title">Review request</h2>
+              </div>
+              <button
+                aria-label="Close review"
+                class="admin-withdrawal-review-close"
+                id="admin-withdrawal-review-close"
+                type="button"
+              >
+                ×
+              </button>
+            </div>
+            <div class="admin-operation-body">
+              <div class="admin-withdrawal-review-grid">
+                <div>
+                  <span>User</span
+                  ><strong id="admin-withdrawal-review-user">—</strong
+                  ><small id="admin-withdrawal-review-email">—</small>
+                </div>
+                <div>
+                  <span>Requested</span
+                  ><strong id="admin-withdrawal-review-amount">$0.00</strong>
+                </div>
+                <div>
+                  <span>Payout</span
+                  ><strong id="admin-withdrawal-review-network">—</strong
+                  ><small id="admin-withdrawal-review-address">—</small>
+                </div>
+                <div>
+                  <span>Status</span
+                  ><strong id="admin-withdrawal-review-status">—</strong>
+                </div>
+              </div>
+              <label
+                class="admin-withdrawal-review-field"
+                for="admin-withdrawal-transaction"
+                ><span
+                  >Transaction reference
+                  <em>required only when marking paid</em></span
+                ><input
+                  autocomplete="off"
+                  id="admin-withdrawal-transaction"
+                  type="text"
+              /></label>
+              <label
+                class="admin-withdrawal-review-field"
+                for="admin-withdrawal-note"
+                ><span>Internal note</span
+                ><textarea id="admin-withdrawal-note" rows="3"></textarea>
+              </label>
+              <p
+                aria-live="polite"
+                class="admin-withdrawal-review-message"
+                id="admin-withdrawal-review-message"
+              ></p>
+              <div class="admin-withdrawal-review-actions">
+                <button
+                  class="admin-withdrawal-review-secondary"
+                  data-withdrawal-action="reject"
+                  type="button"
+                >
+                  Reject</button
+                ><button
+                  class="admin-withdrawal-review-secondary"
+                  data-withdrawal-action="approve"
+                  type="button"
+                >
+                  Approve</button
+                ><button
+                  class="admin-withdrawal-review-primary"
+                  data-withdrawal-action="paid"
+                  type="button"
+                >
+                  Mark paid
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

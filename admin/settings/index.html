@@ -1,0 +1,543 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <title>Settings — UIORI Admin</title>
+    <meta content="noindex,nofollow" name="robots" />
+    <meta
+      content="View UIORI platform configuration, integrations, reward safeguards, and operational status."
+      name="description"
+    />
+    <link href="https://uiori.com/admin/settings/" rel="canonical" />
+    <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link
+      href="/assets/img/favicon-32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/assets/img/favicon-180.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script
+      src="/assets/js/components/app-navigation.js"
+      type="module"
+    ></script>
+    <script src="/assets/js/pages/admin-data.js" type="module"></script>
+  </head>
+  <body class="app-body admin-body admin-auth-loading">
+    <div class="admin-layout">
+      <aside aria-label="Admin sidebar" class="admin-sidebar">
+        <a aria-label="UIORI home" class="admin-brand" href="/">
+          UIORI<span>.</span>
+        </a>
+        <p class="admin-sidebar-label">Administration</p>
+        <nav aria-label="Admin navigation" class="admin-navigation">
+          <a class="admin-nav-link" href="/admin/">
+            <svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24">
+              <rect height="7" rx="1.5" width="7" x="3" y="3"></rect>
+              <rect height="7" rx="1.5" width="7" x="14" y="3"></rect>
+              <rect height="7" rx="1.5" width="7" x="3" y="14"></rect>
+              <rect height="7" rx="1.5" width="7" x="14" y="14"></rect>
+            </svg>
+            <span>Overview</span>
+          </a>
+          <a class="admin-nav-link" href="/admin/users/">
+            <svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>Users</span>
+          </a>
+          <a class="admin-nav-link" href="/admin/withdrawals/">
+            <svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24">
+              <path d="M12 3v12"></path>
+              <path d="m7 10 5 5 5-5"></path>
+              <path d="M5 21h14"></path>
+            </svg>
+            <span>Withdrawals</span>
+          </a>
+          <a class="admin-nav-link" href="/admin/reviews/">
+            <svg
+              aria-hidden="true"
+              class="admin-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+              ></path>
+              <path d="M12 8v4"></path>
+              <path d="M12 16h.01"></path>
+            </svg>
+            <span>Reviews</span>
+          </a>
+          <a aria-current="page" class="admin-nav-link" href="/admin/settings/">
+            <svg
+              aria-hidden="true"
+              class="admin-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+              ></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span>Settings</span>
+          </a>
+        </nav>
+        <div class="admin-sidebar-bottom">
+          <a
+            class="admin-nav-link admin-logout-link"
+            data-uiori-admin-logout=""
+            href="/admin/login/"
+          >
+            <svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <path d="M16 17l5-5-5-5"></path>
+              <path d="M21 12H9"></path>
+            </svg>
+            <span>Log out</span>
+          </a>
+        </div>
+      </aside>
+      <div class="admin-main">
+        <header class="admin-mobile-topbar">
+          <a aria-label="UIORI home" class="admin-brand" href="/">
+            UIORI<span>.</span>
+          </a>
+          <button
+            aria-controls="app-navigation-drawer"
+            aria-expanded="false"
+            aria-label="Open admin navigation"
+            class="admin-menu-toggle app-menu-toggle"
+            type="button"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </header>
+        <dialog
+          aria-label="Admin navigation"
+          class="app-drawer"
+          id="app-navigation-drawer"
+        >
+          <div class="admin-drawer-panel app-drawer-panel">
+            <nav aria-label="Admin navigation" class="admin-navigation">
+              <a class="admin-nav-link" href="/admin/">
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <rect height="7" rx="1.5" width="7" x="3" y="3"></rect>
+                  <rect height="7" rx="1.5" width="7" x="14" y="3"></rect>
+                  <rect height="7" rx="1.5" width="7" x="3" y="14"></rect>
+                  <rect height="7" rx="1.5" width="7" x="14" y="14"></rect>
+                </svg>
+                <span>Overview</span>
+              </a>
+              <a class="admin-nav-link" href="/admin/users/">
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Users</span>
+              </a>
+              <a class="admin-nav-link" href="/admin/withdrawals/">
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M12 3v12"></path>
+                  <path d="m7 10 5 5 5-5"></path>
+                  <path d="M5 21h14"></path>
+                </svg>
+                <span>Withdrawals</span>
+              </a>
+              <a class="admin-nav-link" href="/admin/reviews/">
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                  ></path>
+                  <path d="M12 8v4"></path>
+                  <path d="M12 16h.01"></path>
+                </svg>
+                <span>Reviews</span>
+              </a>
+              <a
+                aria-current="page"
+                class="admin-nav-link"
+                href="/admin/settings/"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+                  ></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span>Settings</span>
+              </a>
+            </nav>
+            <div class="admin-sidebar-bottom">
+              <a
+                class="admin-nav-link admin-logout-link"
+                data-uiori-admin-logout=""
+                href="/admin/login/"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="admin-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <path d="M16 17l5-5-5-5"></path>
+                  <path d="M21 12H9"></path>
+                </svg>
+                <span>Log out</span>
+              </a>
+            </div>
+          </div>
+        </dialog>
+        <main class="admin-content admin-settings-content" id="main-content">
+          <header class="admin-topbar">
+            <div class="admin-page-heading">
+              <p class="admin-heading-eyebrow">Platform operations</p>
+              <h1>Settings</h1>
+              <p>Live platform configuration and integration status.</p>
+            </div>
+            <div aria-label="Admin account" class="admin-account-indicator">
+              <svg aria-hidden="true" viewbox="0 0 24 24">
+                <path
+                  d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
+                ></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <span>Admin</span>
+            </div>
+          </header>
+          <div class="admin-settings-layout">
+            <section
+              aria-labelledby="admin-integration-title"
+              class="admin-settings-section"
+            >
+              <div class="admin-settings-heading">
+                <span aria-hidden="true" class="admin-settings-icon">
+                  <svg viewbox="0 0 24 24">
+                    <path d="M8 12h8"></path>
+                    <path d="M12 8v8"></path>
+                    <circle cx="12" cy="12" r="9"></circle>
+                  </svg>
+                </span>
+                <div>
+                  <h2 id="admin-integration-title">Integrations</h2>
+                  <p>External services required by the platform.</p>
+                </div>
+              </div>
+              <dl class="admin-settings-list">
+                <div>
+                  <dt>
+                    <strong>Supabase</strong>
+                    <span>Authentication, database, and platform backend</span>
+                  </dt>
+                  <dd>
+                    <span
+                      class="admin-setting-state is-decided"
+                      data-uiori-integration="supabase"
+                    >
+                      <i></i>
+                      Connected
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>
+                    <strong>Google sign-in</strong>
+                    <span>Google OAuth sign-in</span>
+                  </dt>
+                  <dd>
+                    <span
+                      class="admin-setting-state is-planned"
+                      data-uiori-integration="google"
+                    >
+                      <i></i>
+                      Needs setup
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>
+                    <strong>Contact email delivery</strong>
+                    <span
+                      >Zoho SMTP notifications from the public contact
+                      form</span
+                    >
+                  </dt>
+                  <dd>
+                    <span
+                      class="admin-setting-state is-planned"
+                      data-uiori-integration="contact"
+                    >
+                      <i></i>
+                      SMTP secret pending
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>
+                    <strong>Earning connection</strong>
+                    <span>Provider connection and participation pipeline</span>
+                  </dt>
+                  <dd>
+                    <span
+                      class="admin-setting-state is-planned"
+                      data-uiori-integration="earning"
+                    >
+                      <i></i>
+                      Provider pending
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>
+                    <strong>User payout handling</strong>
+                    <span>Withdrawal destination and payout processing</span>
+                  </dt>
+                  <dd>
+                    <span
+                      class="admin-setting-state is-decided"
+                      data-uiori-integration="payout"
+                    >
+                      <i></i>
+                      Ready
+                    </span>
+                  </dd>
+                </div>
+              </dl>
+            </section>
+            <section
+              aria-labelledby="admin-reward-economics-title"
+              class="admin-settings-section"
+            >
+              <div class="admin-settings-heading">
+                <span aria-hidden="true" class="admin-settings-icon">
+                  <svg class="preview-icon" viewbox="0 0 24 24">
+                    <path
+                      d="M3 11h3.75a2 2 0 0 1 1.6.8l.45.6a4 4 0 0 0 6.4 0l.45-.6a2 2 0 0 1 1.6-.8H21"
+                    ></path>
+                    <path d="M3 7h18"></path>
+                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                  </svg>
+                </span>
+                <div>
+                  <h2 id="admin-reward-economics-title">Reward economics</h2>
+                  <p>
+                    How funded provider revenue is separated before user credits
+                    are created.
+                  </p>
+                </div>
+              </div>
+              <dl class="admin-settings-list">
+                <div>
+                  <dt>
+                    <strong>UIORI share</strong>
+                    <span
+                      >Reserved for platform operations from each funded revenue
+                      period.</span
+                    >
+                  </dt>
+                  <dd>
+                    <span class="admin-setting-state is-decided">
+                      <i></i>
+                      60%
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>
+                    <strong>Qualified-user reward pool</strong>
+                    <span
+                      >Reserved funded amount distributed to qualified
+                      participants for that period.</span
+                    >
+                  </dt>
+                  <dd>
+                    <span class="admin-setting-state is-decided">
+                      <i></i>
+                      40%
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>
+                    <strong>Allocation basis</strong>
+                    <span
+                      >Each qualified user receives a proportional share based
+                      on Contribution Points recorded inside the revenue
+                      period.</span
+                    >
+                  </dt>
+                  <dd>
+                    <span class="admin-setting-state is-decided">
+                      <i></i>
+                      Proportional
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>
+                    <strong>Revenue periods</strong>
+                    <span data-uiori-pool-detail
+                      >No funded provider revenue has been recorded yet.</span
+                    >
+                  </dt>
+                  <dd>
+                    <span
+                      class="admin-setting-state is-planned"
+                      data-uiori-pool-periods
+                    >
+                      <i></i>
+                      Waiting for provider
+                    </span>
+                  </dd>
+                </div>
+              </dl>
+            </section>
+            <section
+              aria-labelledby="admin-withdrawal-config-title"
+              class="admin-settings-section"
+            >
+              <div class="admin-settings-heading">
+                <span aria-hidden="true" class="admin-settings-icon">
+                  <svg viewbox="0 0 24 24">
+                    <path d="M12 3v12"></path>
+                    <path d="m7 10 5 5 5-5"></path>
+                    <path d="M5 21h14"></path>
+                  </svg>
+                </span>
+                <div>
+                  <h2 id="admin-withdrawal-config-title">
+                    Withdrawal configuration
+                  </h2>
+                  <p>
+                    Server-enforced payout rules used for withdrawal
+                    eligibility.
+                  </p>
+                </div>
+              </div>
+              <dl class="admin-settings-list">
+                <div>
+                  <dt>
+                    <strong>Minimum withdrawal</strong>
+                    <span
+                      >Only available credited balance counts toward the
+                      threshold.</span
+                    >
+                  </dt>
+                  <dd>
+                    <span class="admin-setting-state is-decided">
+                      <i></i>
+                      $5.00
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>
+                    <strong>User payout asset</strong>
+                    <span>USDT with a user-confirmed receiving address.</span>
+                  </dt>
+                  <dd>
+                    <span class="admin-setting-state is-decided">
+                      <i></i>
+                      TRC20 / BEP20
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>
+                    <strong>Payout schedule</strong>
+                    <span
+                      >Approved requests are processed in a monthly payout
+                      batch.</span
+                    >
+                  </dt>
+                  <dd>
+                    <span class="admin-setting-state is-decided">
+                      <i></i>
+                      Monthly
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>
+                    <strong>Payout-address safety period</strong>
+                    <span
+                      >New or changed payout destinations cannot be used
+                      immediately.</span
+                    >
+                  </dt>
+                  <dd>
+                    <span class="admin-setting-state is-decided">
+                      <i></i>
+                      24 hours
+                    </span>
+                  </dd>
+                </div>
+              </dl>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

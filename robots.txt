@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /auth/
+Disallow: /dashboard/
+Disallow: /earn/
+Disallow: /wallet/
+Disallow: /settings/
+Disallow: /login/
+Disallow: /signup/
+Disallow: /forgot-password/
 
 Sitemap: https://uiori.com/sitemap.xml

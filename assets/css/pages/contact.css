@@ -1,0 +1,235 @@
+.contact-hero {
+  padding: 84px 0 68px;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+.contact-hero-copy {
+  max-width: 720px;
+}
+
+.contact-hero-copy h1 {
+  font-size: clamp(2.9rem, 5.8vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.065em;
+}
+
+.contact-hero-copy > p:last-child {
+  max-width: 610px;
+  margin-top: 22px;
+  color: #52525b;
+  font-size: 1.02rem;
+  line-height: 1.74;
+}
+
+.contact-section {
+  padding: 72px 0 92px;
+}
+
+.contact-form-wrap {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.contact-form {
+  padding-top: 30px;
+  border-top: 1px solid rgba(17, 24, 39, 0.1);
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.contact-row + .contact-field,
+.contact-field + .contact-actions {
+  margin-top: 22px;
+}
+
+.contact-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #27272a;
+  font-size: 0.84rem;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.contact-field input,
+.contact-field textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid rgba(17, 24, 39, 0.14);
+  border-radius: 11px;
+  color: var(--color-ink);
+  background: #ffffff;
+  font: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease,
+    background 0.16s ease;
+}
+
+.contact-field input {
+  min-height: 50px;
+  padding: 0 13px;
+}
+
+.contact-field textarea {
+  min-height: 176px;
+  padding: 13px;
+  line-height: 1.65;
+  resize: vertical;
+}
+
+.contact-field input:hover,
+.contact-field textarea:hover {
+  border-color: rgba(17, 24, 39, 0.2);
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  border-color: rgba(109, 76, 245, 0.42);
+  box-shadow: 0 0 0 3px rgba(109, 76, 245, 0.08);
+  background: #ffffff;
+}
+
+.contact-field .ui-select-button {
+  min-height: 50px;
+}
+
+.contact-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(17, 24, 39, 0.08);
+}
+
+.contact-account-note {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 13px;
+  border: 1px solid rgba(109, 76, 245, 0.10);
+  border-radius: 11px;
+  color: #63636d;
+  background: rgba(109, 76, 245, 0.035);
+}
+
+.contact-account-note svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  margin-top: 1px;
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-account-note p {
+  margin: 0;
+  color: inherit;
+  font-size: 0.79rem;
+  line-height: 1.55;
+}
+
+.contact-actions .button {
+  flex: 0 0 auto;
+}
+
+
+.contact-honeypot {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+.contact-status {
+  min-height: 1.35rem;
+  margin-top: 16px;
+  color: #73737d;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.contact-status[data-state="success"] {
+  color: #176f45;
+}
+
+.contact-status[data-state="error"] {
+  color: #b42318;
+}
+
+.contact-actions .button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+@media (max-width: 700px) {
+  .contact-hero {
+    padding: 62px 0 56px;
+  }
+
+  .contact-section {
+    padding: 54px 0 68px;
+  }
+
+  .contact-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .contact-row .contact-field + .contact-field {
+    margin-top: 22px;
+  }
+}
+
+@media (max-width: 520px) {
+  .contact-hero {
+    padding: 48px 0 48px;
+  }
+
+  .contact-hero-copy h1 {
+    font-size: clamp(2.55rem, 13vw, 3.5rem);
+  }
+
+  .contact-hero-copy > p:last-child {
+    font-size: 0.96rem;
+  }
+
+  .contact-section {
+    padding: 44px 0 58px;
+  }
+
+  .contact-form {
+    padding-top: 24px;
+  }
+
+  .contact-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-account-note {
+    width: 100%;
+  }
+
+  .contact-actions .button {
+    width: fit-content;
+    max-width: 100%;
+    align-self: flex-end;
+  }
+}

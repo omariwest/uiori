@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Verify your UIORI account</title>
+    <meta content="Verify a secure UIORI account link." name="description" />
+    <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link
+      href="/assets/img/favicon-32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/assets/img/favicon-180.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script src="/assets/js/pages/auth-confirm.js" type="module"></script>
+  </head>
+  <body class="auth-page">
+    <header class="auth-header">
+      <div class="container auth-header-inner">
+        <a aria-label="UIORI home" class="wordmark" href="/"
+          >UIORI<span class="wordmark-period">.</span></a
+        >
+      </div>
+    </header>
+    <main class="auth-main">
+      <section aria-labelledby="confirm-title" class="auth-panel">
+        <div class="auth-heading">
+          <span aria-hidden="true" class="auth-heading-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>
+          </span>
+          <h1 id="confirm-title">Secure account verification</h1>
+          <p>Keep this page open while UIORI verifies your secure sign-in.</p>
+        </div>
+        <p
+          aria-live="polite"
+          class="auth-message auth-confirm-message"
+          data-confirm-status
+        >
+          Checking your secure link…
+        </p>
+        <p class="auth-confirm-support" data-confirm-support hidden>
+          Need help?
+          <a href="mailto:support@uiori.com">Contact UIORI Support</a>.
+        </p>
+      </section>
+    </main>
+    <footer class="auth-footer"><span>© 2026 UIORI</span></footer>
+  </body>
+</html>

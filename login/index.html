@@ -1,0 +1,203 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <title>Log in to UIORI</title>
+    <meta content="noindex,nofollow" name="robots" />
+    <meta
+      content="Log in to continue to your UIORI account."
+      name="description"
+    />
+    <link href="https://uiori.com/login/" rel="canonical" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script src="/assets/js/pages/auth.js" type="module"></script>
+    <script
+      src="/assets/js/components/public-account.js"
+      type="module"
+    ></script>
+  </head>
+  <body class="auth-page">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a aria-label="UIORI home" class="wordmark" href="/"
+          >UIORI<span class="wordmark-period">.</span></a
+        >
+        <nav aria-label="Main navigation" class="desktop-navigation">
+          <a href="/how-it-works/">How it works</a>
+          <a href="/rewards/">Rewards</a> <a href="/safety/">Safety</a>
+          <a href="/faq/">FAQ</a>
+        </nav>
+        <div class="header-actions">
+          <a class="login-link" href="/login/">Log in</a>
+          <a class="button button-dark button-small" href="/signup/"
+            >Start earning</a
+          >
+        </div>
+        <button
+          aria-controls="mobile-navigation"
+          aria-expanded="false"
+          aria-label="Open menu"
+          class="menu-toggle"
+          type="button"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div
+        aria-hidden="true"
+        class="mobile-menu-backdrop"
+        data-nav-backdrop=""
+      ></div>
+      <nav
+        aria-label="Mobile navigation"
+        class="mobile-menu"
+        id="mobile-navigation"
+      >
+        <div class="mobile-navigation-links">
+          <a href="/how-it-works/"
+            ><svg aria-hidden="true" class="preview-icon" viewbox="0 0 24 24">
+              <path d="M15.5 10 13 7.5 15.5 5"></path>
+              <path
+                d="M15.861 14A14.5 14.5 0 0 1 12 22a14.48 14.48 0 0 1 0-20 10 10 0 1 0 9.888 11.5"
+              ></path>
+              <path d="M19.5 5 22 7.5 19.5 10"></path>
+              <path d="M2 12h8.5"></path></svg
+            ><span>How it works</span></a
+          ><a href="/rewards/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 18V6"></path></svg
+            ><span>Rewards</span></a
+          ><a href="/safety/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <path
+                d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
+              ></path>
+              <path d="m9 12 2 2 4-4"></path></svg
+            ><span>Safety</span></a
+          ><a href="/faq/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.1 9a3 3 0 1 1 5.8 1c0 2-3 2-3 4"></path>
+              <path d="M12 18h.01"></path></svg
+            ><span>FAQ</span></a
+          >
+        </div>
+        <div aria-hidden="true" class="mobile-menu-divider"></div>
+        <div class="mobile-menu-actions">
+          <a class="mobile-login-link" href="/login/">Log in</a>
+          <a class="mobile-primary-link" href="/signup/">Start earning</a>
+        </div>
+      </nav>
+    </header>
+    <main class="auth-main">
+      <section aria-labelledby="login-title" class="auth-panel">
+        <div class="auth-heading">
+          <span aria-hidden="true" class="auth-brand-mark"
+            ><img alt="" aria-hidden="true" src="/assets/img/favicon.svg"
+          /></span>
+          <h1 id="login-title">Welcome back</h1>
+          <p>Log in to continue to your UIORI account.</p>
+        </div>
+        <button
+          aria-label="Continue with Google"
+          class="auth-google-button"
+          data-google-auth
+          id="login-google-btn"
+          type="button"
+        >
+          <img alt="" src="/assets/img/google-icon.svg" />
+        </button>
+        <div class="auth-divider" data-google-auth>
+          <span>or continue with email</span>
+        </div>
+        <form class="auth-form" id="login-form">
+          <div class="auth-field">
+            <label for="email-address"> Email address </label>
+            <input
+              autocomplete="email"
+              class="auth-input"
+              id="email-address"
+              name="email"
+              placeholder="you@example.com"
+              required=""
+              type="email"
+            />
+          </div>
+          <div class="auth-field">
+            <label for="password">Password</label>
+            <div class="password-control">
+              <input
+                autocomplete="current-password"
+                class="auth-input"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                required=""
+                type="password"
+              />
+              <button
+                aria-controls="password"
+                aria-label="Show password"
+                class="password-toggle"
+                data-password-label="password"
+                data-password-toggle=""
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="password-icon password-icon-hidden"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="m3 3 18 18"></path>
+                  <path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"></path>
+                  <path
+                    d="M9.9 5.1A10.9 10.9 0 0 1 12 5c5 0 9 5 9 7a11.7 11.7 0 0 1-3.2 3.9"
+                  ></path>
+                  <path
+                    d="M6.6 6.6C4.4 8 3 10.1 3 12c0 2 4 7 9 7a10.7 10.7 0 0 0 4.4-.9"
+                  ></path>
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="password-icon password-icon-visible"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"
+                  ></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+            <p class="auth-forgot-row">
+              <a href="/forgot-password/">Forgot your password?</a>
+            </p>
+          </div>
+          <button class="button button-accent auth-submit" type="submit">
+            Log in
+          </button>
+          <p aria-live="polite" class="auth-message" data-auth-message></p>
+        </form>
+        <p class="auth-switch">
+          Don’t have an account yet?
+          <a href="/signup/">Sign up</a>
+        </p>
+      </section>
+    </main>
+    <footer class="auth-footer">
+      <span>© 2026 UIORI</span>
+    </footer>
+  </body>
+</html>

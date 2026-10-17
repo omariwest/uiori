@@ -1,0 +1,501 @@
+.rewards-hero {
+  padding: 82px 0 96px;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+.rewards-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.42fr);
+  align-items: end;
+  gap: clamp(52px, 9vw, 128px);
+}
+
+.rewards-hero-copy {
+  max-width: 790px;
+}
+
+.rewards-hero-copy h1 {
+  max-width: 820px;
+  font-size: clamp(2.9rem, 5.8vw, 5.2rem);
+  line-height: 0.99;
+  letter-spacing: -0.065em;
+}
+
+.rewards-hero-description {
+  max-width: 650px;
+  margin-top: 24px;
+  color: #52525b;
+  font-size: 1.04rem;
+  line-height: 1.75;
+}
+
+.rewards-hero-actions,
+.rewards-final-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 22px;
+}
+
+.rewards-hero-actions {
+  margin-top: 30px;
+}
+
+.rewards-hero-actions .button svg,
+.rewards-final-actions .button svg,
+.rewards-policy-link svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rewards-text-link,
+.rewards-policy-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #374151;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    color 0.16s ease,
+    gap 0.16s ease;
+}
+
+.rewards-text-link:hover,
+.rewards-policy-link:hover {
+  gap: 11px;
+  color: var(--color-accent);
+}
+
+.rewards-hero-balance {
+  padding: 8px 0 8px 26px;
+  border-left: 1px solid rgba(17, 24, 39, 0.13);
+}
+
+.rewards-hero-balance span,
+.rewards-hero-balance small {
+  display: block;
+  color: #71717a;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.rewards-hero-balance strong {
+  display: block;
+  margin: 7px 0 5px;
+  color: var(--color-ink);
+  font-size: clamp(2.2rem, 4vw, 3.15rem);
+  font-weight: 650;
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.rewards-split,
+.rewards-milestone-grid,
+.rewards-rules-grid {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(52px, 9vw, 120px);
+}
+
+.rewards-section-intro {
+  max-width: 470px;
+}
+
+.rewards-section-intro h2 {
+  margin-bottom: 16px;
+}
+
+.rewards-section-intro > p:last-child {
+  color: #71717a;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.rewards-type-list {
+  border-top: 1px solid rgba(17, 24, 39, 0.09);
+}
+
+.rewards-type-row {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 17px;
+  align-items: start;
+  padding: 24px 0 25px;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.09);
+}
+
+.rewards-type-icon {
+  display: flex;
+  width: 46px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(109, 76, 245, 0.14);
+  border-radius: 15px;
+  color: var(--color-accent);
+  background: rgba(109, 76, 245, 0.07);
+}
+
+.rewards-type-icon svg,
+.rewards-withdrawal-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rewards-type-row:nth-child(2) .rewards-type-icon {
+  color: var(--color-accent-blue);
+  border-color: rgba(63, 140, 255, 0.17);
+  background: rgba(63, 140, 255, 0.07);
+}
+
+.rewards-type-row:nth-child(3) .rewards-type-icon {
+  color: var(--color-accent-pink);
+  border-color: rgba(233, 93, 178, 0.17);
+  background: rgba(233, 93, 178, 0.07);
+}
+
+.rewards-type-row:nth-child(4) .rewards-type-icon {
+  color: var(--color-accent-warm);
+  border-color: rgba(245, 158, 11, 0.18);
+  background: rgba(245, 158, 11, 0.07);
+}
+
+.rewards-type-row h3 {
+  margin: 1px 0 6px;
+  color: var(--color-ink);
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.rewards-type-row p {
+  max-width: 620px;
+  color: #71717a;
+  font-size: 0.92rem;
+  line-height: 1.66;
+}
+
+.rewards-milestone {
+  border-top: 1px solid rgba(17, 24, 39, 0.06);
+  border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+  background: #fafbfc;
+}
+
+.rewards-progress-example {
+  align-self: center;
+  padding: 4px 0;
+}
+
+.rewards-progress-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 23px;
+}
+
+.rewards-progress-head span {
+  display: block;
+  margin-bottom: 5px;
+  color: #71717a;
+  font-size: 0.76rem;
+}
+
+.rewards-progress-head strong {
+  color: var(--color-ink);
+  font-size: 1.35rem;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+}
+
+.rewards-progress-next {
+  text-align: right;
+}
+
+.rewards-progress-example .progress-track {
+  height: 5px;
+}
+
+.rewards-milestone-path {
+  position: relative;
+  margin-top: 4px;
+  padding-top: 4px;
+}
+
+.rewards-milestone-line {
+  position: absolute;
+  top: 6px;
+  right: 8.333%;
+  left: 8.333%;
+  height: 5px;
+  overflow: visible;
+  border-radius: 999px;
+  background: #e9edf2;
+}
+
+.rewards-milestone-line > span {
+  display: block;
+  width: 20%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-accent);
+}
+
+.rewards-milestone-scale {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rewards-milestone-scale li {
+  position: relative;
+  padding-top: 20px;
+  color: #a1a1aa;
+  font-size: 0.68rem;
+  text-align: center;
+}
+
+.rewards-milestone-scale li::before {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #d4d4d8;
+  content: "";
+  transform: translateX(-50%);
+}
+
+.rewards-milestone-scale .is-past,
+.rewards-milestone-scale .is-current {
+  color: #52525b;
+}
+
+.rewards-milestone-scale .is-past::before {
+  background: rgba(109, 76, 245, 0.45);
+}
+
+.rewards-milestone-scale .is-current {
+  color: var(--color-accent);
+  font-weight: 650;
+}
+
+.rewards-milestone-scale .is-current::before {
+  top: 4.5px;
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 0 rgba(109, 76, 245, 0.25);
+  animation: milestone-heartbeat 1s ease-out infinite;
+}
+
+.rewards-milestone-scale .is-next {
+  color: #667085;
+  font-weight: 650;
+}
+
+.rewards-milestone-scale .is-next::before {
+  background: rgba(109, 76, 245, 0.32);
+}
+
+@keyframes milestone-heartbeat {
+  0%, 45%, 100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(109, 76, 245, 0.18);
+  }
+  62% {
+    transform: translateX(-50%) scale(1.28);
+    box-shadow: 0 0 0 6px rgba(109, 76, 245, 0.08);
+  }
+  76% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 0 2px rgba(109, 76, 245, 0.04);
+  }
+}
+
+.rewards-example-note {
+  margin-top: 17px;
+  color: #a1a1aa;
+  font-size: 0.69rem;
+  line-height: 1.55;
+}
+
+.rewards-rules-copy {
+  max-width: 700px;
+}
+
+.rewards-rules-copy > p {
+  color: #52525b;
+  font-size: 1rem;
+  line-height: 1.78;
+}
+
+.rewards-rules-copy > p + p {
+  margin-top: 15px;
+}
+
+.rewards-policy-link {
+  margin-top: 24px;
+  color: var(--color-accent);
+}
+
+.rewards-withdrawal {
+  padding-top: 58px;
+  padding-bottom: 58px;
+  border-top: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+.rewards-withdrawal-inner {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: center;
+}
+
+.rewards-withdrawal-icon {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(109, 76, 245, 0.14);
+  border-radius: 50%;
+  color: var(--color-accent);
+}
+
+.rewards-withdrawal h2 {
+  margin-bottom: 8px;
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+}
+
+.rewards-withdrawal p:last-child {
+  max-width: 720px;
+  color: #71717a;
+  font-size: 0.92rem;
+  line-height: 1.68;
+}
+
+.rewards-withdrawal-link {
+  white-space: nowrap;
+}
+
+.rewards-final {
+  padding: 68px 0 76px;
+  border-top: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+.rewards-final-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 32px;
+}
+
+.rewards-final h2 {
+  max-width: 760px;
+}
+
+.rewards-final-actions {
+  justify-content: flex-end;
+  padding-bottom: 4px;
+}
+
+@media (max-width: 900px) {
+  .rewards-hero {
+    padding: 64px 0 78px;
+  }
+
+  .rewards-hero-grid,
+  .rewards-split,
+  .rewards-milestone-grid,
+  .rewards-rules-grid,
+  .rewards-final-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .rewards-hero-grid {
+    gap: 38px;
+  }
+
+  .rewards-hero-balance {
+    max-width: 420px;
+  }
+
+  .rewards-split,
+  .rewards-milestone-grid,
+  .rewards-rules-grid {
+    gap: 34px;
+  }
+
+  .rewards-section-intro {
+    max-width: 650px;
+  }
+
+  .rewards-final-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 680px) {
+  .rewards-hero {
+    padding: 48px 0 62px;
+  }
+
+  .rewards-hero-copy h1 {
+    font-size: clamp(2.55rem, 12vw, 3.55rem);
+  }
+
+  .rewards-hero-description {
+    margin-top: 20px;
+    font-size: 0.96rem;
+  }
+
+  .rewards-type-row {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 14px;
+    padding: 21px 0 22px;
+  }
+
+
+  .rewards-progress-head {
+    gap: 18px;
+  }
+
+  .rewards-milestone-scale {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    row-gap: 0;
+  }
+
+  .rewards-milestone-scale li {
+    font-size: 0.6rem;
+  }
+
+  .rewards-withdrawal-inner {
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .rewards-withdrawal-link {
+    grid-column: 2;
+    margin-top: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rewards-milestone-scale .is-current::before { animation: none; }
+}

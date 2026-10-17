@@ -1,0 +1,833 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <title>Earn — UIORI</title>
+    <meta content="noindex,nofollow" name="robots" />
+    <meta
+      content="Set up earning, control your earning status, and view how eligible activity contributes to progress and credited rewards."
+      name="description"
+    />
+    <link href="https://uiori.com/earn/" rel="canonical" />
+    <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link
+      href="/assets/img/favicon-32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/assets/img/favicon-180.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script
+      src="/assets/js/components/app-navigation.js"
+      type="module"
+    ></script>
+    <script
+      src="/assets/js/components/account-access.js"
+      type="module"
+    ></script>
+    <script src="/assets/js/components/progress-data.js" type="module"></script>
+    <script src="/assets/js/pages/earning-activation.js" type="module"></script>
+  </head>
+  <body class="app-body app-auth-loading">
+    <div class="app-layout">
+      <aside aria-label="Account sidebar" class="app-sidebar">
+        <a aria-label="UIORI home" class="wordmark app-wordmark" href="/">
+          UIORI<span class="wordmark-period">.</span>
+        </a>
+        <div
+          class="app-member-card"
+          data-uiori-member-state="pending"
+          aria-label="Account membership status"
+        >
+          <div class="app-member-avatar">
+            <img
+              src="/assets/img/default-avatar.svg"
+              alt="Your profile photo"
+              data-uiori-avatar
+            />
+          </div>
+          <div class="app-member-copy">
+            <strong class="app-member-name" data-uiori-member-name></strong>
+            <span class="app-member-badge" data-uiori-member-badge>
+              <svg
+                aria-hidden="true"
+                viewbox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                ></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <span data-uiori-member-status></span>
+            </span>
+          </div>
+        </div>
+        <nav aria-label="Account navigation" class="app-navigation">
+          <a class="app-nav-link" href="/dashboard/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="1"></circle>
+              <circle cx="12" cy="12" r="10"></circle>
+            </svg>
+            <span>Overview</span>
+          </a>
+          <a aria-current="page" class="app-nav-link" href="/earn/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <path
+                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+              ></path>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 18V6"></path>
+            </svg>
+            <span>Earn</span>
+          </a>
+          <a class="app-nav-link" href="/wallet/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <path
+                d="M3 11h3.75a2 2 0 0 1 1.6.8l.45.6a4 4 0 0 0 6.4 0l.45-.6a2 2 0 0 1 1.6-.8H21"
+              ></path>
+              <path d="M3 7h18"></path>
+              <rect height="18" rx="2" width="18" x="3" y="3"></rect>
+            </svg>
+            <span>Wallet</span>
+          </a>
+          <a class="app-nav-link" href="/settings/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <path
+                d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+              ></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span>Settings</span>
+          </a>
+        </nav>
+        <div class="app-sidebar-bottom">
+          <a class="app-nav-link" href="/faq/">
+            <svg
+              aria-hidden="true"
+              class="app-nav-icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+            >
+              <path
+                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+              ></path>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" x2="12.01" y1="17" y2="17"></line>
+            </svg>
+            <span>Help</span>
+          </a>
+          <a
+            class="app-nav-link app-logout-link"
+            data-uiori-logout=""
+            href="/login/"
+          >
+            <svg aria-hidden="true" class="app-nav-icon" viewbox="0 0 24 24">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <path d="M16 17l5-5-5-5"></path>
+              <path d="M21 12H9"></path>
+            </svg>
+            <span>Log out</span>
+          </a>
+          <a class="app-back-link" href="/">
+            <span>Back to website</span>
+            <svg
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+              viewbox="0 0 24 24"
+            >
+              <path d="M7 17 17 7"></path>
+              <path d="M7 7h10v10"></path>
+            </svg>
+          </a>
+        </div>
+      </aside>
+      <div class="app-main">
+        <header class="app-mobile-topbar">
+          <a aria-label="UIORI home" class="wordmark app-wordmark" href="/">
+            UIORI<span class="wordmark-period">.</span>
+          </a>
+          <button
+            aria-controls="app-navigation-drawer"
+            aria-expanded="false"
+            aria-label="Open account navigation"
+            class="app-menu-toggle"
+            type="button"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </header>
+        <dialog
+          aria-label="Account navigation"
+          class="app-drawer"
+          id="app-navigation-drawer"
+        >
+          <div class="app-drawer-panel">
+            <div
+              class="app-member-card app-member-card--drawer"
+              data-uiori-member-state="pending"
+              aria-label="Account membership status"
+            >
+              <div class="app-member-avatar">
+                <img
+                  src="/assets/img/default-avatar.svg"
+                  alt="Your profile photo"
+                  data-uiori-avatar
+                />
+              </div>
+              <div class="app-member-copy">
+                <strong class="app-member-name" data-uiori-member-name></strong>
+                <span class="app-member-badge" data-uiori-member-badge>
+                  <svg
+                    aria-hidden="true"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                    ></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
+                  <span data-uiori-member-status></span>
+                </span>
+              </div>
+            </div>
+            <nav aria-label="Account navigation" class="app-navigation">
+              <a class="app-nav-link" href="/dashboard/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <circle cx="12" cy="12" r="1"></circle>
+                  <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+                <span>Overview</span>
+              </a>
+              <a aria-current="page" class="app-nav-link" href="/earn/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                  ></path>
+                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                  <path d="M12 18V6"></path>
+                </svg>
+                <span>Earn</span>
+              </a>
+              <a class="app-nav-link" href="/wallet/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    d="M3 11h3.75a2 2 0 0 1 1.6.8l.45.6a4 4 0 0 0 6.4 0l.45-.6a2 2 0 0 1 1.6-.8H21"
+                  ></path>
+                  <path d="M3 7h18"></path>
+                  <rect height="18" rx="2" width="18" x="3" y="3"></rect>
+                </svg>
+                <span>Wallet</span>
+              </a>
+              <a class="app-nav-link" href="/settings/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+                  ></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span>Settings</span>
+              </a>
+            </nav>
+            <div class="app-sidebar-bottom">
+              <a class="app-nav-link" href="/faq/">
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                  ></path>
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                  <line x1="12" x2="12.01" y1="17" y2="17"></line>
+                </svg>
+                <span>Help</span>
+              </a>
+              <a
+                class="app-nav-link app-logout-link"
+                data-uiori-logout=""
+                href="/login/"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="app-nav-icon"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <path d="M16 17l5-5-5-5"></path>
+                  <path d="M21 12H9"></path>
+                </svg>
+                <span>Log out</span>
+              </a>
+              <a class="app-back-link" href="/">
+                <span>Back to website</span>
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M7 17 17 7"></path>
+                  <path d="M7 7h10v10"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </dialog>
+        <main class="app-content" id="main-content">
+          <header class="app-topbar">
+            <div class="app-page-heading">
+              <p class="app-page-eyebrow">Earning</p>
+              <h1>Earn</h1>
+              <p>Set up earning and keep track of your progress.</p>
+            </div>
+            <div aria-label="Account" class="app-account-control">
+              <span aria-hidden="true" class="app-account-dot"></span>
+              <span>Account</span>
+            </div>
+          </header>
+          <section aria-labelledby="earning-title" class="earn-status">
+            <div class="earn-status-copy">
+              <div class="earn-status-heading">
+                <span aria-hidden="true" class="earn-status-icon">
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewbox="0 0 24 24"
+                  >
+                    <path d="M8 12h8"></path>
+                    <path d="M12 8v8"></path>
+                    <circle cx="12" cy="12" r="9"></circle>
+                  </svg>
+                </span>
+                <div>
+                  <p class="earn-label">Earning status</p>
+                  <h2 id="earning-title" data-uiori-earning-status>
+                    Not active
+                  </h2>
+                </div>
+              </div>
+              <p data-uiori-earn-status-copy>
+                Your account is ready. Complete the earning setup when you want
+                to begin. Nothing starts automatically.
+              </p>
+            </div>
+            <div class="earn-status-action">
+              <button
+                class="button button-dark"
+                id="earning-setup-button"
+                type="button"
+              >
+                Set up earning
+              </button>
+              <small id="earning-setup-note"
+                >Review what participation uses before anything opens.</small
+              >
+            </div>
+          </section>
+          <section aria-labelledby="earn-process-title" class="earn-process">
+            <div class="earn-section-heading">
+              <p class="earn-label">Getting started</p>
+              <h2 id="earn-process-title">
+                Three simple steps to start earning
+              </h2>
+            </div>
+            <ol class="earn-steps">
+              <li>
+                <span class="earn-step-number">01</span>
+                <div>
+                  <span aria-hidden="true" class="earn-step-icon">
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.8"
+                      viewbox="0 0 24 24"
+                    >
+                      <path d="M7 17 17 7"></path>
+                      <path d="M7 7h10v10"></path>
+                    </svg>
+                  </span>
+                  <h3>Review and choose</h3>
+                  <p>
+                    UIORI shows the participation details first. Nothing starts
+                    just because you have an account.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="earn-step-number">02</span>
+                <div>
+                  <span aria-hidden="true" class="earn-step-icon">
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.8"
+                      viewbox="0 0 24 24"
+                    >
+                      <rect height="16" rx="2" width="18" x="3" y="4"></rect>
+                      <path d="M3 9h18"></path>
+                      <path d="M8 6.5h.01"></path>
+                      <path d="M11 6.5h.01"></path>
+                    </svg>
+                  </span>
+                  <h3>Complete the Mellowtel setup</h3>
+                  <p>
+                    Continue to Mellowtel, install its companion extension, and
+                    make your separate opt-in choice.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="earn-step-number">03</span>
+                <div>
+                  <span aria-hidden="true" class="earn-step-icon">
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.8"
+                      viewbox="0 0 24 24"
+                    >
+                      <path
+                        d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
+                      ></path>
+                      <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+                  </span>
+                  <h3>Track your progress</h3>
+                  <p>
+                    After the connection is confirmed, watch points, streaks,
+                    milestones, and credited rewards from your dashboard.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </section>
+          <section class="earn-control" data-uiori-active-only>
+            <div class="earn-control-heading">
+              <span aria-hidden="true" class="earn-control-icon">
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                  viewbox="0 0 24 24"
+                >
+                  <path d="M12 2v20"></path>
+                  <path
+                    d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <p class="earn-label">Your choice</p>
+                <h2>You stay in control</h2>
+              </div>
+            </div>
+            <ul>
+              <li>Creating an account does not start earning.</li>
+              <li>You choose when earning is active.</li>
+              <li>You can turn earning off whenever you want.</li>
+              <li>Only credited earnings count as money.</li>
+            </ul>
+          </section>
+          <section aria-labelledby="earn-rewards-title" class="earn-rewards">
+            <div class="earn-section-heading">
+              <p class="earn-label">After you start</p>
+              <h2 id="earn-rewards-title">How earning appears in UIORI</h2>
+            </div>
+            <div aria-label="Reward flow" class="earn-flow">
+              <div>
+                <span>Eligible activity</span>
+              </div>
+              <svg
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewbox="0 0 24 24"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+              <div>
+                <span>Contribution Points</span>
+              </div>
+              <svg
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewbox="0 0 24 24"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+              <div>
+                <span>Progress</span>
+              </div>
+              <svg
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewbox="0 0 24 24"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+              <div>
+                <span>Credited earnings</span>
+              </div>
+            </div>
+            <p class="earn-flow-note">
+              Contribution Points represent progress. They are not automatically
+              cash.
+            </p>
+          </section>
+          <section
+            aria-labelledby="earn-preview-title"
+            class="earn-preview"
+            data-uiori-active-only
+          >
+            <div class="earn-section-heading">
+              <p class="earn-label">Before you begin</p>
+              <h2 id="earn-preview-title">Your starting state</h2>
+            </div>
+            <div class="earn-preview-row">
+              <div>
+                <span>Contribution Points</span>
+                <strong data-uiori-points>0</strong>
+              </div>
+              <div>
+                <span>Current streak</span>
+                <strong data-uiori-streak>0 days</strong>
+              </div>
+              <div>
+                <span>Level</span>
+                <strong data-uiori-level>1</strong>
+              </div>
+              <div>
+                <span>Credited earnings</span>
+                <strong data-uiori-balance>$0.00</strong>
+              </div>
+              <div>
+                <span>Next milestone</span>
+                <strong data-uiori-next-milestone>$5.00</strong>
+              </div>
+            </div>
+          </section>
+
+          <dialog
+            aria-labelledby="earning-activation-title"
+            class="earning-activation-dialog"
+            id="earning-activation-dialog"
+          >
+            <div class="earning-activation-card">
+              <div class="earning-activation-heading">
+                <span aria-hidden="true" class="earning-activation-icon">
+                  <svg viewbox="0 0 24 24">
+                    <path
+                      d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
+                    ></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
+                </span>
+                <div>
+                  <p class="earning-activation-eyebrow">Earning setup</p>
+                  <h2 id="earning-activation-title">
+                    Choose with the details in front of you
+                  </h2>
+                </div>
+              </div>
+              <p class="earning-activation-intro">
+                UIORI uses Mellowtel's separate companion-extension flow. Your
+                UIORI account alone never starts bandwidth sharing.
+              </p>
+              <div class="earning-activation-facts">
+                <div>
+                  <strong>Bandwidth &amp; device resources</strong>
+                  <span
+                    >Mellowtel may use a small portion of unused internet
+                    bandwidth and device resources after you opt in.</span
+                  >
+                </div>
+                <div>
+                  <strong>Public-web requests</strong>
+                  <span
+                    >Approved public-web requests may be routed through your
+                    connection, so destination sites can see your public IP as
+                    the request source.</span
+                  >
+                </div>
+                <div>
+                  <strong>Separate consent &amp; control</strong>
+                  <span
+                    >Mellowtel presents its own consent step and provides
+                    independent controls so you can opt out later.</span
+                  >
+                </div>
+                <div>
+                  <strong>UIORI rewards</strong>
+                  <span
+                    >Participation does not guarantee a fixed earning rate. Only
+                    amounts UIORI actually credits to your balance are
+                    money.</span
+                  >
+                </div>
+              </div>
+              <form
+                class="earning-activation-form"
+                id="earning-activation-form"
+              >
+                <label class="earning-activation-check">
+                  <input type="checkbox" name="resource" />
+                  <span
+                    >I understand that participation can use bandwidth and
+                    device resources.</span
+                  >
+                </label>
+                <label class="earning-activation-check">
+                  <input type="checkbox" name="public-ip" />
+                  <span
+                    >I understand that public-web requests can appear from my
+                    public IP address.</span
+                  >
+                </label>
+                <label class="earning-activation-check">
+                  <input type="checkbox" name="third-party" />
+                  <span
+                    >I understand that Mellowtel is a separate service with its
+                    own consent, permissions, privacy terms, and controls.</span
+                  >
+                </label>
+                <label class="earning-activation-check">
+                  <input type="checkbox" name="control" />
+                  <span
+                    >I understand that participation is optional and I can stop
+                    it later.</span
+                  >
+                </label>
+                <label class="earning-activation-check">
+                  <input type="checkbox" name="rewards" />
+                  <span
+                    >I understand that UIORI rewards follow the Rewards Policy
+                    and are not guaranteed income.</span
+                  >
+                </label>
+              </form>
+              <p
+                class="earning-activation-status"
+                id="earning-activation-status"
+                aria-live="polite"
+              ></p>
+              <div class="earning-activation-actions">
+                <button
+                  class="button button-dark"
+                  id="earning-activation-continue"
+                  type="button"
+                >
+                  Continue to Mellowtel
+                </button>
+                <button
+                  class="button button-outline"
+                  id="earning-activation-close"
+                  type="button"
+                >
+                  Not now
+                </button>
+              </div>
+              <p class="earning-activation-legal">
+                By continuing, you are acknowledging the UIORI disclosure above.
+                Mellowtel will still ask for its own separate opt-in.
+                <a href="/privacy/">Privacy</a> ·
+                <a href="/rewards-policy/">Rewards Policy</a>
+              </p>
+            </div>
+          </dialog>
+          <nav aria-label="Earning help" class="earn-help">
+            <a href="/how-it-works/">
+              <span>How UIORI works</span>
+              <svg
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewbox="0 0 24 24"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+            <a href="/safety/">
+              <span>Safety &amp; control</span>
+              <svg
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewbox="0 0 24 24"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+            <a
+              href="https://www.mellow.tel/user-control"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <span>Manage Mellowtel participation</span>
+              <svg
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewbox="0 0 24 24"
+              >
+                <path d="M7 17 17 7"></path>
+                <path d="M7 7h10v10"></path>
+              </svg>
+            </a>
+          </nav>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,46 +1,83 @@
-.btn {
+.button {
   display: inline-flex;
+  min-height: 50px;
   align-items: center;
   justify-content: center;
-  gap: .55rem;
-  min-height: 48px;
-  padding: .82rem 1.12rem;
-  border-radius: 999px;
+  gap: 12px;
+  padding: 0 21px;
   border: 1px solid transparent;
-  text-decoration: none;
-  font-weight: 880;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
   line-height: 1;
-  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
-  will-change: transform;
-}
-
-.btn:hover { transform: translateY(-1px); }
-.btn:focus-visible { outline: 4px solid var(--accent-ring); outline-offset: 2px; }
-
-.btn-primary {
-  background: var(--text);
-  color: #fff;
-  box-shadow: 0 16px 32px rgba(13, 20, 36, .18);
-}
-
-.btn-primary:hover { background: #020817; }
-
-.btn-secondary {
-  background: rgba(255, 255, 255, .82);
-  color: var(--text);
-  border-color: var(--line);
-  box-shadow: var(--shadow-tiny);
-}
-
-.btn-secondary:hover {
-  border-color: var(--line-strong);
-  box-shadow: var(--shadow-soft);
-}
-
-.btn-text {
-  color: var(--accent-dark);
   text-decoration: none;
-  font-weight: 880;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
-.btn-text:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.button-accent {
+  color: #ffffff;
+  background: var(--color-accent);
+  box-shadow: 0 7px 18px rgba(109, 76, 245, 0.18);
+}
+
+.button-accent:hover {
+  background: var(--color-accent-hover);
+}
+
+.button-outline {
+  color: var(--color-ink);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(17, 24, 39, 0.12);
+  box-shadow: 0 5px 16px rgba(17, 24, 39, 0.04);
+}
+
+.button-outline:hover {
+  background: #ffffff;
+  border-color: rgba(17, 24, 39, 0.2);
+}
+
+.button-dark {
+  color: #fff;
+  background: var(--color-ink);
+  box-shadow: 0 4px 10px rgba(17, 24, 39, 0.08);
+}
+
+.button-dark:hover {
+  background: #262f40;
+}
+
+.button-small {
+  min-height: 42px;
+  padding-inline: 18px;
+  font-size: 0.84rem;
+}
+
+.button-quiet {
+  min-height: 48px;
+  padding-inline: 13px;
+  color: #3f4652;
+}
+
+.button-quiet:hover {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.button:focus-visible,
+.text-link:focus-visible,
+.login-link:focus-visible,
+.desktop-navigation a:focus-visible,
+.mobile-navigation-links a:focus-visible,
+.footer-column a:focus-visible {
+  outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  .button {
+    min-height: 48px;
+    padding-inline: 18px;
+  }
+}

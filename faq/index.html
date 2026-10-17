@@ -1,454 +1,512 @@
 <!doctype html>
-<!-- Document -->
+
 <html lang="en">
-  <!-- Head -->
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Title -->
-    <title>FAQ | uiori</title>
-
-    <!-- Meta description -->
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <title>UIORI FAQ — Earning, Rewards and Withdrawals</title>
     <meta
+      content="Clear answers about UIORI accounts, earning, rewards, progress, browser setup, and withdrawals."
       name="description"
-      content="Answers to common uiori questions about country-based earning routes, third party platforms, payout methods, low-payout sites, referrals, and warnings."
     />
-
-    <!-- Icons -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/img/favicon-16.png"
+    <link href="https://uiori.com/faq/" rel="canonical" />
+    <meta content="website" property="og:type" />
+    <meta content="UIORI" property="og:site_name" />
+    <meta
+      content="UIORI FAQ — Earning, Rewards and Withdrawals"
+      property="og:title"
     />
+    <meta
+      content="Clear answers about UIORI accounts, earning, rewards, progress, browser setup, and withdrawals."
+      property="og:description"
+    />
+    <meta content="https://uiori.com/faq/" property="og:url" />
+    <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
     <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
       href="/assets/img/favicon-32.png"
-    />
-    <link
       rel="icon"
+      sizes="32x32"
       type="image/png"
-      sizes="64x64"
-      href="/assets/img/favicon-64.png"
     />
     <link
+      href="/assets/img/favicon-180.png"
       rel="apple-touch-icon"
       sizes="180x180"
-      href="/assets/img/favicon-180.png"
     />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="/assets/img/favicon-512.png"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
     />
-
-    <!-- Canonical -->
-    <link rel="canonical" href="https://uiori.com/faq/" />
-
-    <!-- Theme color -->
-    <meta name="theme-color" content="#0d1424" />
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/style.css" />
-
-    <!-- Google tag -->
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <script src="/assets/js/pages/faq.js" type="module"></script>
     <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-GLGJXPV0LS"
+      src="/assets/js/components/public-account.js"
+      type="module"
     ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-GLGJXPV0LS");
-    </script>
-
-    <!-- Structured data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is uiori?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "uiori is a country-based earning opportunity finder. It helps you compare third party platforms by country, payout method, task type, minimum withdrawal notes, and warnings."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does uiori pay users directly?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. uiori is not an employer, wallet, faucet, or task platform. Users earn from third party platforms if they qualify and follow that platform’s rules."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are earning routes guaranteed?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. Availability, approval, task supply, and payment depend on each third party platform. uiori helps you research safer starting points, not guaranteed income."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why should I choose my country first?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Country affects task access, payout options, verification rules, language demand, and account restrictions. A platform that works well in one country may be weak in another."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Which payout method should I choose?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Start with the payout method you can actually receive and withdraw from. PayPal, crypto, Payoneer, gift cards, and bank transfer can all be useful, but support varies by country and platform."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is a first-payout route?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "It is a small test route designed to prove that one platform, one payout method, and one task type can work for you before you invest more time."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why do surveys disappear or reject users?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Survey demand depends on country, profile, device, language, and advertiser needs. Disqualification is normal, so surveys should not be your only route."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are crypto faucets worth using?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Crypto faucets can be useful for testing tiny withdrawals, but they are usually very low earning. Watch fees, volatility, local rules, and platform reputation."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are low-payout sites safer than high-payout sites?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Not automatically. Low minimum withdrawals reduce waiting risk, but you still need to check payout rules, account terms, spammy task types, and platform reputation."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does uiori use affiliate or referral links?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Some links may be referral or affiliate links. uiori may earn a commission at no extra cost to you, but pages should still show warnings and realistic limits."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How often should I re-check a platform?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Re-check before spending serious time. Platform terms, country availability, payout methods, task supply, and verification rules can change."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What should I avoid?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Avoid deposit-required earning claims, fake reviews, paid fake likes, account buying, forced ad loops, guaranteed daily profit claims, and any task that violates another platform’s rules."
-            }
-          }
-        ]
-      }
-    </script>
   </head>
-
-  <!-- Body -->
-  <body class="faq-page">
-    <!-- Skip link -->
-    <a class="skip-link" href="#main">Skip to content</a>
-    <!-- Navigation -->
-    <header class="site-header" data-site-header>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="/" aria-label="uiori home">
-          <span class="brand-mark" aria-hidden="true"
-            ><img src="/assets/img/uiori-mark.svg" alt=""
-          /></span>
-          <span class="brand-text">uiori</span>
-        </a>
-        <!-- Menu button -->
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="site-nav"
-          data-nav-toggle
+        <a aria-label="UIORI home" class="wordmark" href="/"
+          >UIORI<span class="wordmark-period">.</span></a
         >
-          <span class="nav-toggle-line"></span
-          ><span class="nav-toggle-line"></span
-          ><span class="nav-toggle-line"></span>
-          <span class="sr-only">Open menu</span>
-        </button>
-        <!-- Navigation -->
-        <nav class="site-nav" id="site-nav" data-site-nav>
-          <a href="/countries/" class="">Countries</a>
-          <a href="/today/" class="">Today</a>
-          <a href="/platforms/" class="">Platforms</a>
-          <a href="/payouts/" class="">Payouts</a>
-          <a href="/tasks/" class="">Tasks</a>
-          <a href="/guides/" class="">Guides</a>
+        <nav aria-label="Main navigation" class="desktop-navigation">
+          <a href="/how-it-works/">How it works</a>
+          <a href="/rewards/">Rewards</a> <a href="/safety/">Safety</a>
+          <a aria-current="page" href="/faq/">FAQ</a>
         </nav>
+        <div class="header-actions">
+          <a class="login-link" href="/login/">Log in</a>
+          <a class="button button-dark button-small" href="/signup/"
+            >Start earning</a
+          >
+        </div>
+        <button
+          aria-controls="mobile-navigation"
+          aria-expanded="false"
+          aria-label="Open menu"
+          class="menu-toggle"
+          type="button"
+        >
+          <span></span><span></span><span></span>
+        </button>
       </div>
-    </header>
-
-    <!-- Main -->
-    <main id="main" class="main-content">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <ol>
-          <li><a href="/">Home</a></li>
-          <li aria-current="page">FAQ</li>
-        </ol>
+      <div
+        aria-hidden="true"
+        class="mobile-menu-backdrop"
+        data-nav-backdrop=""
+      ></div>
+      <nav
+        aria-label="Mobile navigation"
+        class="mobile-menu"
+        id="mobile-navigation"
+      >
+        <div class="mobile-navigation-links">
+          <a href="/how-it-works/"
+            ><svg aria-hidden="true" class="preview-icon" viewbox="0 0 24 24">
+              <path d="M15.5 10 13 7.5 15.5 5"></path>
+              <path
+                d="M15.861 14A14.5 14.5 0 0 1 12 22a14.48 14.48 0 0 1 0-20 10 10 0 1 0 9.888 11.5"
+              ></path>
+              <path d="M19.5 5 22 7.5 19.5 10"></path>
+              <path d="M2 12h8.5"></path></svg
+            ><span>How it works</span></a
+          ><a href="/rewards/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 18V6"></path></svg
+            ><span>Rewards</span></a
+          ><a href="/safety/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <path
+                d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
+              ></path>
+              <path d="m9 12 2 2 4-4"></path></svg
+            ><span>Safety</span></a
+          ><a aria-current="page" href="/faq/"
+            ><svg aria-hidden="true" viewbox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.1 9a3 3 0 1 1 5.8 1c0 2-3 2-3 4"></path>
+              <path d="M12 18h.01"></path></svg
+            ><span>FAQ</span></a
+          >
+        </div>
+        <div aria-hidden="true" class="mobile-menu-divider"></div>
+        <div class="mobile-menu-actions">
+          <a class="mobile-login-link" href="/login/">Log in</a>
+          <a class="mobile-primary-link" href="/signup/">Start earning</a>
+        </div>
       </nav>
-      <!-- Hero -->
-      <section class="page-hero faq-hero">
+    </header>
+    <main id="main-content">
+      <section class="public-page-hero">
         <div class="container">
-          <p class="eyebrow">FAQ</p>
-          <h1>Clear answers before you spend time.</h1>
-          <p class="hero-subtitle">
-            uiori is built to help you avoid unsupported platforms, unclear
-            payout routes, and fake earning promises. These answers explain the
-            rules in plain language.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="/countries/">Choose your country</a
-            ><a
-              class="btn btn-secondary"
-              href="/guides/how-to-avoid-fake-earning-sites/"
-              >Avoid fake earning sites</a
-            >
+          <div class="public-page-header">
+            <p class="section-kicker">FAQ</p>
+            <h1 class="public-page-title">Frequently Asked Questions</h1>
+            <p class="public-page-subtitle">
+              Clear answers about UIORI accounts, earning, rewards, progress,
+              and withdrawals.
+            </p>
           </div>
         </div>
       </section>
-      <!-- FAQ -->
-      <section>
-        <div class="container faq-layout">
-          <aside class="card warning-card faq-side-note">
-            <p class="eyebrow">Core rule</p>
-            <h2>uiori guides. Third party platforms pay.</h2>
-            <p>
-              We do not run user balances, approve tasks, or guarantee payout.
-              Always check the official platform rules before investing time.
-            </p>
-          </aside>
+      <section aria-label="Frequently asked questions" class="faq-page-section">
+        <div class="container">
           <div class="faq-list">
-            <article class="faq-card" id="what-is-uiori">
-              <h2>What is uiori?</h2>
-              <p>
-                uiori is a country-based earning opportunity finder. It helps
-                you compare third party platforms by country, payout method,
-                task type, minimum withdrawal notes, and warnings.
-              </p>
-            </article>
-            <article class="faq-card" id="does-uiori-pay-users-directly">
-              <h2>Does uiori pay users directly?</h2>
-              <p>
-                No. uiori is not an employer, wallet, faucet, or task platform.
-                Users earn from third party platforms if they qualify and follow
-                that platform’s rules.
-              </p>
-            </article>
-            <article class="faq-card" id="are-earning-routes-guaranteed">
-              <h2>Are earning routes guaranteed?</h2>
-              <p>
-                No. Availability, approval, task supply, and payment depend on
-                each third party platform. uiori helps you research safer
-                starting points, not guaranteed income.
-              </p>
-            </article>
-            <article class="faq-card" id="why-should-i-choose-my-country-first">
-              <h2>Why should I choose my country first?</h2>
-              <p>
-                Country affects task access, payout options, verification rules,
-                language demand, and account restrictions. A platform that works
-                well in one country may be weak in another.
-              </p>
-            </article>
-            <article class="faq-card" id="which-payout-method-should-i-choose">
-              <h2>Which payout method should I choose?</h2>
-              <p>
-                Start with the payout method you can actually receive and
-                withdraw from. PayPal, crypto, Payoneer, gift cards, and bank
-                transfer can all be useful, but support varies by country and
-                platform.
-              </p>
-            </article>
-            <article class="faq-card" id="what-is-a-first-payout-route">
-              <h2>What is a first-payout route?</h2>
-              <p>
-                It is a small test route designed to prove that one platform,
-                one payout method, and one task type can work for you before you
-                invest more time.
-              </p>
-            </article>
-            <article
-              class="faq-card"
-              id="why-do-surveys-disappear-or-reject-users"
-            >
-              <h2>Why do surveys disappear or reject users?</h2>
-              <p>
-                Survey demand depends on country, profile, device, language, and
-                advertiser needs. Disqualification is normal, so surveys should
-                not be your only route.
-              </p>
-            </article>
-            <article class="faq-card" id="are-crypto-faucets-worth-using">
-              <h2>Are crypto faucets worth using?</h2>
-              <p>
-                Crypto faucets can be useful for testing tiny withdrawals, but
-                they are usually very low earning. Watch fees, volatility, local
-                rules, and platform reputation.
-              </p>
-            </article>
-            <article
-              class="faq-card"
-              id="are-low-payout-sites-safer-than-high-payout-sites"
-            >
-              <h2>Are low-payout sites safer than high-payout sites?</h2>
-              <p>
-                Not automatically. Low minimum withdrawals reduce waiting risk,
-                but you still need to check payout rules, account terms, spammy
-                task types, and platform reputation.
-              </p>
-            </article>
-            <article
-              class="faq-card"
-              id="does-uiori-use-affiliate-or-referral-links"
-            >
-              <h2>Does uiori use affiliate or referral links?</h2>
-              <p>
-                Some links may be referral or affiliate links. uiori may earn a
-                commission at no extra cost to you, but pages should still show
-                warnings and realistic limits.
-              </p>
-            </article>
-            <article
-              class="faq-card"
-              id="how-often-should-i-re-check-a-platform"
-            >
-              <h2>How often should I re-check a platform?</h2>
-              <p>
-                Re-check before spending serious time. Platform terms, country
-                availability, payout methods, task supply, and verification
-                rules can change.
-              </p>
-            </article>
-            <article class="faq-card" id="what-should-i-avoid">
-              <h2>What should I avoid?</h2>
-              <p>
-                Avoid deposit-required earning claims, fake reviews, paid fake
-                likes, account buying, forced ad loops, guaranteed daily profit
-                claims, and any task that violates another platform’s rules.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-      <!-- CTA -->
-      <section>
-        <div class="container split-grid">
-          <div class="card route-card">
-            <h2>Ready to start safely?</h2>
-            <p>
-              Start with your country, then choose the payout method you can
-              actually receive. This removes most dead routes before you sign
-              up.
-            </p>
-            <div class="card-footer">
-              <a class="btn btn-primary" href="/countries/">Browse countries</a>
-            </div>
-          </div>
-          <div class="card warning-card">
-            <h2>Still unsure?</h2>
-            <p>
-              Read the scam warning guide before joining platforms that promise
-              guaranteed profit, require deposits, or hide who actually pays.
-            </p>
-            <div class="card-footer">
-              <a
-                class="btn btn-secondary"
-                href="/guides/how-to-avoid-fake-earning-sites/"
-                >Read warnings</a
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="faq-answer-what-is-uiori"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="faq-question-what-is-uiori"
+                  type="button"
+                >
+                  <span>What is UIORI?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="faq-question-what-is-uiori"
+                class="faq-answer"
+                id="faq-answer-what-is-uiori"
+                inert=""
+                role="region"
               >
-            </div>
+                <div>
+                  <p>
+                    UIORI lets eligible users earn small rewards from bandwidth
+                    they choose to share, while keeping progress, credited
+                    earnings, and withdrawals in one dashboard.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="faq-answer-free"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="faq-question-free"
+                  type="button"
+                >
+                  <span>Is UIORI free to join?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="faq-question-free"
+                class="faq-answer"
+                id="faq-answer-free"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    Yes. Creating a UIORI account does not require a membership
+                    fee.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="faq-answer-account"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="faq-question-account"
+                  type="button"
+                >
+                  <span>Does creating an account start earning?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="faq-question-account"
+                class="faq-answer"
+                id="faq-answer-account"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    No. Your account is separate from earning. Nothing starts
+                    automatically. You review the setup first, then Mellowtel
+                    presents its own separate opt-in.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="faq-answer-earning"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="faq-question-earning"
+                  type="button"
+                >
+                  <span>How does earning work?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="faq-question-earning"
+                class="faq-answer"
+                id="faq-answer-earning"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    Create your account, review the earning disclosure, and
+                    continue through Mellowtel's companion-extension setup. Once
+                    the connection is confirmed, eligible activity may
+                    contribute to progress and credited rewards under the
+                    Rewards Policy.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="faq-answer-extension"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="faq-question-extension"
+                  type="button"
+                >
+                  <span>Do I need a browser extension?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="faq-question-extension"
+                class="faq-answer"
+                id="faq-answer-extension"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    Yes. The website route uses Mellowtel's companion browser
+                    extension. UIORI explains the participation details first,
+                    then Mellowtel handles its own installation and consent
+                    step.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="faq-answer-stop"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="faq-question-stop"
+                  type="button"
+                >
+                  <span>Can I stop earning?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="faq-question-stop"
+                class="faq-answer"
+                id="faq-answer-stop"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    Yes. Mellowtel provides independent participation controls
+                    so you can opt out without deleting your UIORI account.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="faq-answer-points"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="faq-question-points"
+                  type="button"
+                >
+                  <span>Are Contribution Points the same as money?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="faq-question-points"
+                class="faq-answer"
+                id="faq-answer-points"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    No. Points, streaks, levels, and milestones show progress.
+                    Credited earnings are the money added to your UIORI balance.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="faq-answer-earnings"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="faq-question-earnings"
+                  type="button"
+                >
+                  <span>How are rewards determined?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="faq-question-earnings"
+                class="faq-answer"
+                id="faq-answer-earnings"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    UIORI applies the reward rules in effect at the time to
+                    eligible activity. The current Rewards Policy explains those
+                    rules.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="faq-answer-guaranteed"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="faq-question-guaranteed"
+                  type="button"
+                >
+                  <span>Are earnings guaranteed?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="faq-question-guaranteed"
+                class="faq-answer"
+                id="faq-answer-guaranteed"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    No. Earning amounts and timing can vary, and UIORI does not
+                    promise a fixed rate or a guaranteed time to reach a
+                    milestone.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="faq-answer-withdraw"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="faq-question-withdraw"
+                  type="button"
+                >
+                  <span>When can I withdraw?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="faq-question-withdraw"
+                class="faq-answer"
+                id="faq-answer-withdraw"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    You can request a withdrawal once you have at least $5.00 in
+                    credited earnings, a verified active account that is at
+                    least seven days old, and a payout destination that has
+                    completed its 24-hour safety period. Only one withdrawal can
+                    be open at a time.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button
+                  aria-controls="faq-answer-review"
+                  aria-expanded="false"
+                  class="faq-question"
+                  id="faq-question-review"
+                  type="button"
+                >
+                  <span>Can a withdrawal request be reviewed?</span>
+                  <span aria-hidden="true" class="faq-chevron"></span>
+                </button>
+              </h3>
+              <div
+                aria-hidden="true"
+                aria-labelledby="faq-question-review"
+                class="faq-answer"
+                id="faq-answer-review"
+                inert=""
+                role="region"
+              >
+                <div>
+                  <p>
+                    Yes. A withdrawal may require review when account or
+                    activity verification is needed.
+                  </p>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
     </main>
-
-    <!-- Footer -->
     <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <a class="brand footer-brand" href="/"
-            ><span class="brand-mark"
-              ><img src="/assets/img/uiori-mark.svg" alt="" /></span
-            ><span class="brand-text">uiori</span></a
-          >
-          <p>
-            Country focused MMO earning guidance. We help users compare third
-            party platforms, payout methods, warnings, and realistic
-            first-payout routes.
-          </p>
+      <div class="container">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <a aria-label="UIORI home" class="wordmark" href="/"
+              >UIORI<span class="wordmark-period">.</span></a
+            >
+            <p>Turn spare bandwidth into visible progress and small rewards.</p>
+          </div>
+          <div class="footer-column">
+            <h2>Product</h2>
+            <a href="/how-it-works/">How it works</a>
+            <a href="/rewards/">Rewards</a>
+            <a href="/safety/">Safety</a>
+            <a aria-current="page" href="/faq/">FAQ</a>
+          </div>
+          <div class="footer-column">
+            <h2>Company</h2>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+          </div>
+          <div class="footer-column">
+            <h2>Legal</h2>
+            <a href="/terms/">Terms</a>
+            <a href="/privacy/">Privacy</a>
+            <a href="/rewards-policy/">Rewards Policy</a>
+          </div>
         </div>
-        <div>
-          <h2>Explore</h2>
-          <a href="/countries/">Countries</a>
-          <a href="/today/">Today routes</a>
-          <a href="/platforms/">Platforms</a>
-          <a href="/payouts/">Payouts</a>
-          <a href="/low-payout-sites/">Low payout sites</a>
+        <div class="footer-bottom">
+          <span>© 2026 UIORI</span>
         </div>
-        <div>
-          <h2>Learn</h2>
-          <a href="/tasks/">Task types</a>
-          <a href="/guides/">Guides</a>
-          <a href="/faq/">FAQ</a>
-          <a href="/guides/how-to-avoid-fake-earning-sites/">Scam warnings</a>
-        </div>
-        <div class="footer-note">
-          <h2>Rules &amp; safety</h2>
-          <a href="/disclosure/">Affiliate disclosure</a>
-          <a href="/terms/">Terms</a>
-          <a href="/privacy/">Privacy</a>
-          <a href="/contact/">Contact</a>
-          <p>
-            uiori does not employ users or guarantee earnings. Third party
-            platforms control eligibility, tasks, approvals, payment, and
-            account rules.
-          </p>
-        </div>
-      </div>
-      <div class="container footer-bottom">
-        <span>© <span data-current-year>2026</span> uiori.</span
-        ><span>Updated regularly. Availability can change.</span>
       </div>
     </footer>
-
-    <!-- JavaScript -->
-    <script type="module" src="/assets/js/main.js"></script>
   </body>
 </html>
