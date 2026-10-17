@@ -1,42 +1,62 @@
 # UIORI
 
-Find online earning opportunities that work in your country.
+**Voluntary bandwidth sharing with transparent rewards and clear user control.**
 
-UIORI is a country based MMO opportunity finder that helps users discover realistic online earning platforms, payout methods, minimum withdrawal thresholds, task categories, and country specific limitations.
+UIORI is a web platform that lets users choose whether to participate in bandwidth sharing and track their progress, credited earnings, wallet activity, and withdrawals in one place.
 
-## What UIORI Does
+Participation never starts automatically.
 
-- Country based earning discovery
-- Platform comparisons
-- Payout method guides
-- Low payout opportunity research
-- Task type exploration
-- Country availability insights
-- Practical earning route recommendations
+## How UIORI works
 
-## Core Principles
+1. Create a UIORI account.
+2. Review how participation works and what it means for your connection.
+3. Choose whether to activate bandwidth sharing.
+4. Track Contribution Points, streaks, milestones, credited earnings, and wallet activity.
+5. Request withdrawals from eligible credited balance.
 
-- Honest expectations
-- No guaranteed income claims
-- No fake payout promises
-- Country aware recommendations
-- Clear payout and eligibility information
-- Practical guidance over hype
+## Progress and earnings
 
-## Main Sections
+UIORI keeps progress separate from money.
 
-- Countries
-- Platforms
-- Payout Methods
-- Task Categories
-- Today Opportunities
-- Guides
-- Low Payout Resources
+- Contribution Points reflect eligible participation and progression.
+- Streaks, levels, and milestones are motivational features.
+- Points do not have a fixed cash value.
+- Only earnings actually credited to the UIORI balance count as money.
+- UIORI does not promise a fixed earning rate or guaranteed income.
 
-## Disclosure
+## User control
 
-Some links may be referral or affiliate links. Availability, eligibility, tasks, and payments are controlled by third party platforms and may change over time.
+- Creating an account does not start bandwidth sharing.
+- Participation requires an explicit user action.
+- Users can manage or stop participation through the available provider controls.
+- Reward progress and cash balance are shown separately.
+
+## Product areas
+
+- Public website
+- Email and Google authentication
+- Member dashboard
+- Earning and participation controls
+- Rewards and progression
+- Wallet and withdrawals
+- Account settings
+- Administration tools
+- Privacy, safety, terms, and rewards-policy pages
+
+## Technology
+
+- HTML, CSS, and JavaScript
+- GitHub Pages
+- Supabase Auth
+- Supabase PostgreSQL
+- Supabase Storage
+- Supabase Edge Functions
+- Mellowtel bandwidth-sharing infrastructure
 
 ## Website
 
 https://uiori.com
+
+## Important
+
+UIORI is not an investment product and does not guarantee a particular earning rate, reward amount, or time required to reach a milestone.
