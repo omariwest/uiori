@@ -1,7 +1,7 @@
 import "./admin-auth.js";
 import "../components/app-navigation.js";
 import { initCustomSelects } from "../components/custom-select.js";
-import { uiOriSupabase } from "../lib/supabase-client.js";
+import { uiOriAdminSupabase } from "../lib/supabase-client.js";
 
 initCustomSelects();
 
@@ -118,7 +118,7 @@ function escapeHtml(value) {
 }
 
 async function fetchAdminData(scope) {
-  const { data, error } = await uiOriSupabase.functions.invoke("admin-data", {
+  const { data, error } = await uiOriAdminSupabase.functions.invoke("admin-data", {
     body: { scope },
   });
   if (error) throw error;
@@ -320,7 +320,7 @@ function setupUserReviewDialog() {
     setUserReviewMessage("Opening account review…");
 
     try {
-      const { data, error } = await uiOriSupabase.functions.invoke("admin-review", {
+      const { data, error } = await uiOriAdminSupabase.functions.invoke("admin-review", {
         body: {
           action: "create",
           user_id: user.id,
@@ -493,7 +493,7 @@ function setupWithdrawalReviewDialog() {
       setWithdrawalReviewMessage(action === "paid" ? "Recording payout…" : action === "approve" ? "Approving request…" : "Rejecting request…");
 
       try {
-        const { data, error } = await uiOriSupabase.functions.invoke("admin-withdrawal", {
+        const { data, error } = await uiOriAdminSupabase.functions.invoke("admin-withdrawal", {
           body: {
             request_id: row.id,
             action,
@@ -652,7 +652,7 @@ function setupReviewManageDialog() {
       setManageReviewMessage(action === "restrict" ? "Restricting account…" : "Clearing review…");
 
       try {
-        const { data, error } = await uiOriSupabase.functions.invoke("admin-review", {
+        const { data, error } = await uiOriAdminSupabase.functions.invoke("admin-review", {
           body: {
             action,
             review_id: review.id,

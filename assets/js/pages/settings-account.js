@@ -106,12 +106,27 @@ async function loadPayoutSettings() {
 
 function setupPayoutSettings() {
   const openButton = document.querySelector("#settings-payout-button");
-  const dialog = document.querySelector("#settings-payout-dialog");
+  const drawer = document.querySelector("#settings-payout-dialog");
+  const close = document.querySelector("#settings-payout-close");
   const cancel = document.querySelector("#settings-payout-cancel");
   const save = document.querySelector("#settings-payout-save");
   const network = document.querySelector("#settings-payout-network");
   const address = document.querySelector("#settings-payout-address");
-  if (!openButton || !dialog || !cancel || !save || !network || !address) return;
+  if (!openButton || !drawer || !close || !cancel || !save || !network || !address) return;
+
+  function openDrawer() {
+    drawer.classList.add("is-open");
+    drawer.setAttribute("aria-hidden", "false");
+    document.body.classList.add("settings-payout-drawer-open");
+    window.setTimeout(() => close.focus({ preventScroll: true }), 0);
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove("is-open");
+    drawer.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("settings-payout-drawer-open");
+    openButton.focus({ preventScroll: true });
+  }
 
   openButton.addEventListener("click", async () => {
     if (openButton.disabled) return;
@@ -122,12 +137,19 @@ function setupPayoutSettings() {
       network.value = state.destination.network;
       network.dispatchEvent(new Event("change", { bubbles: true }));
     }
-    openDialogWithoutMobileKeyboard(dialog, address);
+    openDrawer();
   });
 
-  cancel.addEventListener("click", () => dialog.close());
-  dialog.addEventListener("click", (event) => {
-    if (event.target === dialog) dialog.close();
+  close.addEventListener("click", closeDrawer);
+  cancel.addEventListener("click", closeDrawer);
+  drawer.addEventListener("click", (event) => {
+    if (event.target === drawer) closeDrawer();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && drawer.classList.contains("is-open")) {
+      closeDrawer();
+    }
   });
 
   save.addEventListener("click", async () => {
@@ -151,7 +173,7 @@ function setupPayoutSettings() {
       });
       setPayoutDialogStatus("Saved. The 24-hour payout safety period has started.");
       await loadPayoutSettings();
-      window.setTimeout(() => dialog.close(), 850);
+      window.setTimeout(closeDrawer, 850);
     } catch (error) {
       console.error("[UIORI] payout destination save failed", error);
       const message = error.code === "invalid_payout_address"

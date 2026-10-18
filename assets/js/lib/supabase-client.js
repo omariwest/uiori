@@ -23,6 +23,19 @@ export const uiOriSupabase = createClient(
   },
 );
 
+export const uiOriAdminSupabase = createClient(
+  UIORI_SUPABASE_URL,
+  UIORI_SUPABASE_PUBLISHABLE_KEY,
+  {
+    auth: {
+      storageKey: "uiori-admin-auth",
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: false,
+    },
+  },
+);
+
 export function uiOriSiteUrl(path = "/") {
   const normalized = String(path || "/");
   const base = isLocalHost() ? `${window.location.origin}/` : `${UIORI_SITE_URL}/`;

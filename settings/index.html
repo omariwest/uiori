@@ -752,87 +752,104 @@
           </div>
         </main>
 
-        <dialog
+        <div
+          aria-hidden="true"
           aria-labelledby="payout-dialog-title"
-          class="settings-payout-dialog"
+          class="settings-payout-drawer"
           id="settings-payout-dialog"
         >
-          <div class="settings-payout-card">
-            <div class="settings-payout-heading">
-              <span aria-hidden="true" class="settings-payout-icon"
-                ><svg viewbox="0 0 24 24">
-                  <rect height="14" rx="2" width="18" x="3" y="5"></rect>
-                  <path d="M3 10h18"></path>
-                  <path d="M7 15h3"></path></svg
-              ></span>
-              <div>
-                <p class="settings-payout-eyebrow">Payout destination</p>
-                <h2 id="payout-dialog-title">
-                  Where should UIORI send your payout?
-                </h2>
+          <section
+            aria-modal="true"
+            class="settings-payout-panel"
+            role="dialog"
+          >
+            <div class="settings-payout-head">
+              <div class="settings-payout-heading">
+                <span aria-hidden="true" class="settings-payout-icon">
+                  <svg viewBox="0 0 24 24">
+                    <rect height="14" rx="2" width="18" x="3" y="5"></rect>
+                    <path d="M3 10h18"></path>
+                    <path d="M7 15h3"></path>
+                  </svg>
+                </span>
+                <div>
+                  <p class="settings-payout-eyebrow">Payout destination</p>
+                  <h2 id="payout-dialog-title">
+                    Where should UIORI send your payout?
+                  </h2>
+                </div>
               </div>
-            </div>
-            <p class="settings-payout-intro">
-              UIORI currently supports USDT payouts. Choose the same network as
-              your receiving wallet.
-            </p>
-            <div class="settings-payout-form">
-              <div class="settings-payout-field">
-                <label for="settings-payout-asset">Asset</label
-                ><input
-                  id="settings-payout-asset"
-                  type="text"
-                  value="USDT"
-                  disabled
-                />
-              </div>
-              <div class="settings-payout-field">
-                <label for="settings-payout-network">Network</label
-                ><select data-ui-select id="settings-payout-network">
-                  <option value="TRC20">TRON (TRC20)</option>
-                  <option value="BEP20">BNB Smart Chain (BEP20)</option>
-                </select>
-              </div>
-              <div class="settings-payout-field settings-payout-field--wide">
-                <label for="settings-payout-address">Wallet address</label
-                ><input
-                  autocomplete="off"
-                  id="settings-payout-address"
-                  placeholder="Enter your USDT receiving address"
-                  spellcheck="false"
-                  type="text"
-                />
-              </div>
-            </div>
-            <div class="settings-payout-safety">
-              <strong>24-hour safety period</strong
-              ><span
-                >Adding or changing this address temporarily pauses new
-                withdrawal requests for 24 hours.</span
-              >
-            </div>
-            <p
-              aria-live="polite"
-              class="settings-payout-status"
-              id="settings-payout-dialog-status"
-            ></p>
-            <div class="settings-payout-actions">
               <button
-                class="settings-payout-cancel"
-                id="settings-payout-cancel"
+                aria-label="Close payout destination"
+                class="settings-payout-close"
+                id="settings-payout-close"
                 type="button"
-              >
-                Cancel</button
-              ><button
-                class="settings-payout-save"
-                id="settings-payout-save"
-                type="button"
-              >
-                Save payout destination
-              </button>
+              ></button>
             </div>
-          </div>
-        </dialog>
+            <div class="settings-payout-body">
+              <p class="settings-payout-intro">
+                UIORI currently supports USDT payouts. Choose the same network as
+                your receiving wallet.
+              </p>
+              <div class="settings-payout-form">
+                <div class="settings-payout-field">
+                  <label for="settings-payout-asset">Asset</label>
+                  <input
+                    id="settings-payout-asset"
+                    type="text"
+                    value="USDT"
+                    disabled
+                  />
+                </div>
+                <div class="settings-payout-field">
+                  <label for="settings-payout-network">Network</label>
+                  <select data-ui-select id="settings-payout-network">
+                    <option value="TRC20">TRON (TRC20)</option>
+                    <option value="BEP20">BNB Smart Chain (BEP20)</option>
+                  </select>
+                </div>
+                <div class="settings-payout-field settings-payout-field--wide">
+                  <label for="settings-payout-address">Wallet address</label>
+                  <input
+                    autocomplete="off"
+                    id="settings-payout-address"
+                    placeholder="Enter your USDT receiving address"
+                    spellcheck="false"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="settings-payout-safety">
+                <strong>24-hour safety period</strong>
+                <span
+                  >Adding or changing this address temporarily pauses new
+                  withdrawal requests for 24 hours.</span
+                >
+              </div>
+              <p
+                aria-live="polite"
+                class="settings-payout-status"
+                id="settings-payout-dialog-status"
+              ></p>
+              <div class="settings-payout-actions">
+                <button
+                  class="settings-payout-cancel"
+                  id="settings-payout-cancel"
+                  type="button"
+                >
+                  Cancel
+                </button>
+                <button
+                  class="settings-payout-save"
+                  id="settings-payout-save"
+                  type="button"
+                >
+                  Save payout destination
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
 
         <dialog
           aria-labelledby="delete-account-title"

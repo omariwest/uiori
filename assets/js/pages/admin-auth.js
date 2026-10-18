@@ -1,5 +1,5 @@
 import "../components/password-toggle.js";
-import { uiOriSupabase } from "../lib/supabase-client.js";
+import { uiOriAdminSupabase } from "../lib/supabase-client.js";
 
 function isAdminPage() {
   return (
@@ -45,18 +45,18 @@ function sessionUsedPassword(accessToken) {
 async function adminAccess() {
   const {
     data: { session },
-  } = await uiOriSupabase.auth.getSession();
+  } = await uiOriAdminSupabase.auth.getSession();
 
   const {
     data: { user },
     error: userError,
-  } = await uiOriSupabase.auth.getUser();
+  } = await uiOriAdminSupabase.auth.getUser();
 
   if (userError || !user || !session?.access_token) {
     return { user: null, isAdmin: false };
   }
 
-  const { data: profile, error: profileError } = await uiOriSupabase
+  const { data: profile, error: profileError } = await uiOriAdminSupabase
     .from("profiles")
     .select("role")
     .eq("id", user.id)
@@ -94,7 +94,7 @@ async function protectAdminPage() {
     return;
   }
 
-  if (access.user) await uiOriSupabase.auth.signOut({ scope: "local" });
+  if (access.user) await uiOriAdminSupabase.auth.signOut({ scope: "local" });
   window.location.replace(adminLoginUrl(Boolean(access.user)));
 }
 
@@ -107,7 +107,7 @@ function wireAdminLogout() {
       event.preventDefault();
       control.setAttribute("aria-disabled", "true");
       try {
-        await uiOriSupabase.auth.signOut({ scope: "local" });
+        await uiOriAdminSupabase.auth.signOut({ scope: "local" });
       } finally {
         window.location.replace("/admin/login/");
       }
@@ -132,7 +132,8 @@ async function wireAdminLogin() {
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const email = form.querySelector("#admin-email")?.value.trim().toLowerCase() || "";
+    const email =
+      form.querySelector("#admin-email")?.value.trim().toLowerCase() || "";
     const password = form.querySelector("#admin-password")?.value || "";
     const submit = form.querySelector(".auth-submit");
 
@@ -149,7 +150,7 @@ async function wireAdminLogin() {
     showMessage("Checking administrator access…");
 
     try {
-      const { error } = await uiOriSupabase.auth.signInWithPassword({
+      const { error } = await uiOriAdminSupabase.auth.signInWithPassword({
         email,
         password,
       });
@@ -157,11 +158,11 @@ async function wireAdminLogin() {
 
       const verified = await adminAccess();
       if (!verified.isAdmin) {
-        await uiOriSupabase.auth.signOut({ scope: "local" });
+        await uiOriAdminSupabase.auth.signOut({ scope: "local" });
         showMessage(
-        "Administrator sign-in failed. Check the account details and try again.",
-        "error",
-      );
+          "Administrator sign-in failed. Check the account details and try again.",
+          "error",
+        );
         return;
       }
 
@@ -187,7 +188,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await protectAdminPage();
 });
 
-uiOriSupabase.auth.onAuthStateChange((event) => {
+uiOriAdminSupabase.auth.onAuthStateChange((event) => {
   if (isAdminPage() && event === "SIGNED_OUT") {
     window.location.replace(adminLoginUrl());
   }
