@@ -371,7 +371,7 @@
   border: 0;
   color: var(--color-ink);
   z-index: 50;
-  background: rgba(17, 24, 39, 0.14);
+  background: transparent;
 }
 
 .app-drawer[open] {
@@ -529,16 +529,15 @@
   }
 
   .app-mobile-topbar {
-    position: sticky;
+    position: relative;
     z-index: 70;
-    top: 0;
     display: flex;
     min-height: 66px;
     align-items: center;
     justify-content: space-between;
     padding: 10px clamp(14px, 3vw, 22px);
-    background: rgba(248, 250, 252, 0.96);
-    backdrop-filter: blur(14px);
+    background: transparent;
+    backdrop-filter: none;
   }
 
   .app-mobile-topbar .app-wordmark {

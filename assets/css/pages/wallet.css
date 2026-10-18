@@ -631,6 +631,7 @@
 
 .wallet-request-actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 10px;
   margin-top: 22px;
@@ -667,8 +668,7 @@
 
 @media (max-width: 520px) {
   .wallet-request-card { padding: 23px 20px 20px; }
-  .wallet-request-actions { flex-direction: column-reverse; }
-  .wallet-request-actions { align-items: flex-end; }
+  .wallet-request-actions { align-items: center; }
   .wallet-request-cancel,
   .wallet-request-submit { width: fit-content; max-width: 100%; }
 }

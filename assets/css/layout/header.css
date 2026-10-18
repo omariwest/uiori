@@ -171,7 +171,7 @@
   z-index: 50;
   inset: 0;
   display: none;
-  background: rgba(17, 24, 39, 0.14);
+  background: transparent;
 }
 
 .mobile-menu {

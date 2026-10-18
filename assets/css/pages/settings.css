@@ -611,6 +611,7 @@
 
 .settings-delete-actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 10px;
   margin-top: 22px;
@@ -652,8 +653,7 @@
 
 @media (max-width: 520px) {
   .settings-delete-card { padding: 23px 20px 20px; }
-  .settings-delete-actions { flex-direction: column-reverse; }
-  .settings-delete-actions { align-items: flex-end; }
+  .settings-delete-actions { align-items: center; }
   .settings-delete-cancel,
   .settings-delete-confirm-button { width: fit-content; max-width: 100%; }
 }
@@ -815,6 +815,7 @@
 
 .settings-payout-actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 10px;
   margin-top: 22px;
@@ -853,8 +854,7 @@
   .settings-payout-card { padding: 23px 20px 20px; }
   .settings-payout-form { grid-template-columns: 1fr; }
   .settings-payout-field--wide { grid-column: auto; }
-  .settings-payout-actions { flex-direction: column-reverse; }
-  .settings-payout-actions { align-items: flex-end; }
+  .settings-payout-actions { align-items: center; }
   .settings-payout-cancel,
   .settings-payout-save { width: fit-content; max-width: 100%; }
 }

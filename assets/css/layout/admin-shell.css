@@ -310,16 +310,15 @@
   .admin-sidebar { display: none; }
 
   .admin-mobile-topbar {
-    position: sticky;
+    position: relative;
     z-index: 70;
-    top: 0;
     display: flex;
     min-height: 66px;
     align-items: center;
     justify-content: space-between;
     padding: 10px clamp(14px, 3vw, 22px);
-    background: rgba(248, 250, 252, 0.96);
-    backdrop-filter: blur(14px);
+    background: transparent;
+    backdrop-filter: none;
   }
 
   .admin-mobile-topbar .admin-brand { margin-left: 0; }

@@ -45,6 +45,22 @@ function setPayoutDialogStatus(message, error = false) {
   status.classList.toggle("is-error", error);
 }
 
+function openDialogWithoutMobileKeyboard(dialog, desktopInput) {
+  const desktopPointer = window.matchMedia(
+    "(hover: hover) and (pointer: fine)",
+  ).matches;
+  if (!desktopPointer) dialog.setAttribute("tabindex", "-1");
+  else dialog.removeAttribute("tabindex");
+
+  dialog.showModal();
+
+  if (desktopPointer && desktopInput) {
+    window.setTimeout(() => desktopInput.focus(), 0);
+  } else {
+    dialog.focus({ preventScroll: true });
+  }
+}
+
 async function invokeWallet(body) {
   const { data, error } = await uiOriSupabase.functions.invoke("wallet", { body });
   if (error || !data?.ok) {
@@ -106,8 +122,7 @@ function setupPayoutSettings() {
       network.value = state.destination.network;
       network.dispatchEvent(new Event("change", { bubbles: true }));
     }
-    dialog.showModal();
-    window.setTimeout(() => address.focus(), 0);
+    openDialogWithoutMobileKeyboard(dialog, address);
   });
 
   cancel.addEventListener("click", () => dialog.close());
@@ -276,8 +291,7 @@ function setupDeleteAccount() {
     if (openButton.disabled) return;
     resetDialog();
     if (typeof dialog.showModal === "function") {
-      dialog.showModal();
-      window.setTimeout(() => input.focus(), 0);
+      openDialogWithoutMobileKeyboard(dialog, input);
     }
   });
 

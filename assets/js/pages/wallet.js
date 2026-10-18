@@ -147,6 +147,22 @@ function friendlyError(code) {
   return messages[code] || "We couldn't complete that request. Please try again.";
 }
 
+function openDialogWithoutMobileKeyboard(dialog, desktopInput) {
+  const desktopPointer = window.matchMedia(
+    "(hover: hover) and (pointer: fine)",
+  ).matches;
+  if (!desktopPointer) dialog.setAttribute("tabindex", "-1");
+  else dialog.removeAttribute("tabindex");
+
+  dialog.showModal();
+
+  if (desktopPointer && desktopInput) {
+    window.setTimeout(() => desktopInput.focus(), 0);
+  } else {
+    dialog.focus({ preventScroll: true });
+  }
+}
+
 function setupWithdrawalDialog() {
   const openButton = document.querySelector("#wallet-withdraw-button");
   const dialog = document.querySelector("#wallet-request-dialog");
@@ -195,8 +211,7 @@ function setupWithdrawalDialog() {
       submit.textContent = "Request withdrawal";
     }
 
-    dialog.showModal();
-    if (mode === "request") window.setTimeout(() => input.focus(), 0);
+    openDialogWithoutMobileKeyboard(dialog, mode === "request" ? input : null);
   }
 
   openButton.addEventListener("click", () => {
