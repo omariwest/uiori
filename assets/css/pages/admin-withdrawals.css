@@ -467,18 +467,33 @@
 }
 
 .admin-withdrawal-review-close {
+  position: relative;
   width: 34px;
   height: 34px;
   flex: 0 0 34px;
   border: 1px solid rgba(17, 24, 39, 0.1);
   border-radius: 50%;
-  color: #71717a;
+  color: transparent;
   background: #ffffff;
   cursor: pointer;
-  font: inherit;
-  font-size: 1.25rem;
-  line-height: 1;
+  font-size: 0;
 }
+
+.admin-withdrawal-review-close::before,
+.admin-withdrawal-review-close::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 1.6px;
+  border-radius: 999px;
+  background: #71717a;
+  content: "";
+  transform-origin: center;
+}
+
+.admin-withdrawal-review-close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.admin-withdrawal-review-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
 
 .admin-withdrawal-review-grid {
   display: grid;

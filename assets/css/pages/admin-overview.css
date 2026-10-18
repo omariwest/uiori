@@ -338,6 +338,10 @@
     border-left: 0;
   }
 
+  .admin-metric:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+
   .admin-metric span {
     min-height: 2.9em;
   }

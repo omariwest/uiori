@@ -29,6 +29,28 @@ function setActionDisabled(disabled) {
   });
 }
 
+
+function setMemberRouteLocks(locked) {
+  document.querySelectorAll('.app-layout a[href="/wallet/"]').forEach((link) => {
+    link.classList.toggle("is-account-locked", locked);
+    if (locked) {
+      link.setAttribute("aria-disabled", "true");
+      link.setAttribute("tabindex", "-1");
+    } else {
+      link.removeAttribute("aria-disabled");
+      link.removeAttribute("tabindex");
+    }
+  });
+
+  document.querySelectorAll('.app-nav-link[href="/earn/"]').forEach((link) => {
+    link.classList.toggle("is-setup-route", locked);
+  });
+
+  if (locked && window.location.pathname.startsWith("/wallet/")) {
+    window.location.replace("/dashboard/");
+  }
+}
+
 function toggleInactiveMessage(show) {
   document.querySelectorAll("[data-uiori-inactive-message]").forEach((element) => {
     element.hidden = !show;
@@ -125,6 +147,7 @@ function restoreMilestonePath() {
 
 function applyInactiveValues() {
   toggleInactiveMessage(true);
+  setMemberRouteLocks(true);
   setText("[data-uiori-balance]", "$0.00");
   setText("[data-uiori-next-milestone]", "$5.00");
   setText("[data-uiori-current-progress]", "$0 current");
@@ -165,6 +188,7 @@ function applyInactiveValues() {
 
 function applyActiveState() {
   toggleInactiveMessage(false);
+  setMemberRouteLocks(false);
   restoreMilestonePath();
   setText("[data-uiori-account-status]", "Active");
   setText("[data-uiori-email-status]", "Verified");
@@ -359,6 +383,13 @@ function wireLogout() {
     });
   });
 }
+
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest?.('a.is-account-locked[href="/wallet/"]');
+  if (!link) return;
+  event.preventDefault();
+});
 
 window.UIORIAccess = {
   get state() {

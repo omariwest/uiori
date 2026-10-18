@@ -188,21 +188,6 @@
             </svg>
             <span>Log out</span>
           </a>
-          <a class="app-back-link" href="/">
-            <span>Back to website</span>
-            <svg
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.8"
-              viewbox="0 0 24 24"
-            >
-              <path d="M7 17 17 7"></path>
-              <path d="M7 7h10v10"></path>
-            </svg>
-          </a>
         </div>
       </aside>
       <div class="app-main">
@@ -371,21 +356,6 @@
                 </svg>
                 <span>Log out</span>
               </a>
-              <a class="app-back-link" href="/">
-                <span>Back to website</span>
-                <svg
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.8"
-                  viewbox="0 0 24 24"
-                >
-                  <path d="M7 17 17 7"></path>
-                  <path d="M7 7h10v10"></path>
-                </svg>
-              </a>
             </div>
           </div>
         </dialog>
@@ -438,9 +408,16 @@
               >
                 Set up earning
               </button>
-              <small id="earning-setup-note"
-                >Review what participation uses before anything opens.</small
-              >
+              <div class="earn-status-note uiori-info-note">
+                <svg aria-hidden="true" viewbox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M12 11v5"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
+                <p id="earning-setup-note">
+                  Review what participation uses before anything opens.
+                </p>
+              </div>
             </div>
           </section>
           <section aria-labelledby="earn-process-title" class="earn-process">
@@ -610,10 +587,17 @@
                 <span>Credited earnings</span>
               </div>
             </div>
-            <p class="earn-flow-note">
-              Contribution Points represent progress. They are not automatically
-              cash.
-            </p>
+            <div class="earn-flow-note uiori-info-note">
+              <svg aria-hidden="true" viewbox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 11v5"></path>
+                <path d="M12 8h.01"></path>
+              </svg>
+              <p>
+                Contribution Points represent progress. They are not automatically
+                cash.
+              </p>
+            </div>
           </section>
           <section
             aria-labelledby="earn-preview-title"
@@ -764,15 +748,22 @@
                   id="earning-activation-close"
                   type="button"
                 >
-                  Not now
+                  Close
                 </button>
               </div>
-              <p class="earning-activation-legal">
-                By continuing, you are acknowledging the UIORI disclosure above.
-                Mellowtel will still ask for its own separate opt-in.
-                <a href="/privacy/">Privacy</a> ·
-                <a href="/rewards-policy/">Rewards Policy</a>
-              </p>
+              <div class="earning-activation-legal uiori-info-note">
+                <svg aria-hidden="true" viewbox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M12 11v5"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
+                <p>
+                  By continuing, you are acknowledging the UIORI disclosure above.
+                  Mellowtel will still ask for its own separate opt-in.
+                  <a href="/privacy/">Privacy</a> ·
+                  <a href="/rewards-policy/">Rewards Policy</a>
+                </p>
+              </div>
             </div>
           </dialog>
           <nav aria-label="Earning help" class="earn-help">

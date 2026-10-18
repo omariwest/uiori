@@ -80,12 +80,9 @@
   align-items: flex-start;
 }
 
-.earn-status-action small {
-  max-width: 280px;
+.earn-status-note {
+  width: min(100%, 320px);
   margin-top: 11px;
-  color: #a1a1aa;
-  font-size: 0.73rem;
-  line-height: 1.55;
 }
 
 .earn-process {
@@ -274,13 +271,14 @@
 
 .earn-flow > div {
   display: flex;
-  min-height: 58px;
+  min-height: 56px;
   align-items: center;
   justify-content: center;
   padding: 10px 14px;
-  border-top: 1px solid rgba(17, 24, 39, 0.1);
-  border-bottom: 1px solid rgba(17, 24, 39, 0.1);
+  border: 1px solid rgba(17, 24, 39, 0.09);
+  border-radius: 12px;
   color: #52525b;
+  background: #fbfbfc;
   font-size: 0.8rem;
   font-weight: 600;
   line-height: 1.45;
@@ -291,14 +289,12 @@
   width: 18px;
   height: 18px;
   justify-self: center;
-  color: #a1a1aa;
+  color: rgba(109, 76, 245, 0.68);
 }
 
 .earn-flow-note {
-  margin-top: 13px;
-  color: #8a8a93;
-  font-size: 0.75rem;
-  line-height: 1.55;
+  max-width: 620px;
+  margin-top: 14px;
 }
 
 .earn-preview {
@@ -538,22 +534,17 @@
 }
 
 .earning-activation-legal {
-  margin: 16px 0 0;
-  padding-top: 15px;
-  border-top: 1px solid rgba(17, 24, 39, 0.08);
-  color: #8a8a93;
-  font-size: 0.7rem;
-  line-height: 1.55;
+  margin-top: 16px;
 }
 
-.earning-activation-legal a {
+.earning-activation-legal p a {
   color: #52525b;
   font-weight: 600;
   text-decoration: none;
 }
 
-.earning-activation-legal a:hover,
-.earning-activation-legal a:focus-visible {
+.earning-activation-legal p a:hover,
+.earning-activation-legal p a:focus-visible {
   color: var(--color-accent);
 }
 
@@ -574,9 +565,11 @@
   }
 
   .earn-flow > div {
+    width: min(100%, 360px);
     min-height: 48px;
-    justify-content: flex-start;
-    text-align: left;
+    justify-self: center;
+    justify-content: center;
+    text-align: center;
   }
 
   .earn-flow > svg {
@@ -608,14 +601,15 @@
   }
 
   .earning-activation-actions {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
   }
 
   .earning-activation-actions .button {
     width: fit-content;
     max-width: 100%;
-    justify-self: start;
   }
 
   .earn-status {

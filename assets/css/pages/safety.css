@@ -297,9 +297,6 @@
 .safety-third-party-note {
   max-width: 760px;
   margin-top: 22px;
-  color: #8a8a93;
-  font-size: 0.75rem;
-  line-height: 1.65;
 }
 
 .safety-safeguard-list {
@@ -308,7 +305,7 @@
 
 .safety-safeguard-row {
   display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
+  grid-template-columns: 46px minmax(0, 1fr);
   gap: 18px;
   align-items: start;
   padding: 24px 0 25px;
@@ -424,9 +421,13 @@
     padding-left: 20px;
   }
 
-  .safety-control-list li,
-  .safety-safeguard-row {
+  .safety-control-list li {
     grid-template-columns: 32px minmax(0, 1fr);
+    gap: 13px;
+  }
+
+  .safety-safeguard-row {
+    grid-template-columns: 46px minmax(0, 1fr);
     gap: 13px;
   }
 
@@ -439,13 +440,3 @@
   }
 }
 
-.safety-third-party-note a {
-  color: var(--color-ink);
-  font-weight: 650;
-  text-decoration: none;
-}
-
-.safety-third-party-note a:hover,
-.safety-third-party-note a:focus-visible {
-  color: var(--color-accent);
-}

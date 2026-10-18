@@ -1,15 +1,22 @@
 export function initAppNavigation() {
   const toggle = document.querySelector(".app-menu-toggle");
   const drawer = document.querySelector("#app-navigation-drawer");
-  const closeButton = drawer?.querySelector(".app-drawer-close") || null;
 
-  if (!toggle || !drawer || typeof drawer.showModal !== "function") return;
+  if (!toggle || !drawer || typeof drawer.show !== "function") return;
 
   const desktopQuery = window.matchMedia("(min-width: 1025px)");
   let closeTimer;
 
   function syncExpanded() {
-    toggle.setAttribute("aria-expanded", String(drawer.open));
+    const open = drawer.open;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute(
+      "aria-label",
+      open ? "Close navigation" : toggle.classList.contains("admin-menu-toggle")
+        ? "Open admin navigation"
+        : "Open account navigation",
+    );
+    toggle.classList.toggle("is-open", open);
   }
 
   function finishClose() {
@@ -30,28 +37,29 @@ export function initAppNavigation() {
   function openDrawer() {
     if (drawer.open || desktopQuery.matches) return;
     window.clearTimeout(closeTimer);
-    drawer.showModal();
+    drawer.show();
     document.body.classList.add("app-drawer-open");
     syncExpanded();
     window.requestAnimationFrame(() => drawer.classList.add("is-visible"));
-    const focusTarget = closeButton || drawer.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
-    if (focusTarget) focusTarget.focus({ preventScroll: true });
   }
 
-  toggle.addEventListener("click", openDrawer);
-  if (closeButton) closeButton.addEventListener("click", closeDrawer);
+  toggle.addEventListener("click", () => {
+    if (drawer.open) closeDrawer();
+    else openDrawer();
+  });
 
   drawer.addEventListener("click", (event) => {
     if (event.target === drawer) closeDrawer();
   });
 
-  drawer.addEventListener("cancel", (event) => {
-    event.preventDefault();
-    closeDrawer();
+  drawer.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (!link.classList.contains("is-account-locked")) closeDrawer();
+    });
   });
 
-  drawer.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeDrawer);
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && drawer.open) closeDrawer();
   });
 
   drawer.addEventListener("close", () => {

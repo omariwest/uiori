@@ -1,8 +1,6 @@
 .wallet-preview-note {
-  margin: 23px 0 18px;
-  color: #8a8a93;
-  font-size: 0.75rem;
-  line-height: 1.5;
+  max-width: 720px;
+  margin: 18px 0 20px;
 }
 
 .wallet-label {
@@ -421,7 +419,7 @@
   }
 
   .wallet-summary {
-    padding: 26px 0 28px;
+    padding: 24px 18px 26px;
   }
 
   .wallet-balance h2 {
@@ -617,9 +615,6 @@
 
 .wallet-request-note {
   margin-top: 16px;
-  color: #8a8a93;
-  font-size: 0.73rem;
-  line-height: 1.55;
 }
 
 .wallet-request-status {

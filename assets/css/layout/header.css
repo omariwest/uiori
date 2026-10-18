@@ -172,8 +172,6 @@
   inset: 0;
   display: none;
   background: rgba(17, 24, 39, 0.14);
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
 }
 
 .mobile-menu {

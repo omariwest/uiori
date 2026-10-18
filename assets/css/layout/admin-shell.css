@@ -170,34 +170,6 @@
 
 .admin-mobile-topbar { display: none; }
 
-.admin-menu-toggle {
-  display: none;
-  width: 38px;
-  height: 38px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  border: 0;
-  border-radius: 999px;
-  color: var(--color-ink);
-  background: transparent;
-  cursor: pointer;
-}
-
-.admin-menu-toggle:hover,
-.admin-menu-toggle:focus-visible { background: #eef0f4; }
-
-.admin-menu-toggle span {
-  display: block;
-  width: 18px;
-  height: 1.8px;
-  border-radius: 999px;
-  background: currentColor;
-}
-
-.admin-menu-toggle span:nth-child(2) { width: 13px; }
-
 .admin-drawer-panel {
   position: absolute;
   top: 74px;
@@ -339,7 +311,7 @@
 
   .admin-mobile-topbar {
     position: sticky;
-    z-index: 30;
+    z-index: 70;
     top: 0;
     display: flex;
     min-height: 66px;
@@ -351,7 +323,6 @@
   }
 
   .admin-mobile-topbar .admin-brand { margin-left: 0; }
-  .admin-menu-toggle { display: flex; }
   .admin-content { padding-top: 32px; }
 }
 
@@ -447,18 +418,33 @@ body.admin-auth-loading .admin-layout {
 }
 
 .admin-review-dialog-close {
+  position: relative;
   width: 34px;
   height: 34px;
   flex: 0 0 34px;
   border: 1px solid rgba(17, 24, 39, 0.1);
   border-radius: 50%;
-  color: #71717a;
+  color: transparent;
   background: #ffffff;
   cursor: pointer;
-  font: inherit;
-  font-size: 1.25rem;
-  line-height: 1;
+  font-size: 0;
 }
+
+.admin-review-dialog-close::before,
+.admin-review-dialog-close::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 1.6px;
+  border-radius: 999px;
+  background: #71717a;
+  content: "";
+  transform-origin: center;
+}
+
+.admin-review-dialog-close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.admin-review-dialog-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
 
 .admin-review-dialog-grid {
   display: grid;

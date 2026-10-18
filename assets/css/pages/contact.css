@@ -110,35 +110,7 @@
 }
 
 .contact-account-note {
-  display: flex;
-  min-width: 0;
   flex: 1 1 auto;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 11px 13px;
-  border: 1px solid rgba(109, 76, 245, 0.10);
-  border-radius: 11px;
-  color: #63636d;
-  background: rgba(109, 76, 245, 0.035);
-}
-
-.contact-account-note svg {
-  width: 17px;
-  height: 17px;
-  flex: 0 0 17px;
-  margin-top: 1px;
-  fill: none;
-  stroke: var(--color-accent);
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.contact-account-note p {
-  margin: 0;
-  color: inherit;
-  font-size: 0.79rem;
-  line-height: 1.55;
 }
 
 .contact-actions .button {

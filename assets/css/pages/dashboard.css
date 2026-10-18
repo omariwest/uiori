@@ -1,8 +1,6 @@
 .dashboard-preview-note {
-  margin: 22px 0 18px;
-  color: #7a828f;
-  font-size: 0.75rem;
-  line-height: 1.5;
+  max-width: 720px;
+  margin: 18px 0 20px;
 }
 
 .dashboard-label {
@@ -301,14 +299,19 @@
   border-radius: 14px;
 }
 
-.dashboard-stat:nth-child(2) .dashboard-stat-icon {
-  color: var(--color-accent-blue);
-  background: rgba(63, 140, 255, 0.08);
+.dashboard-stat-icon.is-points {
+  color: #c58a00;
+  background: rgba(245, 158, 11, 0.11);
 }
 
-.dashboard-stat:nth-child(3) .dashboard-stat-icon {
-  color: var(--color-accent-pink);
-  background: rgba(233, 93, 178, 0.08);
+.dashboard-stat-icon.is-streak {
+  color: #d14343;
+  background: rgba(209, 67, 67, 0.08);
+}
+
+.dashboard-stat-icon.is-level {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
 }
 
 .dashboard-stat-icon svg {

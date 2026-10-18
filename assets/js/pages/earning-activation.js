@@ -36,6 +36,13 @@ function buttonCopy(state) {
       mode: "manage",
     };
   }
+  if (state?.provider_ready === false) {
+    return {
+      label: "Set up earning",
+      note: "Earning setup is temporarily unavailable.",
+      mode: "unavailable",
+    };
+  }
   if (state?.connection_status === "pending") {
     return {
       label: "Continue setup",
@@ -59,9 +66,9 @@ function renderState(state) {
   if (button) {
     button.textContent = copy.label;
     button.dataset.mode = copy.mode;
-    const restricted = copy.mode === "restricted";
-    button.disabled = restricted;
-    button.setAttribute("aria-disabled", String(restricted));
+    const unavailable = copy.mode === "restricted" || copy.mode === "unavailable";
+    button.disabled = unavailable;
+    button.setAttribute("aria-disabled", String(unavailable));
   }
   if (note) note.textContent = copy.note;
 }
@@ -93,7 +100,7 @@ function resetDialog(form, button) {
 
 function friendlyError(code) {
   const messages = {
-    provider_not_ready: "The Mellowtel support link is not connected yet. UIORI will enable this button at launch.",
+    provider_not_ready: "Earning setup is temporarily unavailable.",
     email_not_verified: "Verify your email before starting earning setup.",
     acknowledgement_required: "Review and acknowledge every item before continuing.",
     account_restricted: "Earning setup is unavailable while this account review is in progress.",
@@ -111,7 +118,7 @@ function setupDialog() {
   if (!openButton || !dialog || !form || !continueButton || !closeButton) return;
 
   openButton.addEventListener("click", () => {
-    if (openButton.dataset.mode === "restricted") return;
+    if (openButton.dataset.mode === "restricted" || openButton.dataset.mode === "unavailable") return;
     if (openButton.dataset.mode === "manage") {
       const url = activationState?.user_control_url;
       if (url) window.open(url, "_blank", "noopener,noreferrer");
@@ -119,9 +126,6 @@ function setupDialog() {
     }
 
     resetDialog(form, continueButton);
-    if (activationState?.provider_ready === false) {
-      setStatus("The connection is prepared, but the live Mellowtel support link will be attached before UIORI launches.");
-    }
     dialog.showModal();
   });
 

@@ -172,3 +172,47 @@
     margin-bottom: 22px;
   }
 }
+
+
+.uiori-info-note {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 13px;
+  border: 1px solid rgba(109, 76, 245, 0.1);
+  border-radius: 11px;
+  color: #63636d;
+  background: rgba(109, 76, 245, 0.035);
+}
+
+.uiori-info-note > svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  margin-top: 1px;
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.uiori-info-note > p {
+  min-width: 0;
+  margin: 0;
+  color: inherit;
+  font-size: 0.79rem;
+  line-height: 1.55;
+}
+
+.uiori-info-note a {
+  color: var(--color-ink);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.uiori-info-note a:hover,
+.uiori-info-note a:focus-visible {
+  color: var(--color-accent);
+}

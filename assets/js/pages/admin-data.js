@@ -24,7 +24,12 @@ function openAdminOperationDrawer(drawer, focusSelector = "") {
   drawer.setAttribute("aria-hidden", "false");
   document.body.classList.add("admin-operation-drawer-open");
   window.setTimeout(() => {
-    const target = focusSelector ? drawer.querySelector(focusSelector) : drawer.querySelector("input, textarea, select, button");
+    const mobileOrTouch = window.matchMedia("(max-width: 760px), (pointer: coarse)").matches;
+    const target = mobileOrTouch
+      ? drawer.querySelector('button[aria-label^="Close"]')
+      : focusSelector
+        ? drawer.querySelector(focusSelector)
+        : drawer.querySelector("input, textarea, select, button");
     target?.focus({ preventScroll: true });
   }, 220);
 }

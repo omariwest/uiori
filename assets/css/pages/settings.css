@@ -112,15 +112,20 @@
 }
 
 .settings-profile-photo-copy > span {
-  display: block;
-  margin-top: 3px;
+  display: inline;
   color: #8a8a93;
   font-size: 0.76rem;
   line-height: 1.45;
 }
 
 .settings-profile-photo-copy .settings-profile-photo-status {
+  margin-left: 0;
   color: #71717a;
+}
+
+.settings-profile-photo-status:not(:empty)::before {
+  content: " · ";
+  color: #a1a1aa;
 }
 
 .settings-photo-button {
@@ -222,12 +227,15 @@
 
 .settings-row {
   display: flex;
-  min-height: 58px;
+  min-height: 64px;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
+  gap: 18px;
   margin-left: 53px;
-  padding: 0 0 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  border-radius: 12px;
+  background: #fbfbfc;
 }
 
 .settings-row > div {
@@ -252,13 +260,18 @@
 
 .settings-status {
   display: inline-flex;
+  width: fit-content;
   align-items: center;
   gap: 7px;
-  margin-top: 5px;
+  margin-top: 6px;
+  padding: 4px 8px;
+  border: 1px solid rgba(17, 24, 39, 0.07);
+  border-radius: 999px;
   color: #71717a;
-  font-size: 0.78rem;
-  font-weight: 500;
-  line-height: 1.4;
+  background: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 .settings-status-dot {
@@ -273,11 +286,13 @@
 .settings-text-button,
 .settings-danger-button {
   flex: 0 0 auto;
-  padding: 0;
-  border: 0;
-  background: transparent;
+  min-height: 34px;
+  padding: 0 11px;
+  border: 1px solid rgba(17, 24, 39, 0.11);
+  border-radius: 9px;
+  background: #ffffff;
   font: inherit;
-  font-size: 0.79rem;
+  font-size: 0.76rem;
   font-weight: 650;
 }
 
@@ -295,35 +310,6 @@
   color: #a1a1aa;
 }
 
-.settings-inline-link {
-  display: inline-flex;
-  flex: 0 0 auto;
-  align-items: center;
-  gap: 7px;
-  color: var(--color-ink);
-  font-size: 0.79rem;
-  font-weight: 650;
-  text-decoration: none;
-  transition:
-    color 0.15s ease,
-    gap 0.15s ease;
-}
-
-.settings-inline-link:hover,
-.settings-inline-link:focus-visible {
-  gap: 10px;
-  color: var(--color-accent);
-}
-
-.settings-inline-link svg {
-  width: 15px;
-  height: 15px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
 
 .settings-information {
   margin: 0 0 0 53px;
@@ -450,7 +436,6 @@
     max-width: 100%;
   }
 
-  .settings-row,
   .settings-action-row {
     align-items: flex-start;
     flex-direction: column;
@@ -460,6 +445,9 @@
 
   .settings-row {
     min-height: 0;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 13px;
   }
 
   .settings-form-actions {
@@ -480,7 +468,6 @@
 @media (prefers-reduced-motion: reduce) {
   .settings-field input,
   .settings-password-form .password-toggle,
-  .settings-inline-link,
   .settings-photo-button {
     transition: none;
   }
