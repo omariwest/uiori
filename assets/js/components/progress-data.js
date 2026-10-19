@@ -132,9 +132,29 @@ function rewardEventView(event) {
 function withdrawalView(request) {
   const status = String(request?.status || "pending");
   const label = status[0].toUpperCase() + status.slice(1);
+  const payout = request?.payout_asset && request?.payout_network
+    ? `${request.payout_asset} · ${request.payout_network}`
+    : "";
+
+  let copy = `Withdrawal status: ${label}.`;
+  if (status === "pending") {
+    copy = "Your withdrawal request is waiting for review.";
+  } else if (status === "approved") {
+    copy = "Approved and queued for UIORI's monthly payout processing.";
+  } else if (status === "paid") {
+    copy = payout ? `Paid via ${payout}.` : "Payout completed.";
+    if (request?.transaction_ref) {
+      copy += ` Reference: ${request.transaction_ref}.`;
+    }
+  } else if (status === "rejected") {
+    copy = "Request rejected. The reserved amount was returned to your balance.";
+  } else if (status === "cancelled") {
+    copy = "Request cancelled. The reserved amount was returned to your balance.";
+  }
+
   return {
     title: `${formatMoney(request?.amount_cents)} withdrawal ${label.toLowerCase()}`,
-    copy: status === "pending" ? "Your withdrawal request is waiting for review." : `Withdrawal status: ${label}.`,
+    copy,
   };
 }
 
@@ -154,7 +174,10 @@ function renderDashboardActivity(events, withdrawals) {
   if (!container) return;
   const items = [
     ...(events || []).filter((event) => event.event_type !== "withdrawal").map((event) => ({ ...rewardEventView(event), date: event.occurred_at || event.created_at })),
-    ...(withdrawals || []).map((request) => ({ ...withdrawalView(request), date: request.requested_at })),
+    ...(withdrawals || []).map((request) => ({
+      ...withdrawalView(request),
+      date: request.paid_at || request.reviewed_at || request.requested_at,
+    })),
   ]
     .filter((item) => item.date)
     .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -176,7 +199,10 @@ function renderWalletActivity(events, withdrawals) {
   );
   const items = [
     ...walletEvents.map((event) => ({ ...rewardEventView(event), date: event.occurred_at || event.created_at })),
-    ...(withdrawals || []).map((request) => ({ ...withdrawalView(request), date: request.requested_at })),
+    ...(withdrawals || []).map((request) => ({
+      ...withdrawalView(request),
+      date: request.paid_at || request.reviewed_at || request.requested_at,
+    })),
   ]
     .filter((item) => item.date)
     .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -229,7 +255,7 @@ async function loadProgress() {
         .limit(12),
       uiOriSupabase
         .from("withdrawal_requests")
-        .select("id,amount_cents,status,requested_at,reviewed_at,paid_at")
+        .select("id,amount_cents,status,requested_at,reviewed_at,paid_at,transaction_ref,payout_asset,payout_network")
         .eq("user_id", user.id)
         .order("requested_at", { ascending: false })
         .limit(12),
