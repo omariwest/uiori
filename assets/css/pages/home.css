@@ -80,9 +80,9 @@
 }
 
 .hero-cta-btn {
-  min-height: 50px;
+  min-height: 44px;
   gap: 9px;
-  padding: 0 24px;
+  padding: 0 20px;
   font-size: 1rem;
   font-weight: 600;
 }
@@ -1422,7 +1422,7 @@
   .hero-actions .button {
     min-width: 0;
     flex: 1 1 0;
-    min-height: 46px;
+    min-height: 44px;
     padding: 0 12px;
     font-size: 0.78rem;
     white-space: nowrap;

@@ -104,10 +104,36 @@ function applyConnectionState(status, accountState) {
         "[data-uiori-dashboard-note]",
         "Your account is active. Earning is currently paused, while existing progress remains visible.",
       );
-    } else {
+      setText(
+        "[data-uiori-earn-status-copy]",
+        "Participation is paused. Existing progress stays visible until you choose to participate again.",
+      );
+    } else if (normalized === "active") {
       setText(
         "[data-uiori-dashboard-note]",
         "Your balance and progress update as eligible activity is recorded.",
+      );
+      setText(
+        "[data-uiori-earn-status-copy]",
+        "Participation is active. Keep UIORI open in a desktop tab while you browse to build eligible progress.",
+      );
+    } else if (normalized === "pending") {
+      setText(
+        "[data-uiori-dashboard-note]",
+        "Your Mellowtel setup is pending. Finish setup to start building eligible progress.",
+      );
+      setText(
+        "[data-uiori-earn-status-copy]",
+        "Your Mellowtel setup is pending. Finish the setup here after choosing to participate.",
+      );
+    } else {
+      setText(
+        "[data-uiori-dashboard-note]",
+        "Set up earning when you are ready. Nothing starts automatically.",
+      );
+      setText(
+        "[data-uiori-earn-status-copy]",
+        "Review the participation details and choose when you want to start.",
       );
     }
   }

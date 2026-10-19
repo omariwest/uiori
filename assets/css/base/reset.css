@@ -55,3 +55,7 @@ a {
     scroll-behavior: auto;
   }
 }
+
+[hidden] {
+  display: none !important;
+}
