@@ -186,3 +186,179 @@
   }
 
 }
+
+.admin-setting-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.admin-settings-action {
+  min-height: 36px;
+  padding: 0 13px;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  border-radius: 11px;
+  background: #ffffff;
+  color: var(--color-ink);
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.admin-settings-action:hover {
+  border-color: rgba(109, 76, 245, 0.24);
+  background: rgba(109, 76, 245, 0.035);
+}
+
+.admin-revenue-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.admin-revenue-close {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border: 1px solid rgba(17, 24, 39, 0.09);
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.admin-revenue-close::before,
+.admin-revenue-close::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 1.6px;
+  border-radius: 999px;
+  background: #6b7280;
+  content: "";
+}
+
+.admin-revenue-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.admin-revenue-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.admin-revenue-intro {
+  margin: 0 0 18px;
+  color: #6f7480;
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+
+.admin-revenue-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.admin-revenue-field {
+  display: grid;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.admin-revenue-field > span {
+  color: var(--color-ink);
+  font-size: 0.76rem;
+  font-weight: 650;
+}
+
+.admin-revenue-field input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 13px;
+  border: 1px solid rgba(17, 24, 39, 0.14);
+  border-radius: 12px;
+  outline: none;
+  background: #ffffff;
+  color: var(--color-ink);
+  font: inherit;
+  font-size: 0.84rem;
+}
+
+.admin-revenue-field input:focus {
+  border-color: rgba(109, 76, 245, 0.45);
+  box-shadow: 0 0 0 3px rgba(109, 76, 245, 0.08);
+}
+
+.admin-revenue-note {
+  margin: 14px 0 0;
+  padding: 12px 13px;
+  border: 1px solid rgba(109, 76, 245, 0.12);
+  border-radius: 12px;
+  background: rgba(109, 76, 245, 0.035);
+  color: #6f7480;
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+.admin-revenue-message {
+  min-height: 20px;
+  margin: 14px 0 0;
+  color: #536b5a;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.admin-revenue-message.is-error {
+  color: #9a4e4e;
+}
+
+.admin-revenue-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.admin-revenue-actions button {
+  min-height: 40px;
+  width: auto;
+  padding: 0 15px;
+  border-radius: 12px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-revenue-secondary {
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  background: #ffffff;
+  color: var(--color-ink);
+}
+
+.admin-revenue-primary {
+  border: 1px solid #111827;
+  background: #111827;
+  color: #ffffff;
+}
+
+.admin-revenue-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+@media (max-width: 520px) {
+  .admin-setting-actions {
+    justify-content: flex-start;
+  }
+
+  .admin-revenue-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

@@ -694,6 +694,118 @@ function renderReviews(data) {
 }
 
 
+function setRevenueMessage(message = "", error = false) {
+  const element = document.querySelector("#admin-revenue-message");
+  if (!element) return;
+  element.textContent = message;
+  element.classList.toggle("is-error", error);
+}
+
+function dollarsToCents(value) {
+  const normalized = String(value ?? "").trim();
+  if (!/^\d+(?:\.\d{1,2})?$/.test(normalized)) return null;
+  const amount = Number(normalized);
+  if (!Number.isFinite(amount)) return null;
+  const cents = Math.round(amount * 100);
+  return Number.isSafeInteger(cents) ? cents : null;
+}
+
+function setupRevenueSettlementDialog() {
+  const dialog = document.querySelector("#admin-revenue-dialog");
+  const open = document.querySelector("#admin-revenue-open");
+  const close = document.querySelector("#admin-revenue-close");
+  const cancel = document.querySelector("#admin-revenue-cancel");
+  const submit = document.querySelector("#admin-revenue-submit");
+
+  if (!dialog || !open || !close || !cancel || !submit) return;
+  if (dialog.dataset.uioriReady === "true") return;
+  dialog.dataset.uioriReady = "true";
+
+  const closeDialog = () => closeAdminOperationDrawer(dialog);
+
+  open.addEventListener("click", () => {
+    setRevenueMessage("");
+    openAdminOperationDrawer(dialog, "#admin-revenue-start");
+  });
+
+  close.addEventListener("click", closeDialog);
+  cancel.addEventListener("click", closeDialog);
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) closeDialog();
+  });
+
+  submit.addEventListener("click", async () => {
+    const periodStart = document.querySelector("#admin-revenue-start")?.value || "";
+    const periodEnd = document.querySelector("#admin-revenue-end")?.value || "";
+    const amount = document.querySelector("#admin-revenue-amount")?.value || "";
+    const grossRevenueCents = dollarsToCents(amount);
+
+    if (!periodStart || !periodEnd) {
+      setRevenueMessage("Choose the funded revenue period.", true);
+      return;
+    }
+
+    if (!grossRevenueCents || grossRevenueCents < 3) {
+      setRevenueMessage("Enter at least $0.03 of finalized provider revenue.", true);
+      return;
+    }
+
+    submit.disabled = true;
+    cancel.disabled = true;
+    setRevenueMessage("Recording funded revenue…");
+
+    try {
+      const { data, error } = await uiOriAdminSupabase.functions.invoke(
+        "admin-reward-period",
+        {
+          body: {
+            action: "settle",
+            period_start: periodStart,
+            period_end: periodEnd,
+            gross_revenue_cents: grossRevenueCents,
+          },
+        },
+      );
+
+      if (error || !data?.ok) {
+        const code = data?.error || error?.message || "reward_settlement_failed";
+        const messages = {
+          invalid_period: "Check the start and end dates.",
+          period_not_complete: "Use a completed period only.",
+          funded_amount_too_small: "Wait until finalized revenue reaches at least $0.03.",
+          period_overlap: "This period overlaps a revenue period already recorded.",
+          period_conflict: "This period was already recorded with different revenue.",
+        };
+        throw new Error(messages[code] || "The revenue period could not be recorded.");
+      }
+
+      const allocation = data.allocation || {};
+      if (allocation.allocated === false) {
+        const reason =
+          allocation.reason === "no_qualified_points"
+            ? "Revenue recorded, but no qualified Contribution Points were found in that period."
+            : "Revenue recorded, but the user reward pool is not yet allocatable.";
+        setRevenueMessage(reason);
+      } else {
+        setRevenueMessage(
+          `Allocated ${money(allocation.allocated_cents)} to qualified users. UIORI retained ${money(allocation.platform_share_cents)}.`,
+        );
+      }
+
+      const refreshed = await fetchAdminData("settings");
+      renderSettings(refreshed);
+      window.setTimeout(closeDialog, 1100);
+    } catch (error) {
+      console.error("[UIORI] reward settlement failed", error);
+      setRevenueMessage(error?.message || "The revenue period could not be recorded.", true);
+    } finally {
+      submit.disabled = false;
+      cancel.disabled = false;
+    }
+  });
+}
+
+
 function renderSettings(data) {
   const pool = data.reward_pool || {};
   const integrations = {
@@ -781,6 +893,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupWithdrawalReviewDialog();
   setupUserReviewDialog();
   setupReviewManageDialog();
+  setupRevenueSettlementDialog();
 
   const reviewQuery = new URLSearchParams(window.location.search).get("q");
   const reviewSearch = document.querySelector("#review-search");

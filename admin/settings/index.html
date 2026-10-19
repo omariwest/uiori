@@ -441,7 +441,7 @@
                       >No funded provider revenue has been recorded yet.</span
                     >
                   </dt>
-                  <dd>
+                  <dd class="admin-setting-actions">
                     <span
                       class="admin-setting-state is-planned"
                       data-uiori-pool-periods
@@ -449,6 +449,13 @@
                       <i></i>
                       Waiting for provider
                     </span>
+                    <button
+                      class="admin-settings-action"
+                      id="admin-revenue-open"
+                      type="button"
+                    >
+                      Record
+                    </button>
                   </dd>
                 </div>
               </dl>
@@ -537,6 +544,91 @@
             </section>
           </div>
         </main>
+
+        <div
+          aria-hidden="true"
+          aria-labelledby="admin-revenue-title"
+          class="admin-operation-drawer"
+          id="admin-revenue-dialog"
+        >
+          <section
+            aria-modal="true"
+            class="admin-operation-panel"
+            role="dialog"
+          >
+            <div class="admin-operation-head admin-revenue-heading">
+              <div>
+                <p class="admin-section-eyebrow">Reward settlement</p>
+                <h2 id="admin-revenue-title">Record funded revenue</h2>
+              </div>
+              <button
+                aria-label="Close revenue settlement"
+                class="admin-revenue-close"
+                id="admin-revenue-close"
+                type="button"
+              ></button>
+            </div>
+
+            <div class="admin-operation-body">
+              <p class="admin-revenue-intro">
+                Enter finalized Mellowtel revenue for a completed period. UIORI
+                reserves 40% for qualified users and 60% for the platform.
+              </p>
+
+              <div class="admin-revenue-grid">
+                <label class="admin-revenue-field" for="admin-revenue-start">
+                  <span>Period start</span>
+                  <input id="admin-revenue-start" type="date" />
+                </label>
+
+                <label class="admin-revenue-field" for="admin-revenue-end">
+                  <span>Period end</span>
+                  <input id="admin-revenue-end" type="date" />
+                </label>
+              </div>
+
+              <label class="admin-revenue-field" for="admin-revenue-amount">
+                <span>Funded revenue (USD)</span>
+                <input
+                  id="admin-revenue-amount"
+                  inputmode="decimal"
+                  min="0.03"
+                  placeholder="0.00"
+                  step="0.01"
+                  type="number"
+                />
+              </label>
+
+              <p class="admin-revenue-note">
+                Use the finalized provider amount, not a live estimate. The end
+                date must be a completed day.
+              </p>
+
+              <p
+                aria-live="polite"
+                class="admin-revenue-message"
+                id="admin-revenue-message"
+              ></p>
+
+              <div class="admin-revenue-actions">
+                <button
+                  class="admin-revenue-secondary"
+                  id="admin-revenue-cancel"
+                  type="button"
+                >
+                  Cancel
+                </button>
+                <button
+                  class="admin-revenue-primary"
+                  id="admin-revenue-submit"
+                  type="button"
+                >
+                  Record &amp; allocate
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   </body>
