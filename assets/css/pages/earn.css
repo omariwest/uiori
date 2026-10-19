@@ -80,6 +80,13 @@
   align-items: flex-start;
 }
 
+.earn-status-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
 .earn-status-note {
   width: min(100%, 320px);
   margin-top: 11px;

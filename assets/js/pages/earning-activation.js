@@ -45,9 +45,9 @@ function buttonCopy(state) {
   }
   if (state?.connection_status === "pending") {
     return {
-      label: "Continue setup",
-      note: "Your setup is pending. UIORI unlocks earning only after the connection is confirmed.",
-      mode: "setup",
+      label: "Open Mellowtel",
+      note: "Install Mellowtel and choose to participate, then finish setup here.",
+      mode: "resume",
     };
   }
   return {
@@ -60,6 +60,7 @@ function buttonCopy(state) {
 function renderState(state) {
   activationState = state;
   const button = document.querySelector("#earning-setup-button");
+  const finishButton = document.querySelector("#earning-finish-button");
   const note = document.querySelector("#earning-setup-note");
   const copy = buttonCopy(state);
 
@@ -69,6 +70,10 @@ function renderState(state) {
     const unavailable = copy.mode === "restricted" || copy.mode === "unavailable";
     button.disabled = unavailable;
     button.setAttribute("aria-disabled", String(unavailable));
+  }
+  if (finishButton) {
+    finishButton.hidden = copy.mode !== "resume";
+    finishButton.disabled = false;
   }
   if (note) note.textContent = copy.note;
 }
@@ -104,6 +109,7 @@ function friendlyError(code) {
     email_not_verified: "Verify your email before starting earning setup.",
     acknowledgement_required: "Review and acknowledge every item before continuing.",
     account_restricted: "Earning setup is unavailable while this account review is in progress.",
+    setup_not_started: "Open Mellowtel and complete the setup before finishing here.",
   };
   return messages[code] || "We couldn't open the earning setup. Please try again.";
 }
@@ -113,15 +119,21 @@ function setupDialog() {
   const dialog = document.querySelector("#earning-activation-dialog");
   const form = document.querySelector("#earning-activation-form");
   const continueButton = document.querySelector("#earning-activation-continue");
+  const finishButton = document.querySelector("#earning-finish-button");
   const closeButton = document.querySelector("#earning-activation-close");
 
-  if (!openButton || !dialog || !form || !continueButton || !closeButton) return;
+  if (!openButton || !dialog || !form || !continueButton || !finishButton || !closeButton) return;
 
   openButton.addEventListener("click", () => {
     if (openButton.dataset.mode === "restricted" || openButton.dataset.mode === "unavailable") return;
     if (openButton.dataset.mode === "manage") {
       const url = activationState?.user_control_url;
       if (url) window.open(url, "_blank", "noopener,noreferrer");
+      return;
+    }
+    if (openButton.dataset.mode === "resume") {
+      const url = activationState?.launch_url;
+      if (url) window.location.assign(url);
       return;
     }
 
@@ -134,6 +146,33 @@ function setupDialog() {
     if (event.target === dialog) dialog.close();
   });
   dialog.addEventListener("close", () => resetDialog(form, continueButton));
+
+
+  finishButton.addEventListener("click", async () => {
+    if (activationState?.connection_status !== "pending") return;
+
+    finishButton.disabled = true;
+    openButton.disabled = true;
+    const note = document.querySelector("#earning-setup-note");
+    if (note) note.textContent = "Finishing your UIORI earning setup…";
+
+    try {
+      const data = await invokeActivation({ action: "complete" });
+      renderState({
+        ...activationState,
+        ...data.connection,
+        connection_status: data.connection?.status || "active",
+        membership_status: data.membership_status || "active",
+        user_control_url: data.user_control_url || activationState?.user_control_url,
+      });
+      window.location.reload();
+    } catch (error) {
+      console.error("[UIORI] earning setup completion failed", error);
+      if (note) note.textContent = friendlyError(error.code || error.message);
+      finishButton.disabled = false;
+      openButton.disabled = false;
+    }
+  });
 
   continueButton.addEventListener("click", async () => {
     if (!allAcknowledged(form)) {
