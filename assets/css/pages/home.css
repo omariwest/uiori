@@ -428,66 +428,33 @@
   font-weight: 650;
 }
 
-.earning-chip {
+.hero-ai-icon {
   position: absolute;
   z-index: 4;
-  display: flex;
-  min-width: 112px;
-  align-items: center;
-  gap: 9px;
-  padding: 10px 12px;
-  border: 1px solid rgba(17, 24, 39, 0.08);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 12px 30px rgba(39, 28, 84, 0.1);
-  backdrop-filter: blur(10px);
-  animation: money-chip-float 5.5s ease-in-out infinite;
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 20px rgba(39, 28, 84, 0.12));
+  animation: hero-ai-icon-float 5.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.earning-chip-one {
-  top: 24px;
-  left: 4px;
+.hero-ai-icon-one {
+  top: 22px;
+  left: 10px;
 }
 
-.earning-chip-two {
-  top: 138px;
-  right: -4px;
+.hero-ai-icon-two {
+  top: 142px;
+  right: 4px;
   animation-delay: -2s;
 }
 
-.earning-chip-three {
-  right: 44px;
-  bottom: 0;
+.hero-ai-icon-three {
+  right: 48px;
+  bottom: 4px;
   animation-delay: -3.6s;
-}
-
-.earning-chip-pulse {
-  width: 8px;
-  height: 8px;
-  flex: 0 0 8px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 0 5px rgba(109, 76, 245, 0.08);
-}
-
-.earning-chip strong,
-.earning-chip small {
-  display: block;
-}
-
-.earning-chip strong {
-  color: var(--color-ink);
-  font-size: 0.78rem;
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-}
-
-.earning-chip small {
-  margin-top: 1px;
-  color: #8a8a93;
-  font-size: 0.58rem;
-  font-weight: 550;
 }
 
 @keyframes hero-flow {
@@ -507,7 +474,7 @@
   }
 }
 
-@keyframes money-chip-float {
+@keyframes hero-ai-icon-float {
   0%,
   100% {
     transform: translateY(0);
@@ -1518,23 +1485,24 @@
     font-size: 0.61rem;
   }
 
-  .earning-chip {
-    min-width: 95px;
-    padding: 8px 10px;
+  .hero-ai-icon {
+    width: 46px;
+    height: 46px;
   }
 
-  .earning-chip-one {
-    top: 5px;
-    left: 8px;
+  .hero-ai-icon-one {
+    top: 8px;
+    left: 10px;
   }
 
-  .earning-chip-two {
+  .hero-ai-icon-two {
     top: 112px;
-    right: -4px;
+    right: 4px;
   }
 
-  .earning-chip-three {
-    display: none;
+  .hero-ai-icon-three {
+    right: 30px;
+    bottom: 2px;
   }
 
   .home-faq-heading {
@@ -1593,7 +1561,7 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-flow-line,
   .hero-product-window,
-  .earning-chip,
+  .hero-ai-icon,
   .reward-wallet-card,
   .reward-wallet-card::before,
   .reward-wallet-card::after,
