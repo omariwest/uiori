@@ -374,52 +374,70 @@
 }
 
 
+body.earning-activation-open {
+  overflow: hidden;
+}
+
 .earning-activation-dialog {
-  width: min(94vw, 680px);
+  width: min(92vw, 680px);
   max-width: 680px;
-  max-height: min(88vh, 820px);
+  max-height: calc(100dvh - 32px);
   padding: 0;
+  overflow: hidden;
   border: 0;
   border-radius: 22px;
-  background: transparent;
+  background: #ffffff;
   box-shadow: 0 28px 82px rgba(17, 24, 39, 0.22);
 }
 
 .earning-activation-dialog::backdrop {
-  background: rgba(17, 24, 39, 0.36);
-  backdrop-filter: blur(10px);
+  background: rgba(17, 24, 39, 0.34);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 .earning-activation-card {
-  max-height: min(88vh, 820px);
-  overflow-y: auto;
-  padding: 30px;
+  display: flex;
+  max-height: calc(100dvh - 32px);
+  flex-direction: column;
+  overflow: hidden;
   border: 1px solid rgba(17, 24, 39, 0.08);
   border-radius: 22px;
   background: #ffffff;
 }
 
+.earning-activation-topbar {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 24px 24px 18px;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.07);
+}
+
 .earning-activation-heading {
   display: flex;
+  min-width: 0;
   align-items: center;
   gap: 14px;
 }
 
 .earning-activation-icon {
   display: grid;
-  width: 48px;
-  height: 48px;
-  flex: 0 0 48px;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
   place-items: center;
   border: 1px solid rgba(109, 76, 245, 0.14);
-  border-radius: 15px;
+  border-radius: 14px;
   color: var(--color-accent);
   background: rgba(109, 76, 245, 0.045);
 }
 
 .earning-activation-icon svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.7;
@@ -430,7 +448,7 @@
 .earning-activation-eyebrow {
   margin: 0 0 4px;
   color: var(--color-accent);
-  font-size: 0.69rem;
+  font-size: 0.68rem;
   font-weight: 750;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -439,13 +457,71 @@
 .earning-activation-heading h2 {
   margin: 0;
   color: var(--color-ink);
-  font-size: 1.34rem;
+  font-size: 1.28rem;
   line-height: 1.25;
   letter-spacing: -0.035em;
 }
 
+.earning-activation-close {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border: 1px solid rgba(17, 24, 39, 0.1);
+  border-radius: 50%;
+  color: transparent;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 0;
+}
+
+.earning-activation-close::before,
+.earning-activation-close::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 1.5px;
+  border-radius: 999px;
+  background: #71717a;
+  content: "";
+  transform-origin: center;
+}
+
+.earning-activation-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.earning-activation-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.earning-activation-close:hover {
+  border-color: rgba(17, 24, 39, 0.18);
+  background: #fafafa;
+}
+
+.earning-activation-close:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.earning-activation-scroll {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 24px 24px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.earning-activation-scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 .earning-activation-intro {
-  margin: 19px 0 0;
+  margin: 20px 0 0;
   color: #62626b;
   font-size: 0.86rem;
   line-height: 1.68;
@@ -531,13 +607,14 @@
 .earning-activation-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 10px;
   margin-top: 16px;
 }
 
 .earning-activation-actions .button:disabled {
-  opacity: 0.55;
   cursor: wait;
+  opacity: 0.55;
 }
 
 .earning-activation-legal {
@@ -599,8 +676,50 @@
 }
 
 @media (max-width: 620px) {
+  .earning-activation-dialog {
+    width: calc(100vw - 20px);
+    max-height: calc(100dvh - 20px);
+    border-radius: 19px;
+  }
+
   .earning-activation-card {
-    padding: 22px 18px;
+    max-height: calc(100dvh - 20px);
+    border-radius: 19px;
+  }
+
+  .earning-activation-topbar {
+    gap: 12px;
+    padding: 18px 16px 14px;
+  }
+
+  .earning-activation-scroll {
+    padding: 0 16px 18px;
+  }
+
+  .earning-activation-icon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+    border-radius: 12px;
+  }
+
+  .earning-activation-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .earning-activation-heading {
+    gap: 11px;
+  }
+
+  .earning-activation-heading h2 {
+    font-size: 1.08rem;
+  }
+
+  .earning-activation-close {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
   }
 
   .earning-activation-facts {
@@ -608,10 +727,7 @@
   }
 
   .earning-activation-actions {
-    display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
   }
 
   .earning-activation-actions .button {

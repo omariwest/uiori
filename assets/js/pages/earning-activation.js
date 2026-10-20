@@ -138,6 +138,7 @@ function setupDialog() {
     }
 
     resetDialog(form, continueButton);
+    document.body.classList.add("earning-activation-open");
     dialog.showModal();
   });
 
@@ -145,7 +146,10 @@ function setupDialog() {
   dialog.addEventListener("click", (event) => {
     if (event.target === dialog) dialog.close();
   });
-  dialog.addEventListener("close", () => resetDialog(form, continueButton));
+  dialog.addEventListener("close", () => {
+    document.body.classList.remove("earning-activation-open");
+    resetDialog(form, continueButton);
+  });
 
 
   finishButton.addEventListener("click", async () => {

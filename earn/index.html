@@ -654,7 +654,8 @@
             id="earning-activation-dialog"
           >
             <div class="earning-activation-card">
-              <div class="earning-activation-heading">
+              <div class="earning-activation-topbar">
+                <div class="earning-activation-heading">
                 <span aria-hidden="true" class="earning-activation-icon">
                   <svg viewbox="0 0 24 24">
                     <path
@@ -670,7 +671,15 @@
                   </h2>
                 </div>
               </div>
-              <p class="earning-activation-intro">
+                <button
+                  aria-label="Close earning setup"
+                  class="earning-activation-close"
+                  id="earning-activation-close"
+                  type="button"
+                ></button>
+              </div>
+              <div class="earning-activation-scroll">
+                <p class="earning-activation-intro">
                 UIORI uses Mellowtel's separate companion-extension flow. Your
                 UIORI account alone never starts bandwidth sharing.
               </p>
@@ -753,18 +762,11 @@
               ></p>
               <div class="earning-activation-actions">
                 <button
-                  class="button button-dark"
+                  class="button button-dark button-small"
                   id="earning-activation-continue"
                   type="button"
                 >
                   Continue to Mellowtel
-                </button>
-                <button
-                  class="button button-outline"
-                  id="earning-activation-close"
-                  type="button"
-                >
-                  Close
                 </button>
               </div>
               <div class="earning-activation-legal uiori-info-note">
@@ -779,6 +781,7 @@
                   <a href="/privacy/">Privacy</a> ·
                   <a href="/rewards-policy/">Rewards Policy</a>
                 </p>
+              </div>
               </div>
             </div>
           </dialog>
