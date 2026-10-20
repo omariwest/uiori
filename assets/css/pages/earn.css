@@ -607,7 +607,7 @@ body.earning-activation-open {
 .earning-activation-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 10px;
   margin-top: 16px;
 }
