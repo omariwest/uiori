@@ -135,7 +135,7 @@
               >
             </div>
             <h1>
-              Put unused bandwidth to work.
+              Put your unused internet connection to work.
               <span>Watch the rewards add up.</span>
             </h1>
             <p class="hero-description">
@@ -253,8 +253,10 @@
         <div class="container">
           <div class="home-section-heading">
             <p class="section-kicker">How it works</p>
-            <h2 id="process-title">From account to earning in three clear steps.</h2>
-            <a class="section-inline-link" href="/how-it-works/">Full walkthrough</a>
+            <h2 id="process-title">From signup to visible progress.</h2>
+            <a class="section-inline-link" href="/how-it-works/"
+              >Full walkthrough</a
+            >
           </div>
           <div class="home-workflow" data-home-workflow="">
             <div
@@ -272,10 +274,10 @@
                 type="button"
               >
                 <span class="home-workflow-index">1</span>
-                <span>
-                  <strong>Activate your account</strong>
-                  <small>Finish activation in Account settings</small>
-                </span>
+                <span
+                  ><strong>Create your account</strong
+                  ><small>Set up your UIORI account</small></span
+                >
               </button>
               <button
                 aria-controls="home-workflow-panel-2"
@@ -287,10 +289,10 @@
                 type="button"
               >
                 <span class="home-workflow-index">2</span>
-                <span>
-                  <strong>Set up earning</strong>
-                  <small>Open Earn and start the guided setup</small>
-                </span>
+                <span
+                  ><strong>Set up earning</strong
+                  ><small>Review the setup before anything starts</small></span
+                >
               </button>
               <button
                 aria-controls="home-workflow-panel-3"
@@ -302,10 +304,40 @@
                 type="button"
               >
                 <span class="home-workflow-index">3</span>
-                <span>
-                  <strong>Turn support on</strong>
-                  <small>You choose when participation is active</small>
-                </span>
+                <span
+                  ><strong>Add the extension</strong
+                  ><small>Install Mellowtel from Chrome</small></span
+                >
+              </button>
+              <button
+                aria-controls="home-workflow-panel-4"
+                aria-selected="false"
+                class="home-workflow-tab"
+                data-home-workflow-step="4"
+                id="home-workflow-tab-4"
+                role="tab"
+                type="button"
+              >
+                <span class="home-workflow-index">4</span>
+                <span
+                  ><strong>Turn support on</strong
+                  ><small>You choose when participation is active</small></span
+                >
+              </button>
+              <button
+                aria-controls="home-workflow-panel-5"
+                aria-selected="false"
+                class="home-workflow-tab"
+                data-home-workflow-step="5"
+                id="home-workflow-tab-5"
+                role="tab"
+                type="button"
+              >
+                <span class="home-workflow-index">5</span>
+                <span
+                  ><strong>Follow your progress</strong
+                  ><small>See balance, milestones, points, and streaks</small></span
+                >
               </button>
             </div>
             <div class="home-workflow-stage">
@@ -318,24 +350,24 @@
               >
                 <div class="home-workflow-copy">
                   <p class="home-workflow-eyebrow">Step 1</p>
-                  <h3>Activate your UIORI account.</h3>
+                  <h3>Start with one simple account.</h3>
                   <p>
-                    Open Account settings and complete activation before earning
-                    can start.
+                    Create your UIORI account first. Your progress, credited
+                    earnings, and withdrawal status stay together.
                   </p>
                 </div>
                 <div class="home-workflow-image">
-                  <span class="home-workflow-cue cue-account">Account</span>
                   <img
-                    alt="UIORI account settings showing the account activation step"
+                    alt="UIORI signup screen"
                     decoding="async"
-                    height="345"
+                    height="640"
                     loading="lazy"
-                    src="/assets/img/how-it-works/activate-your-account-first.webp"
-                    width="800"
+                    src="/assets/img/landing/signup.png"
+                    width="960"
                   />
                 </div>
               </article>
+
               <article
                 aria-labelledby="home-workflow-tab-2"
                 class="home-workflow-panel"
@@ -346,24 +378,38 @@
               >
                 <div class="home-workflow-copy">
                   <p class="home-workflow-eyebrow">Step 2</p>
-                  <h3>Open Earn and start setup.</h3>
+                  <h3>Open Earn and start the setup.</h3>
                   <p>
-                    Choose Set up earning. UIORI explains the connection before
-                    you continue to Mellowtel.
+                    UIORI shows the participation details first. Nothing starts
+                    just because you have an account.
                   </p>
                 </div>
-                <div class="home-workflow-image">
-                  <span class="home-workflow-cue cue-setup">Set up earning</span>
+                <div class="home-workflow-image home-annotated-shot">
                   <img
-                    alt="UIORI Earn page showing the Set up earning action"
+                    alt="UIORI Earn page showing the Set up earning button"
                     decoding="async"
-                    height="330"
+                    height="802"
                     loading="lazy"
                     src="/assets/img/how-it-works/set-up-earning.webp"
-                    width="760"
+                    width="1846"
                   />
+                  <span class="home-shot-hint hint-setup">Click Set up earning</span>
+                  <svg
+                    aria-hidden="true"
+                    class="home-shot-arrow"
+                    preserveAspectRatio="none"
+                    viewBox="0 0 1846 802"
+                  >
+                    <defs>
+                      <marker id="home-arrow-setup" markerHeight="8" markerWidth="9" orient="auto" refX="8" refY="4">
+                        <path d="M0 0L9 4L0 8Z"></path>
+                      </marker>
+                    </defs>
+                    <path d="M1285 215 Q1390 245 1490 326" marker-end="url(#home-arrow-setup)"></path>
+                  </svg>
                 </div>
               </article>
+
               <article
                 aria-labelledby="home-workflow-tab-3"
                 class="home-workflow-panel"
@@ -374,21 +420,104 @@
               >
                 <div class="home-workflow-copy">
                   <p class="home-workflow-eyebrow">Step 3</p>
-                  <h3>Keep support on when you want to participate.</h3>
+                  <h3>Add the Mellowtel extension.</h3>
                   <p>
-                    Complete the short Mellowtel walkthrough, then use its switch
-                    to control participation at any time.
+                    UIORI takes you to the support page, then Chrome. Add the
+                    extension to continue the guided setup.
                   </p>
                 </div>
-                <div class="home-workflow-image home-workflow-image-portrait">
-                  <span class="home-workflow-cue cue-support">Support on</span>
+                <div class="home-workflow-image home-annotated-shot">
                   <img
-                    alt="Mellowtel extension showing support switched on"
+                    alt="Chrome Web Store page for the Mellowtel extension"
                     decoding="async"
-                    height="555"
+                    height="876"
+                    loading="lazy"
+                    src="/assets/img/how-it-works/extension-first-show.webp"
+                    width="1918"
+                  />
+                  <span class="home-shot-hint hint-extension">Click Add to Chrome</span>
+                  <svg
+                    aria-hidden="true"
+                    class="home-shot-arrow"
+                    preserveAspectRatio="none"
+                    viewBox="0 0 1918 876"
+                  >
+                    <defs>
+                      <marker id="home-arrow-extension" markerHeight="8" markerWidth="9" orient="auto" refX="8" refY="4">
+                        <path d="M0 0L9 4L0 8Z"></path>
+                      </marker>
+                    </defs>
+                    <path d="M1510 320 Q1640 300 1775 245" marker-end="url(#home-arrow-extension)"></path>
+                  </svg>
+                </div>
+              </article>
+
+              <article
+                aria-labelledby="home-workflow-tab-4"
+                class="home-workflow-panel"
+                data-home-workflow-panel="4"
+                hidden=""
+                id="home-workflow-panel-4"
+                role="tabpanel"
+              >
+                <div class="home-workflow-copy">
+                  <p class="home-workflow-eyebrow">Step 4</p>
+                  <h3>Turn support on when you are ready.</h3>
+                  <p>
+                    The switch is yours. When it is on, a small part of your
+                    unused internet connection can be used while you browse.
+                  </p>
+                </div>
+                <div class="home-workflow-image home-workflow-image-portrait home-annotated-shot">
+                  <img
+                    alt="Mellowtel extension showing the support switch turned on"
+                    decoding="async"
+                    height="876"
                     loading="lazy"
                     src="/assets/img/how-it-works/switch-on.webp"
-                    width="500"
+                    width="789"
+                  />
+                  <span class="home-shot-hint hint-support">Turn support on</span>
+                  <svg
+                    aria-hidden="true"
+                    class="home-shot-arrow"
+                    preserveAspectRatio="none"
+                    viewBox="0 0 789 876"
+                  >
+                    <defs>
+                      <marker id="home-arrow-support" markerHeight="8" markerWidth="9" orient="auto" refX="8" refY="4">
+                        <path d="M0 0L9 4L0 8Z"></path>
+                      </marker>
+                    </defs>
+                    <path d="M330 625 Q235 595 138 550" marker-end="url(#home-arrow-support)"></path>
+                  </svg>
+                </div>
+              </article>
+
+              <article
+                aria-labelledby="home-workflow-tab-5"
+                class="home-workflow-panel"
+                data-home-workflow-panel="5"
+                hidden=""
+                id="home-workflow-panel-5"
+                role="tabpanel"
+              >
+                <div class="home-workflow-copy">
+                  <p class="home-workflow-eyebrow">Step 5</p>
+                  <h3>See the next goal without guessing.</h3>
+                  <p>
+                    Follow credited earnings separately from points, streaks,
+                    levels, and milestones from your dashboard.
+                  </p>
+                </div>
+                <div class="home-workflow-image">
+                  <img
+                    alt="UIORI dashboard with reward progress"
+                    decoding="async"
+                    height="820"
+                    loading="lazy"
+                    src="/assets/img/landing/dashboard.png"
+                    width="1440"
                   />
                 </div>
               </article>
