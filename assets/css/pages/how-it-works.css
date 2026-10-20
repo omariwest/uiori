@@ -296,6 +296,7 @@
 .how-preview-image img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 12px;
   object-fit: contain;
@@ -303,70 +304,6 @@
   image-rendering: auto;
 }
 
-
-.annotated-shot {
-  --shot-pad: 8px;
-  position: relative;
-}
-
-.how-preview-image-portrait {
-  display: flex;
-  justify-content: center;
-}
-
-.how-preview-image-portrait img {
-  width: min(100%, 440px);
-}
-
-.shot-arrow {
-  position: absolute;
-  z-index: 2;
-  top: var(--shot-pad);
-  right: var(--shot-pad);
-  bottom: var(--shot-pad);
-  left: var(--shot-pad);
-  width: calc(100% - (var(--shot-pad) * 2));
-  height: calc(100% - (var(--shot-pad) * 2));
-  overflow: visible;
-  pointer-events: none;
-}
-
-.shot-arrow path:not([d^="M0"]) {
-  fill: none;
-  stroke: var(--color-accent);
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.shot-arrow marker path {
-  fill: var(--color-accent);
-}
-
-.shot-hint {
-  position: absolute;
-  z-index: 3;
-  padding: 6px 10px;
-  border: 1px solid rgba(109, 76, 245, 0.2);
-  border-radius: 999px;
-  color: #5b42d6;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.11);
-  font-size: 0.67rem;
-  font-weight: 750;
-  line-height: 1;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.shot-hint.hint-account { right: 13%; bottom: 15%; }
-.shot-hint.hint-setup { top: 24%; right: 23%; }
-.shot-hint.hint-invite { top: 10%; right: 23%; }
-.shot-hint.hint-extension { top: 31%; right: 15%; }
-.shot-hint.hint-demo { left: 22%; bottom: 20%; }
-.shot-hint.hint-finish { left: 39%; top: 52%; }
-.shot-hint.hint-support { right: 23%; bottom: 25%; }
-.shot-hint.hint-off { top: 45%; right: 28%; }
 
 .how-flow {
   border-top: 1px solid rgba(17, 24, 39, 0.06);
@@ -543,17 +480,7 @@
     padding: 6px;
     border-radius: 15px;
   }
-
-  .annotated-shot {
-    --shot-pad: 6px;
-  }
-
-  .shot-hint {
-    padding: 5px 8px;
-    font-size: 0.58rem;
-  }
-
-  .how-preview-image img {
+.how-preview-image img {
     border-radius: 10px;
   }
 

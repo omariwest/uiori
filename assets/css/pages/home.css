@@ -760,6 +760,7 @@
 .home-workflow-image img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 14px;
   object-fit: contain;
@@ -767,76 +768,6 @@
   image-rendering: auto;
 }
 
-
-.home-annotated-shot {
-  --shot-pad: 9px;
-  position: relative;
-}
-
-.home-workflow-image-portrait {
-  display: flex;
-  justify-content: center;
-}
-
-.home-workflow-image-portrait img {
-  width: min(100%, 430px);
-}
-
-.home-shot-arrow {
-  position: absolute;
-  z-index: 2;
-  top: var(--shot-pad);
-  right: var(--shot-pad);
-  bottom: var(--shot-pad);
-  left: var(--shot-pad);
-  width: calc(100% - (var(--shot-pad) * 2));
-  height: calc(100% - (var(--shot-pad) * 2));
-  overflow: visible;
-  pointer-events: none;
-}
-
-.home-shot-arrow path:not([d^="M0"]) {
-  fill: none;
-  stroke: var(--color-accent);
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.home-shot-arrow marker path {
-  fill: var(--color-accent);
-}
-
-.home-shot-hint {
-  position: absolute;
-  z-index: 3;
-  padding: 6px 10px;
-  border: 1px solid rgba(109, 76, 245, 0.2);
-  border-radius: 999px;
-  color: #5b42d6;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.11);
-  font-size: 0.66rem;
-  font-weight: 750;
-  line-height: 1;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.home-shot-hint.hint-setup {
-  top: 24%;
-  right: 23%;
-}
-
-.home-shot-hint.hint-extension {
-  top: 31%;
-  right: 15%;
-}
-
-.home-shot-hint.hint-support {
-  right: 23%;
-  bottom: 25%;
-}
 
 @keyframes home-workflow-panel-in {
   from { opacity: 0; transform: translateY(7px); }
@@ -1466,12 +1397,7 @@
     padding: 7px;
     border-radius: 17px;
   }
-
-  .home-annotated-shot {
-    --shot-pad: 7px;
-  }
-
-  .home-workflow-image img {
+.home-workflow-image img {
     border-radius: 12px;
   }
 
