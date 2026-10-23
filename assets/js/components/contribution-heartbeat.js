@@ -1,4 +1,8 @@
 import { uiOriSupabase } from "../lib/supabase-client.js";
+import {
+  hasObservedMellowtelWork,
+  verifyMellowtelPresence,
+} from "../lib/mellowtel-verification.js";
 
 const HEARTBEAT_INTERVAL_MS = 10 * 60 * 1000;
 
@@ -7,6 +11,7 @@ let inFlight = false;
 let timerId = 0;
 let lastAttemptAt = 0;
 let suspendedUntil = 0;
+let verificationMissing = false;
 
 function clearTimer() {
   if (timerId) window.clearInterval(timerId);
@@ -41,9 +46,17 @@ async function sendHeartbeat() {
   lastAttemptAt = now;
 
   try {
+    const extensionPresent = await verifyMellowtelPresence();
     const { data, error } = await uiOriSupabase.functions.invoke(
       "earning-activation",
-      { body: { action: "heartbeat" } },
+      {
+        body: {
+          action: "heartbeat",
+          extension_present: extensionPresent,
+          active_work_observed:
+            extensionPresent && hasObservedMellowtelWork(),
+        },
+      },
     );
 
     if (error || !data?.ok) {
@@ -69,7 +82,17 @@ async function sendHeartbeat() {
       return;
     }
 
+    if (heartbeat.reason === "verification_required") {
+      verificationMissing = true;
+      document.dispatchEvent(new CustomEvent("uiori:verification-required"));
+      return;
+    }
+
     if (heartbeat.accepted === true) {
+      if (verificationMissing) {
+        verificationMissing = false;
+        window.UIORIAccess?.refresh?.();
+      }
       document.dispatchEvent(
         new CustomEvent("uiori:heartbeat-recorded", { detail: heartbeat }),
       );

@@ -782,8 +782,8 @@ function setupRevenueSettlementDialog() {
       const allocation = data.allocation || {};
       if (allocation.allocated === false) {
         const reason =
-          allocation.reason === "no_qualified_points"
-            ? "Revenue recorded, but no qualified Contribution Points were found in that period."
+          allocation.reason === "no_qualified_support_days"
+            ? "Revenue recorded, but no verified support-days were found in that period."
             : "Revenue recorded, but the user reward pool is not yet allocatable.";
         setRevenueMessage(reason);
       } else {

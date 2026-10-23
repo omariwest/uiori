@@ -1,4 +1,5 @@
 import { uiOriSupabase } from "../lib/supabase-client.js";
+import { verifyMellowtelPresence } from "../lib/mellowtel-verification.js";
 
 let activationState = null;
 let loading = false;
@@ -29,10 +30,20 @@ function buttonCopy(state) {
       mode: "restricted",
     };
   }
+  if (
+    state?.connection_status === "active" &&
+    state?.browser_verified === false
+  ) {
+    return {
+      label: "Reconnect Mellowtel",
+      note: "Install or enable Mellowtel in this browser to continue building progress.",
+      mode: "reconnect",
+    };
+  }
   if (state?.connection_status === "active" || state?.connection_status === "paused") {
     return {
       label: "Manage participation",
-      note: "Mellowtel's independent controls let you review or stop participation at any time.",
+      note: "Mellowtel's controls let you review or stop participation at any time.",
       mode: "manage",
     };
   }
@@ -45,14 +56,14 @@ function buttonCopy(state) {
   }
   if (state?.connection_status === "pending") {
     return {
-      label: "Open Mellowtel",
-      note: "Install Mellowtel and choose to participate, then finish setup here.",
+      label: "Reconnect Mellowtel",
+      note: "Install or enable Mellowtel in this browser. UIORI verifies it automatically when you return.",
       mode: "resume",
     };
   }
   return {
     label: "Set up earning",
-    note: "Review what participation uses before anything opens.",
+    note: "Review the participation details before continuing.",
     mode: "setup",
   };
 }
@@ -60,7 +71,6 @@ function buttonCopy(state) {
 function renderState(state) {
   activationState = state;
   const button = document.querySelector("#earning-setup-button");
-  const finishButton = document.querySelector("#earning-finish-button");
   const note = document.querySelector("#earning-setup-note");
   const copy = buttonCopy(state);
 
@@ -71,11 +81,25 @@ function renderState(state) {
     button.disabled = unavailable;
     button.setAttribute("aria-disabled", String(unavailable));
   }
-  if (finishButton) {
-    finishButton.hidden = copy.mode !== "resume";
-    finishButton.disabled = false;
-  }
   if (note) note.textContent = copy.note;
+}
+
+async function resolveBrowserState(state) {
+  if (!["pending", "active"].includes(state?.connection_status)) return state;
+
+  const browserVerified = await verifyMellowtelPresence();
+
+  if (state.connection_status === "pending" && browserVerified) {
+    await invokeActivation({ action: "verify", extension_present: true });
+    window.location.reload();
+    return null;
+  }
+
+  if (state.connection_status === "active" && !browserVerified) {
+    document.dispatchEvent(new CustomEvent("uiori:verification-required"));
+  }
+
+  return { ...state, browser_verified: browserVerified };
 }
 
 async function loadActivationState() {
@@ -83,7 +107,8 @@ async function loadActivationState() {
   loading = true;
   try {
     const data = await invokeActivation({ action: "status" });
-    renderState(data);
+    const state = await resolveBrowserState(data);
+    if (state) renderState(state);
   } catch (error) {
     console.error("[UIORI] earning activation status failed", error);
     const note = document.querySelector("#earning-setup-note");
@@ -109,7 +134,8 @@ function friendlyError(code) {
     email_not_verified: "Verify your email before starting earning setup.",
     acknowledgement_required: "Review and acknowledge every item before continuing.",
     account_restricted: "Earning setup is unavailable while this account review is in progress.",
-    setup_not_started: "Open Mellowtel and complete the setup before finishing here.",
+    setup_not_started: "Open Mellowtel and complete the setup before returning here.",
+    verification_required: "Install or enable Mellowtel in this browser, then return to UIORI.",
   };
   return messages[code] || "We couldn't open the earning setup. Please try again.";
 }
@@ -119,10 +145,9 @@ function setupDialog() {
   const dialog = document.querySelector("#earning-activation-dialog");
   const form = document.querySelector("#earning-activation-form");
   const continueButton = document.querySelector("#earning-activation-continue");
-  const finishButton = document.querySelector("#earning-finish-button");
   const closeButton = document.querySelector("#earning-activation-close");
 
-  if (!openButton || !dialog || !form || !continueButton || !finishButton || !closeButton) return;
+  if (!openButton || !dialog || !form || !continueButton || !closeButton) return;
 
   openButton.addEventListener("click", () => {
     if (openButton.dataset.mode === "restricted" || openButton.dataset.mode === "unavailable") return;
@@ -131,7 +156,10 @@ function setupDialog() {
       if (url) window.open(url, "_blank", "noopener,noreferrer");
       return;
     }
-    if (openButton.dataset.mode === "resume") {
+    if (
+      openButton.dataset.mode === "resume" ||
+      openButton.dataset.mode === "reconnect"
+    ) {
       const url = activationState?.launch_url;
       if (url) window.location.assign(url);
       return;
@@ -151,32 +179,6 @@ function setupDialog() {
     resetDialog(form, continueButton);
   });
 
-
-  finishButton.addEventListener("click", async () => {
-    if (activationState?.connection_status !== "pending") return;
-
-    finishButton.disabled = true;
-    openButton.disabled = true;
-    const note = document.querySelector("#earning-setup-note");
-    if (note) note.textContent = "Finishing your UIORI earning setup…";
-
-    try {
-      const data = await invokeActivation({ action: "complete" });
-      renderState({
-        ...activationState,
-        ...data.connection,
-        connection_status: data.connection?.status || "active",
-        membership_status: data.membership_status || "active",
-        user_control_url: data.user_control_url || activationState?.user_control_url,
-      });
-      window.location.reload();
-    } catch (error) {
-      console.error("[UIORI] earning setup completion failed", error);
-      if (note) note.textContent = friendlyError(error.code || error.message);
-      finishButton.disabled = false;
-      openButton.disabled = false;
-    }
-  });
 
   continueButton.addEventListener("click", async () => {
     if (!allAcknowledged(form)) {

@@ -278,6 +278,20 @@ function applyReviewOverlay(restrictionStatus, accountState, identity = {}) {
   });
 }
 
+function applyVerificationRequired() {
+  if (currentState !== "active") return;
+  setText("[data-uiori-earning-status]", "Verification required");
+  setText("[data-uiori-earning-settings-status]", "Verification required");
+  setText(
+    "[data-uiori-dashboard-note]",
+    "Mellowtel needs to be installed and enabled in this browser. Open Earn to reconnect and continue building progress.",
+  );
+  setText(
+    "[data-uiori-earn-status-copy]",
+    "Mellowtel needs to be installed and enabled in this browser before progress can continue.",
+  );
+}
+
 function reveal() {
   document.body?.classList.remove("app-auth-loading");
 }
@@ -410,6 +424,8 @@ function wireLogout() {
   });
 }
 
+
+document.addEventListener("uiori:verification-required", applyVerificationRequired);
 
 document.addEventListener("click", (event) => {
   const link = event.target.closest?.('a.is-account-locked[href="/wallet/"]');
