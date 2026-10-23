@@ -344,7 +344,46 @@
                 <p class="admin-section-eyebrow">Request queue</p>
                 <h2 id="withdrawal-table-heading">Withdrawal requests</h2>
               </div>
-              <span>Loading…</span>
+              <div class="admin-withdrawals-heading-actions">
+                <span data-uiori-withdrawal-count>Loading…</span>
+                <button
+                  class="admin-withdrawal-review-secondary"
+                  id="admin-payout-export"
+                  type="button"
+                >
+                  Export approved
+                </button>
+              </div>
+            </div>
+            <p
+              aria-live="polite"
+              class="admin-payout-batch-message"
+              id="admin-payout-batch-message"
+            ></p>
+            <div class="admin-payout-batch-bar" id="admin-payout-batch-bar" hidden>
+              <div class="admin-payout-batch-copy">
+                <strong id="admin-payout-batch-summary">0 payouts prepared</strong>
+                <span>USDT · BNB Smart Chain (BEP20)</span>
+              </div>
+              <div class="admin-payout-batch-controls">
+                <label class="admin-payout-batch-field" for="admin-payout-batch-transaction">
+                  <span>Transaction hash</span>
+                  <input
+                    autocomplete="off"
+                    id="admin-payout-batch-transaction"
+                    placeholder="0x..."
+                    spellcheck="false"
+                    type="text"
+                  />
+                </label>
+                <button
+                  class="admin-withdrawal-review-primary"
+                  id="admin-payout-batch-paid"
+                  type="button"
+                >
+                  Mark batch paid
+                </button>
+              </div>
             </div>
             <div
               aria-label="Withdrawal requests"

@@ -789,8 +789,7 @@
             </div>
             <div class="settings-payout-body">
               <p class="settings-payout-intro">
-                UIORI currently supports USDT payouts. Choose the same network as
-                your receiving wallet.
+                UIORI sends USDT payouts on BNB Smart Chain (BEP20).
               </p>
               <div class="settings-payout-form">
                 <div class="settings-payout-field">
@@ -803,18 +802,20 @@
                   />
                 </div>
                 <div class="settings-payout-field">
-                  <label for="settings-payout-network">Network</label>
-                  <select data-ui-select id="settings-payout-network">
-                    <option value="TRC20">TRON (TRC20)</option>
-                    <option value="BEP20">BNB Smart Chain (BEP20)</option>
-                  </select>
+                  <label for="settings-payout-network-label">Network</label>
+                  <input
+                    id="settings-payout-network-label"
+                    type="text"
+                    value="BNB Smart Chain (BEP20)"
+                    disabled
+                  />
                 </div>
                 <div class="settings-payout-field settings-payout-field--wide">
                   <label for="settings-payout-address">Wallet address</label>
                   <input
                     autocomplete="off"
                     id="settings-payout-address"
-                    placeholder="Enter your USDT receiving address"
+                    placeholder="0x..."
                     spellcheck="false"
                     type="text"
                   />

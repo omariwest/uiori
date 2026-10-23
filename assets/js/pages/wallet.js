@@ -102,7 +102,10 @@ function renderWalletStatus(data) {
 
   if (payoutTitle && payoutCopy) {
     if (data.destination) {
-      payoutTitle.textContent = `${data.destination.asset} · ${data.destination.network}`;
+      const networkLabel = data.destination.network === "BEP20"
+        ? "BNB Smart Chain"
+        : data.destination.network;
+      payoutTitle.textContent = `${data.destination.asset} · ${networkLabel}`;
       const readyAt = data.destination.ready_at ? new Date(data.destination.ready_at) : null;
       const waiting = readyAt && readyAt.getTime() > Date.now();
       payoutCopy.textContent = waiting

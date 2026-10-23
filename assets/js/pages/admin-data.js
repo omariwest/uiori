@@ -10,6 +10,7 @@ const state = {
   withdrawals: [],
   reviews: [],
   selectedWithdrawal: null,
+  payoutBatch: null,
   selectedUser: null,
   selectedReview: null,
 };
@@ -386,7 +387,7 @@ function filteredWithdrawals() {
 
 function renderWithdrawalRows() {
   const tbody = document.querySelector(".admin-withdrawals-table tbody");
-  const count = document.querySelector(".admin-withdrawals-table-heading > span");
+  const count = document.querySelector("[data-uiori-withdrawal-count]");
   if (!tbody) return;
   const rows = filteredWithdrawals();
   if (count) count.textContent = `${integer(rows.length)} record${rows.length === 1 ? "" : "s"}`;
@@ -432,7 +433,8 @@ function populateWithdrawalDialog(row) {
   setText("#admin-withdrawal-review-user", row.user_name || "Unknown user");
   setText("#admin-withdrawal-review-email", row.user_email || "—");
   setText("#admin-withdrawal-review-amount", money(row.amount_cents));
-  setText("#admin-withdrawal-review-network", row.payout_asset && row.payout_network ? `${row.payout_asset} · ${row.payout_network}` : "Not available");
+  const payoutNetwork = row.payout_network === "BEP20" ? "BNB Smart Chain" : row.payout_network;
+  setText("#admin-withdrawal-review-network", row.payout_asset && payoutNetwork ? `${row.payout_asset} · ${payoutNetwork}` : "Not available");
   setText("#admin-withdrawal-review-address", row.payout_destination_snapshot || "—");
   setText("#admin-withdrawal-review-status", row.status ? row.status[0].toUpperCase() + row.status.slice(1) : "—");
 
@@ -457,6 +459,122 @@ async function refreshWithdrawals() {
   const data = await fetchAdminData("withdrawals");
   renderWithdrawals(data);
   return data;
+}
+
+function setPayoutBatchMessage(message = "", error = false) {
+  const element = document.querySelector("#admin-payout-batch-message");
+  if (!element) return;
+  element.textContent = message;
+  element.classList.toggle("is-error", error);
+}
+
+function clearPayoutBatch() {
+  state.payoutBatch = null;
+  const bar = document.querySelector("#admin-payout-batch-bar");
+  const transaction = document.querySelector("#admin-payout-batch-transaction");
+  const paidButton = document.querySelector("#admin-payout-batch-paid");
+  if (bar) bar.hidden = true;
+  if (transaction) transaction.value = "";
+  if (paidButton) paidButton.disabled = true;
+}
+
+function downloadPayoutBatch(batch) {
+  const blob = new Blob([batch.disperse_text], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  const date = new Date().toISOString().slice(0, 10);
+  link.href = url;
+  link.download = `uiori-bep20-payouts-${date}.txt`;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function setupPayoutBatchActions() {
+  const exportButton = document.querySelector("#admin-payout-export");
+  const bar = document.querySelector("#admin-payout-batch-bar");
+  const summary = document.querySelector("#admin-payout-batch-summary");
+  const transaction = document.querySelector("#admin-payout-batch-transaction");
+  const paidButton = document.querySelector("#admin-payout-batch-paid");
+  if (!exportButton || !bar || !summary || !transaction || !paidButton) return;
+
+  clearPayoutBatch();
+
+  exportButton.addEventListener("click", async () => {
+    if (exportButton.disabled) return;
+    exportButton.disabled = true;
+    setPayoutBatchMessage("Preparing approved payouts…");
+    try {
+      const { data, error } = await uiOriAdminSupabase.functions.invoke("admin-withdrawal", {
+        body: { action: "export", limit: 200 },
+      });
+      if (error || !data?.ok) throw new Error(data?.error || error?.message || "payout_export_failed");
+      const batch = data.batch;
+      if (!batch?.count) {
+        clearPayoutBatch();
+        setPayoutBatchMessage("No approved payouts are ready.");
+        return;
+      }
+      state.payoutBatch = batch;
+      summary.textContent = `${integer(batch.count)} payout${batch.count === 1 ? "" : "s"} · ${money(batch.total_cents)}`;
+      bar.hidden = false;
+      paidButton.disabled = false;
+      downloadPayoutBatch(batch);
+      setPayoutBatchMessage(`${integer(batch.count)} approved payout${batch.count === 1 ? "" : "s"} exported.`);
+    } catch (error) {
+      console.error("[UIORI] payout batch export failed", error);
+      clearPayoutBatch();
+      setPayoutBatchMessage("The approved payout batch could not be exported.", true);
+    } finally {
+      exportButton.disabled = false;
+    }
+  });
+
+  paidButton.addEventListener("click", async () => {
+    const batch = state.payoutBatch;
+    const transactionRef = transaction.value.trim();
+    if (!batch?.request_ids?.length) return;
+    if (!/^0x[0-9a-fA-F]{64}$/.test(transactionRef)) {
+      setPayoutBatchMessage("Enter the BSC transaction hash for this exported batch.", true);
+      transaction.focus();
+      return;
+    }
+    paidButton.disabled = true;
+    exportButton.disabled = true;
+    transaction.disabled = true;
+    setPayoutBatchMessage("Recording paid batch…");
+    try {
+      const { data, error } = await uiOriAdminSupabase.functions.invoke("admin-withdrawal", {
+        body: {
+          action: "paid_batch",
+          request_ids: batch.request_ids,
+          transaction_ref: transactionRef,
+        },
+      });
+      if (error || !data?.ok) {
+        const wrapped = new Error(data?.error || error?.message || "payout_batch_failed");
+        wrapped.code = data?.error || "payout_batch_failed";
+        throw wrapped;
+      }
+      const paidCount = Number(data.batch?.count) || batch.request_ids.length;
+      clearPayoutBatch();
+      setPayoutBatchMessage(`${integer(paidCount)} payout${paidCount === 1 ? "" : "s"} marked paid.`);
+      await refreshWithdrawals();
+    } catch (error) {
+      console.error("[UIORI] payout batch update failed", error);
+      const message = error.code === "batch_not_approved" || error.code === "batch_changed"
+        ? "The approved batch changed. Export it again before marking paid."
+        : error.code === "invalid_transaction_hash"
+          ? "Enter a valid BSC transaction hash."
+          : "The payout batch could not be marked paid.";
+      setPayoutBatchMessage(message, true);
+      paidButton.disabled = false;
+    } finally {
+      exportButton.disabled = false;
+      transaction.disabled = false;
+    }
+  });
 }
 
 function setupWithdrawalReviewDialog() {
@@ -891,6 +1009,7 @@ async function bootAdminData() {
 
 document.addEventListener("DOMContentLoaded", () => {
   setupWithdrawalReviewDialog();
+  setupPayoutBatchActions();
   setupUserReviewDialog();
   setupReviewManageDialog();
   setupRevenueSettlementDialog();

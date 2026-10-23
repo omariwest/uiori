@@ -138,10 +138,84 @@
   letter-spacing: -0.025em;
 }
 
-.admin-withdrawals-table-heading > span {
+.admin-withdrawals-heading-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.admin-withdrawals-heading-actions > span {
   color: #8a8a93;
   font-size: 0.72rem;
 }
+
+.admin-payout-batch-message {
+  min-height: 18px;
+  margin: -7px 0 13px;
+  color: #71717a;
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.admin-payout-batch-message.is-error { color: #b42318; }
+
+.admin-payout-batch-bar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+  padding: 14px 15px;
+  border: 1px solid rgba(17, 24, 39, 0.09);
+  border-radius: 12px;
+  background: #fbfbfc;
+}
+
+.admin-payout-batch-copy { min-width: 0; }
+.admin-payout-batch-copy strong,
+.admin-payout-batch-copy span { display: block; }
+.admin-payout-batch-copy strong { color: var(--color-ink); font-size: 0.8rem; font-weight: 680; }
+.admin-payout-batch-copy span { margin-top: 4px; color: #8a8a93; font-size: 0.7rem; }
+
+.admin-payout-batch-controls {
+  display: flex;
+  min-width: min(100%, 520px);
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+.admin-payout-batch-field { min-width: 0; flex: 1 1 330px; }
+.admin-payout-batch-field > span {
+  display: block;
+  margin-bottom: 6px;
+  color: #52525b;
+  font-size: 0.7rem;
+  font-weight: 650;
+}
+
+.admin-payout-batch-field input {
+  display: block;
+  width: 100%;
+  min-height: 39px;
+  padding: 0 11px;
+  border: 1px solid rgba(17, 24, 39, 0.14);
+  border-radius: 9px;
+  color: var(--color-ink);
+  background: #ffffff;
+  font: inherit;
+  font-size: 0.76rem;
+  outline: none;
+}
+
+.admin-payout-batch-field input:focus {
+  border-color: rgba(109, 76, 245, 0.42);
+  box-shadow: 0 0 0 3px rgba(109, 76, 245, 0.08);
+}
+
+.admin-payout-batch-controls .admin-withdrawal-review-primary { flex: 0 0 auto; }
 
 .admin-withdrawals-table-scroll {
   width: 100%;
@@ -407,7 +481,22 @@
   .admin-withdrawals-table-heading {
     align-items: flex-start;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
+  }
+
+  .admin-withdrawals-heading-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .admin-payout-batch-bar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .admin-payout-batch-controls {
+    width: 100%;
+    min-width: 0;
   }
 
   .admin-withdrawals-directory {
@@ -638,4 +727,16 @@
   .admin-withdrawal-review-card { padding: 22px 18px 18px; }
   .admin-withdrawal-review-grid { grid-template-columns: 1fr; }
   .admin-withdrawal-review-actions button { width: fit-content; max-width: 100%; }
+
+  .admin-payout-batch-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .admin-payout-batch-field { flex-basis: auto; }
+
+  .admin-payout-batch-controls .admin-withdrawal-review-primary {
+    width: fit-content;
+    max-width: 100%;
+  }
 }

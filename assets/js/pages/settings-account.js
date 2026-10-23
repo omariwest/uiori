@@ -77,7 +77,10 @@ function renderPayoutSettings(data) {
   if (!label || !button) return;
 
   if (data?.destination) {
-    label.textContent = `${data.destination.asset} · ${data.destination.network} · ${data.destination.masked_address}`;
+    const networkLabel = data.destination.network === "BEP20"
+      ? "BNB Smart Chain"
+      : data.destination.network;
+    label.textContent = `${data.destination.asset} · ${networkLabel} · ${data.destination.masked_address}`;
     button.textContent = "Change";
     const readyAt = data.destination.ready_at ? new Date(data.destination.ready_at) : null;
     if (readyAt && readyAt.getTime() > Date.now()) {
@@ -110,9 +113,8 @@ function setupPayoutSettings() {
   const close = document.querySelector("#settings-payout-close");
   const cancel = document.querySelector("#settings-payout-cancel");
   const save = document.querySelector("#settings-payout-save");
-  const network = document.querySelector("#settings-payout-network");
   const address = document.querySelector("#settings-payout-address");
-  if (!openButton || !drawer || !close || !cancel || !save || !network || !address) return;
+  if (!openButton || !drawer || !close || !cancel || !save || !address) return;
 
   function openDrawer() {
     drawer.classList.add("is-open");
@@ -132,11 +134,7 @@ function setupPayoutSettings() {
     if (openButton.disabled) return;
     address.value = "";
     setPayoutDialogStatus("");
-    const state = await loadPayoutSettings();
-    if (state?.destination?.network) {
-      network.value = state.destination.network;
-      network.dispatchEvent(new Event("change", { bubbles: true }));
-    }
+    await loadPayoutSettings();
     openDrawer();
   });
 
@@ -168,7 +166,7 @@ function setupPayoutSettings() {
     try {
       const data = await invokeWallet({
         action: "save_payout",
-        network: network.value,
+        network: "BEP20",
         address: walletAddress,
       });
       setPayoutDialogStatus("Saved. The 24-hour payout safety period has started.");
@@ -177,7 +175,7 @@ function setupPayoutSettings() {
     } catch (error) {
       console.error("[UIORI] payout destination save failed", error);
       const message = error.code === "invalid_payout_address"
-        ? "That address does not match the selected network."
+        ? "Enter a valid BNB Smart Chain (BEP20) address."
         : error.code === "payout_address_in_use"
           ? "That payout address is already linked to another UIORI account."
           : "We couldn't save the payout destination. Please try again.";
