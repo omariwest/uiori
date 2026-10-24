@@ -11,13 +11,20 @@ let observer = null;
 function noteActiveWork(node) {
   if (!(node instanceof Element)) return;
   if (node.matches?.(ACTIVE_WORK_SELECTOR) || node.querySelector?.(ACTIVE_WORK_SELECTOR)) {
+    const wasObserved = lastActiveWorkAt > 0;
     lastActiveWorkAt = Date.now();
+    if (!wasObserved) {
+      document.dispatchEvent(new CustomEvent("uiori:mellowtel-active-work"));
+    }
   }
 }
 
 function startActiveWorkObserver() {
   if (observer || !document.documentElement) return;
-  if (document.querySelector(ACTIVE_WORK_SELECTOR)) lastActiveWorkAt = Date.now();
+  if (document.querySelector(ACTIVE_WORK_SELECTOR)) {
+    lastActiveWorkAt = Date.now();
+    document.dispatchEvent(new CustomEvent("uiori:mellowtel-active-work"));
+  }
 
   observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {

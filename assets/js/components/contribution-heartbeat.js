@@ -12,6 +12,8 @@ let timerId = 0;
 let lastAttemptAt = 0;
 let suspendedUntil = 0;
 let verificationMissing = false;
+let latestAccountDetail = null;
+let resumeInFlight = false;
 
 function clearTimer() {
   if (timerId) window.clearInterval(timerId);
@@ -24,6 +26,51 @@ function isEligibleAccount(detail = {}) {
     detail.identity?.connectionStatus === "active" &&
     detail.identity?.restrictionStatus === "clear"
   );
+}
+
+function isRecoverablePausedAccount(detail = {}) {
+  return (
+    detail.state === "active" &&
+    detail.identity?.connectionStatus === "paused" &&
+    detail.identity?.restrictionStatus === "clear"
+  );
+}
+
+async function resumePausedAccount(detail = {}) {
+  if (!isRecoverablePausedAccount(detail) || resumeInFlight) return;
+
+  resumeInFlight = true;
+  try {
+    const extensionPresent = await verifyMellowtelPresence();
+
+    if (!extensionPresent) {
+      document.dispatchEvent(new CustomEvent("uiori:verification-required"));
+      return;
+    }
+
+    if (!hasObservedMellowtelWork()) return;
+
+    const { data, error } = await uiOriSupabase.functions.invoke(
+      "earning-activation",
+      {
+        body: {
+          action: "resume",
+          extension_present: true,
+          active_work_observed: true,
+        },
+      },
+    );
+
+    if (error || !data?.ok) {
+      throw error || new Error(data?.error || "resume_error");
+    }
+
+    await window.UIORIAccess?.refresh?.();
+  } catch (error) {
+    console.warn("[UIORI] earning recovery skipped", error);
+  } finally {
+    resumeInFlight = false;
+  }
 }
 
 function nextUtcDay() {
@@ -106,11 +153,15 @@ async function sendHeartbeat() {
 }
 
 function startHeartbeat(detail = {}) {
+  latestAccountDetail = detail;
   const eligible = isEligibleAccount(detail);
 
   if (!eligible) {
     running = false;
     clearTimer();
+    if (isRecoverablePausedAccount(detail)) {
+      window.setTimeout(() => resumePausedAccount(detail), 0);
+    }
     return;
   }
 
@@ -124,8 +175,19 @@ document.addEventListener("uiori:account-state", (event) => {
   startHeartbeat(event.detail || {});
 });
 
+document.addEventListener("uiori:mellowtel-active-work", () => {
+  if (latestAccountDetail) {
+    window.setTimeout(() => resumePausedAccount(latestAccountDetail), 0);
+  }
+});
+
 document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible") window.setTimeout(sendHeartbeat, 0);
+  if (document.visibilityState !== "visible") return;
+  if (isRecoverablePausedAccount(latestAccountDetail || {})) {
+    window.setTimeout(() => resumePausedAccount(latestAccountDetail), 0);
+  } else {
+    window.setTimeout(sendHeartbeat, 0);
+  }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
