@@ -31,7 +31,7 @@ function buttonCopy(state) {
     };
   }
   if (
-    state?.connection_status === "active" &&
+    (state?.connection_status === "active" || state?.connection_status === "paused") &&
     state?.browser_verified === false
   ) {
     return {
@@ -85,7 +85,7 @@ function renderState(state) {
 }
 
 async function resolveBrowserState(state) {
-  if (!["pending", "active"].includes(state?.connection_status)) return state;
+  if (!["pending", "active", "paused"].includes(state?.connection_status)) return state;
 
   const browserVerified = await verifyMellowtelPresence();
 
