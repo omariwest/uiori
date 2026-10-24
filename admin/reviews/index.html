@@ -313,18 +313,6 @@
               </select>
             </div>
             <div class="admin-reviews-filter">
-              <label for="review-priority">Priority</label>
-              <select
-                aria-label="Filter reviews by priority"
-                data-ui-select=""
-                id="review-priority"
-              >
-                <option value="all">All priorities</option>
-                <option value="high">High</option>
-                <option value="standard">Standard</option>
-              </select>
-            </div>
-            <div class="admin-reviews-filter">
               <label for="review-status">Status</label>
               <select
                 aria-label="Filter reviews by status"
@@ -333,7 +321,7 @@
               >
                 <option value="all">All statuses</option>
                 <option value="open">Open</option>
-                <option value="investigating">Investigating</option>
+                <option value="restricted">Restricted</option>
                 <option value="resolved">Resolved</option>
               </select>
             </div>
@@ -361,7 +349,6 @@
                     <th scope="col">User</th>
                     <th scope="col">Reason</th>
                     <th scope="col">Type</th>
-                    <th scope="col">Priority</th>
                     <th scope="col">Status</th>
                     <th scope="col">Opened</th>
                     <th scope="col"></th>
@@ -369,7 +356,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td colspan="7" class="admin-table-empty">
+                    <td colspan="6" class="admin-table-empty">
                       Loading live account reviews…
                     </td>
                   </tr>
@@ -451,10 +438,6 @@
                 <div>
                   <span>Type</span
                   ><strong id="admin-review-manage-type">—</strong>
-                </div>
-                <div>
-                  <span>Priority</span
-                  ><strong id="admin-review-manage-priority">—</strong>
                 </div>
               </div>
               <label

@@ -279,15 +279,10 @@ function setupUserReviewDialog() {
     setText("#admin-user-review-state", user.account_status === "active" ? "Active" : user.account_status === "restricted" ? "Restricted" : "Pending");
     const reason = document.querySelector("#admin-user-review-reason");
     const type = document.querySelector("#admin-user-review-type");
-    const priority = document.querySelector("#admin-user-review-priority");
     if (reason) reason.value = "";
     if (type) {
       type.value = "account";
       type.dispatchEvent(new Event("change", { bubbles: true }));
-    }
-    if (priority) {
-      priority.value = "standard";
-      priority.dispatchEvent(new Event("change", { bubbles: true }));
     }
     setUserReviewMessage("");
     submit.disabled = false;
@@ -310,7 +305,6 @@ function setupUserReviewDialog() {
 
     const reason = document.querySelector("#admin-user-review-reason")?.value.trim() || "";
     const reviewType = document.querySelector("#admin-user-review-type")?.value || "account";
-    const priority = document.querySelector("#admin-user-review-priority")?.value || "standard";
 
     if (!reason) {
       setUserReviewMessage("Enter a reason before opening the review.", true);
@@ -327,7 +321,6 @@ function setupUserReviewDialog() {
           user_id: user.id,
           reason,
           review_type: reviewType,
-          priority,
         },
       });
 
@@ -664,15 +657,13 @@ function reviewTypeLabel(value) {
 function filteredReviews() {
   const query = document.querySelector("#review-search")?.value.trim().toLowerCase() || "";
   const type = document.querySelector("#review-type")?.value || "all";
-  const priority = document.querySelector("#review-priority")?.value || "all";
   const status = document.querySelector("#review-status")?.value || "all";
   return state.reviews.filter((row) => {
     const haystack = `${row.user_name} ${row.user_email} ${row.reason}`.toLowerCase();
     if (query && !haystack.includes(query)) return false;
     if (type !== "all" && row.review_type !== type) return false;
-    if (priority !== "all" && row.priority !== priority) return false;
     if (status === "resolved" && row.status !== "cleared") return false;
-    if (status === "investigating" && row.status !== "restricted") return false;
+    if (status === "restricted" && row.status !== "restricted") return false;
     if (status === "open" && row.status !== "open") return false;
     return true;
   });
@@ -685,19 +676,17 @@ function renderReviewRows() {
   const rows = filteredReviews();
   if (count) count.textContent = `${integer(rows.length)} record${rows.length === 1 ? "" : "s"}`;
   if (!rows.length) {
-    tbody.innerHTML = `<tr><td colspan="7" class="admin-table-empty">No account reviews match the current filters.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6" class="admin-table-empty">No account reviews match the current filters.</td></tr>`;
     return;
   }
 
   tbody.innerHTML = rows.map((row) => {
-    const priorityClass = row.priority === "high" ? "is-high" : "is-standard";
     const statusClass = row.status === "restricted" ? "is-investigating" : row.status === "open" ? "is-open" : "is-resolved";
-    const statusText = row.status === "restricted" ? "Investigating" : row.status === "cleared" ? "Resolved" : "Open";
+    const statusText = row.status === "restricted" ? "Restricted" : row.status === "cleared" ? "Resolved" : "Open";
     return `<tr>
       <th scope="row"><strong>${escapeHtml(row.user_name)}</strong><span>${escapeHtml(row.user_email)}</span></th>
       <td class="admin-review-reason">${escapeHtml(row.reason || "Manual account review")}</td>
       <td>${escapeHtml(reviewTypeLabel(row.review_type))}</td>
-      <td>${reviewStatusMarkup(row.priority === "high" ? "High" : "Standard", priorityClass)}</td>
       <td>${reviewStatusMarkup(statusText, statusClass)}</td>
       <td><time>${escapeHtml(shortDate(row.created_at))}</time></td>
       <td>${
@@ -733,7 +722,6 @@ function setupReviewManageDialog() {
     setText("#admin-review-manage-email", review.user_email || "—");
     setText("#admin-review-manage-status", review.status === "restricted" ? "Restricted" : review.status === "cleared" ? "Resolved" : "Open");
     setText("#admin-review-manage-type", reviewTypeLabel(review.review_type));
-    setText("#admin-review-manage-priority", review.priority === "high" ? "High" : "Standard");
 
     const reason = document.querySelector("#admin-review-manage-reason");
     const note = document.querySelector("#admin-review-manage-note");
@@ -803,7 +791,7 @@ function renderReviews(data) {
   if (cards[3]) cards[3].textContent = integer(summary.resolved);
   renderReviewRows();
 
-  ["#review-search", "#review-type", "#review-priority", "#review-status"].forEach((selector) => {
+  ["#review-search", "#review-type", "#review-status"].forEach((selector) => {
     const control = document.querySelector(selector);
     if (!control || control.dataset.uioriFilterReady === "true") return;
     control.dataset.uioriFilterReady = "true";
