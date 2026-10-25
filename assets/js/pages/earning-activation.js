@@ -39,7 +39,7 @@ function buttonCopy(state) {
   ) {
     return {
       label: "Desktop required",
-      note: "Finish earning setup on a laptop or desktop using Chrome or Edge. You can still view your account and earnings on mobile.",
+      note: "Finish earning setup on a desktop. You can still view your account and earnings on mobile.",
       mode: "desktop-required",
     };
   }

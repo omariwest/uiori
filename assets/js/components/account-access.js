@@ -115,39 +115,39 @@ function applyConnectionState(status, accountState) {
       setText(
         "[data-uiori-dashboard-note]",
         mobile
-          ? "Earning is active on your supported desktop browser. You can view progress and earnings here on mobile."
+          ? "Earning is active on your desktop. You can view progress and earnings here on mobile."
           : "Your balance and progress update as eligible activity is recorded.",
       );
       setText(
         "[data-uiori-earn-status-copy]",
         mobile
-          ? "Participation runs on a laptop or desktop using Chrome or Edge. Mobile can be used to view your account and earnings."
+          ? "Participation runs on a desktop. Mobile can be used to view your account and earnings."
           : "Participation is active. Keep UIORI open in a desktop tab while you browse to build eligible progress.",
       );
     } else if (normalized === "pending") {
       setText(
         "[data-uiori-dashboard-note]",
         mobile
-          ? "Your setup is pending. Finish it on a laptop or desktop using Chrome or Edge."
+          ? "Your setup is pending. Finish it on a desktop."
           : "Your Mellowtel setup is pending. Finish setup to start building eligible progress.",
       );
       setText(
         "[data-uiori-earn-status-copy]",
         mobile
-          ? "Finish earning setup on a laptop or desktop using Chrome or Edge."
+          ? "Finish earning setup on a desktop."
           : "Your Mellowtel setup is pending. Finish the setup here after choosing to participate.",
       );
     } else {
       setText(
         "[data-uiori-dashboard-note]",
         mobile
-          ? "Set up earning on a laptop or desktop using Chrome or Edge. You can view your account here on mobile."
+          ? "Set up earning on a desktop. You can view your account here on mobile."
           : "Set up earning when you are ready. Nothing starts automatically.",
       );
       setText(
         "[data-uiori-earn-status-copy]",
         mobile
-          ? "Earning setup requires a laptop or desktop using Chrome or Edge."
+          ? "Earning setup requires a desktop."
           : "Review the participation details and choose when you want to start.",
       );
     }
