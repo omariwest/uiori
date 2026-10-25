@@ -1,6 +1,7 @@
 import { uiOriSupabase } from "../lib/supabase-client.js";
 import {
   hasObservedMellowtelWork,
+  isMobileDevice,
   verifyMellowtelPresence,
 } from "../lib/mellowtel-verification.js";
 
@@ -37,6 +38,7 @@ function isRecoverablePausedAccount(detail = {}) {
 }
 
 async function resumePausedAccount(detail = {}) {
+  if (isMobileDevice()) return;
   if (!isRecoverablePausedAccount(detail) || resumeInFlight) return;
 
   resumeInFlight = true;
@@ -154,6 +156,13 @@ async function sendHeartbeat() {
 
 function startHeartbeat(detail = {}) {
   latestAccountDetail = detail;
+
+  if (isMobileDevice()) {
+    running = false;
+    clearTimer();
+    return;
+  }
+
   const eligible = isEligibleAccount(detail);
 
   if (!eligible) {

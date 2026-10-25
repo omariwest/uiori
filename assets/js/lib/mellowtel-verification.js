@@ -53,6 +53,15 @@ async function probeExtension(extensionId) {
   return results.every(Boolean);
 }
 
+export function isMobileDevice() {
+  if (navigator.userAgentData?.mobile === true) return true;
+
+  const userAgent = navigator.userAgent || "";
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(userAgent)) return true;
+
+  return navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
+}
+
 export async function verifyMellowtelPresence() {
   const results = await Promise.all(EXTENSION_IDS.map(probeExtension));
   return results.some(Boolean);

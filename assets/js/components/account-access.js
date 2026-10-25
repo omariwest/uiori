@@ -1,4 +1,5 @@
 import { getProfileAvatarUrl, uiOriSupabase } from "../lib/supabase-client.js";
+import { isMobileDevice } from "../lib/mellowtel-verification.js";
 import { setMemberState, setupProfilePhotoUpload } from "./account-identity.js";
 
 const VALID_STATES = new Set(["anonymous", "inactive", "active"]);
@@ -99,6 +100,8 @@ function applyConnectionState(status, accountState) {
       );
     }
   } else if (accountState === "active") {
+    const mobile = isMobileDevice();
+
     if (normalized === "paused") {
       setText(
         "[data-uiori-dashboard-note]",
@@ -111,29 +114,41 @@ function applyConnectionState(status, accountState) {
     } else if (normalized === "active") {
       setText(
         "[data-uiori-dashboard-note]",
-        "Your balance and progress update as eligible activity is recorded.",
+        mobile
+          ? "Earning is active on your supported desktop browser. You can view progress and earnings here on mobile."
+          : "Your balance and progress update as eligible activity is recorded.",
       );
       setText(
         "[data-uiori-earn-status-copy]",
-        "Participation is active. Keep UIORI open in a desktop tab while you browse to build eligible progress.",
+        mobile
+          ? "Participation runs on a laptop or desktop using Chrome or Edge. Mobile can be used to view your account and earnings."
+          : "Participation is active. Keep UIORI open in a desktop tab while you browse to build eligible progress.",
       );
     } else if (normalized === "pending") {
       setText(
         "[data-uiori-dashboard-note]",
-        "Your Mellowtel setup is pending. Finish setup to start building eligible progress.",
+        mobile
+          ? "Your setup is pending. Finish it on a laptop or desktop using Chrome or Edge."
+          : "Your Mellowtel setup is pending. Finish setup to start building eligible progress.",
       );
       setText(
         "[data-uiori-earn-status-copy]",
-        "Your Mellowtel setup is pending. Finish the setup here after choosing to participate.",
+        mobile
+          ? "Finish earning setup on a laptop or desktop using Chrome or Edge."
+          : "Your Mellowtel setup is pending. Finish the setup here after choosing to participate.",
       );
     } else {
       setText(
         "[data-uiori-dashboard-note]",
-        "Set up earning when you are ready. Nothing starts automatically.",
+        mobile
+          ? "Set up earning on a laptop or desktop using Chrome or Edge. You can view your account here on mobile."
+          : "Set up earning when you are ready. Nothing starts automatically.",
       );
       setText(
         "[data-uiori-earn-status-copy]",
-        "Review the participation details and choose when you want to start.",
+        mobile
+          ? "Earning setup requires a laptop or desktop using Chrome or Edge."
+          : "Review the participation details and choose when you want to start.",
       );
     }
   }

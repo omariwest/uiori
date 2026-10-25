@@ -1,5 +1,8 @@
 import { uiOriSupabase } from "../lib/supabase-client.js";
-import { verifyMellowtelPresence } from "../lib/mellowtel-verification.js";
+import {
+  isMobileDevice,
+  verifyMellowtelPresence,
+} from "../lib/mellowtel-verification.js";
 
 let activationState = null;
 let loading = false;
@@ -28,6 +31,16 @@ function buttonCopy(state) {
       label: "Account review",
       note: "Earning setup is unavailable while this account review is in progress.",
       mode: "restricted",
+    };
+  }
+  if (
+    isMobileDevice() &&
+    !["active", "paused"].includes(state?.connection_status)
+  ) {
+    return {
+      label: "Desktop required",
+      note: "Finish earning setup on a laptop or desktop using Chrome or Edge. You can still view your account and earnings on mobile.",
+      mode: "desktop-required",
     };
   }
   if (
@@ -77,7 +90,10 @@ function renderState(state) {
   if (button) {
     button.textContent = copy.label;
     button.dataset.mode = copy.mode;
-    const unavailable = copy.mode === "restricted" || copy.mode === "unavailable";
+    const unavailable =
+      copy.mode === "restricted" ||
+      copy.mode === "unavailable" ||
+      copy.mode === "desktop-required";
     button.disabled = unavailable;
     button.setAttribute("aria-disabled", String(unavailable));
   }
@@ -86,6 +102,7 @@ function renderState(state) {
 
 async function resolveBrowserState(state) {
   if (!["pending", "active", "paused"].includes(state?.connection_status)) return state;
+  if (isMobileDevice()) return { ...state, mobile_device: true };
 
   const browserVerified = await verifyMellowtelPresence();
 
@@ -150,7 +167,11 @@ function setupDialog() {
   if (!openButton || !dialog || !form || !continueButton || !closeButton) return;
 
   openButton.addEventListener("click", () => {
-    if (openButton.dataset.mode === "restricted" || openButton.dataset.mode === "unavailable") return;
+    if (
+      openButton.dataset.mode === "restricted" ||
+      openButton.dataset.mode === "unavailable" ||
+      openButton.dataset.mode === "desktop-required"
+    ) return;
     if (openButton.dataset.mode === "manage") {
       const url = activationState?.user_control_url;
       if (url) window.open(url, "_blank", "noopener,noreferrer");
