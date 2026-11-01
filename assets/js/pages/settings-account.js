@@ -104,6 +104,8 @@ async function loadPayoutSettings() {
     console.error("[UIORI] payout settings load failed", error);
     setPayoutInlineStatus("We couldn't load payout details right now.", true);
     return null;
+  } finally {
+    document.body?.classList.remove("app-settings-loading");
   }
 }
 

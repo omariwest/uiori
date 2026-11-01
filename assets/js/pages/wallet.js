@@ -121,6 +121,7 @@ function renderWalletStatus(data) {
 async function loadWalletStatus() {
   if (loading || window.UIORIAccess?.state !== "active") return;
   loading = true;
+  document.body?.classList.add("app-wallet-loading");
   try {
     const data = await invokeWallet({ action: "status" });
     renderWalletStatus(data);
@@ -130,6 +131,7 @@ async function loadWalletStatus() {
     if (status) status.textContent = "Unable to check eligibility";
   } finally {
     loading = false;
+    document.body?.classList.remove("app-wallet-loading");
   }
 }
 
@@ -267,6 +269,7 @@ function setupWithdrawalDialog() {
 
 document.addEventListener("uiori:account-state", (event) => {
   if (event.detail?.state === "active") window.setTimeout(loadWalletStatus, 0);
+  else document.body?.classList.remove("app-wallet-loading");
 });
 
 document.addEventListener("DOMContentLoaded", () => {

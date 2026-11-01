@@ -381,6 +381,53 @@ body.admin-auth-loading .admin-layout {
   visibility: hidden;
 }
 
+/* Keep the admin access gate; show skeletons after authorization. */
+.admin-body.admin-data-loading :is(
+  .admin-metrics .admin-metric > strong,
+  .admin-queue-heading > strong, .admin-queue-empty span,
+  .admin-platform-list dd, .admin-users-summary strong,
+  .admin-withdrawals-summary strong, .admin-reviews-summary strong,
+  .admin-users-table-heading > span,
+  [data-uiori-withdrawal-count], .admin-reviews-table-heading > span,
+  [data-uiori-integration], [data-uiori-pool-periods],
+  [data-uiori-pool-detail]
+) {
+  color: transparent;
+  border-radius: 6px;
+  background: linear-gradient(100deg, #e8ebf1 20%, #f6f7fa 40%, #e8ebf1 60%);
+  background-size: 200% 100%;
+  animation: uiori-data-shimmer 1.45s linear infinite;
+  user-select: none;
+}
+
+.admin-body.admin-data-loading .admin-table-empty {
+  color: transparent;
+}
+
+.admin-body.admin-data-loading .admin-table-empty::after {
+  content: "";
+  display: block;
+  width: min(320px, 75%);
+  height: 12px;
+  margin: 4px auto;
+  border-radius: 6px;
+  background: linear-gradient(100deg, #e8ebf1 20%, #f6f7fa 40%, #e8ebf1 60%);
+  background-size: 200% 100%;
+  animation: uiori-data-shimmer 1.45s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-body.admin-data-loading :is(
+    .admin-metrics .admin-metric > strong, .admin-queue-heading > strong,
+    .admin-users-summary strong, .admin-withdrawals-summary strong,
+    .admin-reviews-summary strong, [data-uiori-integration],
+    [data-uiori-pool-periods], [data-uiori-pool-detail]
+  ),
+  .admin-body.admin-data-loading .admin-table-empty::after {
+    animation: none;
+  }
+}
+
 .admin-review-dialog {
   width: min(94vw, 620px);
   max-width: 620px;

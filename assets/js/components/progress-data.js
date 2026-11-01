@@ -219,6 +219,7 @@ function renderWalletActivity(events, withdrawals) {
 async function loadProgress() {
   if (loading || window.UIORIAccess?.state !== "active") return;
   loading = true;
+  document.body?.classList.add("app-progress-loading");
 
   try {
     const {
@@ -291,6 +292,7 @@ async function loadProgress() {
     console.error("[UIORI] progress load failed", error);
   } finally {
     loading = false;
+    document.body?.classList.remove("app-progress-loading");
   }
 }
 

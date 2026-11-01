@@ -362,6 +362,7 @@ export function setAccountAccessState(state, identity = {}) {
   if (identity.emailVerified === true) setText("[data-uiori-email-status]", "Verified");
   else if (identity.emailVerified === false) setText("[data-uiori-email-status]", "Pending verification");
 
+  if (normalized !== "active") document.body?.classList.remove("app-progress-loading");
   reveal();
   document.dispatchEvent(
     new CustomEvent("uiori:account-state", {

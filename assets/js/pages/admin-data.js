@@ -992,6 +992,9 @@ async function bootAdminData() {
     renderer(data);
   } catch (error) {
     console.error("[UIORI] admin data load failed", error);
+    showAdminError("Unable to load admin data. Refresh to try again.");
+  } finally {
+    document.body?.classList.remove("admin-data-loading");
   }
 }
 

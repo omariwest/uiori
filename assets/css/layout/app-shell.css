@@ -607,8 +607,76 @@
 }
 
 .app-body.app-auth-loading .app-content {
-  opacity: 0;
   pointer-events: none;
+}
+
+.app-body.app-auth-loading [data-uiori-inactive-message] {
+  visibility: hidden;
+}
+
+@keyframes uiori-data-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+/* Only values supplied by the account, progress, or provider requests shimmer. */
+.app-body.app-auth-loading :is(
+  [data-uiori-dashboard-note], [data-uiori-wallet-note],
+  [data-uiori-earning-status], [data-uiori-earn-status-copy],
+  [data-uiori-earning-settings-status], [data-uiori-account-status],
+  [data-uiori-email-status], [data-uiori-member-since],
+  [data-uiori-withdrawal-status], [data-uiori-payout-title],
+  [data-uiori-payout-copy], [data-uiori-payout-settings-status],
+  [data-uiori-balance], [data-uiori-next-milestone],
+  [data-uiori-current-progress], [data-uiori-points],
+  [data-uiori-streak], [data-uiori-level],
+  [data-uiori-level-text], [data-uiori-level-label]
+),
+.app-body.app-progress-loading :is(
+  [data-uiori-balance], [data-uiori-next-milestone],
+  [data-uiori-current-progress], [data-uiori-points],
+  [data-uiori-streak], [data-uiori-level],
+  [data-uiori-level-text], [data-uiori-level-label]
+),
+.app-body.app-wallet-loading [data-uiori-withdrawal-status],
+.app-body.app-earning-loading :is(#earning-setup-note, [data-uiori-earning-status]),
+.app-body.app-settings-loading [data-uiori-payout-settings-status] {
+  color: transparent;
+  border-radius: 6px;
+  background: linear-gradient(100deg, #e8ebf1 20%, #f6f7fa 40%, #e8ebf1 60%);
+  background-size: 200% 100%;
+  animation: uiori-data-shimmer 1.45s linear infinite;
+  user-select: none;
+}
+
+.app-body.app-auth-loading [data-uiori-dashboard-note],
+.app-body.app-auth-loading [data-uiori-wallet-note],
+.app-body.app-auth-loading [data-uiori-earn-status-copy] {
+  min-height: 1.3em;
+}
+
+.app-body.app-earning-loading #earning-setup-button,
+.app-body.app-wallet-loading #wallet-withdraw-button {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-body.app-auth-loading :is(
+    [data-uiori-dashboard-note], [data-uiori-wallet-note],
+    [data-uiori-earning-status], [data-uiori-earn-status-copy],
+    [data-uiori-balance], [data-uiori-next-milestone]
+  ),
+  .app-body.app-progress-loading :is(
+    [data-uiori-balance], [data-uiori-next-milestone],
+    [data-uiori-current-progress], [data-uiori-points],
+    [data-uiori-streak], [data-uiori-level],
+    [data-uiori-level-text], [data-uiori-level-label]
+  ),
+  .app-body.app-wallet-loading [data-uiori-withdrawal-status],
+  .app-body.app-earning-loading :is(#earning-setup-note, [data-uiori-earning-status]),
+  .app-body.app-settings-loading [data-uiori-payout-settings-status] {
+    animation: none;
+  }
 }
 
 .app-body.app-auth-loading .app-member-avatar {
@@ -625,7 +693,9 @@
   height: 13px;
   border-radius: 999px;
   color: transparent;
-  background: #e9edf3;
+  background: linear-gradient(100deg, #e8ebf1 20%, #f6f7fa 40%, #e8ebf1 60%);
+  background-size: 200% 100%;
+  animation: uiori-data-shimmer 1.45s linear infinite;
 }
 
 .app-body.app-auth-loading .app-member-badge {

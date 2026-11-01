@@ -122,6 +122,7 @@ async function resolveBrowserState(state) {
 async function loadActivationState() {
   if (loading || window.UIORIAccess?.state === "anonymous") return;
   loading = true;
+  document.body?.classList.add("app-earning-loading");
   try {
     const data = await invokeActivation({ action: "status" });
     const state = await resolveBrowserState(data);
@@ -132,6 +133,7 @@ async function loadActivationState() {
     if (note) note.textContent = "Earning setup is temporarily unavailable.";
   } finally {
     loading = false;
+    document.body?.classList.remove("app-earning-loading");
   }
 }
 
