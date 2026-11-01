@@ -73,6 +73,12 @@ function applyConnectionState(status, accountState) {
   const label = labels[normalized];
   setText("[data-uiori-earning-status]", label);
   setText("[data-uiori-earning-settings-status]", label);
+  setText(
+    "[data-uiori-earning-hint]",
+    isMobileDevice() && normalized === "not_connected"
+      ? "Use a desktop to start earning"
+      : "Start whenever you are ready",
+  );
 
   if (accountState === "inactive") {
     if (normalized === "pending") {
@@ -92,7 +98,9 @@ function applyConnectionState(status, accountState) {
     } else {
       setText(
         "[data-uiori-dashboard-note]",
-        "Your account is visible, but earning stays locked until activation.",
+        isMobileDevice()
+          ? "Your account is visible, but earning stays locked. Finish setup on a laptop or desktop with Chrome or Edge."
+          : "Your account is visible, but earning stays locked until activation.",
       );
       setText(
         "[data-uiori-earn-status-copy]",
