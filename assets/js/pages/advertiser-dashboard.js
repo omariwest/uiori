@@ -1,6 +1,6 @@
 import { getProfileAvatarUrl, uiOriSupabase } from "../lib/supabase-client.js";
 
-const ACTIVE_CAMPAIGN_STATES = new Set(["review", "funded", "scheduled", "live"]);
+const ACTIVE_CAMPAIGN_STATES = ["review", "funded", "scheduled", "live"];
 const DEFAULT_AVATAR = "/assets/img/default-avatar.svg";
 
 function setText(selector, value) {
@@ -139,7 +139,14 @@ async function loadDashboard() {
       return;
     }
 
-    const [profileResult, campaignsResult, favoritesResult, paymentsResult] = await Promise.all([
+    const [
+      profileResult,
+      recentCampaignsResult,
+      campaignCountResult,
+      activeCampaignCountResult,
+      favoritesCountResult,
+      paymentsResult,
+    ] = await Promise.all([
       uiOriSupabase
         .from("profiles")
         .select("full_name, avatar_path")
@@ -147,18 +154,32 @@ async function loadDashboard() {
         .maybeSingle(),
       uiOriSupabase
         .from("campaigns")
-        .select("id, title, status, total_amount_cents, currency, created_at")
+        .select("id, title, status, created_at")
         .order("created_at", { ascending: false })
         .limit(5),
-      uiOriSupabase.from("favorites").select("channel_id"),
-      uiOriSupabase.from("payments").select("amount, asset, status"),
+      uiOriSupabase
+        .from("campaigns")
+        .select("id", { count: "exact", head: true }),
+      uiOriSupabase
+        .from("campaigns")
+        .select("id", { count: "exact", head: true })
+        .in("status", ACTIVE_CAMPAIGN_STATES),
+      uiOriSupabase
+        .from("favorites")
+        .select("channel_id", { count: "exact", head: true }),
+      uiOriSupabase
+        .from("payments")
+        .select("amount")
+        .eq("status", "confirmed"),
     ]);
 
     if (profileResult.error) {
       console.warn("[UIORI] advertiser profile could not be loaded", profileResult.error);
     }
-    if (campaignsResult.error) throw campaignsResult.error;
-    if (favoritesResult.error) throw favoritesResult.error;
+    if (recentCampaignsResult.error) throw recentCampaignsResult.error;
+    if (campaignCountResult.error) throw campaignCountResult.error;
+    if (activeCampaignCountResult.error) throw activeCampaignCountResult.error;
+    if (favoritesCountResult.error) throw favoritesCountResult.error;
     if (paymentsResult.error) throw paymentsResult.error;
 
     const profile = profileResult.data;
@@ -172,25 +193,30 @@ async function loadDashboard() {
       avatarUrl,
     });
 
-    const campaigns = campaignsResult.data || [];
-    const favorites = favoritesResult.data || [];
-    const payments = paymentsResult.data || [];
-    const activeCount = campaigns.filter((campaign) =>
-      ACTIVE_CAMPAIGN_STATES.has(campaign.status),
-    ).length;
-    const confirmedSpend = payments
-      .filter((payment) => payment.status === "confirmed")
-      .reduce((sum, payment) => sum + Number(payment.amount || 0), 0);
+    const recentCampaigns = recentCampaignsResult.data || [];
+    const confirmedSpend = (paymentsResult.data || []).reduce(
+      (sum, payment) => sum + Number(payment.amount || 0),
+      0,
+    );
 
-    setText("[data-advertiser-campaign-count]", String(campaigns.length));
-    setText("[data-advertiser-active-count]", String(activeCount));
-    setText("[data-advertiser-saved-count]", String(favorites.length));
+    setText(
+      "[data-advertiser-campaign-count]",
+      String(campaignCountResult.count || 0),
+    );
+    setText(
+      "[data-advertiser-active-count]",
+      String(activeCampaignCountResult.count || 0),
+    );
+    setText(
+      "[data-advertiser-saved-count]",
+      String(favoritesCountResult.count || 0),
+    );
     setText("[data-advertiser-spend]", formatMoney(confirmedSpend));
 
     const emptyState = document.querySelector("[data-advertiser-empty-state]");
-    if (emptyState) emptyState.hidden = campaigns.length > 0;
+    if (emptyState) emptyState.hidden = (campaignCountResult.count || 0) > 0;
 
-    renderCampaigns(campaigns);
+    renderCampaigns(recentCampaigns);
     document.body.classList.remove("app-auth-loading");
   } catch (error) {
     console.error("[UIORI] advertiser dashboard load failed", error);
