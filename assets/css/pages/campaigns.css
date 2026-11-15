@@ -28,7 +28,7 @@
 
 .campaigns-row {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(120px, 0.6fr) minmax(120px, 0.5fr);
+  grid-template-columns: minmax(0, 1.3fr) minmax(110px, 0.5fr) minmax(110px, 0.45fr) minmax(220px, 0.8fr);
   gap: 20px;
   align-items: center;
   min-height: 78px;
@@ -70,6 +70,65 @@
   font-weight: 680;
 }
 
+.campaigns-review-feedback {
+  max-width: 560px;
+  margin-top: 9px;
+  padding: 9px 11px;
+  border-left: 3px solid rgba(197, 138, 0, 0.5);
+  border-radius: 7px;
+  color: #6f5620;
+  background: rgba(197, 138, 0, 0.055);
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.campaigns-row-actions {
+  display: flex;
+  min-width: 0;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.campaigns-row-action-note {
+  color: #7b828e;
+  font-size: 0.69rem;
+  line-height: 1.45;
+  text-align: right;
+}
+
+.campaigns-page-error {
+  margin-top: 20px;
+  padding: 11px 13px;
+  border: 1px solid rgba(168, 72, 87, 0.16);
+  border-radius: 11px;
+  color: #8b4d57;
+  background: rgba(168, 72, 87, 0.045);
+  font-size: 0.73rem;
+  line-height: 1.5;
+}
+
+.campaign-review-feedback {
+  margin: 24px 0 -8px;
+  padding: 14px 16px;
+  border: 1px solid rgba(197, 138, 0, 0.18);
+  border-radius: 13px;
+  color: #72561d;
+  background: rgba(197, 138, 0, 0.055);
+}
+
+.campaign-review-feedback strong {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 720;
+}
+
+.campaign-review-feedback p {
+  margin-top: 5px;
+  font-size: 0.74rem;
+  line-height: 1.55;
+}
+
 .campaign-status {
   display: inline-flex;
   justify-self: start;
@@ -86,6 +145,7 @@
 
 .campaign-status.is-live,
 .campaign-status.is-completed,
+.campaign-status.is-approved,
 .campaign-status.is-funded {
   color: #1f7a4d;
   background: rgba(31, 122, 77, 0.09);
@@ -546,6 +606,14 @@
   .campaigns-row {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+
+  .campaigns-row-actions {
+    justify-content: flex-start;
+  }
+
+  .campaigns-row-action-note {
+    text-align: left;
   }
 
   .campaign-status {
