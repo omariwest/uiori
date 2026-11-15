@@ -38,6 +38,7 @@ function humanStatus(status) {
   const map = {
     draft: "Draft",
     review: "In review",
+    approved: "Approved",
     funded: "Funded",
     scheduled: "Scheduled",
     live: "Live",
@@ -68,6 +69,115 @@ function wireLogout() {
   });
 }
 
+function showPageError(message) {
+  const existing = document.querySelector("[data-campaigns-page-error]");
+  if (existing) {
+    existing.textContent = message;
+    existing.hidden = !message;
+    return;
+  }
+
+  const panel = document.querySelector(".campaigns-panel");
+  if (!panel) return;
+  const box = document.createElement("p");
+  box.className = "campaigns-page-error";
+  box.dataset.campaignsPageError = "";
+  box.setAttribute("role", "alert");
+  box.textContent = message;
+  panel.insertAdjacentElement("beforebegin", box);
+}
+
+async function submitCampaign(campaignId, button) {
+  button.disabled = true;
+  const previous = button.textContent;
+  button.textContent = "Submitting…";
+  showPageError("");
+
+  try {
+    const { data, error } = await uiOriSupabase.functions.invoke("campaign-workflow", {
+      body: { action: "submit", campaign_id: campaignId },
+    });
+
+    if (error) throw error;
+    if (!data?.ok) throw new Error(data?.error || "submit_failed");
+
+    window.location.reload();
+  } catch (error) {
+    console.error("[UIORI] campaign submission failed", error);
+    showPageError("This campaign could not be submitted for review. Check the draft and try again.");
+    button.disabled = false;
+    button.textContent = previous;
+  }
+}
+
+function renderCampaign(campaign) {
+  const row = document.createElement("article");
+  row.className = "campaigns-row";
+
+  const title = document.createElement("div");
+  title.className = "campaigns-row-title";
+
+  const heading = document.createElement("strong");
+  heading.textContent = campaign.title?.trim() || "Untitled campaign";
+
+  const date = document.createElement("span");
+  date.textContent = formatDate(campaign.submitted_at || campaign.created_at);
+
+  title.append(heading, date);
+
+  if (campaign.review_feedback) {
+    const feedback = document.createElement("p");
+    feedback.className = "campaigns-review-feedback";
+    feedback.textContent = campaign.review_feedback;
+    title.append(feedback);
+  }
+
+  const meta = document.createElement("div");
+  meta.className = "campaigns-row-meta";
+  meta.innerHTML = `<span>Status</span><strong></strong>`;
+  meta.querySelector("strong").textContent = humanStatus(campaign.status);
+
+  const status = document.createElement("span");
+  status.className = `campaign-status is-${campaign.status || "unknown"}`;
+  status.textContent = humanStatus(campaign.status);
+
+  const actions = document.createElement("div");
+  actions.className = "campaigns-row-actions";
+
+  if (campaign.status === "draft") {
+    const edit = document.createElement("a");
+    edit.className = "button button-secondary button-small";
+    edit.href = `/campaigns/new/?draft=${encodeURIComponent(campaign.id)}`;
+    edit.textContent = campaign.review_feedback ? "Edit changes" : "Edit";
+
+    const submit = document.createElement("button");
+    submit.className = "button button-primary button-small";
+    submit.type = "button";
+    submit.textContent = campaign.review_feedback ? "Resubmit" : "Submit for review";
+    submit.addEventListener("click", () => submitCampaign(campaign.id, submit));
+
+    actions.append(edit, submit);
+  } else if (campaign.status === "approved") {
+    const note = document.createElement("span");
+    note.className = "campaigns-row-action-note";
+    note.textContent = "Payment will unlock in the payment task.";
+    actions.append(note);
+  } else if (campaign.status === "review") {
+    const note = document.createElement("span");
+    note.className = "campaigns-row-action-note";
+    note.textContent = "Locked while UIORI reviews the campaign.";
+    actions.append(note);
+  } else if (campaign.status === "cancelled" && campaign.review_feedback) {
+    const note = document.createElement("span");
+    note.className = "campaigns-row-action-note";
+    note.textContent = "Rejected by moderation.";
+    actions.append(note);
+  }
+
+  row.append(title, meta, status, actions);
+  return row;
+}
+
 async function loadPage() {
   const {
     data: { user },
@@ -87,7 +197,7 @@ async function loadPage() {
       .maybeSingle(),
     uiOriSupabase
       .from("campaigns")
-      .select("id, title, status, created_at")
+      .select("id, title, status, review_feedback, submitted_at, reviewed_at, created_at")
       .order("created_at", { ascending: false }),
   ]);
 
@@ -106,31 +216,7 @@ async function loadPage() {
 
   if (campaigns.length) {
     empty?.remove();
-    list.replaceChildren(
-      ...campaigns.map((campaign) => {
-        const row = document.createElement("article");
-        row.className = "campaigns-row";
-
-        const title = document.createElement("div");
-        title.className = "campaigns-row-title";
-        title.innerHTML = `<strong></strong><span></span>`;
-        title.querySelector("strong").textContent =
-          campaign.title?.trim() || "Untitled campaign";
-        title.querySelector("span").textContent = formatDate(campaign.created_at);
-
-        const meta = document.createElement("div");
-        meta.className = "campaigns-row-meta";
-        meta.innerHTML = `<span>Status</span><strong></strong>`;
-        meta.querySelector("strong").textContent = humanStatus(campaign.status);
-
-        const status = document.createElement("span");
-        status.className = `campaign-status is-${campaign.status || "unknown"}`;
-        status.textContent = humanStatus(campaign.status);
-
-        row.append(title, meta, status);
-        return row;
-      }),
-    );
+    list.replaceChildren(...campaigns.map(renderCampaign));
   }
 
   document.body.classList.remove("app-auth-loading");
@@ -139,5 +225,6 @@ async function loadPage() {
 wireLogout();
 loadPage().catch((error) => {
   console.error("[UIORI] campaigns load failed", error);
+  showPageError("Campaigns could not be loaded. Refresh and try again.");
   document.body.classList.remove("app-auth-loading");
 });
