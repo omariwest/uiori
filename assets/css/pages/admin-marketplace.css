@@ -1,0 +1,199 @@
+.market-admin-directory {
+  padding-top: 8px;
+}
+
+.market-admin-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 20px 0 16px;
+}
+
+.market-admin-heading h2 {
+  margin-top: 4px;
+  color: var(--color-ink);
+  font-size: 1.06rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.market-admin-heading > span {
+  color: #8a8a93;
+  font-size: 0.72rem;
+}
+
+.market-admin-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-top: 1px solid rgba(17, 24, 39, 0.09);
+  border-bottom: 1px solid rgba(17, 24, 39, 0.09);
+  scrollbar-width: thin;
+}
+
+.market-admin-table {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: collapse;
+  color: var(--color-ink);
+  font-size: 0.77rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.market-admin-table th,
+.market-admin-table td {
+  padding: 14px 15px;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.07);
+  vertical-align: middle;
+}
+
+.market-admin-table thead th {
+  color: #8a8a93;
+  background: rgba(250, 250, 250, 0.72);
+  font-size: 0.68rem;
+  font-weight: 650;
+}
+
+.market-admin-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.market-admin-table tbody th {
+  min-width: 190px;
+  font-weight: 500;
+}
+
+.market-admin-table tbody th strong,
+.market-admin-table tbody th span {
+  display: block;
+}
+
+.market-admin-table tbody th strong {
+  color: var(--color-ink);
+  font-size: 0.78rem;
+  font-weight: 680;
+}
+
+.market-admin-table tbody th span {
+  margin-top: 3px;
+  color: #8a8a93;
+  font-size: 0.68rem;
+  font-weight: 400;
+}
+
+.market-admin-table td {
+  color: #52525b;
+}
+
+.market-admin-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.71rem;
+  font-weight: 600;
+}
+
+.market-admin-status i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a8afb9;
+}
+
+.market-admin-status:is(.is-active,.is-confirmed,.is-funded,.is-live,.is-completed) i {
+  background: #66816d;
+}
+
+.market-admin-status:is(.is-review,.is-pending,.is-confirming,.is-scheduled) i {
+  background: #9c794e;
+}
+
+.market-admin-status:is(.is-failed,.is-cancelled,.is-refunded,.is-archived) i {
+  background: #995d5d;
+}
+
+.market-admin-copy-cell {
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.market-admin-hash {
+  max-width: 210px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+}
+
+.market-admin-note {
+  margin-top: 22px;
+  padding: 14px 16px;
+  border: 1px solid rgba(109, 76, 245, 0.11);
+  border-radius: 13px;
+  color: #656d79;
+  background: rgba(109, 76, 245, 0.035);
+  font-size: 0.75rem;
+  line-height: 1.58;
+}
+
+.market-admin-error {
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  color: #991b1b;
+  background: #fff7f7;
+  font-size: 0.8rem;
+}
+
+.market-admin-recent {
+  border-top: 1px solid rgba(17, 24, 39, 0.09);
+}
+
+.market-admin-recent-row {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.07);
+}
+
+.market-admin-recent-row strong,
+.market-admin-recent-row span {
+  display: block;
+}
+
+.market-admin-recent-row strong {
+  color: var(--color-ink);
+  font-size: 0.78rem;
+  font-weight: 680;
+}
+
+.market-admin-recent-row > div > span {
+  margin-top: 3px;
+  color: #8a8a93;
+  font-size: 0.68rem;
+}
+
+.market-admin-empty {
+  padding: 24px 0;
+  color: #8a8a93;
+  font-size: 0.77rem;
+}
+
+@media (max-width: 700px) {
+  .market-admin-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .market-admin-table tbody tr {
+    transition: none;
+  }
+}
