@@ -44,6 +44,7 @@ function statusLabel(value) {
     paused: "Paused",
     archived: "Archived",
     review: "In review",
+    approved: "Approved",
     funded: "Funded",
     scheduled: "Scheduled",
     live: "Live",
@@ -71,7 +72,14 @@ function setText(selector, value) {
 
 function showError(message) {
   const topbar = document.querySelector(".admin-topbar");
-  if (!topbar || document.querySelector(".market-admin-error")) return;
+  if (!topbar) return;
+  const existing = document.querySelector(".market-admin-error");
+  if (existing) {
+    existing.textContent = message;
+    existing.hidden = !message;
+    return;
+  }
+  if (!message) return;
   const box = document.createElement("p");
   box.className = "market-admin-error";
   box.setAttribute("role", "alert");
@@ -146,14 +154,22 @@ function renderCampaigns(data, moderationOnly = false) {
 
   if (moderationOnly) {
     tbody.innerHTML = rows.length
-      ? rows.map((row) => `<tr>
+      ? rows.map((row) => `<tr data-moderation-campaign="${escapeHtml(row.id)}">
           <th scope="row"><strong>${escapeHtml(row.title || "Untitled campaign")}</strong><span>${escapeHtml(row.advertiser?.email || "Unknown advertiser")}</span></th>
           <td class="market-admin-copy-cell">${escapeHtml(row.creative?.text || "—")}</td>
           <td class="market-admin-copy-cell">${escapeHtml(row.destination || "—")}</td>
           <td>${integer(row.channel_count)}</td>
-          <td>${escapeHtml(shortDate(row.created_at))}</td>
+          <td>${escapeHtml(shortDate(row.submitted_at || row.created_at))}</td>
+          <td class="market-admin-moderation-cell">
+            <textarea data-moderation-feedback="${escapeHtml(row.id)}" maxlength="2000" placeholder="Feedback for changes or rejection"></textarea>
+            <div class="market-admin-moderation-actions">
+              <button class="button button-primary button-small" data-moderation-action="approve" data-campaign-id="${escapeHtml(row.id)}" type="button">Approve</button>
+              <button class="button button-secondary button-small" data-moderation-action="request_changes" data-campaign-id="${escapeHtml(row.id)}" type="button">Request changes</button>
+              <button class="market-admin-reject" data-moderation-action="reject" data-campaign-id="${escapeHtml(row.id)}" type="button">Reject</button>
+            </div>
+          </td>
         </tr>`).join("")
-      : `<tr><td colspan="5" class="admin-table-empty">No campaigns are waiting for moderation.</td></tr>`;
+      : `<tr><td colspan="6" class="admin-table-empty">No campaigns are waiting for moderation.</td></tr>`;
     return;
   }
 
@@ -200,6 +216,53 @@ function renderPayments(data) {
       </tr>`).join("")
     : `<tr><td colspan="6" class="admin-table-empty">No marketplace payments recorded yet.</td></tr>`;
 }
+
+async function runModerationAction(button) {
+  const campaignId = button.dataset.campaignId;
+  const action = button.dataset.moderationAction;
+  if (!campaignId || !action) return;
+
+  const row = button.closest("[data-moderation-campaign]");
+  const feedback = row?.querySelector("[data-moderation-feedback]")?.value.trim() || "";
+
+  if ((action === "request_changes" || action === "reject") && !feedback) {
+    showError("Add feedback before requesting changes or rejecting a campaign.");
+    row?.querySelector("[data-moderation-feedback]")?.focus();
+    return;
+  }
+
+  showError("");
+  row?.querySelectorAll("[data-moderation-action]").forEach((control) => {
+    control.disabled = true;
+  });
+
+  try {
+    const { data, error } = await uiOriAdminSupabase.functions.invoke("campaign-workflow", {
+      body: {
+        action,
+        campaign_id: campaignId,
+        feedback: feedback || undefined,
+      },
+    });
+
+    if (error) throw error;
+    if (!data?.ok) throw new Error(data?.error || "moderation_failed");
+
+    const refreshed = await fetchScope("moderation");
+    renderCampaigns(refreshed, true);
+  } catch (error) {
+    console.error("[UIORI] moderation action failed", error);
+    showError("The moderation decision could not be saved. Refresh and try again.");
+    row?.querySelectorAll("[data-moderation-action]").forEach((control) => {
+      control.disabled = false;
+    });
+  }
+}
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-moderation-action]");
+  if (button) runModerationAction(button);
+});
 
 async function load() {
   const page = document.body.dataset.marketAdminPage || "overview";
