@@ -36,16 +36,27 @@ function shortDate(value) {
   return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(date);
 }
 
-function formatAmount(value, asset = "USDT") {
+function formatAmount(value, currency = "USD") {
   const amount = Number(value) || 0;
-  return `${amount.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 6 })} ${asset || "USDT"}`;
+  try {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: currency || "USD",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(amount);
+  } catch {
+    return `${amount.toFixed(2)}`;
+  }
 }
 
 function humanStatus(status) {
   const map = {
     pending: "Pending",
     confirming: "Confirming",
+    partially_paid: "Partially paid",
     confirmed: "Confirmed",
+    expired: "Expired",
     failed: "Failed",
     refunding: "Refunding",
     refunded: "Refunded",
@@ -70,7 +81,7 @@ async function loadPage() {
   const [profileResult, paymentsResult, campaignsResult] = await Promise.all([
     uiOriSupabase.from("profiles").select("full_name, avatar_path").eq("id", user.id).maybeSingle(),
     uiOriSupabase.from("payments")
-      .select("id, campaign_id, amount, asset, network, status, transaction_ref, created_at, confirmed_at, refunded_at")
+      .select("id, campaign_id, amount, asset, network, status, transaction_ref, provider, provider_invoice_id, provider_payment_id, provider_status, price_currency, pay_amount, actually_paid, checkout_url, created_at, confirmed_at, refunded_at")
       .order("created_at", { ascending: false }),
     uiOriSupabase.from("campaigns").select("id, title"),
   ]);
@@ -89,7 +100,7 @@ async function loadPage() {
 
   setText("[data-billing-payment-count]", payments.length);
   setText("[data-billing-confirmed-count]", confirmed.length);
-  setText("[data-billing-confirmed-volume]", `${confirmedAmount.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 6 })} USDT`);
+  setText("[data-billing-confirmed-volume]", formatAmount(confirmedAmount, "USD"));
 
   const tbody = document.querySelector("[data-billing-table-body]");
   const empty = document.querySelector("[data-billing-empty]");
@@ -105,12 +116,14 @@ async function loadPage() {
       row.querySelector("th strong").textContent = campaign?.title || "Campaign payment";
       row.querySelector("th span").textContent = shortDate(payment.confirmed_at || payment.created_at);
       const cells = row.querySelectorAll("td");
-      cells[0].textContent = formatAmount(payment.amount, payment.asset);
-      cells[1].textContent = payment.network || "—";
+      cells[0].textContent = formatAmount(payment.amount, payment.price_currency || "USD");
+      cells[1].textContent = payment.asset
+        ? `${payment.asset}${payment.network ? " / " + payment.network : ""}`
+        : "Not selected";
       cells[2].innerHTML = `<span class="advertiser-billing-status is-${payment.status || "unknown"}"></span>`;
       cells[2].querySelector("span").textContent = humanStatus(payment.status);
       cells[3].textContent = shortDate(payment.refunded_at);
-      cells[4].textContent = tx;
+      cells[4].textContent = payment.provider_payment_id || payment.provider_invoice_id || tx;
       cells[4].title = tx === "—" ? "" : tx;
       return row;
     }));
