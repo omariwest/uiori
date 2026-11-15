@@ -1,6 +1,6 @@
 import { getProfileAvatarUrl, uiOriSupabase } from "../lib/supabase-client.js";
 
-const ACTIVE_CAMPAIGN_STATES = ["review", "funded", "scheduled", "live"];
+const ACTIVE_CAMPAIGN_STATES = ["review", "approved", "funded", "scheduled", "live"];
 const DEFAULT_AVATAR = "/assets/img/default-avatar.svg";
 
 function setText(selector, value) {
@@ -60,6 +60,7 @@ function humanStatus(status) {
   const labels = {
     draft: "Draft",
     review: "In review",
+    approved: "Approved",
     funded: "Funded",
     scheduled: "Scheduled",
     live: "Live",
