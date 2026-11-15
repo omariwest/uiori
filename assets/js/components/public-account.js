@@ -6,7 +6,7 @@ let resolvedState = "unknown";
 function desktopGuestMarkup() {
   return `
     <a class="login-link" href="/login/">Log in</a>
-    <a class="button button-dark button-small" href="/signup/">Start earning</a>
+    <a class="button button-dark button-small" href="/signup/">Start campaign</a>
   `;
 }
 
@@ -19,8 +19,6 @@ function desktopAccountMarkup() {
       </summary>
       <div class="public-account-dropdown" role="menu">
         <a href="/dashboard/" role="menuitem">Dashboard</a>
-        <a href="/earn/" role="menuitem">Earn</a>
-        <a href="/wallet/" role="menuitem">Wallet</a>
         <a href="/settings/" role="menuitem">Settings</a>
         <button type="button" role="menuitem" data-uiori-public-logout>Log out</button>
       </div>
@@ -31,7 +29,7 @@ function desktopAccountMarkup() {
 function mobileGuestMarkup() {
   return `
     <a class="mobile-login-link" href="/login/">Log in</a>
-    <a class="mobile-primary-link" href="/signup/">Start earning</a>
+    <a class="mobile-primary-link" href="/signup/">Start campaign</a>
   `;
 }
 
@@ -43,27 +41,33 @@ function mobileAccountMarkup() {
 }
 
 function updatePublicCtas(isSignedIn) {
-  document.querySelectorAll('main a[href="/signup/"], footer a[href="/signup/"]').forEach((link) => {
-    if (link.dataset.uioriGuestHref === undefined) {
-      link.dataset.uioriGuestHref = link.getAttribute("href") || "/signup/";
-      link.dataset.uioriGuestText = link.textContent.trim();
-    }
+  document
+    .querySelectorAll('main a[href="/signup/"], footer a[href="/signup/"]')
+    .forEach((link) => {
+      if (link.dataset.uioriGuestHref === undefined) {
+        link.dataset.uioriGuestHref = link.getAttribute("href") || "/signup/";
+        link.dataset.uioriGuestText = link.textContent.trim();
+      }
 
-    if (isSignedIn) {
-      link.href = "/dashboard/";
-      const textTarget = link.querySelector("span") || link;
-      const current = textTarget.textContent.trim().toLowerCase();
-      if (current === "start earning" || current === "create account" || current === "join uiOri") {
-        textTarget.textContent = "Open dashboard";
-      }
-    } else {
-      link.setAttribute("href", link.dataset.uioriGuestHref || "/signup/");
-      if (link.dataset.uioriGuestText) {
+      if (isSignedIn) {
+        link.href = "/dashboard/";
         const textTarget = link.querySelector("span") || link;
-        textTarget.textContent = link.dataset.uioriGuestText;
+        const current = textTarget.textContent.trim().toLowerCase();
+        if (
+          current === "start campaign" ||
+          current === "create advertiser account" ||
+          current === "create account"
+        ) {
+          textTarget.textContent = "Open dashboard";
+        }
+      } else {
+        link.setAttribute("href", link.dataset.uioriGuestHref || "/signup/");
+        if (link.dataset.uioriGuestText) {
+          const textTarget = link.querySelector("span") || link;
+          textTarget.textContent = link.dataset.uioriGuestText;
+        }
       }
-    }
-  });
+    });
 }
 
 function closeAccountMenus() {
@@ -96,14 +100,22 @@ function render(isSignedIn) {
   const mobileActions = document.querySelector(".mobile-menu-actions");
 
   if (headerActions) {
-    headerActions.innerHTML = isSignedIn ? desktopAccountMarkup() : desktopGuestMarkup();
-    headerActions.dataset.uioriAuthState = isSignedIn ? "authenticated" : "anonymous";
+    headerActions.innerHTML = isSignedIn
+      ? desktopAccountMarkup()
+      : desktopGuestMarkup();
+    headerActions.dataset.uioriAuthState = isSignedIn
+      ? "authenticated"
+      : "anonymous";
   }
 
   if (mobileActions) {
-    mobileActions.innerHTML = isSignedIn ? mobileAccountMarkup() : mobileGuestMarkup();
+    mobileActions.innerHTML = isSignedIn
+      ? mobileAccountMarkup()
+      : mobileGuestMarkup();
     mobileActions.classList.toggle("is-authenticated", isSignedIn);
-    mobileActions.dataset.uioriAuthState = isSignedIn ? "authenticated" : "anonymous";
+    mobileActions.dataset.uioriAuthState = isSignedIn
+      ? "authenticated"
+      : "anonymous";
   }
 
   updatePublicCtas(isSignedIn);
@@ -141,7 +153,11 @@ document.addEventListener("keydown", (event) => {
 
 uiOriSupabase.auth.onAuthStateChange((event, session) => {
   if (event === "SIGNED_OUT") render(false);
-  else if (event === "SIGNED_IN" || event === "USER_UPDATED" || event === "TOKEN_REFRESHED") {
+  else if (
+    event === "SIGNED_IN" ||
+    event === "USER_UPDATED" ||
+    event === "TOKEN_REFRESHED"
+  ) {
     render(Boolean(session?.user));
   }
 });
