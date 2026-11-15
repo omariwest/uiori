@@ -292,11 +292,41 @@
 }
 
 .marketplace-channel-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
   margin-top: 18px;
 }
 
 .marketplace-channel-actions .button {
   width: 100%;
+}
+
+.marketplace-save-button {
+  min-width: 76px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgba(17, 24, 39, 0.11);
+  border-radius: 9px;
+  color: #5f6672;
+  background: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.marketplace-save-button:hover,
+.marketplace-save-button:focus-visible,
+.marketplace-save-button.is-saved {
+  border-color: rgba(109, 76, 245, 0.24);
+  color: #5f48cc;
+  background: rgba(109, 76, 245, 0.045);
+}
+
+.marketplace-save-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
 }
 
 .marketplace-channel-meta {
@@ -461,6 +491,14 @@
 
   .marketplace-channel-card {
     min-height: 0;
+  }
+
+  .marketplace-channel-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .marketplace-save-button {
+    width: 100%;
   }
 }
 
