@@ -291,6 +291,14 @@
   font-weight: 620;
 }
 
+.marketplace-channel-actions {
+  margin-top: 18px;
+}
+
+.marketplace-channel-actions .button {
+  width: 100%;
+}
+
 .marketplace-channel-meta {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
