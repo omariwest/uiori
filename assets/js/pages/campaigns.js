@@ -110,6 +110,39 @@ async function submitCampaign(campaignId, button) {
   }
 }
 
+async function startPayment(campaignId, button) {
+  const previous = button.textContent;
+  button.disabled = true;
+  button.textContent = "Opening checkout…";
+  showPageError("");
+
+  try {
+    const { data, error } = await uiOriSupabase.functions.invoke("nowpayments-create-invoice", {
+      body: { campaign_id: campaignId },
+    });
+
+    if (error) throw error;
+    if (!data?.ok || !data?.checkout_url) {
+      const code = data?.error || "payment_unavailable";
+      if (code === "payment_provider_not_configured") {
+        throw new Error("payment_provider_not_configured");
+      }
+      throw new Error(code);
+    }
+
+    window.location.assign(data.checkout_url);
+  } catch (error) {
+    console.error("[UIORI] payment checkout failed", error);
+    showPageError(
+      error?.message === "payment_provider_not_configured"
+        ? "Crypto checkout is not activated yet."
+        : "Crypto checkout could not be opened. Please try again.",
+    );
+    button.disabled = false;
+    button.textContent = previous;
+  }
+}
+
 function renderCampaign(campaign) {
   const row = document.createElement("article");
   row.className = "campaigns-row";
@@ -158,10 +191,14 @@ function renderCampaign(campaign) {
 
     actions.append(edit, submit);
   } else if (campaign.status === "approved") {
-    const note = document.createElement("span");
-    note.className = "campaigns-row-action-note";
-    note.textContent = "Payment will unlock in the payment task.";
-    actions.append(note);
+    const pay = document.createElement("button");
+    pay.className = "button button-primary button-small";
+    pay.type = "button";
+    pay.textContent = campaign.total_amount_cents
+      ? `Pay ${(Number(campaign.total_amount_cents) / 100).toFixed(2)}`
+      : "Pay with crypto";
+    pay.addEventListener("click", () => startPayment(campaign.id, pay));
+    actions.append(pay);
   } else if (campaign.status === "review") {
     const note = document.createElement("span");
     note.className = "campaigns-row-action-note";
@@ -197,7 +234,7 @@ async function loadPage() {
       .maybeSingle(),
     uiOriSupabase
       .from("campaigns")
-      .select("id, title, status, review_feedback, submitted_at, reviewed_at, created_at")
+      .select("id, title, status, total_amount_cents, review_feedback, submitted_at, reviewed_at, created_at")
       .order("created_at", { ascending: false }),
   ]);
 
