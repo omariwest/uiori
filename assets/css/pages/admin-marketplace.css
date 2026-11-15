@@ -105,11 +105,11 @@
   background: #66816d;
 }
 
-.market-admin-status:is(.is-review,.is-pending,.is-confirming,.is-scheduled) i {
+.market-admin-status:is(.is-review,.is-pending,.is-confirming,.is-partially_paid,.is-scheduled) i {
   background: #9c794e;
 }
 
-.market-admin-status:is(.is-failed,.is-cancelled,.is-refunded,.is-archived) i {
+.market-admin-status:is(.is-failed,.is-expired,.is-cancelled,.is-refunded,.is-archived) i {
   background: #995d5d;
 }
 
@@ -134,6 +134,36 @@
 .market-admin-moderation-cell {
   min-width: 330px;
   white-space: normal;
+}
+
+.market-admin-price-field {
+  display: grid;
+  gap: 5px;
+  margin-bottom: 9px;
+}
+
+.market-admin-price-field span {
+  color: #656d79;
+  font-size: 0.68rem;
+  font-weight: 680;
+}
+
+.market-admin-price-field input {
+  width: 100%;
+  min-height: 38px;
+  padding: 0 10px;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  border-radius: 10px;
+  color: var(--color-ink);
+  background: #ffffff;
+  font: inherit;
+  font-size: 0.74rem;
+}
+
+.market-admin-price-field input:focus {
+  border-color: rgba(109, 76, 245, 0.4);
+  box-shadow: 0 0 0 3px rgba(109, 76, 245, 0.07);
+  outline: none;
 }
 
 .market-admin-moderation-cell textarea {
