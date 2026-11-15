@@ -12,6 +12,8 @@ const clear = document.querySelector("[data-market-clear]");
 
 let channels = [];
 let loadError = null;
+let currentUser = null;
+let savedChannelIds = new Set();
 
 function titleCase(value = "") {
   return String(value)
@@ -114,6 +116,12 @@ function cardMarkup(channel) {
 
       <div class="marketplace-channel-actions">
         <a class="button button-dark button-small" href="/campaigns/new/?channel=${encodeURIComponent(channel.id)}">Start campaign</a>
+        <button
+          aria-pressed="${savedChannelIds.has(channel.id) ? "true" : "false"}"
+          class="marketplace-save-button${savedChannelIds.has(channel.id) ? " is-saved" : ""}"
+          data-market-save="${channel.id}"
+          type="button"
+        >${savedChannelIds.has(channel.id) ? "Saved" : "Save"}</button>
       </div>
     </article>
   `;
@@ -210,7 +218,12 @@ function resetFilters() {
 
 async function loadMarketplace() {
   try {
-    const [channelsResult, metricsResult, offersResult] = await Promise.all([
+    const {
+      data: { user },
+    } = await uiOriSupabase.auth.getUser();
+    currentUser = user || null;
+
+    const [channelsResult, metricsResult, offersResult, favoritesResult] = await Promise.all([
       uiOriSupabase
         .from("channels")
         .select("id, slug, telegram_handle, display_name, description, category, language, region, ownership_type, verified_at")
@@ -224,11 +237,17 @@ async function loadMarketplace() {
         .select("id, channel_id, format, price_cents, currency, guaranteed_views, min_live_hours, max_delivery_hours")
         .eq("active", true)
         .order("price_cents", { ascending: true }),
+      currentUser
+        ? uiOriSupabase.from("favorites").select("channel_id")
+        : Promise.resolve({ data: [], error: null }),
     ]);
 
     if (channelsResult.error) throw channelsResult.error;
     if (metricsResult.error) throw metricsResult.error;
     if (offersResult.error) throw offersResult.error;
+    if (favoritesResult.error) throw favoritesResult.error;
+
+    savedChannelIds = new Set((favoritesResult.data || []).map((row) => row.channel_id));
 
     const latestMetric = new Map();
     for (const metric of metricsResult.data || []) {
@@ -266,5 +285,46 @@ search?.addEventListener("input", render);
 filters.forEach((select) => select.addEventListener("change", render));
 sort?.addEventListener("change", render);
 clear?.addEventListener("click", resetFilters);
+
+grid?.addEventListener("click", async (event) => {
+  const button = event.target.closest("[data-market-save]");
+  if (!button) return;
+
+  const channelId = button.dataset.marketSave;
+  if (!channelId) return;
+
+  if (!currentUser) {
+    const login = new URL("/login/", window.location.origin);
+    login.searchParams.set("next", "/marketplace/");
+    window.location.assign(login.toString());
+    return;
+  }
+
+  button.disabled = true;
+  const alreadySaved = savedChannelIds.has(channelId);
+
+  try {
+    if (alreadySaved) {
+      const { error } = await uiOriSupabase
+        .from("favorites")
+        .delete()
+        .eq("user_id", currentUser.id)
+        .eq("channel_id", channelId);
+      if (error) throw error;
+      savedChannelIds.delete(channelId);
+    } else {
+      const { error } = await uiOriSupabase
+        .from("favorites")
+        .insert({ user_id: currentUser.id, channel_id: channelId });
+      if (error && error.code !== "23505") throw error;
+      savedChannelIds.add(channelId);
+    }
+
+    render();
+  } catch (error) {
+    console.error("[UIORI] saving channel failed", error);
+    button.disabled = false;
+  }
+});
 
 loadMarketplace();
