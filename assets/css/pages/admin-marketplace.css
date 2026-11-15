@@ -101,7 +101,7 @@
   background: #a8afb9;
 }
 
-.market-admin-status:is(.is-active,.is-confirmed,.is-funded,.is-live,.is-completed) i {
+.market-admin-status:is(.is-active,.is-confirmed,.is-approved,.is-funded,.is-live,.is-completed) i {
   background: #66816d;
 }
 
@@ -125,6 +125,65 @@
   text-overflow: ellipsis;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.7rem;
+}
+
+.market-admin-moderation-table {
+  min-width: 1180px;
+}
+
+.market-admin-moderation-cell {
+  min-width: 330px;
+  white-space: normal;
+}
+
+.market-admin-moderation-cell textarea {
+  width: 100%;
+  min-height: 66px;
+  padding: 9px 10px;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  border-radius: 10px;
+  color: var(--color-ink);
+  background: #ffffff;
+  font: inherit;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.market-admin-moderation-cell textarea:focus {
+  border-color: rgba(109, 76, 245, 0.4);
+  box-shadow: 0 0 0 3px rgba(109, 76, 245, 0.07);
+  outline: none;
+}
+
+.market-admin-moderation-actions {
+  display: flex;
+  gap: 7px;
+  margin-top: 9px;
+  flex-wrap: wrap;
+}
+
+.market-admin-reject {
+  min-height: 34px;
+  padding: 0 10px;
+  border: 0;
+  color: #8b4d57;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.69rem;
+  font-weight: 700;
+}
+
+.market-admin-reject:hover,
+.market-admin-reject:focus-visible {
+  text-decoration: underline;
+}
+
+.market-admin-moderation-actions button:disabled,
+.market-admin-reject:disabled {
+  cursor: wait;
+  opacity: 0.55;
 }
 
 .market-admin-note {
