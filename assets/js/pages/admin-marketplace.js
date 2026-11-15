@@ -53,7 +53,9 @@ function statusLabel(value) {
     refunded: "Refunded",
     pending: "Pending",
     confirming: "Confirming",
+    partially_paid: "Partially paid",
     confirmed: "Confirmed",
+    expired: "Expired",
     failed: "Failed",
     refunding: "Refunding",
   };
@@ -103,7 +105,7 @@ function renderOverview(data) {
     integer(summary.campaigns_total),
     integer(summary.campaigns_review),
     integer(summary.advertisers),
-    money(summary.confirmed_volume, "USDT"),
+    money(summary.confirmed_volume, "USD"),
   ];
   document.querySelectorAll(".admin-metrics .admin-metric strong").forEach((el, index) => {
     if (values[index] !== undefined) el.textContent = values[index];
@@ -161,6 +163,10 @@ function renderCampaigns(data, moderationOnly = false) {
           <td>${integer(row.channel_count)}</td>
           <td>${escapeHtml(shortDate(row.submitted_at || row.created_at))}</td>
           <td class="market-admin-moderation-cell">
+            <label class="market-admin-price-field">
+              <span>Approved total (USD)</span>
+              <input data-moderation-price="${escapeHtml(row.id)}" min="0.01" step="0.01" inputmode="decimal" placeholder="0.00" type="number" />
+            </label>
             <textarea data-moderation-feedback="${escapeHtml(row.id)}" maxlength="2000" placeholder="Feedback for changes or rejection"></textarea>
             <div class="market-admin-moderation-actions">
               <button class="button button-primary button-small" data-moderation-action="approve" data-campaign-id="${escapeHtml(row.id)}" type="button">Approve</button>
@@ -194,7 +200,7 @@ function renderAdvertisers(data) {
         <th scope="row"><strong>${escapeHtml(row.name || "Advertiser")}</strong><span>${escapeHtml(row.email || "—")}</span></th>
         <td>${integer(row.campaign_count)}</td>
         <td>${integer(row.active_campaign_count)}</td>
-        <td>${money(row.confirmed_spend, "USDT")}</td>
+        <td>${money(row.confirmed_spend, "USD")}</td>
         <td>${escapeHtml(shortDate(row.last_sign_in_at || row.created_at))}</td>
       </tr>`).join("")
     : `<tr><td colspan="5" class="admin-table-empty">No advertiser has marketplace activity yet.</td></tr>`;
@@ -208,10 +214,10 @@ function renderPayments(data) {
   tbody.innerHTML = rows.length
     ? rows.map((row) => `<tr>
         <th scope="row"><strong>${escapeHtml(row.advertiser?.email || "Unknown advertiser")}</strong><span>${escapeHtml(row.campaign_id)}</span></th>
-        <td>${money(row.amount, row.asset || "USDT")}</td>
-        <td>${escapeHtml(row.network || "—")}</td>
+        <td>${money(row.amount, row.price_currency || "USD")}</td>
+        <td>${escapeHtml(row.asset ? row.asset + (row.network ? " / " + row.network : "") : "Not selected")}</td>
         <td>${statusMarkup(row.status)}</td>
-        <td class="market-admin-hash">${escapeHtml(row.transaction_ref || "—")}</td>
+        <td class="market-admin-hash">${escapeHtml(row.provider_payment_id || row.provider_invoice_id || row.transaction_ref || "—")}</td>
         <td>${escapeHtml(shortDate(row.confirmed_at || row.created_at))}</td>
       </tr>`).join("")
     : `<tr><td colspan="6" class="admin-table-empty">No marketplace payments recorded yet.</td></tr>`;
@@ -224,6 +230,14 @@ async function runModerationAction(button) {
 
   const row = button.closest("[data-moderation-campaign]");
   const feedback = row?.querySelector("[data-moderation-feedback]")?.value.trim() || "";
+  const priceInput = row?.querySelector("[data-moderation-price]");
+  const price = Number(priceInput?.value || 0);
+
+  if (action === "approve" && (!Number.isFinite(price) || price <= 0)) {
+    showError("Set the approved campaign total before approving.");
+    priceInput?.focus();
+    return;
+  }
 
   if ((action === "request_changes" || action === "reject") && !feedback) {
     showError("Add feedback before requesting changes or rejecting a campaign.");
@@ -242,6 +256,7 @@ async function runModerationAction(button) {
         action,
         campaign_id: campaignId,
         feedback: feedback || undefined,
+        total_amount_cents: action === "approve" ? Math.round(price * 100) : undefined,
       },
     });
 
