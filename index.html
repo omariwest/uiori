@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -7,20 +6,20 @@
     <meta content="#ffffff" name="theme-color" />
     <meta content="strict-origin-when-cross-origin" name="referrer" />
     <script src="/assets/js/lib/analytics.js" defer></script>
-    <title>UIORI — Turn Spare Bandwidth Into Rewards</title>
+    <title>UIORI — Telegram Advertising Marketplace</title>
     <meta
-      content="Create your UIORI account, activate earning when you are ready, and track your balance, points, streaks, and next milestone from one simple dashboard."
+      content="Compare Telegram channels by real reach, audience, price, and placement options. Book sponsored posts and track delivery from one marketplace."
       name="description"
     />
     <link href="https://uiori.com/" rel="canonical" />
     <meta content="website" property="og:type" />
     <meta content="UIORI" property="og:site_name" />
     <meta
-      content="UIORI — Turn Spare Bandwidth Into Rewards"
+      content="UIORI — Telegram Advertising Marketplace"
       property="og:title"
     />
     <meta
-      content="Activate earning when you are ready and track clear progress toward small rewards from one UIORI dashboard."
+      content="Advertise on Telegram channels people actually read. Compare reach, audience, price, and placement options from one marketplace."
       property="og:description"
     />
     <meta content="https://uiori.com/" property="og:url" />
@@ -43,7 +42,7 @@
       rel="stylesheet"
     />
     <link href="/assets/css/style.css" rel="stylesheet" />
-    <script src="/assets/js/pages/home.js" type="module"></script>
+    <link href="/assets/css/pages/marketplace-home.css" rel="stylesheet" />
     <script
       src="/assets/js/components/public-account.js"
       type="module"
@@ -51,22 +50,27 @@
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
+
     <header class="site-header">
       <div class="container header-inner">
         <a aria-label="UIORI home" class="wordmark" href="/"
           >UIORI<span class="wordmark-period">.</span></a
         >
+
         <nav aria-label="Main navigation" class="desktop-navigation">
+          <a href="/marketplace/">Marketplace</a>
           <a href="/how-it-works/">How it works</a>
-          <a href="/rewards/">Rewards</a> <a href="/safety/">Safety</a>
+          <a href="#why-uiori">Why UIORI</a>
           <a href="/faq/">FAQ</a>
         </nav>
+
         <div class="header-actions">
           <a class="login-link" href="/login/">Log in</a>
           <a class="button button-dark button-small" href="/signup/"
-            >Start earning</a
+            >Start campaign</a
           >
         </div>
+
         <button
           aria-controls="mobile-navigation"
           aria-expanded="false"
@@ -77,836 +81,425 @@
           <span></span><span></span><span></span>
         </button>
       </div>
+
       <div
         aria-hidden="true"
         class="mobile-menu-backdrop"
         data-nav-backdrop=""
       ></div>
+
       <nav
         aria-label="Mobile navigation"
         class="mobile-menu"
         id="mobile-navigation"
       >
         <div class="mobile-navigation-links">
-          <a href="/how-it-works/"
-            ><svg aria-hidden="true" class="preview-icon" viewbox="0 0 24 24">
-              <path d="M15.5 10 13 7.5 15.5 5"></path>
-              <path
-                d="M15.861 14A14.5 14.5 0 0 1 12 22a14.48 14.48 0 0 1 0-20 10 10 0 1 0 9.888 11.5"
-              ></path>
-              <path d="M19.5 5 22 7.5 19.5 10"></path>
-              <path d="M2 12h8.5"></path></svg
-            ><span>How it works</span></a
-          ><a href="/rewards/"
-            ><svg aria-hidden="true" viewbox="0 0 24 24">
+          <a href="/marketplace/">
+            <svg aria-hidden="true" viewbox="0 0 24 24">
+              <rect height="6" rx="2" width="8" x="3" y="4"></rect>
+              <rect height="6" rx="2" width="8" x="13" y="4"></rect>
+              <rect height="6" rx="2" width="8" x="3" y="14"></rect>
+              <rect height="6" rx="2" width="8" x="13" y="14"></rect>
+            </svg>
+            <span>Marketplace</span>
+          </a>
+          <a href="/how-it-works/">
+            <svg aria-hidden="true" viewbox="0 0 24 24">
+              <path d="M4 7h11"></path>
+              <path d="M4 12h16"></path>
+              <path d="M4 17h9"></path>
+              <path d="m17 15 3 2-3 2"></path>
+            </svg>
+            <span>How it works</span>
+          </a>
+          <a href="#why-uiori">
+            <svg aria-hidden="true" viewbox="0 0 24 24">
+              <path d="M12 3 4.5 6v5.5c0 4.8 3 7.7 7.5 9.5 4.5-1.8 7.5-4.7 7.5-9.5V6z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            <span>Why UIORI</span>
+          </a>
+          <a href="/faq/">
+            <svg aria-hidden="true" viewbox="0 0 24 24">
               <circle cx="12" cy="12" r="10"></circle>
-              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
-              <path d="M12 18V6"></path></svg
-            ><span>Rewards</span></a
-          ><a href="/safety/"
-            ><svg aria-hidden="true" viewbox="0 0 24 24">
-              <path
-                d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
-              ></path>
-              <path d="m9 12 2 2 4-4"></path></svg
-            ><span>Safety</span></a
-          ><a href="/faq/"
-            ><svg aria-hidden="true" viewbox="0 0 24 24">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M9.1 9a3 3 0 1 1 5.8 1c0 2-3 2-3 4"></path>
-              <path d="M12 18h.01"></path></svg
-            ><span>FAQ</span></a
-          >
+              <path d="M9.5 9a2.7 2.7 0 1 1 4.9 1.6c-.8 1-2.4 1.4-2.4 3"></path>
+              <path d="M12 17h.01"></path>
+            </svg>
+            <span>FAQ</span>
+          </a>
         </div>
+
         <div aria-hidden="true" class="mobile-menu-divider"></div>
         <div class="mobile-menu-actions">
           <a class="mobile-login-link" href="/login/">Log in</a>
-          <a class="mobile-primary-link" href="/signup/">Start earning</a>
+          <a class="mobile-primary-link" href="/signup/">Start campaign</a>
         </div>
       </nav>
     </header>
+
     <main id="main-content">
-      <section class="hero-section">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <div class="hero-badge-row">
-              <span
-                ><span aria-hidden="true" class="hero-badge-dot"></span
-                ><span>Simple setup • Visible progress</span></span
-              >
+      <section class="market-home-hero">
+        <div class="container market-home-hero-grid">
+          <div class="market-home-hero-copy">
+            <div class="market-home-kicker">
+              <span aria-hidden="true"></span>
+              Telegram advertising, simplified
             </div>
-            <h1>
-              Put your unused internet connection to work.
-              <span>Watch the rewards add up.</span>
-            </h1>
-            <p class="hero-description">
-              Create your account, use a desktop to activate earning, and track
-              your activity.
+
+            <h1>Advertise on Telegram channels people actually read.</h1>
+
+            <p class="market-home-hero-description">
+              Compare real reach, audience, price, and placement options. Book
+              sponsored posts and track delivery from one marketplace.
             </p>
-            <div class="hero-actions">
-              <a class="button button-accent hero-cta-btn" href="/signup/">
-                <svg aria-hidden="true" viewbox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
-                  <path d="M12 18V6"></path>
-                </svg>
-                <span>Start earning</span>
+
+            <div class="market-home-hero-actions">
+              <a class="button button-accent" href="/marketplace/">
+                Browse channels
               </a>
-              <a
-                class="button button-outline hero-cta-btn"
-                href="/how-it-works/"
-              >
-                <svg aria-hidden="true" viewbox="0 0 24 24">
-                  <path d="m3 17 2 2 4-4"></path>
-                  <path d="m3 7 2 2 4-4"></path>
-                  <path d="M13 6h8"></path>
-                  <path d="M13 12h8"></path>
-                  <path d="M13 18h8"></path>
-                </svg>
-                <span>See how it works</span>
+              <a class="button button-outline" href="/how-it-works/">
+                See how it works
               </a>
+            </div>
+
+            <div
+              aria-label="UIORI marketplace principles"
+              class="market-home-trust-line"
+            >
+              <span>Real reach</span>
+              <span>Transparent pricing</span>
+              <span>Protected delivery</span>
             </div>
           </div>
-          <div aria-label="UIORI dashboard preview" class="hero-product-stage">
-<section
-              aria-label="UIORI account dashboard"
-              class="hero-product-window"
-            >
-              <div aria-hidden="true" class="hero-product-bar">
-                <div class="hero-product-dots">
+
+          <div class="market-home-product-stage">
+            <div class="market-home-product-window">
+              <div class="market-home-window-bar">
+                <div aria-hidden="true" class="market-home-window-dots">
                   <span></span><span></span><span></span>
                 </div>
+                <span>Campaign builder</span>
               </div>
-              <div class="hero-product-shot-wrap">
-                <img
-                  alt="UIORI dashboard showing balance, next milestone, earning status, and progress"
-                  decoding="async"
-                  height="820"
-                  loading="eager"
-                  src="/assets/img/landing/dashboard.png"
-                  width="1440"
-                />
-              </div>
-            </section>
-            <img
-              alt=""
-              aria-hidden="true"
-              class="hero-ai-icon hero-ai-icon-one"
-              height="132"
-              src="/assets/img/landing/icons/gemini.png"
-              width="132"
-            />
-            <img
-              alt=""
-              aria-hidden="true"
-              class="hero-ai-icon hero-ai-icon-two"
-              height="132"
-              src="/assets/img/landing/icons/claude.png"
-              width="132"
-            />
-            <img
-              alt=""
-              aria-hidden="true"
-              class="hero-ai-icon hero-ai-icon-three"
-              height="132"
-              src="/assets/img/landing/icons/chatgpt.png"
-              width="132"
-            />
-          </div>
-        </div>
-        <div
-          aria-label="UIORI earning highlights"
-          class="container hero-benefit-grid"
-        >
-          <article class="hero-benefit-card">
-            <h2>Free to join</h2>
-            <p>
-              No membership fee. Create your account and start when you are
-              ready.
-            </p>
-          </article>
-          <article class="hero-benefit-card">
-            <h2>You choose when it starts</h2>
-            <p>Earning stays off until you activate it on a laptop or desktop with Chrome or Edge.</p>
-          </article>
-          <article class="hero-benefit-card">
-            <h2>Your balance stays clear</h2>
-            <p>
-              Credited earnings stay separate from points, streaks, and
-              milestones.
-            </p>
-          </article>
-        </div>
-      </section>
-      <section
-        aria-labelledby="process-title"
-        class="home-process section-space"
-      >
-        <div class="container">
-          <div class="home-section-heading">
-            <p class="section-kicker">How it works</p>
-            <h2 id="process-title">From signup to visible progress.</h2>
-            <a class="section-inline-link" href="/how-it-works/"
-              >Full walkthrough</a
-            >
-          </div>
-          <div class="home-workflow" data-home-workflow="">
-            <div
-              aria-label="UIORI workflow steps"
-              class="home-workflow-nav"
-              role="tablist"
-            >
-              <button
-                aria-controls="home-workflow-panel-1"
-                aria-selected="true"
-                class="home-workflow-tab is-active"
-                data-home-workflow-step="1"
-                id="home-workflow-tab-1"
-                role="tab"
-                type="button"
-              >
-                <span class="home-workflow-index">1</span>
-                <span
-                  ><strong>Create your account</strong
-                  ><small>Finish activation before earning starts</small></span
-                >
-              </button>
-              <button
-                aria-controls="home-workflow-panel-2"
-                aria-selected="false"
-                class="home-workflow-tab"
-                data-home-workflow-step="2"
-                id="home-workflow-tab-2"
-                role="tab"
-                type="button"
-              >
-                <span class="home-workflow-index">2</span>
-                <span
-                  ><strong>Set up earning</strong
-                  ><small>Review the setup before anything starts</small></span
-                >
-              </button>
-              <button
-                aria-controls="home-workflow-panel-3"
-                aria-selected="false"
-                class="home-workflow-tab"
-                data-home-workflow-step="3"
-                id="home-workflow-tab-3"
-                role="tab"
-                type="button"
-              >
-                <span class="home-workflow-index">3</span>
-                <span
-                  ><strong>Open the support page</strong
-                  ><small>Continue with Add for free</small></span
-                >
-              </button>
-              <button
-                aria-controls="home-workflow-panel-4"
-                aria-selected="false"
-                class="home-workflow-tab"
-                data-home-workflow-step="4"
-                id="home-workflow-tab-4"
-                role="tab"
-                type="button"
-              >
-                <span class="home-workflow-index">4</span>
-                <span
-                  ><strong>Go through the demo</strong
-                  ><small>See how support works</small></span
-                >
-              </button>
-              <button
-                aria-controls="home-workflow-panel-5"
-                aria-selected="false"
-                class="home-workflow-tab"
-                data-home-workflow-step="5"
-                id="home-workflow-tab-5"
-                role="tab"
-                type="button"
-              >
-                <span class="home-workflow-index">5</span>
-                <span
-                  ><strong>Complete the demo</strong
-                  ><small>Finish the guided steps</small></span
-                >
-              </button>
-              <button
-                aria-controls="home-workflow-panel-6"
-                aria-selected="false"
-                class="home-workflow-tab"
-                data-home-workflow-step="6"
-                id="home-workflow-tab-6"
-                role="tab"
-                type="button"
-              >
-                <span class="home-workflow-index">6</span>
-                <span
-                  ><strong>Add the extension</strong
-                  ><small>Install the Mellowtel extension</small></span
-                >
-              </button>
-              <button
-                aria-controls="home-workflow-panel-7"
-                aria-selected="false"
-                class="home-workflow-tab"
-                data-home-workflow-step="7"
-                id="home-workflow-tab-7"
-                role="tab"
-                type="button"
-              >
-                <span class="home-workflow-index">7</span>
-                <span
-                  ><strong>Turn support on</strong
-                  ><small>You choose when participation is active</small></span
-                >
-              </button>
-              <button
-                aria-controls="home-workflow-panel-8"
-                aria-selected="false"
-                class="home-workflow-tab"
-                data-home-workflow-step="8"
-                id="home-workflow-tab-8"
-                role="tab"
-                type="button"
-              >
-                <span class="home-workflow-index">8</span>
-                <span
-                  ><strong>Follow your progress</strong
-                  ><small>You stay in control of participation</small></span
-                >
-              </button>
-            </div>
-            <div class="home-workflow-stage">
-              <article
-                aria-labelledby="home-workflow-tab-1"
-                class="home-workflow-panel is-active"
-                data-home-workflow-panel="1"
-                id="home-workflow-panel-1"
-                role="tabpanel"
-              >
-                <div class="home-workflow-copy">
-                  <p class="home-workflow-eyebrow">Step 1</p>
-                  <h3>Create or sign in to your UIORI account.</h3>
-                  <p>
-                    Use your UIORI account to continue to earning setup.
-                  </p>
-                </div>
-                <div class="home-workflow-image">
-                  <img
-                    alt="UIORI sign-in screen"
-                    decoding="async"
-                    loading="lazy"
-                    src="/assets/img/how-it-works/activate-your-account-first.png"
-                  />
-                </div>
-              </article>
 
-              <article
-                aria-labelledby="home-workflow-tab-2"
-                class="home-workflow-panel"
-                data-home-workflow-panel="2"
-                hidden=""
-                id="home-workflow-panel-2"
-                role="tabpanel"
-              >
-                <div class="home-workflow-copy">
-                  <p class="home-workflow-eyebrow">Step 2</p>
-                  <h3>Open Earn and start the setup.</h3>
-                  <p>
-                    UIORI shows the participation details first. Nothing starts
-                    just because you have an account.
-                  </p>
-                </div>
-                <div class="home-workflow-image">
-                  <img
-                    alt="UIORI Earn page showing the Set up earning button"
-                    decoding="async"
-                    loading="lazy"
-                    src="/assets/img/how-it-works/set-up-earning.png"
-                  />
-                </div>
-              </article>
-
-              <article
-                aria-labelledby="home-workflow-tab-3"
-                class="home-workflow-panel"
-                data-home-workflow-panel="3"
-                hidden=""
-                id="home-workflow-panel-3"
-                role="tabpanel"
-              >
-                <div class="home-workflow-copy">
-                  <p class="home-workflow-eyebrow">Step 3</p>
-                  <h3>Open the Mellowtel support page.</h3>
-                  <p>
-                    Review the support page, then continue with Add for free.
-                  </p>
-                </div>
-                <div class="home-workflow-image">
-                  <img
-                    alt="Mellowtel support page showing Add for free"
-                    decoding="async"
-                    loading="lazy"
-                    src="/assets/img/how-it-works/UIORI-invite-you-blur-screen.png"
-                  />
-                </div>
-              </article>
-
-              <article
-                aria-labelledby="home-workflow-tab-4"
-                class="home-workflow-panel"
-                data-home-workflow-panel="4"
-                hidden=""
-                id="home-workflow-panel-4"
-                role="tabpanel"
-              >
-                <div class="home-workflow-copy">
-                  <p class="home-workflow-eyebrow">Step 4</p>
-                  <h3>Go through the short demo.</h3>
-                  <p>
-                    See how support works, then continue with Next Step.
-                  </p>
-                </div>
-                <div class="home-workflow-image">
-                  <img
-                    alt="Mellowtel demo showing the Next Step button"
-                    decoding="async"
-                    loading="lazy"
-                    src="/assets/img/how-it-works/go-through-demo-first-screen.png"
-                  />
-                </div>
-              </article>
-
-              <article
-                aria-labelledby="home-workflow-tab-5"
-                class="home-workflow-panel"
-                data-home-workflow-panel="5"
-                hidden=""
-                id="home-workflow-panel-5"
-                role="tabpanel"
-              >
-                <div class="home-workflow-copy">
-                  <p class="home-workflow-eyebrow">Step 5</p>
-                  <h3>Complete the Mellowtel demo.</h3>
-                  <p>
-                    Finish the guided demo, then continue to extension setup.
-                  </p>
-                </div>
-                <div class="home-workflow-image">
-                  <img
-                    alt="Mellowtel demo completion screen"
-                    decoding="async"
-                    loading="lazy"
-                    src="/assets/img/how-it-works/demo-end.png"
-                  />
-                </div>
-              </article>
-
-              <article
-                aria-labelledby="home-workflow-tab-6"
-                class="home-workflow-panel"
-                data-home-workflow-panel="6"
-                hidden=""
-                id="home-workflow-panel-6"
-                role="tabpanel"
-              >
-                <div class="home-workflow-copy">
-                  <p class="home-workflow-eyebrow">Step 6</p>
-                  <h3>Add the Mellowtel extension.</h3>
-                  <p>
-                    UIORI takes you to the support page, then the extension
-                    install page. Add the extension to continue the guided setup.
-                  </p>
-                </div>
-                <div class="home-workflow-image">
-                  <img
-                    alt="Example extension store page for the Mellowtel extension"
-                    decoding="async"
-                    loading="lazy"
-                    src="/assets/img/how-it-works/extension-first-show.png"
-                  />
-                </div>
-              </article>
-
-              <article
-                aria-labelledby="home-workflow-tab-7"
-                class="home-workflow-panel"
-                data-home-workflow-panel="7"
-                hidden=""
-                id="home-workflow-panel-7"
-                role="tabpanel"
-              >
-                <div class="home-workflow-copy">
-                  <p class="home-workflow-eyebrow">Step 7</p>
-                  <h3>Turn support on when you are ready.</h3>
-                  <p>
-                    The switch is yours. When it is on, a small part of your
-                    unused internet connection can be used while you browse.
-                  </p>
-                </div>
-                <div class="home-workflow-image">
-                  <img
-                    alt="Mellowtel extension showing the support switch turned on"
-                    decoding="async"
-                    loading="lazy"
-                    src="/assets/img/how-it-works/switch-on.png"
-                  />
-                </div>
-              </article>
-
-              <article
-                aria-labelledby="home-workflow-tab-8"
-                class="home-workflow-panel"
-                data-home-workflow-panel="8"
-                hidden=""
-                id="home-workflow-panel-8"
-                role="tabpanel"
-              >
-                <div class="home-workflow-copy">
-                  <p class="home-workflow-eyebrow">Step 8</p>
-                  <h3>Stop support whenever you want.</h3>
-                  <p>
-                    Open Mellowtel settings and turn support off whenever you want
-                    to stop participating.
-                  </p>
-                </div>
-                <div class="home-workflow-image">
-                  <img
-                    alt="Mellowtel settings showing how to turn support off"
-                    decoding="async"
-                    loading="lazy"
-                    src="/assets/img/how-it-works/switch-off-option.png"
-                  />
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section
-        aria-labelledby="rewards-title"
-        class="home-rewards section-space"
-      >
-        <div class="container home-rewards-grid">
-          <div class="home-rewards-copy">
-            <p class="section-kicker">Rewards</p>
-            <h2 id="rewards-title">
-              Always know what is progress and what is cash.
-            </h2>
-            <p>
-              Points, streaks, levels, and milestones show momentum. Your
-              credited balance shows money.
-            </p>
-            <a class="section-inline-link" href="/rewards/">
-              Explore rewards
-            </a>
-          </div>
-          <div
-            aria-label="Illustrative UIORI reward balance and progress"
-            class="reward-showcase"
-          >
-            <div class="reward-card-stage">
-              <div aria-hidden="true" class="reward-card-glow"></div>
-              <div class="reward-wallet-card">
-                <div class="reward-card-topline">
-                  <strong>UIORI<span>.</span></strong>
-                  <span>REWARD BALANCE</span>
-                </div>
-                <div aria-hidden="true" class="reward-card-chip-row">
-                  <div class="reward-card-chip">
-                    <svg viewbox="0 0 48 36">
-                      <rect height="34" rx="8" width="46" x="1" y="1"></rect>
-                      <path d="M16 1v34M32 1v34M1 12h46M1 24h46"></path>
-                    </svg>
-                  </div>
-                  <svg class="reward-card-contactless" viewbox="0 0 24 24">
-                    <path d="M8.5 8.5a5 5 0 0 1 0 7"></path>
-                    <path d="M12 5a10 10 0 0 1 0 14"></path>
-                    <path d="M5 12h.01"></path>
-                  </svg>
-                </div>
-                <div class="reward-card-balance">
-                  <span>Available earnings</span>
-                  <strong>$10.00</strong>
-                </div>
-                <div class="reward-card-footer">
+              <div class="market-home-product-body">
+                <div class="market-home-product-heading">
                   <div>
-                    <span>Next goal</span>
-                    <strong>$15.00</strong>
+                    <span class="market-home-mini-label">Audience</span>
+                    <strong>Find the right Telegram reach</strong>
                   </div>
-                  <div aria-hidden="true" class="reward-card-progress">
-                    <span></span>
+                  <span class="market-home-status-pill">Curated</span>
+                </div>
+
+                <div class="market-home-filter-row">
+                  <span>Crypto &amp; Web3</span>
+                  <span>Emerging markets</span>
+                  <span>Telegram-native</span>
+                </div>
+
+                <div class="market-home-buying-flow">
+                  <article>
+                    <span>1</span>
+                    <div>
+                      <strong>Choose channels</strong>
+                      <small>Compare audience and recent reach.</small>
+                    </div>
+                  </article>
+                  <article>
+                    <span>2</span>
+                    <div>
+                      <strong>Add your creative</strong>
+                      <small>One campaign, clear placement rules.</small>
+                    </div>
+                  </article>
+                  <article>
+                    <span>3</span>
+                    <div>
+                      <strong>Set delivery</strong>
+                      <small>Pick timing or eligible reach-backed options.</small>
+                    </div>
+                  </article>
+                  <article>
+                    <span>4</span>
+                    <div>
+                      <strong>Track proof</strong>
+                      <small>Know what was published and delivered.</small>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="market-home-product-footer">
+                  <div>
+                    <span class="market-home-mini-label">UIORI principle</span>
+                    <strong>Buy qualified attention, not follower counts.</strong>
                   </div>
-                </div>
-              </div>
-              <div class="reward-float reward-float-credit">
-                <span aria-hidden="true" class="reward-float-dot"></span>
-                <div><strong>+$5.00</strong><small>credited</small></div>
-              </div>
-              <div class="reward-float reward-float-goal">
-                <span>67%</span>
-                <small>to next goal</small>
-              </div>
-            </div>
-            <div class="reward-facts">
-              <div class="reward-fact">
-                <svg aria-hidden="true" viewbox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
-                  <path d="M12 18V6"></path>
-                </svg>
-                <div>
-                  <strong>Credited earnings</strong
-                  ><span>The money shown in your UIORI balance.</span>
-                </div>
-              </div>
-              <div class="reward-fact">
-                <svg aria-hidden="true" viewbox="0 0 24 24">
-                  <path d="M3 12h4l3-9 4 18 3-9h4"></path>
-                </svg>
-                <div>
-                  <strong>Progress that stays visible</strong
-                  ><span
-                    >Points, streaks, and levels show momentum toward the next
-                    target.</span
-                  >
-                </div>
-              </div>
-              <div class="reward-fact">
-                <svg aria-hidden="true" viewbox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="m8.5 12 2.2 2.2 4.8-4.8"></path>
-                </svg>
-                <div>
-                  <strong>Milestones that feel reachable</strong
-                  ><span>Small targets keep the next win easy to see.</span>
+                  <span aria-hidden="true" class="market-home-arrow">→</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      <section aria-labelledby="safety-title" class="home-safety section-space">
-        <div class="container">
-          <div class="home-section-heading">
-            <p class="section-kicker">Safety &amp; control</p>
-            <h2 id="safety-title">You're always in control.</h2>
-            <a class="section-inline-link" href="/safety/">
-              Read about safety
-            </a>
-          </div>
-          <div class="safety-points">
-            <div class="safety-point">
-              <svg aria-hidden="true" viewbox="0 0 24 24">
-                <path
-                  d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"
-                ></path>
-                <path d="m9 12 2 2 4-4"></path>
-              </svg>
-              <div>
-                <strong>You choose when to start</strong
-                ><span
-                  >Set up earning only when you are ready.</span
-                >
-              </div>
+
+        <div class="container market-home-proof-strip">
+          <article>
+            <svg aria-hidden="true" viewbox="0 0 24 24">
+              <path d="M4 19V5"></path>
+              <path d="M8 15v4"></path>
+              <path d="M12 11v8"></path>
+              <path d="M16 8v11"></path>
+              <path d="M20 4v15"></path>
+            </svg>
+            <div>
+              <strong>Recent reach</strong>
+              <span>Judge channels by the attention they actually receive.</span>
             </div>
-            <div class="safety-point">
-              <svg aria-hidden="true" viewbox="0 0 24 24">
-                <path d="M9 12h6"></path>
-                <path d="M12 9v6"></path>
-                <circle cx="12" cy="12" r="10"></circle>
-              </svg>
-              <div>
-                <strong>Progress and balance stay clear</strong
-                ><span
-                  >Points and milestones show progress; credited earnings
-                  appear in your balance.</span
-                >
-              </div>
+          </article>
+          <article>
+            <svg aria-hidden="true" viewbox="0 0 24 24">
+              <path d="M12 3 4 6v6c0 4.5 3 7.2 8 9 5-1.8 8-4.5 8-9V6z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            <div>
+              <strong>Protected delivery</strong>
+              <span>Clear rules when a placement does not deliver as agreed.</span>
             </div>
-            <div class="safety-point">
-              <svg aria-hidden="true" viewbox="0 0 24 24">
-                <circle cx="9" cy="12" r="3"></circle>
-                <rect height="14" rx="7" width="20" x="2" y="5"></rect>
-              </svg>
-              <div>
-                <strong>Turn it off anytime</strong
-                ><span
-                  >You decide when earning is active and when it stops.</span
-                >
-              </div>
+          </article>
+          <article>
+            <svg aria-hidden="true" viewbox="0 0 24 24">
+              <path d="M4 7h16"></path>
+              <path d="M4 12h16"></path>
+              <path d="M4 17h10"></path>
+            </svg>
+            <div>
+              <strong>Simple buying</strong>
+              <span>Compare, book, and manage campaigns without chasing admins.</span>
             </div>
-          </div>
+          </article>
+          <article>
+            <svg aria-hidden="true" viewbox="0 0 24 24">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M12 7v5l3 2"></path>
+            </svg>
+            <div>
+              <strong>Clear placement terms</strong>
+              <span>Know the format, delivery window, and price before you pay.</span>
+            </div>
+          </article>
         </div>
       </section>
-      <section aria-labelledby="home-faq-title" class="home-faq section-space">
+
+      <section
+        aria-labelledby="marketplace-intro-title"
+        class="market-home-section market-home-marketplace"
+      >
         <div class="container">
-          <div class="home-faq-heading">
-            <p class="section-kicker">FAQ</p>
-            <h2 id="home-faq-title">Frequently asked questions</h2>
+          <div class="market-home-section-heading">
+            <div>
+              <p class="section-kicker">Marketplace</p>
+              <h2 id="marketplace-intro-title">
+                Find the audience before you fund the campaign.
+              </h2>
+            </div>
             <p>
-              Clear answers about earning, rewards, progress, and withdrawals.
+              UIORI is built to make Telegram inventory easier to compare:
+              topic, geography, recent reach, placement format, and price in one
+              buying flow.
             </p>
           </div>
-          <div class="faq-list">
-            <article class="faq-item">
-              <h3>
-                <button
-                  aria-controls="home-faq-answer-account"
-                  aria-expanded="false"
-                  class="faq-question"
-                  id="home-faq-question-account"
-                  type="button"
-                >
-                  <span>Does creating an account start earning?</span>
-                  <span aria-hidden="true" class="faq-chevron"></span>
-                </button>
-              </h3>
-              <div
-                aria-hidden="true"
-                aria-labelledby="home-faq-question-account"
-                class="faq-answer"
-                id="home-faq-answer-account"
-                inert=""
-                role="region"
-              >
-                <div>
-                  <p>
-                    No. Your account is separate from earning. Nothing starts
-                    until you complete the setup and choose to turn earning on.
-                  </p>
-                </div>
+
+          <div class="market-home-category-grid">
+            <article>
+              <span class="market-home-category-icon">
+                <svg aria-hidden="true" viewbox="0 0 24 24">
+                  <path d="M4 17 10 5l4 8 2-4 4 8"></path>
+                  <path d="M4 20h16"></path>
+                </svg>
+              </span>
+              <strong>Crypto &amp; Web3</strong>
+              <p>High-intent audiences for apps, wallets, tools, and launches.</p>
+            </article>
+            <article>
+              <span class="market-home-category-icon">
+                <svg aria-hidden="true" viewbox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M3 12h18"></path>
+                  <path d="M12 3a14 14 0 0 1 0 18"></path>
+                  <path d="M12 3a14 14 0 0 0 0 18"></path>
+                </svg>
+              </span>
+              <strong>Emerging markets</strong>
+              <p>Focused regional inventory for campaigns that need local relevance.</p>
+            </article>
+            <article>
+              <span class="market-home-category-icon">
+                <svg aria-hidden="true" viewbox="0 0 24 24">
+                  <path d="M4 5h16v11H8l-4 3z"></path>
+                  <path d="M8 9h8"></path>
+                  <path d="M8 12h5"></path>
+                </svg>
+              </span>
+              <strong>Telegram-native apps</strong>
+              <p>Reach users already comfortable with Mini Apps, bots, and TON.</p>
+            </article>
+          </div>
+
+          <a class="market-home-text-link" href="/marketplace/">
+            Explore the marketplace
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="why-uiori-title"
+        class="market-home-section market-home-why"
+        id="why-uiori"
+      >
+        <div class="container market-home-why-grid">
+          <div class="market-home-why-copy">
+            <p class="section-kicker">Why UIORI</p>
+            <h2 id="why-uiori-title">Buy reach, not follower counts.</h2>
+            <p>
+              Subscriber totals are easy to display. Useful attention is harder.
+              UIORI is designed around recent reach, clear delivery terms, and
+              campaign proof instead.
+            </p>
+          </div>
+
+          <div class="market-home-principles">
+            <article>
+              <span>01</span>
+              <div>
+                <strong>Compare before you buy</strong>
+                <p>
+                  See the signals that matter for an advertising decision rather
+                  than relying on follower count alone.
+                </p>
               </div>
             </article>
-            <article class="faq-item">
-              <h3>
-                <button
-                  aria-controls="home-faq-answer-extension"
-                  aria-expanded="false"
-                  class="faq-question"
-                  id="home-faq-question-extension"
-                  type="button"
-                >
-                  <span>Do I need a browser extension?</span>
-                  <span aria-hidden="true" class="faq-chevron"></span>
-                </button>
-              </h3>
-              <div
-                aria-hidden="true"
-                aria-labelledby="home-faq-question-extension"
-                class="faq-answer"
-                id="home-faq-answer-extension"
-                inert=""
-                role="region"
-              >
-                <div>
-                  <p>
-                    Yes. The earning setup uses a companion browser extension.
-                    UIORI guides you through the setup when you choose to
-                    activate earning.
-                  </p>
-                </div>
+            <article>
+              <span>02</span>
+              <div>
+                <strong>Know what happens next</strong>
+                <p>
+                  Placement format, delivery window, and campaign status stay
+                  understandable from booking to proof.
+                </p>
               </div>
             </article>
-            <article class="faq-item">
-              <h3>
-                <button
-                  aria-controls="home-faq-answer-points"
-                  aria-expanded="false"
-                  class="faq-question"
-                  id="home-faq-question-points"
-                  type="button"
-                >
-                  <span>Are Contribution Points the same as money?</span>
-                  <span aria-hidden="true" class="faq-chevron"></span>
-                </button>
-              </h3>
-              <div
-                aria-hidden="true"
-                aria-labelledby="home-faq-question-points"
-                class="faq-answer"
-                id="home-faq-answer-points"
-                inert=""
-                role="region"
-              >
-                <div>
-                  <p>
-                    No. Points, streaks, levels, and milestones show progress.
-                    Your credited earnings are the money added to your UIORI
-                    balance.
-                  </p>
-                </div>
-              </div>
-            </article>
-            <article class="faq-item">
-              <h3>
-                <button
-                  aria-controls="home-faq-answer-guaranteed"
-                  aria-expanded="false"
-                  class="faq-question"
-                  id="home-faq-question-guaranteed"
-                  type="button"
-                >
-                  <span>Are earnings guaranteed?</span>
-                  <span aria-hidden="true" class="faq-chevron"></span>
-                </button>
-              </h3>
-              <div
-                aria-hidden="true"
-                aria-labelledby="home-faq-question-guaranteed"
-                class="faq-answer"
-                id="home-faq-answer-guaranteed"
-                inert=""
-                role="region"
-              >
-                <div>
-                  <p>
-                    No. Earning amounts and timing can vary, and UIORI does not
-                    promise a fixed rate or a guaranteed time to reach a
-                    milestone.
-                  </p>
-                </div>
-              </div>
-            </article>
-            <article class="faq-item">
-              <h3>
-                <button
-                  aria-controls="home-faq-answer-withdraw"
-                  aria-expanded="false"
-                  class="faq-question"
-                  id="home-faq-question-withdraw"
-                  type="button"
-                >
-                  <span>When can I withdraw?</span>
-                  <span aria-hidden="true" class="faq-chevron"></span>
-                </button>
-              </h3>
-              <div
-                aria-hidden="true"
-                aria-labelledby="home-faq-question-withdraw"
-                class="faq-answer"
-                id="home-faq-answer-withdraw"
-                inert=""
-                role="region"
-              >
-                <div>
-                  <p>
-                    You can request a withdrawal when your account meets the
-                    published requirements and has enough credited earnings.
-                  </p>
-                </div>
+            <article>
+              <span>03</span>
+              <div>
+                <strong>One marketplace, fewer DMs</strong>
+                <p>
+                  Build a campaign without negotiating separately with every
+                  channel administrator.
+                </p>
               </div>
             </article>
           </div>
-          <div class="faq-actions">
-            <a class="button button-quiet home-faq-link" href="/faq/">
-              View all FAQs
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="reach-title"
+        class="market-home-section market-home-reach"
+      >
+        <div class="container">
+          <div class="market-home-reach-card">
+            <div class="market-home-reach-copy">
+              <p class="section-kicker">Eligible UIORI inventory</p>
+              <h2 id="reach-title">Reach-backed placements, where available.</h2>
+              <p>
+                On eligible UIORI-owned inventory, advertisers can choose a
+                conservative Telegram-reported view target instead of buying
+                time alone.
+              </p>
+            </div>
+
+            <div class="market-home-reach-terms">
+              <div>
+                <span>Minimum live period</span>
+                <strong>6 hours</strong>
+              </div>
+              <div>
+                <span>Maximum delivery window</span>
+                <strong>72 hours</strong>
+              </div>
+              <div>
+                <span>If reach underdelivers</span>
+                <strong>Make-good or credit</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="how-buying-works-title"
+        class="market-home-section market-home-process"
+      >
+        <div class="container">
+          <div class="market-home-section-heading market-home-process-heading">
+            <div>
+              <p class="section-kicker">How it works</p>
+              <h2 id="how-buying-works-title">
+                From audience search to delivery proof.
+              </h2>
+            </div>
+            <a class="market-home-text-link" href="/how-it-works/">
+              Full walkthrough
+              <span aria-hidden="true">→</span>
             </a>
+          </div>
+
+          <ol class="market-home-steps">
+            <li>
+              <span>1</span>
+              <strong>Find channels</strong>
+              <p>Filter by audience, region, reach, budget, and format.</p>
+            </li>
+            <li>
+              <span>2</span>
+              <strong>Create the campaign</strong>
+              <p>Add the creative and choose the inventory you want.</p>
+            </li>
+            <li>
+              <span>3</span>
+              <strong>Fund the order</strong>
+              <p>Review the delivery terms before the campaign is funded.</p>
+            </li>
+            <li>
+              <span>4</span>
+              <strong>Track delivery</strong>
+              <p>Follow placement status and receive delivery proof.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="market-home-section market-home-final">
+        <div class="container">
+          <div class="market-home-final-card">
+            <div>
+              <p class="section-kicker">Start with the audience</p>
+              <h2>Build your next Telegram campaign in one place.</h2>
+              <p>
+                Compare inventory first. Decide what is worth buying second.
+              </p>
+            </div>
+            <div class="market-home-final-actions">
+              <a class="button button-accent" href="/marketplace/">
+                Browse channels
+              </a>
+              <a class="button button-outline" href="/signup/">
+                Create advertiser account
+              </a>
+            </div>
           </div>
         </div>
       </section>
     </main>
+
     <footer class="site-footer">
       <div class="container">
         <div class="footer-main">
@@ -914,27 +507,32 @@
             <a aria-label="UIORI home" class="wordmark" href="/"
               >UIORI<span class="wordmark-period">.</span></a
             >
-            <p>Turn spare bandwidth into visible progress and small rewards.</p>
+            <p>
+              A cleaner way to discover, book, and track Telegram advertising.
+            </p>
           </div>
+
           <div class="footer-column">
             <h2>Product</h2>
+            <a href="/marketplace/">Marketplace</a>
             <a href="/how-it-works/">How it works</a>
-            <a href="/rewards/">Rewards</a>
-            <a href="/safety/">Safety</a>
             <a href="/faq/">FAQ</a>
           </div>
+
           <div class="footer-column">
             <h2>Company</h2>
             <a href="/about/">About</a>
             <a href="/contact/">Contact</a>
           </div>
+
           <div class="footer-column">
             <h2>Legal</h2>
             <a href="/terms/">Terms</a>
             <a href="/privacy/">Privacy</a>
-            <a href="/rewards-policy/">Rewards Policy</a>
+            <a href="/advertising-policy/">Advertising Policy</a>
           </div>
         </div>
+
         <div class="footer-bottom">
           <span>© 2026 UIORI</span>
         </div>
