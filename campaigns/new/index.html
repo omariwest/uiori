@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="strict-origin-when-cross-origin" name="referrer" />
+    <script src="/assets/js/lib/analytics.js" defer></script>
+    <title>New Campaign — UIORI</title>
+    <meta content="noindex,nofollow" name="robots" />
+    <link href="https://uiori.com/campaigns/new/" rel="canonical" />
+    <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link href="/assets/img/favicon-32.png" rel="icon" sizes="32x32" type="image/png" />
+    <link href="/assets/img/favicon-180.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/pages/campaigns.css" rel="stylesheet" />
+    <script src="/assets/js/components/app-navigation.js" type="module"></script>
+    <script src="/assets/js/pages/campaign-new.js" type="module"></script>
+  </head>
+  <body class="app-body app-auth-loading">
+    <div class="app-layout">
+      <aside aria-label="Advertiser sidebar" class="app-sidebar">
+        <a aria-label="UIORI home" class="wordmark app-wordmark" href="/">UIORI<span class="wordmark-period">.</span></a>
+        <div class="app-member-card" data-uiori-member-state="pending" aria-label="Advertiser account">
+          <div class="app-member-avatar"><img src="/assets/img/default-avatar.svg" alt="Your profile photo" data-uiori-avatar /></div>
+          <div class="app-member-copy">
+            <strong class="app-member-name" data-uiori-member-name></strong>
+            <span class="app-member-badge is-active"><span data-uiori-member-status>Advertiser</span></span>
+          </div>
+        </div>
+        <nav aria-label="Advertiser navigation" class="app-navigation">
+          <a class="app-nav-link" href="/dashboard/"><span>Overview</span></a>
+          <a aria-current="page" class="app-nav-link" href="/campaigns/"><span>Campaigns</span></a>
+          <a class="app-nav-link" href="/saved/"><span>Saved</span></a>
+          <a class="app-nav-link" href="/billing/"><span>Billing</span></a>
+          <a class="app-nav-link" href="/settings/"><span>Settings</span></a>
+        </nav>
+        <div class="app-sidebar-bottom">
+          <a class="app-nav-link" href="/faq/"><span>Help</span></a>
+          <a class="app-nav-link app-logout-link" data-uiori-logout href="/login/"><span>Log out</span></a>
+        </div>
+      </aside>
+
+      <div class="app-main">
+        <header class="app-mobile-topbar">
+          <a aria-label="UIORI home" class="wordmark app-wordmark" href="/">UIORI<span class="wordmark-period">.</span></a>
+          <button aria-controls="app-navigation-drawer" aria-expanded="false" aria-label="Open account navigation" class="app-menu-toggle" type="button"><span></span><span></span><span></span></button>
+        </header>
+        <dialog aria-label="Advertiser navigation" class="app-drawer" id="app-navigation-drawer">
+          <div class="app-drawer-panel">
+            <div class="app-member-card app-member-card--drawer" data-uiori-member-state="pending">
+              <div class="app-member-avatar"><img src="/assets/img/default-avatar.svg" alt="Your profile photo" data-uiori-avatar /></div>
+              <div class="app-member-copy"><strong class="app-member-name" data-uiori-member-name></strong><span class="app-member-badge is-active"><span data-uiori-member-status>Advertiser</span></span></div>
+            </div>
+            <nav aria-label="Advertiser navigation" class="app-navigation">
+              <a class="app-nav-link" href="/dashboard/"><span>Overview</span></a>
+              <a aria-current="page" class="app-nav-link" href="/campaigns/"><span>Campaigns</span></a>
+              <a class="app-nav-link" href="/saved/"><span>Saved</span></a>
+              <a class="app-nav-link" href="/billing/"><span>Billing</span></a>
+              <a class="app-nav-link" href="/settings/"><span>Settings</span></a>
+            </nav>
+            <div class="app-sidebar-bottom">
+              <a class="app-nav-link" href="/faq/"><span>Help</span></a>
+              <a class="app-nav-link app-logout-link" data-uiori-logout href="/login/"><span>Log out</span></a>
+            </div>
+          </div>
+        </dialog>
+
+        <main class="app-content campaign-flow-shell" id="main-content">
+          <header class="app-topbar campaigns-topbar">
+            <div class="app-page-heading">
+              <p class="app-page-eyebrow">Campaign builder</p>
+              <h1>New campaign</h1>
+              <p>Choose inventory, prepare the sponsored post, request timing, and review the draft.</p>
+            </div>
+            <a class="button button-secondary campaigns-primary-action" href="/campaigns/">Cancel</a>
+          </header>
+
+          <section class="campaign-flow-panel">
+            <div class="campaign-flow-stepper" aria-label="Campaign progress">
+              <div class="campaign-flow-step is-active" data-flow-step="1"><span>1</span>Channels</div>
+              <div class="campaign-flow-step" data-flow-step="2"><span>2</span>Creative</div>
+              <div class="campaign-flow-step" data-flow-step="3"><span>3</span>Schedule</div>
+              <div class="campaign-flow-step" data-flow-step="4"><span>4</span>Review</div>
+            </div>
+
+            <form class="campaign-flow-body" data-campaign-form novalidate>
+              <section class="campaign-flow-stage" data-flow-stage="1">
+                <div class="campaign-flow-heading">
+                  <h2>Choose the channels</h2>
+                  <p>Select one or more active UIORI channels. Only real marketplace inventory is shown here.</p>
+                </div>
+                <div class="campaign-channel-picker" data-campaign-channel-picker></div>
+                <div class="campaign-flow-no-inventory" data-campaign-no-inventory hidden>
+                  No active channels are available yet. UIORI will enable this step after the real channel inventory is activated.
+                </div>
+              </section>
+
+              <section class="campaign-flow-stage" data-flow-stage="2" hidden>
+                <div class="campaign-flow-heading">
+                  <h2>Prepare the sponsored post</h2>
+                  <p>This is the advertiser draft. UIORI moderation and final placement formatting come later.</p>
+                </div>
+                <div class="campaign-flow-fields">
+                  <label class="campaign-flow-field">
+                    <span>Campaign name</span>
+                    <input data-campaign-title maxlength="120" placeholder="Example: November wallet launch" required />
+                  </label>
+                  <label class="campaign-flow-field">
+                    <span>Sponsored post text</span>
+                    <textarea data-campaign-text maxlength="3500" placeholder="Write the post you want UIORI to review." required></textarea>
+                    <small class="campaign-flow-help">Do not include guaranteed-profit, impersonation, phishing, or deceptive claims.</small>
+                  </label>
+                  <label class="campaign-flow-field">
+                    <span>Destination URL</span>
+                    <input data-campaign-destination inputmode="url" placeholder="https://..." type="url" required />
+                    <small class="campaign-flow-help">Use the final HTTPS destination you want readers to open.</small>
+                  </label>
+                </div>
+              </section>
+
+              <section class="campaign-flow-stage" data-flow-stage="3" hidden>
+                <div class="campaign-flow-heading">
+                  <h2>Request the timing</h2>
+                  <p>This is a preferred schedule, not a confirmed booking. Final delivery timing is confirmed after review and funding.</p>
+                </div>
+                <div class="campaign-schedule-options">
+                  <label class="campaign-schedule-option">
+                    <input checked data-schedule-mode name="schedule-mode" type="radio" value="asap" />
+                    <span class="campaign-schedule-card"><strong>As soon as available</strong><span>UIORI can choose the earliest eligible placement after approval.</span></span>
+                  </label>
+                  <label class="campaign-schedule-option">
+                    <input data-schedule-mode name="schedule-mode" type="radio" value="specific" />
+                    <span class="campaign-schedule-card"><strong>Preferred date &amp; time</strong><span>Request a specific start time. It remains subject to channel availability.</span></span>
+                  </label>
+                </div>
+                <label class="campaign-flow-field campaign-schedule-date" data-schedule-date-wrap hidden>
+                  <span>Preferred start</span>
+                  <input data-schedule-date type="datetime-local" />
+                </label>
+              </section>
+
+              <section class="campaign-flow-stage" data-flow-stage="4" hidden>
+                <div class="campaign-flow-heading">
+                  <h2>Review the draft</h2>
+                  <p>No payment is taken here. Saving creates a draft campaign only.</p>
+                </div>
+                <div class="campaign-review-grid">
+                  <article class="campaign-review-card">
+                    <h3>Channels</h3>
+                    <ul data-review-channels></ul>
+                  </article>
+                  <article class="campaign-review-card">
+                    <h3>Schedule</h3>
+                    <p data-review-schedule></p>
+                  </article>
+                  <article class="campaign-review-card">
+                    <h3>Creative</h3>
+                    <p data-review-creative></p>
+                  </article>
+                  <article class="campaign-review-card">
+                    <h3>Destination</h3>
+                    <p data-review-destination></p>
+                  </article>
+                </div>
+              </section>
+
+              <div class="campaign-flow-error" data-campaign-error hidden role="alert"></div>
+
+              <div class="campaign-flow-actions">
+                <button class="button button-secondary" data-flow-back hidden type="button">Back</button>
+                <div class="campaign-flow-actions-right">
+                  <button class="button button-dark" data-flow-next type="button">Continue</button>
+                  <button class="button button-primary" data-campaign-save hidden type="submit">Save draft</button>
+                </div>
+              </div>
+            </form>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
