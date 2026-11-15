@@ -238,12 +238,12 @@
   background: rgba(31, 122, 77, .09);
 }
 
-.advertiser-billing-status:is(.is-pending,.is-confirming,.is-refunding) {
+.advertiser-billing-status:is(.is-pending,.is-confirming,.is-partially_paid,.is-refunding) {
   color: #8c6500;
   background: rgba(197, 138, 0, .1);
 }
 
-.advertiser-billing-status:is(.is-failed,.is-refunded) {
+.advertiser-billing-status:is(.is-failed,.is-expired,.is-refunded) {
   color: #8b4d57;
   background: rgba(168, 72, 87, .08);
 }
