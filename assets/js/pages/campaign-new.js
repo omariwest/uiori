@@ -4,6 +4,7 @@ const DEFAULT_AVATAR = "/assets/img/default-avatar.svg";
 let currentStep = 1;
 let channels = [];
 let selectedChannelIds = new Set();
+let editingCampaignId = null;
 
 const form = document.querySelector("[data-campaign-form]");
 const picker = document.querySelector("[data-campaign-channel-picker]");
@@ -236,7 +237,7 @@ function wireLogout() {
 
 async function saveDraft(user) {
   saveButton.disabled = true;
-  saveButton.textContent = "Saving…";
+  saveButton.textContent = editingCampaignId ? "Saving…" : "Saving…";
   showError("");
 
   const scheduleMode =
@@ -251,41 +252,144 @@ async function saveDraft(user) {
     schedule_mode: scheduleMode,
   };
 
-  const { data: campaign, error: campaignError } = await uiOriSupabase
-    .from("campaigns")
-    .insert({
-      advertiser_id: user.id,
-      title: titleInput.value.trim(),
-      creative,
-      destination: destinationInput.value.trim(),
-      status: "draft",
-      total_amount_cents: 0,
-      currency: "USD",
-    })
-    .select("id")
-    .single();
+  const campaignPayload = {
+    title: titleInput.value.trim(),
+    creative,
+    destination: destinationInput.value.trim(),
+    updated_at: new Date().toISOString(),
+  };
 
-  if (campaignError) throw campaignError;
+  let campaignId = editingCampaignId;
 
-  const rows = [...selectedChannelIds].map((channelId, index) => ({
-    campaign_id: campaign.id,
-    channel_id: channelId,
-    requested_at: requestedAt,
-    position: index + 1,
-  }));
+  if (editingCampaignId) {
+    const { data: updated, error: updateError } = await uiOriSupabase
+      .from("campaigns")
+      .update(campaignPayload)
+      .eq("id", editingCampaignId)
+      .eq("status", "draft")
+      .select("id")
+      .maybeSingle();
 
-  const { error: itemError } = await uiOriSupabase
-    .from("campaign_items")
-    .insert(rows);
+    if (updateError) throw updateError;
+    if (!updated) throw new Error("draft_not_editable");
 
-  if (itemError) {
-    await uiOriSupabase.from("campaigns").delete().eq("id", campaign.id);
-    throw itemError;
+    const { data: existingItems, error: existingError } = await uiOriSupabase
+      .from("campaign_items")
+      .select("channel_id")
+      .eq("campaign_id", editingCampaignId);
+
+    if (existingError) throw existingError;
+
+    const rows = [...selectedChannelIds].map((channelId, index) => ({
+      campaign_id: editingCampaignId,
+      channel_id: channelId,
+      requested_at: requestedAt,
+      position: index + 1,
+    }));
+
+    const { error: upsertError } = await uiOriSupabase
+      .from("campaign_items")
+      .upsert(rows, { onConflict: "campaign_id,channel_id" });
+
+    if (upsertError) throw upsertError;
+
+    const removedIds = (existingItems || [])
+      .map((row) => row.channel_id)
+      .filter((channelId) => !selectedChannelIds.has(channelId));
+
+    if (removedIds.length) {
+      const { error: deleteError } = await uiOriSupabase
+        .from("campaign_items")
+        .delete()
+        .eq("campaign_id", editingCampaignId)
+        .in("channel_id", removedIds);
+      if (deleteError) throw deleteError;
+    }
+  } else {
+    const { data: campaign, error: campaignError } = await uiOriSupabase
+      .from("campaigns")
+      .insert({
+        advertiser_id: user.id,
+        ...campaignPayload,
+        status: "draft",
+        total_amount_cents: 0,
+        currency: "USD",
+      })
+      .select("id")
+      .single();
+
+    if (campaignError) throw campaignError;
+    campaignId = campaign.id;
+
+    const rows = [...selectedChannelIds].map((channelId, index) => ({
+      campaign_id: campaign.id,
+      channel_id: channelId,
+      requested_at: requestedAt,
+      position: index + 1,
+    }));
+
+    const { error: itemError } = await uiOriSupabase
+      .from("campaign_items")
+      .insert(rows);
+
+    if (itemError) {
+      await uiOriSupabase.from("campaigns").delete().eq("id", campaign.id);
+      throw itemError;
+    }
   }
 
   window.location.replace("/campaigns/");
 }
 
+async function loadExistingDraft(draftId) {
+  const [campaignResult, itemsResult] = await Promise.all([
+    uiOriSupabase
+      .from("campaigns")
+      .select("id,title,creative,destination,status,review_feedback")
+      .eq("id", draftId)
+      .maybeSingle(),
+    uiOriSupabase
+      .from("campaign_items")
+      .select("channel_id,requested_at,position")
+      .eq("campaign_id", draftId)
+      .order("position", { ascending: true }),
+  ]);
+
+  if (campaignResult.error) throw campaignResult.error;
+  if (itemsResult.error) throw itemsResult.error;
+
+  const campaign = campaignResult.data;
+  if (!campaign || campaign.status !== "draft") {
+    throw new Error("draft_not_editable");
+  }
+
+  editingCampaignId = campaign.id;
+  titleInput.value = campaign.title || "";
+  textInput.value = campaign.creative?.text || "";
+  destinationInput.value = campaign.destination || "";
+
+  selectedChannelIds = new Set((itemsResult.data || []).map((row) => row.channel_id));
+
+  const requestedAt = (itemsResult.data || []).find((row) => row.requested_at)?.requested_at || null;
+  if (requestedAt) {
+    const specific = document.querySelector('[data-schedule-mode][value="specific"]');
+    if (specific) specific.checked = true;
+    scheduleDateWrap.hidden = false;
+    const date = new Date(requestedAt);
+    if (!Number.isNaN(date.getTime())) {
+      const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+      scheduleDateInput.value = local.toISOString().slice(0, 16);
+    }
+  }
+
+  const feedback = document.querySelector("[data-campaign-review-feedback]");
+  if (feedback && campaign.review_feedback) {
+    feedback.hidden = false;
+    feedback.querySelector("p").textContent = campaign.review_feedback;
+  }
+
+  saveButton.textContent = "Save changes";
+}
 async function loadPage() {
   const {
     data: { user },
@@ -320,8 +424,13 @@ async function loadPage() {
 
   channels = channelsResult.data || [];
 
-  const preselected = new URLSearchParams(window.location.search).get("channel");
-  if (preselected && channels.some((channel) => channel.id === preselected)) {
+  const params = new URLSearchParams(window.location.search);
+  const draftId = params.get("draft");
+  const preselected = params.get("channel");
+
+  if (draftId) {
+    await loadExistingDraft(draftId);
+  } else if (preselected && channels.some((channel) => channel.id === preselected)) {
     selectedChannelIds.add(preselected);
   }
 
@@ -338,7 +447,7 @@ async function loadPage() {
       console.error("[UIORI] campaign draft save failed", error);
       showError("We couldn't save this draft. Please try again.");
       saveButton.disabled = false;
-      saveButton.textContent = "Save draft";
+      saveButton.textContent = editingCampaignId ? "Save changes" : "Save draft";
     }
   });
 }
