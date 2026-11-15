@@ -189,6 +189,7 @@
 
 .advertiser-status.is-live,
 .advertiser-status.is-completed,
+.advertiser-status.is-approved,
 .advertiser-status.is-funded {
   color: #1f7a4d;
   background: rgba(31, 122, 77, 0.09);
