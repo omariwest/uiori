@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="strict-origin-when-cross-origin" name="referrer" />
+  <script src="/assets/js/lib/analytics.js" defer></script>
+  <title>Saved channels — UIORI</title>
+  <meta content="noindex,nofollow" name="robots" />
+  <meta content="Shortlisted Telegram inventory for future campaigns." name="description" />
+  <link href="https://uiori.com/saved/" rel="canonical" />
+  <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+  <link href="/assets/img/favicon-32.png" rel="icon" sizes="32x32" type="image/png" />
+  <link href="/assets/img/favicon-180.png" rel="apple-touch-icon" sizes="180x180" />
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  <link href="/assets/css/style.css" rel="stylesheet" />
+  <link href="/assets/css/pages/advertiser-library.css" rel="stylesheet" />
+  <script src="/assets/js/components/app-navigation.js" type="module"></script>
+  <script src="/assets/js/pages/advertiser-saved.js" type="module"></script>
+</head>
+<body class="app-body app-auth-loading">
+<div class="app-layout">
+  <aside aria-label="Advertiser sidebar" class="app-sidebar">
+    <a aria-label="UIORI home" class="wordmark app-wordmark" href="/">UIORI<span class="wordmark-period">.</span></a>
+    <div class="app-member-card" data-uiori-member-state="pending" aria-label="Advertiser account">
+      <div class="app-member-avatar"><img src="/assets/img/default-avatar.svg" alt="Your profile photo" data-uiori-avatar /></div>
+      <div class="app-member-copy">
+        <strong class="app-member-name" data-uiori-member-name></strong>
+        <span class="app-member-badge is-active" data-uiori-member-badge><span data-uiori-member-status>Advertiser</span></span>
+      </div>
+    </div>
+    <nav aria-label="Advertiser navigation" class="app-navigation"><a class="app-nav-link" href="/dashboard/"><span>Overview</span></a><a class="app-nav-link" href="/campaigns/"><span>Campaigns</span></a><a aria-current="page" class="app-nav-link" href="/saved/"><span>Saved</span></a><a class="app-nav-link" href="/billing/"><span>Billing</span></a><a class="app-nav-link" href="/settings/"><span>Settings</span></a></nav>
+    <div class="app-sidebar-bottom">
+      <a class="app-nav-link" href="/faq/"><span>Help</span></a>
+      <a class="app-nav-link app-logout-link" data-uiori-logout href="/login/"><span>Log out</span></a>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-mobile-topbar">
+      <a aria-label="UIORI home" class="wordmark app-wordmark" href="/">UIORI<span class="wordmark-period">.</span></a>
+      <button aria-controls="app-navigation-drawer" aria-expanded="false" aria-label="Open account navigation" class="app-menu-toggle" type="button"><span></span><span></span><span></span></button>
+    </header>
+    <dialog aria-label="Advertiser navigation" class="app-drawer" id="app-navigation-drawer">
+      <div class="app-drawer-panel">
+        <div class="app-member-card app-member-card--drawer" data-uiori-member-state="pending" aria-label="Advertiser account">
+          <div class="app-member-avatar"><img src="/assets/img/default-avatar.svg" alt="Your profile photo" data-uiori-avatar /></div>
+          <div class="app-member-copy">
+            <strong class="app-member-name" data-uiori-member-name></strong>
+            <span class="app-member-badge is-active" data-uiori-member-badge><span data-uiori-member-status>Advertiser</span></span>
+          </div>
+        </div>
+        <nav aria-label="Advertiser navigation" class="app-navigation"><a class="app-nav-link" href="/dashboard/"><span>Overview</span></a><a class="app-nav-link" href="/campaigns/"><span>Campaigns</span></a><a aria-current="page" class="app-nav-link" href="/saved/"><span>Saved</span></a><a class="app-nav-link" href="/billing/"><span>Billing</span></a><a class="app-nav-link" href="/settings/"><span>Settings</span></a></nav>
+        <div class="app-sidebar-bottom">
+          <a class="app-nav-link" href="/faq/"><span>Help</span></a>
+          <a class="app-nav-link app-logout-link" data-uiori-logout href="/login/"><span>Log out</span></a>
+        </div>
+      </div>
+    </dialog>
+
+    <main class="app-content advertiser-library-page" id="main-content">
+      <header class="app-topbar advertiser-topbar">
+        <div class="app-page-heading">
+          <p class="app-page-eyebrow">Advertiser</p>
+          <h1>Saved channels</h1>
+          <p>Shortlisted Telegram inventory for future campaigns.</p>
+        </div>
+        <a class="button button-primary advertiser-new-campaign" href="/marketplace/">Browse channels</a>
+      </header>
+      
+<section aria-label="Saved channel summary" class="advertiser-library-summary">
+  <div><span>Saved channels</span><strong data-saved-count>0</strong><small>Active inventory in your shortlist</small></div>
+  <div><span>Use</span><strong>Shortlist</strong><small>Keep channels you want to compare later</small></div>
+  <div><span>Next step</span><strong>Campaign</strong><small>Start a draft directly from any saved channel</small></div>
+</section>
+<section class="advertiser-library-grid" data-saved-grid></section>
+<section class="advertiser-library-empty" data-saved-empty>
+  <div>
+    <h2>No saved channels yet</h2>
+    <p>Save interesting marketplace inventory so you can return to it without searching again.</p>
+    <a class="button button-dark" href="/marketplace/">Browse marketplace</a>
+  </div>
+</section>
+    </main>
+  </div>
+</div>
+</body>
+</html>
