@@ -1,47 +1,44 @@
 # UIORI
 
-**Voluntary bandwidth sharing with transparent rewards and clear user control.**
+**Telegram advertising marketplace for verified, measurable channel reach.**
 
-UIORI is a web platform that lets users choose whether to participate in bandwidth sharing and track their progress, credited earnings, wallet activity, and withdrawals in one place.
+UIORI helps advertisers discover Telegram channels, create campaigns, fund approved placements, and track delivery from one marketplace.
 
-Participation never starts automatically.
+## What UIORI does
 
-## How UIORI works
+- Browse curated Telegram advertising inventory.
+- Compare audience positioning and measured reach when data is available.
+- Create and submit sponsored-post campaigns.
+- Moderate campaigns before payment and publication.
+- Process approved campaign funding through the configured crypto payment flow.
+- Publish approved content to UIORI-owned Telegram channels through the UIORI publishing system.
+- Store delivery evidence and campaign/payment history.
 
-1. Create a UIORI account.
-2. Review how participation works and what it means for your connection.
-3. Choose whether to activate bandwidth sharing.
-4. Track Contribution Points, streaks, milestones, credited earnings, and wallet activity.
-5. Request withdrawals from eligible credited balance.
+UIORI does not invent subscriber counts, views, prices, availability, or campaign results. Marketplace metrics appear only when the underlying data exists.
 
-## Progress and earnings
+## Current launch network
 
-UIORI keeps progress separate from money.
+UIORI is beginning with a focused crypto, Web3, Telegram-app, wallet, news, tools, and regional channel network. The owned channels provide the first inventory while UIORI proves its marketplace workflow and builds real reach data.
 
-- Contribution Points reflect eligible participation and progression.
-- Streaks, levels, and milestones are motivational features.
-- Points do not have a fixed cash value.
-- Only earnings actually credited to the UIORI balance count as money.
-- UIORI does not promise a fixed earning rate or guaranteed income.
+Future channel-partner onboarding will expand the marketplace beyond UIORI-owned inventory.
 
-## User control
+## Product principle
 
-- Creating an account does not start bandwidth sharing.
-- Participation requires an explicit user action.
-- Users can manage or stop participation through the available provider controls.
-- Reward progress and cash balance are shown separately.
+> **Advertise on Telegram channels people actually read.**
 
-## Product areas
+UIORI is designed around qualified attention, clear pricing, moderation, delivery verification, and simple advertiser workflow rather than follower-count vanity metrics.
 
-- Public website
-- Email and Google authentication
-- Member dashboard
-- Earning and participation controls
-- Rewards and progression
-- Wallet and withdrawals
-- Account settings
-- Administration tools
-- Privacy, safety, terms, and rewards-policy pages
+## Platform areas
+
+- Public marketplace
+- Advertiser authentication
+- Advertiser dashboard
+- Campaign builder and moderation
+- Saved channels
+- Billing and payment records
+- Marketplace administration
+- Telegram editorial and publishing backend
+- Support, Terms, Privacy, Advertising Policy, and Refund Policy
 
 ## Technology
 
@@ -51,12 +48,9 @@ UIORI keeps progress separate from money.
 - Supabase PostgreSQL
 - Supabase Storage
 - Supabase Edge Functions
-- Mellowtel bandwidth-sharing infrastructure
+- Telegram Bot API
+- NOWPayments integration
 
 ## Website
 
 https://uiori.com
-
-## Important
-
-UIORI is not an investment product and does not guarantee a particular earning rate, reward amount, or time required to reach a milestone.
