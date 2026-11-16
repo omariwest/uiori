@@ -3,11 +3,13 @@ Allow: /
 Disallow: /admin/
 Disallow: /auth/
 Disallow: /dashboard/
-Disallow: /earn/
-Disallow: /wallet/
 Disallow: /settings/
 Disallow: /login/
 Disallow: /signup/
 Disallow: /forgot-password/
+Disallow: /reset-password/
+Disallow: /campaigns/
+Disallow: /saved/
+Disallow: /billing/
 
 Sitemap: https://uiori.com/sitemap.xml
