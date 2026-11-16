@@ -1,8 +1,6 @@
-import { initNavigation } from "../components/navigation.js";
 import { initCustomSelects } from "../components/custom-select.js";
 import { uiOriSupabase } from "../lib/supabase-client.js";
 
-initNavigation();
 initCustomSelects();
 
 const form = document.querySelector("#contact-form");
@@ -24,7 +22,6 @@ function setBusy(busy) {
 
 form?.addEventListener("submit", async (event) => {
   event.preventDefault();
-
   const data = new FormData(form);
   const payload = {
     name: String(data.get("name") || "").trim(),
@@ -43,27 +40,19 @@ form?.addEventListener("submit", async (event) => {
   showStatus("Sending your message…");
 
   try {
-    const { data: result, error } = await uiOriSupabase.functions.invoke("contact", {
-      body: payload,
-    });
-
+    const { data: result, error } = await uiOriSupabase.functions.invoke("contact", { body: payload });
     if (error || !result?.ok) {
       const code = result?.error || error?.message || "";
-      if (String(code).includes("rate_limited")) {
-        showStatus("Too many messages were sent recently. Please try again in a few minutes.", "error");
-      } else {
-        showStatus("We couldn't send your message. Please try again shortly.", "error");
-      }
+      showStatus(
+        String(code).includes("rate_limited")
+          ? "Too many messages were sent recently. Please try again in a few minutes."
+          : "We couldn't send your message. Please try again shortly.",
+        "error",
+      );
       return;
     }
-
     form.reset();
-    showStatus(
-      result.delivered
-        ? "Message sent to UIORI Support."
-        : "Message received and safely queued for UIORI Support.",
-      "success",
-    );
+    showStatus(result.delivered ? "Message sent to UIORI Support." : "Message received and safely queued for UIORI Support.", "success");
   } catch (error) {
     console.error("[UIORI] contact submission failed", error);
     showStatus("We couldn't send your message. Please try again shortly.", "error");
