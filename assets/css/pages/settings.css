@@ -1061,3 +1061,53 @@
     max-width: 100%;
   }
 }
+
+
+/* Advertiser account details */
+.settings-account-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.settings-account-list > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.07);
+}
+
+.settings-account-list > div:last-child {
+  border-bottom: 0;
+}
+
+.settings-account-list dt {
+  color: #656d79;
+  font-size: 0.78rem;
+}
+
+.settings-account-list dd {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: 0.78rem;
+  font-weight: 650;
+  text-align: right;
+}
+
+.settings-danger-section {
+  border-color: rgba(153, 93, 93, 0.2);
+}
+
+@media (max-width: 520px) {
+  .settings-account-list > div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .settings-account-list dd {
+    text-align: left;
+  }
+}
