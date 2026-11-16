@@ -286,3 +286,71 @@
     transition: none;
   }
 }
+
+/* Marketplace settings */
+.market-admin-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.market-admin-card,
+.market-admin-panel {
+  border: 1px solid rgba(17, 24, 39, 0.09);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.market-admin-card {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  padding: 18px;
+}
+
+.market-admin-card > span {
+  color: #777780;
+  font-size: 0.7rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.market-admin-card > strong {
+  color: var(--color-ink);
+  font-size: 0.95rem;
+}
+
+.market-admin-card > p,
+.market-admin-panel > p {
+  margin: 0;
+  color: #656d79;
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.market-admin-card > a {
+  width: fit-content;
+  margin-top: 4px;
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+.market-admin-panel {
+  margin-top: 14px;
+  padding: 18px;
+}
+
+.market-admin-panel h2 {
+  margin: 0 0 8px;
+  color: var(--color-ink);
+  font-size: 0.94rem;
+}
+
+@media (max-width: 700px) {
+  .market-admin-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
