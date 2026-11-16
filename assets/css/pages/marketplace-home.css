@@ -847,3 +847,20 @@
     transition-duration: 1ms;
   }
 }
+
+/* V53: marketplace content inside the original UIORI hero system. */
+.market-home-reused-hero { background: transparent; }
+.market-hero-window { animation: hero-window-float 6.5s ease-in-out infinite; }
+.market-hero-preview { padding: clamp(22px, 3vw, 32px); background:#fff; }
+.market-hero-preview-head { display:flex; align-items:flex-start; justify-content:space-between; gap:18px; }
+.market-hero-preview-head strong { display:block; color:var(--color-ink); font-size:clamp(1.2rem,2vw,1.55rem); letter-spacing:-.035em; line-height:1.15; }
+.market-hero-preview-chips { display:flex; flex-wrap:wrap; gap:8px; margin:20px 0 18px; }
+.market-hero-preview-chips span { display:inline-flex; min-height:30px; align-items:center; padding:0 10px; border:1px solid rgba(17,24,39,.08); border-radius:999px; color:#636a76; background:#fafafa; font-size:.7rem; font-weight:650; }
+.market-hero-preview-steps { display:grid; gap:9px; }
+.market-hero-preview-steps article { display:grid; grid-template-columns:36px minmax(0,1fr); gap:12px; align-items:center; padding:12px 13px; border:1px solid rgba(17,24,39,.075); border-radius:14px; background:#fff; }
+.market-hero-preview-steps article>span { display:grid; width:36px; height:36px; place-items:center; border-radius:11px; color:#6249dc; background:rgba(109,76,245,.08); font-size:.72rem; font-weight:800; }
+.market-hero-preview-steps strong,.market-hero-preview-steps small { display:block; }
+.market-hero-preview-steps strong { color:#252b35; font-size:.84rem; letter-spacing:-.02em; }
+.market-hero-preview-steps small { margin-top:3px; color:#858b96; font-size:.7rem; line-height:1.4; }
+.market-home-benefits { margin-top:52px; }
+@media (max-width:700px){ .market-hero-preview{padding:18px}.market-hero-preview-head{gap:10px}.market-home-benefits{margin-top:34px} }

@@ -521,3 +521,7 @@
     transition: none;
   }
 }
+/* V53: custom selects reuse the original UIORI smart dropdown system. */
+.marketplace-toolbar .ui-select { min-width:0; }
+.marketplace-toolbar .ui-select-button { min-height:45px; border-radius:12px; font-size:.82rem; font-weight:560; }
+.marketplace-toolbar .ui-select-menu { z-index:240; }

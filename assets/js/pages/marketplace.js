@@ -1,4 +1,5 @@
 import { uiOriSupabase } from "../lib/supabase-client.js";
+import { initCustomSelects } from "../components/custom-select.js";
 
 const grid = document.querySelector("[data-market-grid]");
 const count = document.querySelector("[data-market-results-count]");
@@ -211,8 +212,12 @@ function resetFilters() {
   if (search) search.value = "";
   filters.forEach((select) => {
     select.value = "";
+    select.dispatchEvent(new Event("change", { bubbles: true }));
   });
-  if (sort) sort.value = "priority";
+  if (sort) {
+    sort.value = "priority";
+    sort.dispatchEvent(new Event("change", { bubbles: true }));
+  }
   render();
 }
 
@@ -278,6 +283,7 @@ async function loadMarketplace() {
     channels = [];
   }
 
+  initCustomSelects();
   render();
 }
 
