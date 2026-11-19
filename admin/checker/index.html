@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta content="#ffffff" name="theme-color" />
+<meta content="strict-origin-when-cross-origin" name="referrer" />
+<meta content="noindex,nofollow" name="robots" />
+<title>UIORI Checker — UIORI Admin</title>
+<meta content="Private Telegram channel placement checker for UIORI operations." name="description" />
+<link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+<link href="/assets/css/style.css" rel="stylesheet" />
+<link href="/assets/css/pages/admin-marketplace.css" rel="stylesheet" />
+<link href="/assets/css/pages/admin-checker.css" rel="stylesheet" />
+<script src="/assets/js/pages/admin-checker.js" type="module"></script>
+</head>
+<body class="app-body admin-body admin-auth-loading">
+<div class="admin-layout">
+<aside aria-label="Admin sidebar" class="admin-sidebar">
+<a aria-label="UIORI home" class="admin-brand" href="/">UIORI<span>.</span></a>
+<p class="admin-sidebar-label">Marketplace admin</p>
+<nav aria-label="Admin navigation" class="admin-navigation"><a class="admin-nav-link" href="/admin/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"></path></svg><span>Overview</span></a><a class="admin-nav-link" href="/admin/channels/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"></path></svg><span>Channels</span></a><a class="admin-nav-link" href="/admin/campaigns/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h10"></path></svg><span>Campaigns</span></a><a class="admin-nav-link" href="/admin/advertisers/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87"></path></svg><span>Advertisers</span></a><a class="admin-nav-link" href="/admin/payments/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M3 7h18v10H3zM3 11h18"></path></svg><span>Payments</span></a><a class="admin-nav-link" href="/admin/moderation/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3zM9 12l2 2 4-4"></path></svg><span>Moderation</span></a><a aria-current="page" class="admin-nav-link" href="/admin/checker/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg><span>UIORI Checker</span></a><a class="admin-nav-link" href="/admin/settings/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M4 12h2M18 12h2M12 4v2M12 18v2"></path></svg><span>Settings</span></a></nav>
+<div class="admin-sidebar-bottom"><a class="admin-nav-link admin-logout-link" data-uiori-admin-logout href="/admin/login/"><span>Log out</span></a></div>
+</aside>
+<div class="admin-main">
+<header class="admin-mobile-topbar"><a aria-label="UIORI home" class="admin-brand" href="/">UIORI<span>.</span></a><button aria-controls="app-navigation-drawer" aria-expanded="false" aria-label="Open admin navigation" class="admin-menu-toggle app-menu-toggle" type="button"><span></span><span></span><span></span></button></header>
+<dialog aria-label="Admin navigation" class="app-drawer" id="app-navigation-drawer"><div class="admin-drawer-panel app-drawer-panel"><nav aria-label="Admin navigation" class="admin-navigation"><a class="admin-nav-link" href="/admin/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"></path></svg><span>Overview</span></a><a class="admin-nav-link" href="/admin/channels/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"></path></svg><span>Channels</span></a><a class="admin-nav-link" href="/admin/campaigns/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h10"></path></svg><span>Campaigns</span></a><a class="admin-nav-link" href="/admin/advertisers/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87"></path></svg><span>Advertisers</span></a><a class="admin-nav-link" href="/admin/payments/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M3 7h18v10H3zM3 11h18"></path></svg><span>Payments</span></a><a class="admin-nav-link" href="/admin/moderation/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3zM9 12l2 2 4-4"></path></svg><span>Moderation</span></a><a aria-current="page" class="admin-nav-link" href="/admin/checker/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg><span>UIORI Checker</span></a><a class="admin-nav-link" href="/admin/settings/"><svg aria-hidden="true" class="admin-nav-icon" viewbox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M4 12h2M18 12h2M12 4v2M12 18v2"></path></svg><span>Settings</span></a></nav><div class="admin-sidebar-bottom"><a class="admin-nav-link admin-logout-link" data-uiori-admin-logout href="/admin/login/"><span>Log out</span></a></div></div></dialog>
+<main class="admin-content" id="main-content">
+<header class="admin-topbar">
+  <div class="admin-page-heading">
+    <p class="admin-heading-eyebrow">Marketplace operations</p>
+    <h1>UIORI Checker</h1>
+    <p>Check a public Telegram channel before buying a placement.</p>
+  </div>
+  <div aria-label="Admin account" class="admin-account-indicator"><span>Admin</span></div>
+</header>
+
+<section class="checker-search-panel">
+  <form class="checker-form" data-checker-form>
+    <label for="checker-handle">Public Telegram channel</label>
+    <div class="checker-input-row">
+      <input autocomplete="off" id="checker-handle" name="handle" placeholder="@channelname" spellcheck="false" type="text" />
+      <button class="button button-primary" data-checker-submit type="submit">Check channel</button>
+    </div>
+    <p>Paste a handle such as @channelname or a public t.me link.</p>
+  </form>
+  <p class="checker-error" data-checker-error hidden role="alert"></p>
+</section>
+
+<section class="checker-result" data-checker-result hidden>
+  <div class="checker-result-heading">
+    <div>
+      <a class="checker-handle" data-checker-handle href="#" rel="noopener noreferrer" target="_blank"></a>
+      <h2 data-checker-title></h2>
+      <p data-checker-description></p>
+    </div>
+    <span class="checker-verdict" data-checker-verdict></span>
+  </div>
+
+  <div class="checker-metrics" data-checker-metrics></div>
+
+  <div class="checker-grid">
+    <article class="checker-card">
+      <p class="checker-eyebrow">Decision</p>
+      <h3 data-checker-decision></h3>
+      <ul data-checker-reasons></ul>
+    </article>
+    <article class="checker-card">
+      <p class="checker-eyebrow">Tracked growth</p>
+      <div class="checker-growth-value"><strong data-checker-growth>0</strong><span>since first check</span></div>
+      <div class="checker-sparkline" data-checker-sparkline></div>
+      <p data-checker-growth-note>UIORI starts building history from the first check.</p>
+    </article>
+  </div>
+
+  <div class="checker-table-section">
+    <div class="checker-section-heading">
+      <div><p class="checker-eyebrow">Recent posts</p><h3>Public performance sample</h3></div>
+      <span data-checker-post-count></span>
+    </div>
+    <div class="checker-table-wrap">
+      <table>
+        <thead><tr><th>Post</th><th>Date</th><th>Views</th><th>Reactions</th></tr></thead>
+        <tbody data-checker-posts></tbody>
+      </table>
+    </div>
+  </div>
+
+  <p class="checker-footnote">Historical growth starts when UIORI first checks a channel. Use Trigram only when older history is needed. Telegram does not expose a reliable public bot percentage.</p>
+</section>
+</main>
+</div></div>
+</body></html>
